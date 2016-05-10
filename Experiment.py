@@ -12,6 +12,12 @@ class Experiment:
                 self.seed = None
                 self.algorithm = algorithm
 
+        def set_parameters(self, parameters):
+                """
+                parameters : Parameters object, or Parameters generator
+                """
+                self.parameters = parameters
+                
 	def set_inputs(self, inputs):
 		""" 
 		inputs : iterable (list, generator...) of dictionnaries representing inputs

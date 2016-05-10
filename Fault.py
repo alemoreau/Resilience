@@ -58,9 +58,12 @@ class Fault():
             callback = self.parameters.get("fault_callback", None)			    
             max_fault = self.parameters.get("max_fault", 1)
 
+            safe_product_because_not_vulnerable = not (self.parameters.get("vulnerable", True))
             safe_product_because_max_fault = (max_fault <= len(self.faults))
-            safe_product_because_timer = (np.random.rand() < self.parameters.get("p", 1./(M.shape[0]))) if (timer == None) else (self.timer != timer)
-            perform_safe_product = safe_product_because_max_fault or safe_product_because_timer
+            safe_product_because_timer = (np.random.rand() > self.parameters.get("p", 1./(M.shape[0]))) if (timer == None) else (self.timer != timer)
+            perform_safe_product = (safe_product_because_max_fault or
+                                    safe_product_because_timer or
+                                    safe_product_because_not_vulnerable)
 
             if perform_safe_product:
                 self.timer += 1

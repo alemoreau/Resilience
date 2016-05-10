@@ -47,6 +47,8 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
         self.data["true_residual"] = resid
         self.data["true_residuals"] = [resid]
         self.data["iteration_count"] = 0
+	self.data["orthogonality"] = [0.] 
+	self.data["arnoldi"] = [0.]
         
     if (resid <= tol):
         return x
@@ -68,7 +70,10 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
         i = 0
         while (i < m and j < max_iter):
             
-            w = faulty.product(A, V[:, i])
+            if vulnerable:
+                w = faulty.product(A, V[:, i])
+            else:
+		w = np.dot(A, V[:, i])
             
             orthogonalization(w, V, H, i)
   
@@ -110,6 +115,9 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
                 self.data["faults"] = faulty.faults
                 self.data["H"] = H
                 self.data["V"] = V
+		self.data["orthogonality"] += [np.linalg.norm(np.dot(V[:, :i+2].T, V[:,:i+2]) - np.eye(i+2),ord='fro')/np.linalg.norm(np.eye(i+2))]
+		self.data["arnoldi"] += [np.linalg.norm(np.dot(A, V[:,:i+1]) - np.dot(V[:,:i+2], H[:i+2, :i+1]),ord='fro') / np.linalg.norm(np.dot(V[:,:i+2], H[:i+2, :i+1]), ord='fro')]
+
                 if (faulty.faults and faulty.faults[-1]["register"] == "left" and 'check' not in faulty.faults[-1]):
                     Ej = abs(faulty.faults[-1]['register_before'] - faulty.faults[-1]['register_after'])
                     
@@ -180,17 +188,24 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
 
 def classical_gramschmidt(w, V, H, i):    
     for k in xrange(i+1):
-        H[k, i] = w[:, 0].dot(V[:, k])
+        H[k, i] = w.dot(V[:, k])
         
     for k in xrange(i+1):
-        w[:, 0] -= V[:, k] * H[k, i]
+        w -= V[:, k] * H[k, i]
         
     H[i+1, i] = np.linalg.norm(w)
 
-def modified_gramschmidt(w, V, H, i):
+def modified_gramschmidt(w, V, H, i, reorth=False, alpha=0.001):
     for k in xrange(i+1):
         H[k, i] = w.dot(V[:, k])
         w -= V[:, k] * H[k, i]
+    if reorth:
+	norm_before = np.linalg.norm(V[:,i+1])
+	if norm_before + alpha * H[i+1, i] == norm_before:
+    		for k in xrange(i+1):
+			Hr = w.dot(V[:, k])
+			H[k, i] += Hr
+			w -= V[:, k] * Hr
     H[i+1, i] = np.linalg.norm(w)
 
 def Update(k, H, s, V):
