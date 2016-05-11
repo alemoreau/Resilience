@@ -19,8 +19,10 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
     dtype = parameters.get("type", 'd')
     vulnerable = parameters.get("vulnerable", True)
     orthogonalization = parameters.get("orthMethod", classical_gramschmidt)
+    save_data = parameters.get("save_data", None)
+
     faulty = Fault(Parameters(parameters.get("fault_parameters", {"max_fault_count":1})))
-    
+ 
     # To remove
     normA = np.linalg.norm(A, ord=2)
     u, s, v = np.linalg.svd(A)
@@ -42,14 +44,23 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
   
     resid = np.linalg.norm(r) / normb
     if save_data:
-        self.data["residual"] = resid
-        self.data["residuals"] = [resid]
-        self.data["true_residual"] = resid
-        self.data["true_residuals"] = [resid]
-        self.data["iteration_count"] = 0
-	self.data["orthogonality"] = [0.] 
-	self.data["arnoldi"] = [0.]
-        
+	if "iteration_count" in save_data:
+	    self.data["iteration_count"] = 0
+	if "residual" in save_data:
+	    self.data["residual"] = resid
+	if "residuals" in save_data:
+	    self.data["residuals"] = [resid]
+	if "true_residual" in save_data:
+	    self.data["true_residual"] = resid
+	if "true_residuals" in save_data:
+            self.data["true_residuals"] = [resid]
+	if "H_rank" in save_data:
+	    self.data["H_rank"] = [0]
+	if "orthogonality" in save_data:
+	    self.data["orthogonality"] = [0.]
+	if "arnoldi" in save_data:
+	    self.data["arnoldi"] = [0.]
+
     if (resid <= tol):
         return x
 
@@ -104,61 +115,75 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
             resid = abs(s[i+1, 0]) / normb
             
             if save_data:
-                xc = x + Update(i, H, s, V)
-                true_resid = np.linalg.norm(b - (np.dot(A, xc)))
-                true_resid_ = true_resid / normb
-                self.data["iteration_count"] = j+1
-                self.data["residual"] = resid
-                self.data["residuals"] += [resid]
-                self.data["true_residual"] = true_resid_
-                self.data["true_residuals"] += [true_resid_]
-                self.data["faults"] = faulty.faults
-                self.data["H"] = H
-                self.data["V"] = V
-		self.data["orthogonality"] += [np.linalg.norm(np.dot(V[:, :i+2].T, V[:,:i+2]) - np.eye(i+2),ord='fro')/np.linalg.norm(np.eye(i+2))]
-		self.data["arnoldi"] += [np.linalg.norm(np.dot(A, V[:,:i+1]) - np.dot(V[:,:i+2], H[:i+2, :i+1]),ord='fro') / np.linalg.norm(np.dot(V[:,:i+2], H[:i+2, :i+1]), ord='fro')]
-
-                if (faulty.faults and faulty.faults[-1]["register"] == "left" and 'check' not in faulty.faults[-1]):
-                    Ej = abs(faulty.faults[-1]['register_before'] - faulty.faults[-1]['register_after'])
+		if "iteration_count" in save_data:
+		    self.data["iteration_count"] = j+1
+		if "residual" in save_data:
+		    self.data["residual"] = resid
+		if "residuals" in save_data:
+		    self.data["residuals"] += [resid]
+		if "true_residual" in save_data or "true_residuals" in save_data:
+                	xc = x + Update(i, H, s, V)
+                	true_resid = np.linalg.norm(b - (np.dot(A, xc)))
+                	true_resid_ = true_resid / normb
+			if "true_residual" in save_data:
+                		self.data["true_residual"] = true_resid_
+			if "true_residuals" in save_data:
+                		self.data["true_residuals"] += [true_resid_]
+		if "faults" in save_data:
+                    self.data["faults"] = faulty.faults
+ 		    if (faulty.faults and faulty.faults[-1]["register"] == "left" and 'check' not in faulty.faults[-1]):
+                        Ej = abs(faulty.faults[-1]['register_before'] - faulty.faults[-1]['register_after'])
                     
-                    gamma = normb
-                    if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
-                        faulty.faults[-1]['check'] = True
-                    else:
-                        gamma = 1./(4. + tol * K_A) * normA * np.sqrt(n) + normb
+                        gamma = normb
                         if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
-                            faulty.faults[-1]['check'] = False
+                            faulty.faults[-1]['check'] = True
                         else:
-                            faulty.faults[-1]['check'] = None
+                            gamma = 1./(4. + tol * K_A) * normA * np.sqrt(n) + normb
+                            if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
+                                faulty.faults[-1]['check'] = False
+                            else:
+                                faulty.faults[-1]['check'] = None
                 
-                if ( faulty.faults and faulty.faults[-1]["register"] == "right" and 'check' not in faulty.faults[-1]):
-                    row = faulty.faults[-1]['loc']["i"]
-                    error = faulty.faults[-1]['value_before'] - faulty.faults[-1]['value_after']
-                    Ej = 0.
-                    minimum = 0.
-                    v_min = max(abs(V[:, i]))
+                    if ( faulty.faults and faulty.faults[-1]["register"] == "right" and 'check' not in faulty.faults[-1]):
+                        row = faulty.faults[-1]['loc']["i"]
+                        error = faulty.faults[-1]['value_before'] - faulty.faults[-1]['value_after']
+                        Ej = 0.
+                        minimum = 0.
+                        v_min = max(abs(V[:, i]))
                     
-                    for k in xrange(n):
-                        if (A[row, k] != 0. and v[k, 0] != 0. and abs(v[k, 0]) < v_min ):
-                            v_min = abs(v[k, 0])
+                        for k in xrange(n):
+                            if (A[row, k] != 0. and v[k, 0] != 0. and abs(v[k, 0]) < v_min ):
+                                v_min = abs(v[k, 0])
                             
                     
-                    Ej = abs(error / v_min)
+                        Ej = abs(error / v_min)
                     
-                    gamma = normb
+                        gamma = normb
                                     
-                    if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
-                        faulty.faults[0]['check'] = True
-                    else:
-                        gamma = 1./(4. + tol * K_A) * normA * np.sqrt(n) + normb
                         if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
-                            faulty.faults[0]['check'] = False
+                            faulty.faults[0]['check'] = True
                         else:
-                            faulty.faults[0]['check'] = None
+                            gamma = 1./(4. + tol * K_A) * normA * np.sqrt(n) + normb
+                            if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
+                                faulty.faults[0]['check'] = False
+                            else:
+                                faulty.faults[0]['check'] = None
+                if "H" in save_data:
+		    self.data["H"] = H
+                if "V" in save_data:
+		    self.data["V"] = V
+		if "H_rank" in save_data:
+		    self.data["H_rank"] += [np.linalg.matrix_rank(H[:i+1, :i+1])-(i+1)]
+		if "orthogonality" in save_data:
+		    self.data["orthogonality"] += [np.linalg.norm(np.dot(V[:, :i+2].T, V[:,:i+2]) - np.eye(i+2),ord='fro')/np.linalg.norm(np.eye(i+2))]
+		if "arnoldi" in save_data:
+		    self.data["arnoldi"] += [np.linalg.norm(np.dot(A, V[:,:i+1]) - np.dot(V[:,:i+2], H[:i+2, :i+1]),ord='fro') / np.linalg.norm(np.dot(V[:,:i+2], H[:i+2, :i+1]), ord='fro')]
+
+               
 
                 if (true_resid_ < tol):
                     return xc
-            if (not save_data):
+            if (not save_data or not "true_residual" in save_data or not "true_residual" in save_data):
                 if resid < tol:
                     return x + Update(i, H, s, V)
             #if (resid < tol):
