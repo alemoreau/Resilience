@@ -1,6 +1,9 @@
 from Parameters import *
 import numpy as np
 import types
+import sqlite3
+import io
+import csv
 
 class Experiment:
 	"General experiment"
@@ -11,6 +14,7 @@ class Experiment:
 		self.data = []
                 self.seed = None
                 self.algorithm = algorithm
+		self.database = None
 
         def set_parameters(self, parameters):
                 """
@@ -118,3 +122,81 @@ class Experiment:
 		else:
 			return self.data
 				
+	def save_data_database(self, database_filename):
+	    self.database = database_filename
+	    if len(self.data) > 0:
+	    	conn = sqlite3.connect(database_filename, detect_types=sqlite3.PARSE_DECLTYPES)
+	    	c = conn.cursor()
+
+		# Converts np.array to TEXT when inserting
+		sqlite3.register_adapter(np.ndarray, adapt_array)
+
+		# Converts TEXT to np.array when selecting
+		sqlite3.register_converter("array", convert_array)
+
+		experiment = []
+	    	for key in self.data[0]:
+		    var = self.data[0][key]
+		    if isinstance(var, ( int, long ) ):
+			experiment += [(key, "integer")]
+		    elif isinstance(var, float): 
+			experiment += [(key, "real")]
+		    elif isinstance(var, np.ndarray):
+			experiment += [(key, "array")]
+		    else:
+			experiment += [(key, "text")]
+
+		sorted(experiment, key=lambda data: data[0])
+		
+		sql = "CREATE TABLE experiments ("
+		for (key, t) in experiment:
+		    sql += str(key) + " " + t + ", "
+		sql = sql[:-2]
+		sql += ")"
+            	# Create table
+            	c.execute(sql)
+
+            	# Insert a row of data
+            	#c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
+            	# Save (commit) the changes
+            	conn.commit()
+
+            	# We can also close the connection if we are done with it.
+            	# Just be sure any changes have been committed or they will be lost.
+
+            	conn.close()
+
+	def save_data_file(self, filename):
+    	    f=open(filename, "wb")
+    	    w = csv.writer(f)
+	    for experiment in self.data:
+    	    	for key, val in experiment.items():
+        	    w.writerow([key, val])
+    	    f.close()
+     
+	def read_data_file(self, filename):
+    	    f=open(fn,'rb')
+    	    dict_rap={}
+     
+    	    for key, val in csv.reader(f):
+        	dict_rap[key]=eval(val)
+    	    f.close()
+    	    return(dict_rap)
+
+def adapt_array(arr):
+    out = io.BytesIO()
+    np.save(out, arr)
+    out.seek(0)
+    return sqlite3.Binary(out.read())
+
+def convert_array(text):
+    out = io.BytesIO(text)
+    out.seek(0)
+    return np.load(out)
+
+
+ 
+
+
+
