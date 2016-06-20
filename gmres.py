@@ -38,7 +38,9 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
     
     r = b - (np.dot(A, x))
     beta = np.linalg.norm(r)
-  
+
+    sum_A = np.dot(np.transpose(A), np.ones(n))
+
     if (normb == 0.0):
         normb = 1.
   
@@ -60,7 +62,12 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
 	    self.data["orthogonality"] = [0.]
 	if "arnoldi" in save_data:
 	    self.data["arnoldi"] = [0.]
-
+	if "y" in save_data:
+	    self.data["y"] = []
+	if "checksum" in save_data:
+	    self.data["checksum"] = []
+	if "criteria" in save_data:
+	    self.data["criteria"] = []
     if (resid <= tol):
         return x
 
@@ -86,6 +93,12 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
             else:
 		w = np.dot(A, V[:, i])
             
+	    if "checksum" in save_data:
+	    	checksum_Av = np.dot(w, np.ones((n, 1)))
+	    	checksum_A  = np.dot(sum_A, V[:, i])
+	    	checksum = abs(checksum_Av - checksum_A)[0]
+		
+
             orthogonalization(w, V, H, i)
   
             # Happy breakdown
@@ -121,22 +134,29 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
 		    self.data["residual"] = resid
 		if "residuals" in save_data:
 		    self.data["residuals"] += [resid]
-		if "true_residual" in save_data or "true_residuals" in save_data:
-                	xc = x + Update(i, H, s, V)
+		if ("true_residual" in save_data or 
+		    "true_residuals" in save_data or
+		    "y" in save_data):
+			y = Solve_y(i, H, s)
+                	#xc = x + Update(i, H, s, V)
+			xc = x + np.dot(V[:, :i+1], y)
                 	true_resid = np.linalg.norm(b - (np.dot(A, xc)))
                 	true_resid_ = true_resid / normb
+			if "y" in save_data:
+			    self.data["y"] += [y]
 			if "true_residual" in save_data:
-                		self.data["true_residual"] = true_resid_
+                	    self.data["true_residual"] = true_resid_
 			if "true_residuals" in save_data:
-                		self.data["true_residuals"] += [true_resid_]
+                	    self.data["true_residuals"] += [true_resid_]
 		if "faults" in save_data:
                     self.data["faults"] = faulty.faults
  		    if (faulty.faults and faulty.faults[-1]["register"] == "left" and 'check' not in faulty.faults[-1]):
                         Ej = abs(faulty.faults[-1]['register_before'] - faulty.faults[-1]['register_after'])
                     
                         gamma = normb
+			c = 0.01
                         #if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
-			if (Ej < s_min * min(1, (gamma / resid) * (tol / 2))):
+			if (Ej < s_min * min(c, (1-c)*(gamma / resid) * (tol / 2))):
                             faulty.faults[-1]['check'] = True
                         else:
                             gamma = 1./(4. + tol * K_A) * normA * np.sqrt(n) + normb
@@ -158,9 +178,9 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
                             
                     
                         Ej = abs(error / v_min)
-                    
+                    	c = 0.01
                         gamma = normb
-                        if (Ej < s_min * min(1, (gamma / resid) * (tol / 2))):            	
+                        if (Ej < s_min * min(c, (1-c)*(gamma / resid) * (tol / 2))):           	
                         #if (Ej < (s_min / (4 * n) * min(1., (3*gamma)/(2*true_resid)*tol))):
                             faulty.faults[0]['check'] = True
                         else:
@@ -180,8 +200,10 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
 		if "arnoldi" in save_data:
 		    self.data["arnoldi"] += [np.linalg.norm(np.dot(A, V[:,:i+1]) - np.dot(V[:,:i+2], H[:i+2, :i+1]),ord='fro') / np.linalg.norm(np.dot(V[:,:i+2], H[:i+2, :i+1]), ord='fro')]
 
-               
-
+                if "checksum" in save_data: 
+		    self.data["checksum"] += [checksum]
+		if "criteria" in save_data: #TODO: bug if y not in save_data
+		    self.data["criteria"] += [(tol * normb)/abs(y[i])]
                 if (true_resid_ < tol):
                     return xc
             if (not save_data or not "true_residual" in save_data or not "true_residual" in save_data):
@@ -327,6 +349,7 @@ def pipelined_p1(self, input, algorithm_parameters, experiment_parameters, displ
             #    t -= V[:, j] * H[j, i]
 	    orthogonalization(np.copy(Z[:, i+1]), V, H, i)
 	    
+	    
 	    if i > 1:
 		e1 = np.zeros((i+1, 1), 'd') 
 		e1[0] = 1.0
@@ -397,9 +420,9 @@ def pipelined_p1(self, input, algorithm_parameters, experiment_parameters, displ
 		    if "H_rank" in save_data:
 		        self.data["H_rank"] += [np.linalg.matrix_rank(H[:i+1, :i+1])-(i+1)]
 		    if "orthogonality" in save_data:
-		        self.data["orthogonality"] += [np.linalg.norm(np.dot(V[:, :i].T, V[:, :i]) - np.eye(i),ord='fro')/np.linalg.norm(np.eye(i+2))]
+		        self.data["orthogonality"] += [np.linalg.norm(np.dot(V[:, :i].T, V[:, :i]) - np.eye(i),ord='fro')/np.linalg.norm(np.eye(i+1))]
 		    if "arnoldi" in save_data:
-		        self.data["arnoldi"] += [np.linalg.norm(np.dot(A, V[:,:i]) - np.dot(V[:,:i+1], H[:i+1, :i]),ord='fro') / np.linalg.norm(np.dot(V[:,:i+1], H[:i+1, :i]), ord='fro')]
+		        self.data["arnoldi"] += [np.linalg.norm(np.dot(A, Z[:,:i]) - np.dot(Z[:,:i+1], H[:i+1, :i]),ord='fro') / np.linalg.norm(A, ord='fro')]
 
                
 
@@ -463,6 +486,10 @@ def modified_gramschmidt(w, V, H, i, reorth=False, alpha=0.001):
     H[i+1, i] = np.linalg.norm(w)
 
 def Update(k, H, s, V):
+    y = Solve_y(k, H, s)
+    return np.dot(V[:, :k+1], y)
+
+def Solve_y(k, H, s):
     y = np.zeros((k+1, 1), dtype=H.dtype)
     y[:, 0] = s[:k+1, 0]
         
@@ -471,8 +498,8 @@ def Update(k, H, s, V):
             y[i, 0] /= H[i, i];
             for j in xrange(i-1, -1, -1):
                 y[j, 0] -= H[j,i] * y[i, 0]
-    
-    return np.dot(V[:, :k+1], y)
+    return y
+
 def Solve(H, V, x, beta, m):
     
     s = np.zeros((m+1, 1))

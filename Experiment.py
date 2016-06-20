@@ -47,7 +47,7 @@ class Experiment:
 		self.results += [(input, output)]
                 self.data += [copy.copy(self.algorithm.get_data())]
 
-	def run(self, n=1, show_progress = False, seed=None):
+	def run(self, n=1, show_progress = False, seed=None, parallel=False):
 		"""
 		Run the experiment over all inputs, n times 
 		"""
@@ -58,27 +58,30 @@ class Experiment:
                         np.random.seed(seed)
 		progress = 0
 		if (self.inputs):
-			for i in xrange(n):
-				if isinstance(self.parameters, types.GeneratorType):
-					for (k, _input), _p in zip(enumerate(self.inputs), self.parameters):
-                                                new_progress = int((100 * (i * len(self.inputs) + k)) / len(self.inputs * n))
-                                                if (show_progress and (new_progress > progress)):
-							stdout.write("\r%d %c " % (new_progress, '%'))
-						        stdout.flush()
-						progress = new_progress
-						self.apply_procedure(_p, _input)
-				else:
+			if parallel:
+				pass
+			else:			
+				for i in xrange(n):
+					if isinstance(self.parameters, types.GeneratorType):
+						for (k, _input), _p in zip(enumerate(self.inputs), self.parameters):
+                                                	new_progress = int((100 * (i * len(self.inputs) + k)) / len(self.inputs * n))
+                                                	if (show_progress and (new_progress > progress)):
+								stdout.write("\r%d %c " % (new_progress, '%'))
+						        	stdout.flush()
+							progress = new_progress
+							self.apply_procedure(_p, _input)
+					else:
 		
-					for k, _input in enumerate(self.inputs):
-						new_progress = int((100 * (i * len(self.inputs) + k)) / len(self.inputs * n))
-						if (show_progress and (new_progress > progress)):
-							stdout.write("\r%d %c " % (new_progress, '%'))
-							stdout.flush()
-						progress = new_progress
-						self.apply_procedure(self.parameters, _input)
-			if (show_progress):			
-				stdout.write("\rComplete ! \n")
-				stdout.flush()
+						for k, _input in enumerate(self.inputs):
+							new_progress = int((100 * (i * len(self.inputs) + k)) / len(self.inputs * n))
+							if (show_progress and (new_progress > progress)):
+								stdout.write("\r%d %c " % (new_progress, '%'))
+								stdout.flush()
+							progress = new_progress
+							self.apply_procedure(self.parameters, _input)
+				if (show_progress):			
+					stdout.write("\rComplete ! \n")
+					stdout.flush()
 
 		else :
 			print "Use the set_inputs(inputs) method to add new test cases"
@@ -123,6 +126,9 @@ class Experiment:
 			return self.data
 				
 	def save_data_database(self, database_filename):
+	    """
+	    TODO
+	    """
 	    self.database = database_filename
 	    if len(self.data) > 0:
 	    	conn = sqlite3.connect(database_filename, detect_types=sqlite3.PARSE_DECLTYPES)
