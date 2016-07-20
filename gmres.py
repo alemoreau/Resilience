@@ -65,9 +65,13 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
 	if "y" in save_data:
 	    self.data["y"] = []
 	if "checksum" in save_data:
-	    self.data["checksum"] = []
+	    self.data["checksum"] = [0.]
 	if "criteria" in save_data:
-	    self.data["criteria"] = []
+	    self.data["criteria"] = [0.]
+	if "threshold" in save_data:
+	    self.data["threshold"] = [0.]
+	if "delta" in save_data:
+	    self.data["delta"] = [0.]
     if (resid <= tol):
         return x
 
@@ -199,9 +203,17 @@ def implementation(self, input, algorithm_parameters, experiment_parameters, sav
 		    self.data["orthogonality"] += [np.linalg.norm(np.dot(V[:, :i+2].T, V[:,:i+2]) - np.eye(i+2),ord='fro')/np.linalg.norm(np.eye(i+2))]
 		if "arnoldi" in save_data:
 		    self.data["arnoldi"] += [np.linalg.norm(np.dot(A, V[:,:i+1]) - np.dot(V[:,:i+2], H[:i+2, :i+1]),ord='fro') / np.linalg.norm(np.dot(V[:,:i+2], H[:i+2, :i+1]), ord='fro')]
-
+		if "delta" in save_data:
+		    if len(self.data["faults"]) > 0:
+			Ekvk = abs(self.data["faults"][0]["value_after"] - self.data["faults"][0]["value_before"])
+			k = self.data["faults"][0]["timer"]
+			self.data["delta"] += [(abs(y[k]) * Ekvk) / normb]
+		    else:
+			self.data["delta"] += [0]
                 if "checksum" in save_data: 
 		    self.data["checksum"] += [checksum]
+		if "threshold" in save_data:
+		    self.data["threshold"] += [(tol * normb)/abs(y[i])]
 		if "criteria" in save_data: #TODO: bug if y not in save_data
 		    self.data["criteria"] += [(tol * normb)/abs(y[i])]
                 if (true_resid_ < tol):

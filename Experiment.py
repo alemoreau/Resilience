@@ -15,7 +15,14 @@ class Experiment:
                 self.seed = None
                 self.algorithm = algorithm
 		self.database = None
+                self.display = None
 
+        def set_display(self, display):
+                """
+                display : display object
+                """
+                self.display = display
+        
         def set_parameters(self, parameters):
                 """
                 parameters : Parameters object, or Parameters generator
@@ -86,6 +93,12 @@ class Experiment:
 		else :
 			print "Use the set_inputs(inputs) method to add new test cases"
 
+        def plot(self, name, parameters = {}):
+                if not self.display:
+                        print "No display attached. Use set_display"
+                        return
+
+                self.display(name, self.get_data(), parameters)
 	
 	def get_results(self):
 		"""
