@@ -1,4 +1,3 @@
-from Display import *
 from Parameters import *
 
 import numpy as np
@@ -186,7 +185,7 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
 
 # Define display functions
 def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Delta",
-delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', fault = False, arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "error", linestyle='-'):
+delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "error", linestyle='-'):
     
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', true_residual = False, computed_residual_label = "residual (no fault)", xlim=xlim,ylim=ylim, title=title)
@@ -242,7 +241,7 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 		bbox_to_anchor= bbox_to_anchor)
 
     if threshold:
-	Y = data['threshold']
+	Y = map(lambda d: c * d, data['threshold'])
 	plot_2D(X, Y, log=log, title=title, 
 		linestyle = threshold_linestyle, 
 		label = threshold_label, 
