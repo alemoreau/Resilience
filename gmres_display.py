@@ -455,6 +455,3 @@ def convergence_bit_iteration(data, parameters):
             plt.xlim(xlim)
         plt.show()
 
-Display_gmres = Display()
-Display_gmres.set_display("convergence_bit_iteration",
-                          convergence_bit_iteration)
