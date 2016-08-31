@@ -1,4 +1,5 @@
 from Parameters import *
+from Utils import *
 
 import numpy as np
 
@@ -185,7 +186,7 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
 
 # Define display functions
 def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Delta",
-delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "error", linestyle='-'):
+delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
     
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', true_residual = False, computed_residual_label = "residual (no fault)", xlim=xlim,ylim=ylim, title=title)
@@ -233,7 +234,7 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 
     if checksum:
 	Y = data['checksum']
-	plot_2D(X, Y, log=log, title=title, 
+	plot_2D(X[:-1], Y, log=log, title=title, 
 		linestyle = checksum_linestyle, 
 		label = checksum_label, 
 		xlabel= xlabel, 
@@ -242,7 +243,7 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 
     if threshold:
 	Y = map(lambda d: c * d, data['threshold'])
-	plot_2D(X, Y, log=log, title=title, 
+	plot_2D(X[:-1], Y, log=log, title=title, 
 		linestyle = threshold_linestyle, 
 		label = threshold_label, 
 		xlabel= xlabel, 
@@ -454,4 +455,97 @@ def convergence_bit_iteration(data, parameters):
                 plt.plot(X_smooth, Y_smooth_2, c="red")
             plt.xlim(xlim)
         plt.show()
+
+
+
+
+
+
+def scatter_bit_injection(data, min_iteration = None,
+                          convergence = None, delay = None, 
+                          color = 'r', marker = 'o', area = 75, alpha = 0.5,
+                          xlabel = "Flipped bit", ylabel="Fault injection time (%)",
+                          xlim = [-5, 64], ylim = [-5, 105],
+                          epsilon = 1.e-12):
+    if convergence != None:
+        if convergence:
+            data = filter(lambda d: has_converged(d, epsilon), data)
+            if delay != None :
+                if not min_iteration:
+                        print "min_iteration should be set"
+                        return
+                if delay:
+                    data = filter(lambda d: when_has_converged(d, epsilon) > min_iteration, data)
+                else:
+                    data = filter(lambda d: when_has_converged(d, epsilon) <= min_iteration, data)
+        else:
+            data = filter(lambda d: not has_converged(d, epsilon), data)
+    
+    X = map(lambda f: f["faults"][0]["bit"], data)
+    if min_iteration:
+        Y = map(lambda f: (100*f["faults"][0]["timer"]) / min_iteration, data)
+    else:
+        Y = map(lambda f: (f["faults"][0]["timer"]), data)
+    C = []
+    
+    if hasattr(color, '__call__'):
+        C = map(color, data)
+    
+    S = []
+    if hasattr(area, '__call__'):
+        S = map(area, data)
+    if xlabel:
+        plt.xlabel(xlabel)
+    if ylabel:
+        plt.ylabel(ylabel)
+    if xlim:
+        plt.xlim(xlim)
+    if ylim:
+        plt.ylim(ylim)
+
+    return plt.scatter(X, Y, marker=marker, c=C, s=S, alpha = alpha)
+
+
+
+def show_test_result (data, no_fault_data, c = 0.5, epsilon = 1.e-12):
+
+    min_iteration = when_has_converged(no_fault_data, epsilon = epsilon)
+
+    
+    false_detection_plot = scatter_bit_injection(filter(lambda d: false_detection(d, c=c, epsilon=epsilon), data), 
+                                            min_iteration, 
+                                            color = lambda d:"orange",
+                                            area = lambda d: 30,
+                                            alpha = 1)
+
+    fault_no_detection_plot = scatter_bit_injection(filter(lambda d: fault_no_detection(d, c=c, epsilon=epsilon), data), 
+                                            min_iteration, 
+                                            color = lambda d:"red",
+                                            area = lambda d: 100)
+
+    fault_detection_plot = scatter_bit_injection(filter(lambda d: fault_detection(d, c=c, epsilon=epsilon), data), 
+                                            min_iteration, 
+                                            color = lambda d:"green",
+                                            area = lambda d: 100)
+
+    no_impact_fault_no_detection_plot = scatter_bit_injection(filter(lambda d: no_impact_fault_no_detection(d, c=c, epsilon=epsilon), data), 
+                                            min_iteration, 
+                                            color = lambda d:"#CCCCCC",
+                                            area = lambda d: 100)
+
+    no_impact_fault_detection_plot = scatter_bit_injection(filter(lambda d: no_impact_fault_detection(d, c=c, epsilon=epsilon), data), 
+                                            min_iteration, 
+                                            color = lambda d:"#222222",
+                                            area = lambda d: 100)
+
+
+
+    
+
+
+    plt.legend((false_detection_plot, fault_no_detection_plot, fault_detection_plot, no_impact_fault_no_detection_plot, no_impact_fault_detection_plot),
+           ('False detection', 'Critical fault ignored', 'Critical fault detected', 'No impact fault ignored', 'no impact fault detected'))
+
+
+
 

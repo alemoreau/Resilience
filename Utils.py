@@ -23,17 +23,22 @@ def bitflip(x, pos, type=np.float64):
 	return fnew[0]
 
 
-def load_mat(path='./gre_216a.mat'):
-    
-    try:
-        A = scipy.io.loadmat(path)['Problem'][0][0][1].toarray()
-    except:
-        A = scipy.io.loadmat(path)['Problem'][0][0][2].toarray()
+def load_mat(path='./gre_216a.mat', sparse = False):
+    problem = scipy.io.loadmat(path)['Problem'][0][0]
+    for i in xrange(len(problem)):
+        if problem[i].dtype == np.dtype('float64') and problem[i].shape[0] == problem[i].shape[1]:
+            A = problem[i]
+            if not sparse:
+                A = A.toarray()
+	    break
+
+
     n = A.shape[0]
     x = np.ones((n, 1))
     b = A.dot(x)
     x = np.zeros((n, 1))
     return {"A":A, "x0":x, "b":b}
+
 
 def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, linestyle = None, xlabel = None, ylabel = None, xlim = None, ylim = None, bbox_to_anchor=(1, 0.5)):
 
@@ -59,3 +64,54 @@ def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, li
     if grid:
         plt.grid(True)
 
+
+
+def has_converged(data, epsilon = 1.e-12):
+    return len(filter (lambda d: d[0] < epsilon and d[1] < epsilon, zip(data["true_residuals"], data["residuals"]))) > 0
+
+def when_has_converged(data, epsilon = 1.e-12):
+    iteration_residual = filter (lambda d: d[1][0] < epsilon and d[1][1] < epsilon, 
+                                 enumerate(zip(data["true_residuals"], data["residuals"])))
+    if iteration_residual:
+        return min(iteration_residual, key=lambda d:d[0])[0]
+    else:
+        return None
+
+
+def false_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
+    m = when_has_converged(data, epsilon = (1-c)*epsilon)
+    for i, (checksum, threshold) in enumerate(zip(data[key_checksum][:m], data[key_threshold][:m])):
+        if checksum > c * threshold:
+            if data["faults"][0]["timer"] != i:
+                return True
+    return False
+
+def no_impact_fault_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
+    m = when_has_converged(data, epsilon = (1-c)*epsilon)
+    f = data["faults"][0]["timer"]
+    if f >= len(data[key_threshold]) or f >= len(data[key_checksum]):
+	return False
+    return (has_converged(data, epsilon = epsilon) and 
+            data[key_checksum][f] > c * data[key_threshold][f])
+        
+def no_impact_fault_no_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
+    f = data["faults"][0]["timer"]
+    if f >= len(data[key_threshold]) or f >= len(data[key_checksum]):
+	return False
+    return (has_converged(data, epsilon = epsilon) and
+            data[key_checksum][f] < c * data[key_threshold][f])
+        
+def fault_no_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
+    f = data["faults"][0]["timer"]
+    if f >= len(data[key_threshold]) or f >= len(data[key_checksum]):
+	return False
+    return (not has_converged(data, epsilon = epsilon)  and
+            data[key_checksum][f] < c * data[key_threshold][f])
+        
+def fault_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
+    f = data["faults"][0]["timer"]
+    if f >= len(data[key_threshold]) or f >= len(data[key_checksum]):
+	return False
+    return (not has_converged(data, epsilon = epsilon) and
+            data[key_checksum][f] > c * data[key_threshold][f])
+               

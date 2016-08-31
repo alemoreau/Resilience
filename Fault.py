@@ -19,7 +19,7 @@ class Fault():
 	    return M * N
 	else:
             # Non-faulty product
-            product = np.dot(M, N)
+            product =M.dot(N)
 
             fault = self.parameters.get("fault", None)
             if fault:
