@@ -13,17 +13,21 @@ set_matplotlib_formats('png', 'pdf')
 
 # Define basic display
 
-def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, linestyle = None, xlabel = None, ylabel = None, xlim = None, ylim = None, bbox_to_anchor=(0.5, 0.88)):
-
+def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, linestyle = None, xlabel = None, ylabel = None, xlim = None, ylim = None, color=None, bbox_to_anchor=(0.5, 0.88)):
+    N = min(len(X), len(Y))
+    if N == 0:
+	return
     if log:
-        p = plt.semilogy(X, Y[:len(X)], label=label)
+        p = plt.semilogy(X[:N], Y[:N], label=label)
     else:
         if logX:
-            p = plt.semilogx(X, Y[:len(X)], label=label)
+            p = plt.semilogx(X[:N], Y[:N], label=label)
         else:
-            p = plt.plot(X, Y[:len(X)], label=label)
+            p = plt.plot(X[:N], Y[:N], label=label)
     if linestyle:
         plt.setp(p, linestyle=linestyle) 
+    if color:
+	plt.setp(p, color=color)
     plt.title(title)
     plt.legend(loc='center left', bbox_to_anchor=bbox_to_anchor)
     if xlim:
@@ -186,19 +190,20 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
 
 # Define display functions
 def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Delta",
-delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
+delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
     
     if data_no_fault:
-	convergence_history(data_no_fault, linestyle = '--', true_residual = False, computed_residual_label = "residual (no fault)", xlim=xlim,ylim=ylim, title=title)
+	convergence_history(data_no_fault, linestyle = '--', computed_residual = False, true_residual_label = "True residual (no fault)", xlim=xlim,ylim=ylim, title=title)
     
     X = np.arange(0, data['iteration_count']+1)
  
-    if computed_residual:
-	Y = data['residuals']
-    	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = computed_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor)
+   
     if true_residual:
 	Y = data['true_residuals']
-	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = true_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor)
+	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = true_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor, color="green")
+    if computed_residual:
+	Y = data['residuals']
+    	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = computed_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor, color="blue")
 
     if delta:
 	Y = data['delta']
@@ -211,7 +216,7 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
     if fault:
 	x = (data['faults'][0]['timer'])
         y = data['true_residuals'][x]
-	color = "red"
+	color = fault_color
         plt.plot([x], [y], 'ro', c=color)
 
         if data['faults'][0]['register'] == "left":
@@ -239,7 +244,8 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 		label = checksum_label, 
 		xlabel= xlabel, 
 		ylabel = ylabel, 
-		bbox_to_anchor= bbox_to_anchor)
+		bbox_to_anchor= bbox_to_anchor,
+		color = "pink")
 
     if threshold:
 	Y = map(lambda d: c * d, data['threshold'])
@@ -248,7 +254,8 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 		label = threshold_label, 
 		xlabel= xlabel, 
 		ylabel = ylabel, 
-		bbox_to_anchor= bbox_to_anchor)
+		bbox_to_anchor= bbox_to_anchor,
+		color = "orange")
 
     if xlim:
 	plt.xlim(xlim)

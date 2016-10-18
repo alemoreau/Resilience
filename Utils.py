@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 import scipy.io
+import base64
 
 def bitflip(x, pos, type=np.float64):
 	t = 'f' if type is np.float32 else 'd'
@@ -24,20 +25,21 @@ def bitflip(x, pos, type=np.float64):
 
 
 def load_mat(path='./gre_216a.mat', sparse = False):
-    problem = scipy.io.loadmat(path)['Problem'][0][0]
-    for i in xrange(len(problem)):
-        if problem[i].dtype == np.dtype('float64') and problem[i].shape[0] == problem[i].shape[1]:
-            A = problem[i]
-            if not sparse:
-                A = A.toarray()
-	    break
-
+    with open(path, 'rb') as myfile:
+        data_file=base64.b64encode(myfile.read())
+    problem = scipy.io.loadmat(path)['Problem']
+    A = problem["A"][0][0]
+    if sparse:
+        A = A.tocsr()
+    else:
+        A = A.toarray()
+    name = problem["name"][0][0][0]
 
     n = A.shape[0]
-    x = np.ones((n, 1))
+    x = np.ones(n)
     b = A.dot(x)
-    x = np.zeros((n, 1))
-    return {"A":A, "x0":x, "b":b}
+    x = np.zeros(n)
+    return {"A":A, "x0":x, "b":b, "problem": problem, "file": data_file, "name": name}
 
 
 def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, linestyle = None, xlabel = None, ylabel = None, xlim = None, ylim = None, bbox_to_anchor=(1, 0.5)):

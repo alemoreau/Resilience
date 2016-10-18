@@ -7,7 +7,7 @@ import csv
 
 class Experiment:
 	"General experiment"
-	def __init__(self, parameters = Parameters(), algorithm=None):
+	def __init__(self, parameters = Parameters(), algorithm=None, callback=None, save_data=True):
 		self.parameters = parameters
 		self.results = []
 		self.inputs = []
@@ -16,6 +16,8 @@ class Experiment:
                 self.algorithm = algorithm
 		self.database = None
                 self.display = None
+		self.callback = callback
+		self.save_data = save_data
 
         def set_display(self, display):
                 """
@@ -51,8 +53,13 @@ class Experiment:
                 import copy
                 input = copy.deepcopy(input)
                 output = self.algorithm.run(input, parameters)
-		self.results += [(input, output)]
-                self.data += [copy.copy(self.algorithm.get_data())]
+		data = self.algorithm.get_data()
+		if self.callback:
+		    self.callback(input, output, parameters, data)
+		if self.save_data:
+		    self.results += [(input, output)]
+                    self.data += [copy.copy(self.algorithm.get_data())]
+		
 
 	def run(self, n=1, show_progress = False, seed=None, parallel=False):
 		"""
@@ -137,7 +144,7 @@ class Experiment:
 			return map(lambda d: d[key], self.data)
 		else:
 			return self.data
-				
+		
 	def save_data_database(self, database_filename):
 	    """
 	    TODO
