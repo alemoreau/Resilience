@@ -195,7 +195,7 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', computed_residual = False, true_residual_label = "True residual (no fault)", xlim=xlim,ylim=ylim, title=title)
     
-    X = np.arange(0, data['iteration_count']+1)
+    X = np.arange(0, data['l']+1)
  
    
     if true_residual:
@@ -219,17 +219,12 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 	color = fault_color
         plt.plot([x], [y], 'ro', c=color)
 
-        if data['faults'][0]['register'] == "left":
-	    register = "reg1"
-        if data['faults'][0]['register'] == "right":
-	    register = "reg2"
-        if data['faults'][0]['register'] == "middle":
-	    register = "reg3"
+        
         annotation = "iteration : %d \n location : (%d, %d) \n bit : %d \n register : %s \n " % (data['faults'][0]['timer'], 
- 		      data['faults'][0]['loc']['i'], 
-		      data['faults'][0]['loc']['k'],
-                      data['faults'][0]['bit'],
-		      register)
+ 		                                                                                 data['faults'][0]['loc']['i'], 
+		                                                                                 data['faults'][0]['loc']['k'],
+                                                                                                 data['faults'][0]['bit'],
+                                                                                                 data['faults'][0]['register'])
         
         if arrow:
         	plt.annotate(annotation, xy=(x, y), xytext=xytext,
