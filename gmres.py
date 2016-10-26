@@ -157,13 +157,15 @@ def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=Non
         elif (ijob == 2):
             work[slice1] = psolve(work[slice2])
             if not first_pass and old_ijob == 3:
+		if callback is not None:
+		    callback(iter_num, resid, work, work2, ijob)
                 resid_ready = True
             first_pass = False
         elif (ijob == 3):
             work[slice2] *= sclr2
             work[slice2] += sclr1*matvec(work[slice1])
             if resid_ready and callback is not None:
-                callback(iter_num, resid, work, work2, ijob)
+                pass #callback(iter_num, resid, work, work2, ijob)
                 resid_ready = False
             	iter_num = iter_num+1
 
@@ -185,3 +187,7 @@ def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=Non
 
    
     return postprocess(x)
+
+
+
+

@@ -24,13 +24,14 @@ def bitflip(x, pos, type=np.float64):
 	return fnew[0]
 
 
-def load_mat(path='./gre_216a.mat', sparse = False):
+def load_mat(path='./gre_216a.mat', sparse = False, csr = True):
     with open(path, 'rb') as myfile:
         data_file=base64.b64encode(myfile.read())
     problem = scipy.io.loadmat(path)['Problem']
     A = problem["A"][0][0]
     if sparse:
-        A = A.tocsr()
+	if csr:
+	    A = A.tocsr()
     else:
         A = A.toarray()
     name = problem["name"][0][0][0]

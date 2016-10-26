@@ -7,6 +7,7 @@ import matplotlib.image as mpimg
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LogNorm
 from IPython.display import set_matplotlib_formats
 set_matplotlib_formats('png', 'pdf')
@@ -41,8 +42,24 @@ def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, li
     if grid:
         plt.grid(True)
 
+
         
 # Define basic functions
+
+
+
+def save_fig_pdf(fig, pdf_file):
+    with PdfPages(pdf_file) as pdf:
+        pdf.savefig(fig)
+def convergence_outcome_color(data, ref_data, epsilon = 1.e-12):
+    if has_converged(data, epsilon):
+        if when_has_converged(data, epsilon) > ref_data["l"]:
+            return "blue"
+        else:
+            return "green"
+    else:
+        return "red"
+
 
 def test_result_to_color(result):
     if result == "Correct":
@@ -198,12 +215,13 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
     X = np.arange(0, data['l']+1)
  
    
-    if true_residual:
-	Y = data['true_residuals']
-	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = true_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor, color="green")
+
     if computed_residual:
 	Y = data['residuals']
     	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = computed_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor, color="blue")
+    if true_residual:
+	Y = data['true_residuals']
+	plot_2D(X, Y, log=log, title=title, linestyle = linestyle, label = true_residual_label, xlabel= xlabel, ylabel = ylabel, bbox_to_anchor= bbox_to_anchor, color="green")
 
     if delta:
 	Y = data['delta']
@@ -220,7 +238,7 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
         plt.plot([x], [y], 'ro', c=color)
 
         
-        annotation = "iteration : %d \n location : (%d, %d) \n bit : %d \n register : %s \n " % (data['faults'][0]['timer'], 
+        annotation = " iteration : %d \n location : (%d, %d) \n bit : %d \n register : %s" % (data['faults'][0]['timer'], 
  		                                                                                 data['faults'][0]['loc']['i'], 
 		                                                                                 data['faults'][0]['loc']['k'],
                                                                                                  data['faults'][0]['bit'],
