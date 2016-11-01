@@ -14,7 +14,7 @@ set_matplotlib_formats('png', 'pdf')
 
 # Define basic display
 
-def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, linestyle = None, xlabel = None, ylabel = None, xlim = None, ylim = None, color=None, bbox_to_anchor=(0.5, 0.88)):
+def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, linestyle = None, marker="None", xlabel = None, ylabel = None, xlim = None, ylim = None, color=None, bbox_to_anchor=(0.5, 0.88)):
     N = min(len(X), len(Y))
     if N == 0:
 	return
@@ -27,6 +27,8 @@ def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, li
             p = plt.plot(X[:N], Y[:N], label=label)
     if linestyle:
         plt.setp(p, linestyle=linestyle) 
+    if marker:
+        plt.setp(p, marker=marker) 
     if color:
 	plt.setp(p, color=color)
     plt.title(title)
@@ -51,9 +53,9 @@ def plot_2D(X, Y, title = '', grid = True, label = "", log=False, logX=False, li
 def save_fig_pdf(fig, pdf_file):
     with PdfPages(pdf_file) as pdf:
         pdf.savefig(fig)
-def convergence_outcome_color(data, ref_data, epsilon = 1.e-12):
+def convergence_outcome_color(data, min_iteration, epsilon = 1.e-12):
     if has_converged(data, epsilon):
-        if when_has_converged(data, epsilon) > ref_data["l"]:
+        if when_has_converged(data, epsilon) > min_iteration:
             return "blue"
         else:
             return "green"
@@ -207,7 +209,7 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
 
 # Define display functions
 def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Delta",
-delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
+delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
     
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', computed_residual = False, true_residual_label = "True residual (no fault)", xlim=xlim,ylim=ylim, title=title)
@@ -259,6 +261,12 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 		ylabel = ylabel, 
 		bbox_to_anchor= bbox_to_anchor,
 		color = "pink")
+
+    if Ekvk:
+	x = (data['faults'][0]['timer'])
+        y = data['Ekvk']
+        plt.plot([x], [y], 's', c="yellow")
+
 
     if threshold:
 	Y = map(lambda d: c * d, data['threshold'])
@@ -510,10 +518,13 @@ def scatter_bit_injection(data, min_iteration = None,
     
     if hasattr(color, '__call__'):
         C = map(color, data)
-    
+    else:
+	C = color
     S = []
     if hasattr(area, '__call__'):
         S = map(area, data)
+    else:
+	S = area
     if xlabel:
         plt.xlabel(xlabel)
     if ylabel:
