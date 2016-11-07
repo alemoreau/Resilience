@@ -10,7 +10,7 @@ _type_conv = {'f':'s', 'd':'d', 'F':'c', 'D':'z'}
 
 
 
-def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=None, callback=None, restrt=None):
+def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=None, callback=None, restrt=None, left=True):
     """
     Use Generalized Minimal RESidual iteration to solve A x = b.
     Parameters
@@ -144,7 +144,7 @@ def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=Non
         slice2 = slice(ndx2-1, ndx2-1+n)
 
         if (ijob == -1):  # gmres success, update last residual
-            if resid_ready and callback is not None:
+            if callback is not None:
                 callback(iter_num, resid, work, work2, ijob)
                 resid_ready = False
 
@@ -152,22 +152,37 @@ def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=Non
         elif (ijob == 1):
             work[slice2] *= sclr2
             work[slice2] += sclr1*matvec(x)
-	    if callback is not None:
-		callback(iter_num, resid, work, work2, ijob)
+            if callback is not None:
+                callback(iter_num, resid, work, work2, ijob)
         elif (ijob == 2):
-            work[slice1] = psolve(work[slice2])
+            if left:
+                work[slice1] = psolve(work[slice2])
+            else:
+                if not first_pass:
+                    work[slice1] = matvec(work[slice2])
+                else:
+                    work[slice1] = work[slice2]
+
             if not first_pass and old_ijob == 3:
-		if callback is not None:
-		    callback(iter_num, resid, work, work2, ijob)
+                if callback is not None:
+                    callback(iter_num, resid, work, work2, ijob)
                 resid_ready = True
             first_pass = False
+
+
         elif (ijob == 3):
-            work[slice2] *= sclr2
-            work[slice2] += sclr1*matvec(work[slice1])
+            if left:
+                work[slice2] *= sclr2
+                work[slice2] += sclr1*matvec(work[slice1])
+                #work[slice2] = matvec(work[slice1])
+            else:
+                work[slice2] = psolve(work[slice1])
+
             if resid_ready and callback is not None:
                 pass #callback(iter_num, resid, work, work2, ijob)
                 resid_ready = False
-            	iter_num = iter_num+1
+                iter_num = iter_num+1
+
 
         elif (ijob == 4):
             if ftflag:
@@ -187,6 +202,15 @@ def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=Non
 
    
     return postprocess(x)
+
+
+
+
+
+
+
+
+
 
 
 

@@ -208,8 +208,9 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
     return "Correct"
 
 # Define display functions
-def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Delta",
-delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', c = 0.25, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
+def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Computed residual gap",
+delta_linestyle = '-', true_delta = False, true_delta_label="True residual gap",
+true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', computed_threshold = False, computed_threshold_label = "Computed threshold", computed_threshold_linestyle = '-', c = 0.25, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
     
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', computed_residual = False, true_residual_label = "True residual (no fault)", xlim=xlim,ylim=ylim, title=title)
@@ -232,7 +233,18 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 		label = delta_label, 
 		xlabel= xlabel, 
 		ylabel = ylabel, 
-		bbox_to_anchor= bbox_to_anchor)
+		bbox_to_anchor= bbox_to_anchor,
+		color = "purple")
+
+    if true_delta:
+	Y = data['true_delta']
+	plot_2D(X, Y, log=log, title=title, 
+		linestyle = true_delta_linestyle, 
+		label = true_delta_label, 
+		xlabel= xlabel, 
+		ylabel = ylabel, 
+		bbox_to_anchor= bbox_to_anchor,
+		color = "cyan")
     if fault:
 	x = (data['faults'][0]['timer'])
         y = data['true_residuals'][x]
@@ -265,7 +277,8 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
     if Ekvk:
 	x = (data['faults'][0]['timer'])
         y = data['Ekvk']
-        plt.plot([x], [y], 's', c="yellow")
+        plt.plot([x], [y], 's', c="yellow", label = Ekvk_label)
+	plt.legend(numpoints=1)
 
 
     if threshold:
@@ -277,6 +290,16 @@ delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_
 		ylabel = ylabel, 
 		bbox_to_anchor= bbox_to_anchor,
 		color = "orange")
+    if computed_threshold:
+	Y = map(lambda d: c * d, data['computed_threshold'])
+	plot_2D(X[:-1], Y, log=log, title=title, 
+		linestyle = computed_threshold_linestyle, 
+		label = computed_threshold_label, 
+		xlabel= xlabel, 
+		ylabel = ylabel, 
+		bbox_to_anchor= bbox_to_anchor,
+		color = "brown")
+
 
     if xlim:
 	plt.xlim(xlim)
@@ -538,44 +561,50 @@ def scatter_bit_injection(data, min_iteration = None,
 
 
 
-def show_test_result (data, no_fault_data, c = 0.5, epsilon = 1.e-12):
+def show_test_result (data, min_iteration, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
 
-    min_iteration = when_has_converged(no_fault_data, epsilon = epsilon)
+    #min_iteration = when_has_converged(no_fault_data, epsilon = epsilon)
 
     
-    false_detection_plot = scatter_bit_injection(filter(lambda d: false_detection(d, c=c, epsilon=epsilon), data), 
+    false_detection_plot = scatter_bit_injection(filter(lambda d: false_detection(d, c=c, epsilon=epsilon, key_checksum=key_checksum, key_threshold=key_threshold), data), 
                                             min_iteration, 
                                             color = lambda d:"orange",
                                             area = lambda d: 30,
                                             alpha = 1)
 
-    fault_no_detection_plot = scatter_bit_injection(filter(lambda d: fault_no_detection(d, c=c, epsilon=epsilon), data), 
+    fault_no_detection_plot = scatter_bit_injection(filter(lambda d: fault_no_detection(d, c=c, epsilon=epsilon, key_checksum=key_checksum, key_threshold=key_threshold), data), 
                                             min_iteration, 
                                             color = lambda d:"red",
                                             area = lambda d: 100)
 
-    fault_detection_plot = scatter_bit_injection(filter(lambda d: fault_detection(d, c=c, epsilon=epsilon), data), 
+    fault_detection_plot = scatter_bit_injection(filter(lambda d: fault_detection(d, c=c, epsilon=epsilon, key_checksum=key_checksum, key_threshold=key_threshold), data), 
                                             min_iteration, 
                                             color = lambda d:"green",
                                             area = lambda d: 100)
 
-    no_impact_fault_no_detection_plot = scatter_bit_injection(filter(lambda d: no_impact_fault_no_detection(d, c=c, epsilon=epsilon), data), 
+    no_impact_fault_no_detection_plot = scatter_bit_injection(filter(lambda d: no_impact_fault_no_detection(d, c=c, epsilon=epsilon, key_checksum=key_checksum, key_threshold=key_threshold), data), 
                                             min_iteration, 
                                             color = lambda d:"#CCCCCC",
                                             area = lambda d: 100)
 
-    no_impact_fault_detection_plot = scatter_bit_injection(filter(lambda d: no_impact_fault_detection(d, c=c, epsilon=epsilon), data), 
+    no_impact_fault_detection_plot = scatter_bit_injection(filter(lambda d: no_impact_fault_detection(d, c=c, epsilon=epsilon, key_checksum=key_checksum, key_threshold=key_threshold), data), 
                                             min_iteration, 
                                             color = lambda d:"#222222",
                                             area = lambda d: 100)
 
 
+    #plt.legend((fault_detection_plot, no_impact_fault_detection_plot),
+    #       ('Fault predicted to not converge (correct)', 'Fault predicted to not converge (incorrect)'), bbox_to_anchor=(-0.1, 1.02, 1.1, .102), loc=3,
+    #       ncol=1, mode="expand", borderaxespad=0.)
 
-    
+
+    plt.legend((fault_no_detection_plot, fault_detection_plot, no_impact_fault_no_detection_plot, no_impact_fault_detection_plot),
+           ('Critical fault ignored', 'Critical fault detected', 'No impact fault ignored', 'No impact fault detected'), bbox_to_anchor=(-0.1, 1.02, 1.1, .102), loc=3,
+           ncol=2, mode="expand", borderaxespad=0.)
 
 
-    plt.legend((false_detection_plot, fault_no_detection_plot, fault_detection_plot, no_impact_fault_no_detection_plot, no_impact_fault_detection_plot),
-           ('False detection', 'Critical fault ignored', 'Critical fault detected', 'No impact fault ignored', 'no impact fault detected'))
+    #plt.legend((false_detection_plot, fault_no_detection_plot, fault_detection_plot, no_impact_fault_no_detection_plot, no_impact_fault_detection_plot),
+  #         ('False detection', 'Critical fault ignored', 'Critical fault detected', 'No impact fault ignored', 'No impact fault detected'))
 
 
 

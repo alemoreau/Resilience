@@ -1,0 +1,175 @@
+\section{Solving linear systems of equations in HPC}
+Large computational problems tackled by HPC systems often arise out of complex phenomenon models. To dispose of powerful mathematical tools, most of those models are linear or are linearized so that the innermost calculation reduces to the solution of the linear system of equations of the form
+$$
+A x = b
+$$
+where $A \in \Bbb{R}^{n\times n}$ and $b\in \Bbb{R}^n$ are known and $x \in \Bbb{R}^n$  is to be found with $n \gg 1$ up to a few tens of millions.
+
+% as they rely on linear operators only, such as matrix-vector product, and can be reduced to the equation $A x = b$, where the matrix A and vector b are known, and the vector solution $x$ is to be found.
+ Several methods for computing a good solution to this equation are available, separated in two classes of algorithms. On one hand, direct solvers based on Gaussian elimination \cite{direct_solver} are very robust and provide an accurate solution in term of backward error~\cite{hig:02} 
+%provide the exact (modulo rounding errors) solution $x$ 
+at the end of the computation. On the other hand iterative solvers are given a first approximation $x_0$ of the solution $x$ as an additional parameter, and compute a sequence $(x_i)$ of improving approximations until the target accuracy is reached. In certain situations, the iterative methods have proved to be more practical than the direct ones, especially when the problem size is large, in which case direct methods can be prohibitively expensive. Depending on the structure and numerical properties of matrix A, some iterative methods will perform better than others. In particular, when A is a large, sparse and non-singular matrix, Krylov methods are particularly adapted. When the matrix A is non-symmetric, GMRES~\cite{gmres} is among the best known Krylov method to use~\cite{Saad:2003}.
+
+\subsection{Krylov methods}
+All Krylov methods designed to solve a linear system $Ax = b$ have in common the construction of the Krylov space of order i associated to A and b: $$\mathcal{K}_i(A, b) \equiv \text{span(}b, Ab, ..., A^{i-1}b\text{)}.$$ The reason behind the use of such a space is derived from the Cayley-Hamilton theorem, which implies that $A^{-1}$ can be expressed as a linear combination of powers of $A$. Consequently the solution $x = A^{-1}b$ belongs to $\mathcal{K}_i(A, b)$ for r large enough. The basis $\{b, Ab, A^2b...\}$ is iteratively computed using repeated matrix-vector product, until the distance between the spanned Krylov space and the solution is small enough. The solution $x$ can then be efficiently approximated inside this small-sized space. However, the basis vectors quickly become linearly dependent, which usually requires the use of some orthogonalization scheme to enhance the numerical stability.
+
+\subsection{The GMRES algorithm}
+The GMRES method (Algorithm \ref{alg:gmres}) was first described in 1986 by Saad and Schultz \cite{gmres} and is one of the most popular Krylov method for solving non-symmetric linear systems. It relies on the repetition of the Arnoldi iteration, which recursively generates an orthonormal basis $V_i = \{v_0, v_1, ... v_{i}\}$ for $\mathcal{K}_i(A, b)$ to project the initial problem $A x = b$ onto. The first Arnoldi vector $v_0$ is initialized to the first residual normalized $v_0 = r_0/\|r_0\| = (A x_0 - b) / \|A x_0 - b\|$ (line 2-4) and the recursive relation maintained throughout the algorithm is $$AV_i = V_{i+1}H_i$$ where $H_i$ is an upper Hessenberg rectangular matrix of size $i+1 \times i$ produced by the orthonormalization scheme. The most widely used scheme is the modified Gram-Schmidt process (line 8-13), although variants using the classical Gram-Schmidt or the Householder process also exist but are numerically less stable or more expensive. The initial least-square problem of minimizing the residual norm $\|r\| = \|A x  - b\|$ becomes equivalent to a new least-square problem, easier to solve thanks to the structure and size of matrix $H_i$:
+\begin{equation}\label{eq:minNomr}
+\argmin_{\mathbf{x} \in \mathcal{K}_i(A, b)} \|A \mathbf{x} - b\| = \argmin_{\mathbf{y}\in \Bbb{R}^i}\|\beta e_1 - H_{i} \mathbf{y}\| \text{ with } e_1 = [1, 0,...0]^T \text{ and } \beta = \|r_0\| \text{.}
+\end{equation}
+The upper-Hessenberg matrix $H$ can be efficiently transformed into an upper-triangular matrix, using QR factorization (for instance Givens rotations or Householder), to solve the new least-square problem using back substitution \cite{govl:96} (line 14). The Arnoldi process is repeated until the computed residual reaches the target accuracy, which requires at most n iterations in exact arithmetic, and the initial problem solution is expressed back into the initial basis using $x = x_0 + V_i y_i$ (line 17) where $y_i$ is the solution of Equation~\eqref{eq:minNomr}.
+
+\begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+	\SetKwInOut{Parameter}{Parameter}
+	\SetKwInOut{Break}{Break}
+    
+    \underline{GMRES} $(A, b, x_0, \varepsilon)$\;
+    \Input{$A$ ($n \times n$ matrix), $b$ (size n vector), $x_0$ (size n vector)}
+    \Parameter{$\varepsilon$ (target accuracy) }
+    \Output{$x$ so that $\frac{\|A x - b\|}{\|b\|} < \varepsilon$}
+    $r_0 \leftarrow Ax_0 - b$\;
+    $ \beta \leftarrow \|  Ax_0 - b \|$\;
+    $v_0 \leftarrow \frac{r_0}{\beta}$\;
+    $e_1 \leftarrow [1, 0,..., 0]$\;
+    \For{$i\leftarrow 0$ \KwTo $n-1$}
+      {
+      \tcp{Arnoldi iteration}
+      $w \leftarrow A \cdot v_i$ \tcp*[f]{Compute the next Arnoldi vector}
+      
+       \For(\tcp*[f]{Orthonormalize w against}){$k\leftarrow 0$ \KwTo $i$} 
+      {
+      	$h_{k,i} \leftarrow w^H v_k $ \tcp*[f]{all previous Arnoldi vectors}
+        
+        $w \leftarrow w - h_{k, i} v_k$ \tcp*[f]{(Modified Gram-Schmidt method)}
+      }
+      $h_{i+1, i} \leftarrow \|w\|$\;
+      $v_{i+1} \leftarrow w / h_{i+1, i}$ \; 
+      
+      %Apply Givens rotations on $H$\;
+      %Apply Givens rotation on the right hand side rhs\;
+      $y_i \leftarrow \argmin(\| \beta e_1 - H_i y_i)\|$;
+       \tcp*[f]{Solve the inner least-square problem}
+       
+      $r\textprime_{i} \leftarrow \beta e_1 - H_i y_i$;
+       \tcp*[f]{Compute the estimated residual}
+      
+      
+      \If{$\|r\textprime_{i} \| < \varepsilon$} 
+      {
+        $x_i \leftarrow x_0 + V_i y_i$;
+      \tcp*[f]{Update the solution}
+      
+      	\textbf{break}
+      }{}
+      }  
+    
+      
+      \textbf{return} $x = x_i$\;
+    \caption{The Full-GMRES algorithm for iteratively solving the equation $Ax = b$.}\label{alg:gmres}
+\end{algorithm}
+
+
+% 	Since the first formulation of GMRES, several variants of the full-GMRES algorithm have been proposed, in order to enhance its performance in specific environments and conditions. For instance, for massively parallel machines, the order in which operations are classically performed causes a performance bottleneck due to global communication latency in the basis orthogonalization process.
+% The pipelined-GMRES~\cite{pipelined_gmres} algorithm attempts to hide this latency by reordering operations in an efficient manner. 
+
+% \begin{algorithm}
+%     \SetKwInOut{Input}{Input}
+%     \SetKwInOut{Output}{Output}
+% 	\SetKwInOut{Parameter}{Parameter}
+% 	\SetKwInOut{Orth}{Orth}
+    
+%     \underline{pipelined-GMRES} $(A, b, x_0, \varepsilon)$\;
+%     \Input{$A$ ($n \times n$ Matrix), $b$ (size n vector), $x_0$ (size n vector)}
+%     \Parameter{$\varepsilon$ (target accuracy) }
+%     \Output{$x$ so that $\frac{\|A x - b\|}{\|b\|} < \varepsilon$}
+%     $r_0 \leftarrow Ax_0 - b$\;
+%     $v_0 \leftarrow r_0$\;
+%     \For{$i\leftarrow 0$ \KwTo $n-1$}
+%       {
+%       \tcp{Arnoldi iteration}
+%       $w \leftarrow A \cdot v_i$ \tcp*[f]{Compute the next Arnoldi vector}
+      
+%        \For(\tcp*[f]{Orthonormalize w against}){$k\leftarrow 0$ \KwTo $i$} 
+%       {
+%       	$h_{k,i} \leftarrow \langle w, v_k \rangle$ \tcp*[f]{all previous Arnoldi vectors}
+        
+%         $w \leftarrow w - h_{k, i} v_k$ \tcp*[f]{(Modified Gram-Schmidt method)}
+%       }
+%       $h_{i+1, i} \leftarrow \|w\|$\;
+%       $v_{i+1} \leftarrow$ w \; 
+%       \tcp{Solve the reduced problem, QR factorization, Givens rotations}
+%       \tcp{TODO}
+%       $y_i \leftarrow argmin \|H_i y - \|b\|e_1\|$
+%       }
+%       {
+%       	$x \leftarrow V_i y_i$\;
+%         return $x$\;
+%       }
+%     \caption{TODO: pipelined-GMRES algorithm for iteratively solving the equation $Ax = b$}\label{alg:pipelined-gmres}
+% \end{algorithm}
+
+Moreover, the GMRES algorithm is often used with a preconditioner, which is a matrix $M$ designed to increase the execution convergence rate by transforming the initial $A x = b$ problem into a simpler one. For instance, in the case of right preconditioning, the initial $A x = b = A M^{-1} M x = b$ problem is split into two simpler ones to solve, $A M^{-1} y = b$ and $M x = y$. Many good preconditioners have been studied and in the following, we will consider a popular one, the Incomplete LU decomposition (ILU) of matrix A. 
+%TODO expliquer
+
+In the following, all execution are performed without restart, using full-GMRES. We refer to the full-GMRES algorithm without preconditioner as GMRES, and to the full-GMRES algorithm with preconditioner as preconditioned-GMRES.
+
+
+\begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+	\SetKwInOut{Parameter}{Parameter}
+	\SetKwInOut{Break}{Break}
+    
+    \underline{GMRES} $(A, b, x_0, \varepsilon)$\;
+    \Input{$A$ ($n \times n$ matrix), $b$ (size n vector), $x_0$ (size n vector)}
+    \Parameter{$\varepsilon$ (target accuracy) }
+    \Output{$x$ so that $\frac{\|A x - b\|}{\|b\|} < \varepsilon$}
+    $r_0 \leftarrow Ax_0 - b$\;
+    $ \beta \leftarrow \|  Ax_0 - b \|$\;
+    $v_0 \leftarrow \frac{r_0}{\beta}$\;
+    $e_1 \leftarrow [1, 0,..., 0]$\;
+    $M \leftarrow \text{ILU}(A)$\;
+    \For{$i\leftarrow 0$ \KwTo $n-1$}
+      {
+      \tcp{Arnoldi iteration}
+      $z_i \leftarrow \text{solve}(M, v_i)$ \tcp*[f]{Solve the $M z_i = v_i$ problem}
+      $w \leftarrow A \cdot v_i$ \tcp*[f]{Compute the next Arnoldi vector}
+      
+       \For(\tcp*[f]{Orthonormalize w against}){$k\leftarrow 0$ \KwTo $i$} 
+      {
+      	$h_{k,i} \leftarrow w^H v_k $ \tcp*[f]{all previous Arnoldi vectors}
+        
+        $w \leftarrow w - h_{k, i} v_k$ \tcp*[f]{(Modified Gram-Schmidt method)}
+      }
+      $h_{i+1, i} \leftarrow \|w\|$\;
+      $v_{i+1} \leftarrow w / h_{i+1, i}$ \; 
+      
+      %Apply Givens rotations on $H$\;
+      %Apply Givens rotation on the right hand side rhs\;
+      $y_i \leftarrow \argmin(\| \beta e_1 - H_i y_i)\|$;
+       \tcp*[f]{Solve the inner least-square problem}
+       
+      $r\textprime_{i} \leftarrow \beta e_1 - H_i y_i$;
+       \tcp*[f]{Compute the estimated residual}
+      
+      
+      \If{$\|r\textprime_{i} \| < \varepsilon$} 
+      {
+        $x_i \leftarrow x_0 +  \text{solve}(M, V_i y_i)$;
+      \tcp*[f]{Update the solution}
+      
+      	\textbf{break}
+      }{}
+      }  
+    
+      
+      \textbf{return} $x = x_i$\;
+    \caption{The (right) preconditioned full-GMRES algorithm with ILU preconditioner.}\label{alg:precond-gmres}
+\end{algorithm}
+
+
+
+

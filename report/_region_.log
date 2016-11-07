@@ -1,0 +1,6737 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=prv_main 2016.11.5)  5 NOV 2016 15:03
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**&prv_main _region_.tex
+(./_region_.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 7 language(s) loaded.
+CUSTOMISED FORMAT. Preloaded files:
+        .
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+geometry.sty    2010/09/12 v5.6 Page Geometry
+  keyval.sty    2014/10/28 v1.15 key=value parser (DPC)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ amsmath.sty    2016/03/03 v2.15a AMS math features
+ amstext.sty    2000/06/29 v2.01 AMS text
+  amsgen.sty    1999/11/30 v2.0 generic functions
+  amsbsy.sty    1999/11/29 v1.2d Bold Symbols
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+inputenc.sty    2015/03/17 v1.2c Input encoding file
+  latin1.def    2015/03/17 v1.2c Input encoding file
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     pgf.sty    2015/08/07 v3.0.1a (rcs-revision 1.15)
+  pgfrcs.sty    2015/08/07 v3.0.1a (rcs-revision 1.31)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v3.0.1a (rcs-revision 1.7)
+graphicx.sty    2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    2016/01/03 v1.10 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  pgfsys.sty    2014/07/09 v3.0.1a (rcs-revision 1.48)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.1a (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.1a (rcs-revision 1.1)
+    tikz.sty    2015/08/07 v3.0.1a (rcs-revision 1.151)
+  pgffor.sty    2013/12/13 v3.0.1a (rcs-revision 1.25)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+      RR.sty    2013/02/11 v5.1f Copyright INRIA/MIAOU/APICS/MARELLE 2002-2011
+textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
+  ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+flexisym.sty    2015/08/11 v0.98d Make math characters macros
+   expl3.sty    2016/01/19 v6377 L3 programming layer (loader) 
+expl3-code.tex    2016/01/19 v6377 L3 programming layer 
+l3pdfmode.def    2015/11/11 v6250 L3 Experimental driver: PDF mode
+  cmbase.sym    2007/12/19 v0.92
+mathstyle.sty    2015/08/11 v0.98d Tracking mathstyle implicitly
+algorithm2e.sty    2013/01/06 v5.00 algorithms environments
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+  xspace.sty    2014/10/28 v1.13 Space after command names (DPC,MH)
+ relsize.sty    2013/03/29 ver 4.1
+subcaption.sty    2016/02/20 v1.1-142 Sub-captions (AR)
+ caption.sty    2016/02/21 v3.3-144 Customizing captions (AR)
+caption3.sty    2016/02/04 v1.7-139 caption3 kernel (AR)
+    cite.sty    2015/02/27  v 5.5
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+  amsthm.sty    2015/03/04 v2.20.2
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  t1cmtt.fd    2014/09/29 v2.5h Standard LaTeX font definitions
+  t1cmss.fd    2014/09/29 v2.5h Standard LaTeX font definitions
+        .
+! Argument of ^^M has an extra }.
+<inserted text> 
+                \par 
+l.74 ...ad{Alexandre Moreau}% \& Louarn \& others}
+                                                  
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+\authorhead {AlexandreMoreau}\&Louarn\&others
+! Paragraph ended before ^^M was complete.
+<to be read again> 
+                   \par 
+l.74 ...ad{Alexandre Moreau}% \& Louarn \& others}
+                                                  
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+<recently read> }
+                 
+l.74 ...ad{Alexandre Moreau}% \& Louarn \& others}
+                                                  
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 129.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+
+(/home/alemoreau/.emacs.d/elpa/auctex-11.89.6/latex/preview.sty
+Package: preview 2010/02/14 11.89 (AUCTeX/preview-latex)
+
+(/home/alemoreau/.emacs.d/elpa/auctex-11.89.6/latex/prtightpage.def
+\PreviewBorder=\dimen273
+)
+(/home/alemoreau/.emacs.d/elpa/auctex-11.89.6/latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count163
+\hfuzz=\dimen274
+(/home/alemoreau/.emacs.d/elpa/auctex-11.89.6/latex/prauctex.cfg))
+(/home/alemoreau/.emacs.d/elpa/auctex-11.89.6/latex/prfootnotes.def)
+\pr@snippet=\count164
+\pr@box=\box83
+\pr@output=\toks41
+
+Preview: Fontsize 10pt
+Preview: PDFoutput 1
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(71.70166pt, 418.25368pt, 107.55254pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=418.25368pt
+* \textheight=591.5302pt
+* \oddsidemargin=-0.56833pt
+* \evensidemargin=35.28255pt
+* \topmargin=-7.86334pt
+* \headheight=28.45274pt
+* \headsep=28.45274pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=121.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count165
+\scratchdimen=\dimen275
+\scratchbox=\box84
+\nofMPsegments=\count166
+\nofMParguments=\count167
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count168
+\MPscratchDim=\dimen276
+\MPnumerator=\count169
+\makeMPintoPDFobject=\count170
+\everyMPtoPDFconversion=\toks43
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: Incompatible package detected (regarding \caption).
+(caption)             \caption = \protected\long macro:->\pr@protect@domacro {}
+{##1{}}\pr@\caption .
+
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+Package caption Info: hyperref package is loaded.
+
+! Package caption Error: The `subcaption' package does not work correctly
+(caption)                in compatibility mode.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.129 \begin{document}
+                      
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box85
+Package hyperref Info: Link coloring ON on input line 129.
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count171
+)
+LaTeX Info: Redefining \ref on input line 129.
+LaTeX Info: Redefining \pageref on input line 129.
+LaTeX Info: Redefining \nameref on input line 129.
+
+ !name(main.tex) !offset(-3) 
+! Preview: Snippet 1 started.
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+<rrpage1.png, id=7, 614.0541pt x 794.7291pt>
+File: rrpage1.png Graphic file (type png)
+ <use rrpage1.png>
+Package pdftex.def Info: rrpage1.png used on input line 134.
+(pdftex.def)             Requested size: 614.05258pt x 794.72716pt.
+
+Preview: Tightpage -32891 -32891 32891 32891
+! Preview: Snippet 1 ended.(52083239+0x40242550).
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+[1 <./rrpage1.png>]
+! Preview: Snippet 2 started.
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+<logo-inria.png, id=11, 472.164pt x 170.0754pt>
+File: logo-inria.png Graphic file (type png)
+ <use logo-inria.png>
+Package pdftex.def Info: logo-inria.png used on input line 134.
+(pdftex.def)             Requested size: 142.26378pt x 51.24359pt.
+
+! Preview: Snippet 2 ended.(3358300+0x9323399).
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+[2 <./logo-inria.png>]
+LaTeX Font Info:    Try loading font information for T1+phv on input line 134.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 134.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 134.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+! Preview: Snippet 3 started.
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+<pagei.png, id=15, 613.93365pt x 794.60864pt>
+File: pagei.png Graphic file (type png)
+ <use pagei.png>
+Package pdftex.def Info: pagei.png used on input line 134.
+(pdftex.def)             Requested size: 613.93216pt x 794.60669pt.
+
+! Preview: Snippet 3 ended.(52075344+0x40234658).
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+[3 <./pagei.png>]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+File: logo-inria.png Graphic file (type png)
+<use logo-inria.png>
+Package pdftex.def Info: logo-inria.png used on input line 134.
+(pdftex.def)             Requested size: 142.26378pt x 51.24359pt.
+
+! Preview: Snippet 4 ended.(3358300+0x9323399).
+<-><->
+      
+l.134 \makeRR
+                % cas d'un rapport de recherche
+Not a real error.
+
+[4] (./introduction.tex
+! Preview: Snippet 5 started.
+<-><->
+      
+l.1 \section
+            {Introduction}
+Not a real error.
+
+! Preview: Snippet 5 ended.(651269+0x27410673).
+<-><->
+      
+l.1 \section{Introduction}
+                          
+Not a real error.
+
+[5{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+
+LaTeX Warning: Citation `CFDR' on page 3 undefined on input line 3.
+
+
+LaTeX Warning: Citation `checksum' on page 3 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Cappello:2014:TER:2983586.2983587' on page 3 undefined
+ on input line 11.
+
+
+LaTeX Warning: Citation `gmres' on page 3 undefined on input line 13.
+
+) (./section2.tex
+! Preview: Snippet 6 started.
+<-><->
+      
+l.1 \section
+            {Solving linear systems of equations in HPC}
+Not a real error.
+
+! Preview: Snippet 6 ended.(651269+183455x27410673).
+<-><->
+      
+l.1 ...Solving linear systems of equations in HPC}
+                                                  
+Not a real error.
+
+[6
+
+]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.3 $
+     $
+Not a real error.
+
+! Preview: Snippet 7 ended.(786432+0x27410673).
+<-><->
+      
+l.5 $$
+      
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.6 where $
+           A \in \Bbb{R}^{n\times n}$ and $b\in \Bbb{R}^n$ are known and $x ...
+
+Not a real error.
+
+
+Package amsfonts Warning: Obsolete command \Bbb; \mathbb should be used instead
+ on input line 6.
+
+! Preview: Snippet 8 ended.(521815+25623x2856126).
+<-><->
+      
+l.6 where $A \in \Bbb{R}^{n\times n}$
+                                      and $b\in \Bbb{R}^n$ are known and $x ...
+
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.6 where $A \in \Bbb{R}^{n\times n}$ and $
+                                           b\in \Bbb{R}^n$ are known and $x ...
+
+Not a real error.
+
+! Preview: Snippet 9 ended.(455111+25623x1912296).
+<-><->
+      
+l.6 ...n \Bbb{R}^{n\times n}$ and $b\in \Bbb{R}^n$
+                                                   are known and $x \in \Bbb...
+
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.6 ...es n}$ and $b\in \Bbb{R}^n$ are known and $
+                                                  x \in \Bbb{R}^n$  is to be...
+
+Not a real error.
+
+! Preview: Snippet 10 ended.(451470+25623x2005594).
+<-><->
+      
+l.6 ... \Bbb{R}^n$ are known and $x \in \Bbb{R}^n$
+                                                    is to be found with $n \...
+
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.6 ...nd $x \in \Bbb{R}^n$  is to be found with $
+                                                  n \gg 1$ up to a few tens ...
+
+Not a real error.
+
+! Preview: Snippet 11 ended.(422343+25623x1740492).
+<-><->
+      
+l.6 ...n \Bbb{R}^n$  is to be found with $n \gg 1$
+                                                   up to a few tens of milli...
+
+Not a real error.
+
+[11]
+
+LaTeX Warning: Citation `direct_solver' on page 4 undefined on input line 9.
+
+
+LaTeX Warning: Citation `hig:02' on page 4 undefined on input line 9.
+
+! Preview: Snippet 12 started.
+<-><->
+      
+l.11 ... solvers are given a first approximation $
+                                                  x_0$ of the solution $x$ a...
+
+Not a real error.
+
+! Preview: Snippet 12 ended.(282168+98303x668559).
+<-><->
+      
+l.11 ...vers are given a first approximation $x_0$
+                                                   of the solution $x$ as an...
+
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.11 ...irst approximation $x_0$ of the solution $
+                                                  x$ as an additional parame...
+
+Not a real error.
+
+! Preview: Snippet 13 ended.(282168+0x374556).
+<-><->
+      
+l.11 ...st approximation $x_0$ of the solution $x$
+                                                   as an additional paramete...
+
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.11 ...tional parameter, and compute a sequence $
+                                                  (x_i)$ of improving approx...
+
+Not a real error.
+
+! Preview: Snippet 14 ended.(491520+163840x1102470).
+<-><->
+      
+l.11 ... parameter, and compute a sequence $(x_i)$
+                                                   of improving approximatio...
+
+Not a real error.
+
+[14]
+
+LaTeX Warning: Citation `gmres' on page 4 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Saad:2003' on page 4 undefined on input line 11.
+
+! Preview: Snippet 15 started.
+<-><->
+      
+l.13 \subsection
+                {Krylov methods}
+Not a real error.
+
+! Preview: Snippet 15 ended.(542724+152880x27410673).
+<-><->
+      
+l.13 \subsection{Krylov methods}
+                                
+Not a real error.
+
+[15
+
+]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.14 ...ethods designed to solve a linear system $
+                                                  Ax = b$ have in common the...
+
+Not a real error.
+
+! Preview: Snippet 16 ended.(455111+0x2021141).
+<-><->
+      
+l.14 ...designed to solve a linear system $Ax = b$
+                                                   have in common the constr...
+
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.14 ... space of order i associated to A and b: $
+                                                  $\mathcal{K}_i(A, b) \equi...
+
+Not a real error.
+
+! Preview: Snippet 17 ended.(950272+0x27410673).
+<-><->
+      
+l.14 ...text{span(}b, Ab, ..., A^{i-1}b\text{)}.$$
+                                                   The reason behind the use...
+
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.14 ...ley-Hamilton theorem, which implies that $
+                                                  A^{-1}$ can be expressed a...
+
+Not a real error.
+
+! Preview: Snippet 18 ended.(533465+0x1195125).
+<-><->
+      
+l.14 ...ilton theorem, which implies that $A^{-1}$
+                                                   can be expressed as a lin...
+
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.14 ...sed as a linear combination of powers of $
+                                                  A$. Consequently the solut...
+
+Not a real error.
+
+! Preview: Snippet 19 ended.(447828+0x491521).
+<-><->
+      
+l.14 ...d as a linear combination of powers of $A$
+                                                  . Consequently the solutio...
+
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.14 ...powers of $A$. Consequently the solution $
+                                                  x = A^{-1}b$ belongs to $\...
+
+Not a real error.
+
+! Preview: Snippet 20 ended.(533465+0x2724745).
+<-><->
+      
+l.14 ...$. Consequently the solution $x = A^{-1}b$
+                                                   belongs to $\mathcal{K}_i...
+
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.14 ...ly the solution $x = A^{-1}b$ belongs to $
+                                                  \mathcal{K}_i(A, b)$ for r...
+
+Not a real error.
+
+! Preview: Snippet 21 ended.(491520+163840x2291313).
+<-><->
+      
+l.14 ... A^{-1}b$ belongs to $\mathcal{K}_i(A, b)$
+                                                   for r large enough. The b...
+
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.14 ...}_i(A, b)$ for r large enough. The basis $
+                                                  \{b, Ab, A^2b...\}$ is ite...
+
+Not a real error.
+
+! Preview: Snippet 22 ended.(533465+163840x3904854).
+<-><->
+      
+l.14 ...rge enough. The basis $\{b, Ab, A^2b...\}$
+                                                   is iteratively computed u...
+
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.14 ...e solution is small enough. The solution $
+                                                  x$ can then be efficiently...
+
+Not a real error.
+
+! Preview: Snippet 23 ended.(282168+0x374556).
+<-><->
+      
+l.14 ...solution is small enough. The solution $x$
+                                                   can then be efficiently a...
+
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.16 \subsection
+                {The GMRES algorithm}
+Not a real error.
+
+! Preview: Snippet 24 ended.(542724+152880x27410673).
+<-><->
+      
+l.16 \subsection{The GMRES algorithm}
+                                     
+Not a real error.
+
+[24
+
+]
+
+LaTeX Warning: Reference `alg:gmres' on page 4 undefined on input line 17.
+
+
+LaTeX Warning: Citation `gmres' on page 4 undefined on input line 17.
+
+! Preview: Snippet 25 started.
+<-><->
+      
+l.17 ...cursively generates an orthonormal basis $
+                                                  V_i = \{v_0, v_1, ... v_{i...
+
+Not a real error.
+
+! Preview: Snippet 25 ended.(491520+163840x5017520).
+<-><->
+      
+l.17 ...rmal basis $V_i = \{v_0, v_1, ... v_{i}\}$
+                                                   for $\mathcal{K}_i(A, b)$...
+
+Not a real error.
+
+[25]
+! Preview: Snippet 26 started.
+<-><->
+      
+l.17 ...asis $V_i = \{v_0, v_1, ... v_{i}\}$ for $
+                                                  \mathcal{K}_i(A, b)$ to pr...
+
+Not a real error.
+
+! Preview: Snippet 26 ended.(491520+163840x2291313).
+<-><->
+      
+l.17 ..._1, ... v_{i}\}$ for $\mathcal{K}_i(A, b)$
+                                                   to project the initial pr...
+
+Not a real error.
+
+[26]
+! Preview: Snippet 27 started.
+<-><->
+      
+l.17 ..._i(A, b)$ to project the initial problem $
+                                                  A x = b$ onto. The first A...
+
+Not a real error.
+
+! Preview: Snippet 27 ended.(455111+0x2021141).
+<-><->
+      
+l.17 ...$ to project the initial problem $A x = b$
+                                                   onto. The first Arnoldi v...
+
+Not a real error.
+
+[27]
+! Preview: Snippet 28 started.
+<-><->
+      
+l.17 ...$A x = b$ onto. The first Arnoldi vector $
+                                                  v_0$ is initialized to the...
+
+Not a real error.
+
+! Preview: Snippet 28 ended.(282168+98303x611671).
+<-><->
+      
+l.17 ... = b$ onto. The first Arnoldi vector $v_0$
+                                                   is initialized to the fir...
+
+Not a real error.
+
+[28]
+! Preview: Snippet 29 started.
+<-><->
+      
+l.17 ...ialized to the first residual normalized $
+                                                  v_0 = r_0/\|r_0\| = (A x_0...
+
+Not a real error.
+
+! Preview: Snippet 29 ended.(491520+163840x10317059).
+<-><->
+      
+l.17 ...r_0/\|r_0\| = (A x_0 - b) / \|A x_0 - b\|$
+                                                   (line 2-4) and the recurs...
+
+Not a real error.
+
+[29]
+! Preview: Snippet 30 started.
+<-><->
+      
+l.17 ...n maintained throughout the algorithm is $
+                                                  $AV_i = V_{i+1}H_i$$ where...
+
+Not a real error.
+
+! Preview: Snippet 30 ended.(939349+0x27410673).
+<-><->
+      
+l.17 ...out the algorithm is $$AV_i = V_{i+1}H_i$$
+                                                   where $H_i$ is an upper H...
+
+Not a real error.
+
+[30]
+! Preview: Snippet 31 started.
+<-><->
+      
+l.17 ...algorithm is $$AV_i = V_{i+1}H_i$$ where $
+                                                  H_i$ is an upper Hessenber...
+
+Not a real error.
+
+! Preview: Snippet 31 ended.(447828+98303x762956).
+<-><->
+      
+l.17 ...rithm is $$AV_i = V_{i+1}H_i$$ where $H_i$
+                                                   is an upper Hessenberg re...
+
+Not a real error.
+
+[31]
+! Preview: Snippet 32 started.
+<-><->
+      
+l.17 ...er Hessenberg rectangular matrix of size $
+                                                  i+1 \times i$ produced by ...
+
+Not a real error.
+
+! Preview: Snippet 32 ended.(432226+54613x2381221).
+<-><->
+      
+l.17 ... rectangular matrix of size $i+1 \times i$
+                                                   produced by the orthonorm...
+
+Not a real error.
+
+[32]
+! Preview: Snippet 33 started.
+<-><->
+      
+l.17 ... problem of minimizing the residual norm $
+                                                  \|r\| = \|A x  - b\|$ beco...
+
+Not a real error.
+
+! Preview: Snippet 33 ended.(491520+163840x4264691).
+<-><->
+      
+l.17 ...g the residual norm $\|r\| = \|A x  - b\|$
+                                                   becomes equivalent to a n...
+
+Not a real error.
+
+[33]
+! Preview: Snippet 34 started.
+<-><->
+      
+l.17 ...anks to the structure and size of matrix $
+                                                  H_i$:
+Not a real error.
+
+! Preview: Snippet 34 ended.(447828+98303x762956).
+<-><->
+      
+l.17 ... to the structure and size of matrix $H_i$
+                                                  :
+Not a real error.
+
+[34]
+! Preview: Snippet 35 started.
+<-><->
+      
+l.18 \begin{equation}
+                     \label{eq:minNomr}
+Not a real error.
+
+! Preview: Snippet 35 ended.(1345019+0x27410673).
+<-><->
+      
+l.20 \end{equation}
+                   
+Not a real error.
+
+[35
+
+]
+! Preview: Snippet 36 started.
+<-><->
+      
+l.21 The upper-Hessenberg matrix $
+                                  H$ can be efficiently transformed into an ...
+
+Not a real error.
+
+! Preview: Snippet 36 ended.(447828+0x598014).
+<-><->
+      
+l.21 The upper-Hessenberg matrix $H$
+                                     can be efficiently transformed into an ...
+
+Not a real error.
+
+[36]
+
+LaTeX Warning: Citation `govl:96' on page 4 undefined on input line 21.
+
+! Preview: Snippet 37 started.
+<-><->
+      
+l.21 ...ressed back into the initial basis using $
+                                                  x = x_0 + V_i y_i$ (line 1...
+
+Not a real error.
+
+! Preview: Snippet 37 ended.(447828+127431x3857891).
+<-><->
+      
+l.21 ...he initial basis using $x = x_0 + V_i y_i$
+                                                   (line 17) where $y_i$ is ...
+
+Not a real error.
+
+[37]
+! Preview: Snippet 38 started.
+<-><->
+      
+l.21 ...sing $x = x_0 + V_i y_i$ (line 17) where $
+                                                  y_i$ is the solution of Eq...
+
+Not a real error.
+
+! Preview: Snippet 38 ended.(282168+127431x539499).
+<-><->
+      
+l.21 ... $x = x_0 + V_i y_i$ (line 17) where $y_i$
+                                                   is the solution of Equati...
+
+Not a real error.
+
+[38]
+
+LaTeX Warning: Reference `eq:minNomr' on page 4 undefined on input line 21.
+
+! Preview: Snippet 39 started.
+<-><->
+      
+l.24     \SetKwInOut
+                    {Input}{Input}
+Not a real error.
+
+! Preview: Snippet 39 ended.(52429+21489774x27410673).
+<-><->
+      
+l.72 \end{algorithm}
+                    
+Not a real error.
+
+[39
+
+
+
+]
+! Preview: Snippet 40 started.
+<-><->
+      
+l.114 ...ith a preconditioner, which is a matrix $
+                                                  M$ designed to increase th...
+
+Not a real error.
+
+! Preview: Snippet 40 ended.(447828+0x707242).
+<-><->
+      
+l.114 ...h a preconditioner, which is a matrix $M$
+                                                   designed to increase the ...
+
+Not a real error.
+
+[40]
+! Preview: Snippet 41 started.
+<-><->
+      
+l.114 ...rgence rate by transforming the initial $
+                                                  A x = b$ problem into a si...
+
+Not a real error.
+
+! Preview: Snippet 41 ended.(455111+0x2021141).
+<-><->
+      
+l.114 ...ate by transforming the initial $A x = b$
+                                                   problem into a simpler on...
+
+Not a real error.
+
+[41]
+! Preview: Snippet 42 started.
+<-><->
+      
+l.114 ...e of right preconditioning, the initial $
+                                                  A x = b = A M^{-1} M x = b...
+
+Not a real error.
+
+! Preview: Snippet 42 ended.(533465+0x7034176).
+<-><->
+      
+l.114 ... the initial $A x = b = A M^{-1} M x = b$
+                                                   problem is split into two...
+
+Not a real error.
+
+[42]
+! Preview: Snippet 43 started.
+<-><->
+      
+l.114 ...s split into two simpler ones to solve, $
+                                                  A M^{-1} y = b$ and $M x =...
+
+Not a real error.
+
+! Preview: Snippet 43 ended.(533465+127431x3402255).
+<-><->
+      
+l.114 ...o simpler ones to solve, $A M^{-1} y = b$
+                                                   and $M x = y$. Many good ...
+
+Not a real error.
+
+[43]
+! Preview: Snippet 44 started.
+<-><->
+      
+l.114 ...ler ones to solve, $A M^{-1} y = b$ and $
+                                                  M x = y$. Many good precon...
+
+Not a real error.
+
+! Preview: Snippet 44 ended.(447828+127431x2300428).
+<-><->
+      
+l.114 ... to solve, $A M^{-1} y = b$ and $M x = y$
+                                                  . Many good preconditioner...
+
+Not a real error.
+
+[44]
+! Preview: Snippet 45 started.
+<-><->
+      
+l.121     \SetKwInOut
+                     {Input}{Input}
+Not a real error.
+
+! Preview: Snippet 45 ended.(52429+23135327x27410673).
+<-><->
+      
+l.171 \end{algorithm}
+                     
+Not a real error.
+
+[45
+
+
+]) (./section3.tex
+! Preview: Snippet 46 started.
+<-><->
+      
+l.1 \section
+            {Methodology}
+Not a real error.
+
+! Preview: Snippet 46 ended.(651269+183455x27410673).
+<-><->
+      
+l.1 \section{Methodology}
+                         
+Not a real error.
+
+[46
+
+]
+! Preview: Snippet 47 started.
+<-><->
+      
+l.3 \subsection
+               {GMRES convergence}
+Not a real error.
+
+! Preview: Snippet 47 ended.(542724+152880x27410673).
+<-><->
+      
+l.3 \subsection{GMRES convergence}
+                                  
+Not a real error.
+
+[47
+
+]
+! Preview: Snippet 48 started.
+<-><->
+      
+l.4 ... to have converged to the target accuracy $
+                                                  \varepsilon$ when at a giv...
+
+Not a real error.
+
+! Preview: Snippet 48 ended.(282168+0x305606).
+<-><->
+      
+l.4 ...verged to the target accuracy $\varepsilon$
+                                                   when at a given iteration...
+
+Not a real error.
+
+[48]
+! Preview: Snippet 49 started.
+<-><->
+      
+l.4 ...y $\varepsilon$ when at a given iteration $
+                                                  \ell$, the norms of the
+Not a real error.
+
+! Preview: Snippet 49 ended.(455111+0x273068).
+<-><->
+      
+l.4 ...arepsilon$ when at a given iteration $\ell$
+                                                  , the norms of the
+Not a real error.
+
+[49]
+! Preview: Snippet 50 started.
+<-><->
+      
+l.5 true residual (i.e., $
+                          \|b-Ax_\ell\|$) and the computed one (i.e., $\| \b...
+
+Not a real error.
+
+! Preview: Snippet 50 ended.(491520+163840x2855821).
+<-><->
+      
+l.5 true residual (i.e., $\|b-Ax_\ell\|$
+                                        ) and the computed one (i.e., $\| \b...
+
+Not a real error.
+
+[50]
+! Preview: Snippet 51 started.
+<-><->
+      
+l.5 ...b-Ax_\ell\|$) and the computed one (i.e., $
+                                                  \| \beta e_1 - H_\ell y_\e...
+
+Not a real error.
+
+! Preview: Snippet 51 ended.(491520+163840x3831131).
+<-><->
+      
+l.5 ...one (i.e., $\| \beta e_1 - H_\ell y_\ell\|$
+                                                  ) are both lower than the ...
+
+Not a real error.
+
+[51]
+! Preview: Snippet 52 started.
+<-><->
+      
+l.6 that is  $
+              \exists \text{ } 0 < \ell < n$ / $\|r_{\ell}\| < \varepsilon \...
+
+Not a real error.
+
+! Preview: Snippet 52 ended.(455111+25623x3324221).
+<-><->
+      
+l.6 that is  $\exists \text{ } 0 < \ell < n$
+                                             / $\|r_{\ell}\| < \varepsilon \...
+
+Not a real error.
+
+[52]
+! Preview: Snippet 53 started.
+<-><->
+      
+l.6 that is  $\exists \text{ } 0 < \ell < n$ / $
+                                                \|r_{\ell}\| < \varepsilon \...
+
+Not a real error.
+
+! Preview: Snippet 53 ended.(491520+163840x10567472).
+<-><->
+      
+l.6 ... \beta e_1 - H_\ell y_\ell\| < \varepsilon$
+                                                  .
+Not a real error.
+
+[53]
+! Preview: Snippet 54 started.
+<-><->
+      
+l.10 ...ere some orthonormality might be lost in $
+                                                  V_i$.
+Not a real error.
+
+! Preview: Snippet 54 ended.(447828+98303x600481).
+<-><->
+      
+l.10 ...some orthonormality might be lost in $V_i$
+                                                  .
+Not a real error.
+
+[54]
+! Preview: Snippet 55 started.
+<-><->
+      
+l.15 \subsection
+                {Fault model}
+Not a real error.
+
+! Preview: Snippet 55 ended.(542724+0x27410673).
+<-><->
+      
+l.15 \subsection{Fault model}
+                             
+Not a real error.
+
+[55
+
+]
+
+LaTeX Warning: Reference `alg:gmres' on page 6 undefined on input line 16.
+
+
+LaTeX Warning: Reference `alg:faulty_product' on page 6 undefined on input line
+ 16.
+
+! Preview: Snippet 56 started.
+<-><->
+      
+l.16 ... nested loops and we define the location $
+                                                  (i, k)$ where the fault oc...
+
+Not a real error.
+
+! Preview: Snippet 56 ended.(491520+163840x1388589).
+<-><->
+      
+l.16 ... loops and we define the location $(i, k)$
+                                                   where the fault occurred ...
+
+Not a real error.
+
+[56]
+! Preview: Snippet 57 started.
+<-><->
+      
+l.16 ...the inner loop involves three registers, $
+                                                  reg_1$ stores $A_{i, k}$, ...
+
+Not a real error.
+
+! Preview: Snippet 57 ended.(282168+127431x1225618).
+<-><->
+      
+l.16 ...ner loop involves three registers, $reg_1$
+                                                   stores $A_{i, k}$, $reg_2...
+
+Not a real error.
+
+[57]
+! Preview: Snippet 58 started.
+<-><->
+      
+l.16 ...involves three registers, $reg_1$ stores $
+                                                  A_{i, k}$, $reg_2$ stores ...
+
+Not a real error.
+
+! Preview: Snippet 58 ended.(447828+187504x1155037).
+<-><->
+      
+l.16 ...three registers, $reg_1$ stores $A_{i, k}$
+                                                  , $reg_2$ stores $v_k$ and...
+
+Not a real error.
+
+[58]
+! Preview: Snippet 59 started.
+<-><->
+      
+l.16 ...ee registers, $reg_1$ stores $A_{i, k}$, $
+                                                  reg_2$ stores $v_k$ and $r...
+
+Not a real error.
+
+! Preview: Snippet 59 ended.(282168+127431x1225618).
+<-><->
+      
+l.16 ...isters, $reg_1$ stores $A_{i, k}$, $reg_2$
+                                                   stores $v_k$ and $reg_3$ ...
+
+Not a real error.
+
+[59]
+! Preview: Snippet 60 started.
+<-><->
+      
+l.16 ...reg_1$ stores $A_{i, k}$, $reg_2$ stores $
+                                                  v_k$ and $reg_3$ stores $A...
+
+Not a real error.
+
+! Preview: Snippet 60 ended.(282168+98303x640116).
+<-><->
+      
+l.16 ...1$ stores $A_{i, k}$, $reg_2$ stores $v_k$
+                                                   and $reg_3$ stores $A_{i,...
+
+Not a real error.
+
+[60]
+! Preview: Snippet 61 started.
+<-><->
+      
+l.16 ...res $A_{i, k}$, $reg_2$ stores $v_k$ and $
+                                                  reg_3$ stores $A_{i, k} \c...
+
+Not a real error.
+
+! Preview: Snippet 61 ended.(282168+127431x1225618).
+<-><->
+      
+l.16 ..._{i, k}$, $reg_2$ stores $v_k$ and $reg_3$
+                                                   stores $A_{i, k} \cdot v_...
+
+Not a real error.
+
+[61]
+! Preview: Snippet 62 started.
+<-><->
+      
+l.16 ... $reg_2$ stores $v_k$ and $reg_3$ stores $
+                                                  A_{i, k} \cdot v_k$. In th...
+
+Not a real error.
+
+! Preview: Snippet 62 ended.(447828+187504x2268462).
+<-><->
+      
+l.16 ...k$ and $reg_3$ stores $A_{i, k} \cdot v_k$
+                                                  . In the numerical experim...
+
+Not a real error.
+
+[62]
+! Preview: Snippet 63 started.
+<-><->
+      
+l.20     \item The \textbf{bit flipped} ($
+                                          b \in [0, 63]$ in double precision...
+
+Not a real error.
+
+! Preview: Snippet 63 ended.(491520+163840x2720648).
+<-><->
+      
+l.20 ... The \textbf{bit flipped} ($b \in [0, 63]$
+                                                   in double precision IEEE ...
+
+Not a real error.
+
+[63]
+! Preview: Snippet 64 started.
+<-><->
+      
+l.21 ...em The \textbf{location} in the product ($
+                                                  (i, k) \in [0, n-1]^2$)
+Not a real error.
+
+! Preview: Snippet 64 ended.(533465+163840x4988661).
+<-><->
+      
+l.21 ...n} in the product ($(i, k) \in [0, n-1]^2$
+                                                  )
+Not a real error.
+
+[64]
+! Preview: Snippet 65 started.
+<-><->
+      
+l.22     \item The \textbf{register} affected ($
+                                                reg_1$, $reg_2$, $reg_3$)
+Not a real error.
+
+! Preview: Snippet 65 ended.(282168+127431x1225618).
+<-><->
+      
+l.22 ...em The \textbf{register} affected ($reg_1$
+                                                  , $reg_2$, $reg_3$)
+Not a real error.
+
+[65]
+! Preview: Snippet 66 started.
+<-><->
+      
+l.22 ...The \textbf{register} affected ($reg_1$, $
+                                                  reg_2$, $reg_3$)
+Not a real error.
+
+! Preview: Snippet 66 ended.(282168+127431x1225618).
+<-><->
+      
+l.22 ...extbf{register} affected ($reg_1$, $reg_2$
+                                                  , $reg_3$)
+Not a real error.
+
+[66]
+! Preview: Snippet 67 started.
+<-><->
+      
+l.22 ...bf{register} affected ($reg_1$, $reg_2$, $
+                                                  reg_3$)
+Not a real error.
+
+! Preview: Snippet 67 ended.(282168+127431x1225618).
+<-><->
+      
+l.22 ...ister} affected ($reg_1$, $reg_2$, $reg_3$
+                                                  )
+Not a real error.
+
+[67]
+! Preview: Snippet 68 started.
+<-><->
+      
+l.27     \SetKwInOut
+                    {Input}{Input}
+Not a real error.
+
+! Preview: Snippet 68 ended.(52429+17439058x27410673).
+<-><->
+      
+l.70 \end{algorithm}
+                    
+Not a real error.
+
+[68
+
+
+]
+! Preview: Snippet 69 started.
+<-><->
+      
+l.73 \subsection
+                {Experiments setup}
+Not a real error.
+
+! Preview: Snippet 69 ended.(542724+152880x27410673).
+<-><->
+      
+l.73 \subsection{Experiments setup}
+                                   
+Not a real error.
+
+[69
+
+]
+
+LaTeX Warning: Reference `fig:gre_216a' on page 6 undefined on input line 77.
+
+! Preview: Snippet 70 started.
+<-><->
+      
+l.77 ...ig:gre_216a}, chosen for its small size ($
+                                                  n=216$) and handy converge...
+
+Not a real error.
+
+! Preview: Snippet 70 ended.(422343+0x2250219).
+<-><->
+      
+l.77 ..._216a}, chosen for its small size ($n=216$
+                                                  ) and handy convergence hi...
+
+Not a real error.
+
+[70]
+
+LaTeX Warning: Reference `fig:pores_2' on page 6 undefined on input line 77.
+
+! Preview: Snippet 71 started.
+<-><->
+      
+l.77 ...es_2 \ref{fig:pores_2}, which is bigger ($
+                                                  n=1224$) and will be used ...
+
+Not a real error.
+
+! Preview: Snippet 71 ended.(422343+0x2577900).
+<-><->
+      
+l.77 ...ef{fig:pores_2}, which is bigger ($n=1224$
+                                                  ) and will be used with th...
+
+Not a real error.
+
+[71]
+
+LaTeX Warning: Reference `table:nonlin' on page 6 undefined on input line 77.
+
+
+LaTeX Warning: Citation `Davis:2011:UFS:2049662.2049663' on page 6 undefined on
+ input line 79.
+
+! Preview: Snippet 72 started.
+<-><->
+      
+l.80 \begin{figure}
+                   [h]
+Not a real error.
+
+<figures/gre_216a/matrix.png, id=327, 578.16pt x 433.62pt>
+File: figures/gre_216a/matrix.png Graphic file (type png)
+
+<use figures/gre_216a/matrix.png>
+Package pdftex.def Info: figures/gre_216a/matrix.png used on input line 84.
+(pdftex.def)             Requested size: 207.03531pt x 155.27602pt.
+Package hyperref Info: bookmark level for unknown subfigure defaults to 0 on in
+put line 85.
+
+<figures/gre_216a/convergence_history.png, id=328, 404.51125pt x 282.05376pt>
+File: figures/gre_216a/convergence_history.png Graphic file (type png)
+
+<use figures/gre_216a/convergence_history.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history.png used on input
+ line 90.
+(pdftex.def)             Requested size: 216.44365pt x 150.92093pt.
+
+! Preview: Snippet 72 ended.(12732073+0x27410673).
+<-><->
+      
+l.94 \end{figure}
+                 
+Not a real error.
+
+[72
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.94 \end{figure}
+                 
+
+
+ <./figures/gre_216a/matrix.png (PNG copy)> <./figures/gre_216a/convergence_his
+tory.png>]
+! Preview: Snippet 73 started.
+<-><->
+      
+l.95 \begin{figure}
+                   [h]
+Not a real error.
+
+<figures/pores_2/matrix.png, id=337, 578.16pt x 433.62pt>
+File: figures/pores_2/matrix.png Graphic file (type png)
+
+<use figures/pores_2/matrix.png>
+Package pdftex.def Info: figures/pores_2/matrix.png used on input line 99.
+(pdftex.def)             Requested size: 207.03531pt x 155.27602pt.
+
+<figures/pores_2/convergence_history.png, id=338, 401.5pt x 282.05376pt>
+File: figures/pores_2/convergence_history.png Graphic file (type png)
+
+<use figures/pores_2/convergence_history.png>
+Package pdftex.def Info: figures/pores_2/convergence_history.png used on input 
+line 105.
+(pdftex.def)             Requested size: 216.44365pt x 152.05713pt.
+
+! Preview: Snippet 73 ended.(12732073+0x27410673).
+<-><->
+      
+l.109 \end{figure}
+                  
+Not a real error.
+
+[73
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.109 \end{figure}
+                  
+
+
+ <./figures/pores_2/matrix.png (PNG copy)> <./figures/pores_2/convergence_histo
+ry.png>]
+! Preview: Snippet 74 started.
+<-><->
+      
+l.115 \begin{table}
+                   [ht]
+Not a real error.
+
+! Preview: Snippet 74 ended.(6312976+4477968x27410673).
+<-><->
+      
+l.136 \end{table}
+                 
+Not a real error.
+
+[74
+
+
+]) (./section4.tex
+! Preview: Snippet 75 started.
+<-><->
+      
+l.1 \section
+            {Empirical study of executions disrupted by faults}\label{sec:em...
+
+Not a real error.
+
+! Preview: Snippet 75 ended.(651269+183455x27410673).
+<-><->
+      
+l.1 ...al study of executions disrupted by faults}
+                                                  \label{sec:empirical}
+Not a real error.
+
+[75
+
+]
+! Preview: Snippet 76 started.
+<-><->
+      
+l.4 \subsection
+               {Representation of executions}
+Not a real error.
+
+! Preview: Snippet 76 ended.(542724+152880x27410673).
+<-><->
+      
+l.4 \subsection{Representation of executions}
+                                             
+Not a real error.
+
+[76
+
+]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist' on page 8 undefined on input 
+line 5.
+
+! Preview: Snippet 77 started.
+<-><->
+      
+l.5 ...xecution (dashed blue curve) converges in $
+                                                  150$ iterations since it r...
+
+Not a real error.
+
+! Preview: Snippet 77 ended.(422343+0x983043).
+<-><->
+      
+l.5 ...tion (dashed blue curve) converges in $150$
+                                                   iterations since it reach...
+
+Not a real error.
+
+[77]
+! Preview: Snippet 78 started.
+<-><->
+      
+l.5 ...ons since it reaches the target accuracy ($
+                                                  \varepsilon = 10^{-12}$) a...
+
+Not a real error.
+
+! Preview: Snippet 78 ended.(533465+0x2799613).
+<-><->
+      
+l.5 ...e target accuracy ($\varepsilon = 10^{-12}$
+                                                  ) at iteration 150. Then, ...
+
+Not a real error.
+
+[78]
+! Preview: Snippet 79 started.
+<-><->
+      
+l.5 ...rget accuracy, as it remains greater than $
+                                                  10^{-7}$, so according to ...
+
+Not a real error.
+
+! Preview: Snippet 79 ended.(533465+0x1358966).
+<-><->
+      
+l.5 ...uracy, as it remains greater than $10^{-7}$
+                                                  , so according to the defi...
+
+Not a real error.
+
+[79]
+
+LaTeX Warning: Reference `table:outcomes' on page 8 undefined on input line 7.
+
+! Preview: Snippet 80 started.
+<-><->
+      
+l.14 \begin{figure}
+                   [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_fault.png, id=368, 404.51125pt x 282.0537
+6pt>
+File: figures/gre_216a/convergence_history_fault.png Graphic file (type png)
+ <use figures/gre_216a/convergence_history_fault.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_fault.png used on
+ input line 16.
+(pdftex.def)             Requested size: 334.60422pt x 233.31265pt.
+
+! Preview: Snippet 80 ended.(20664330+0x27410673).
+<-><->
+      
+l.18 \end{figure}
+                 
+Not a real error.
+
+[80
+
+
+ <./figures/gre_216a/convergence_history_fault.png>]
+! Preview: Snippet 81 started.
+<-><->
+      
+l.22 \begin{table}
+                  [h]
+Not a real error.
+
+! Preview: Snippet 81 ended.(3283353+1448345x27410673).
+<-><->
+      
+l.36 \end{table}
+                
+Not a real error.
+
+[81
+
+
+]
+! Preview: Snippet 82 started.
+<-><->
+      
+l.40 \subsection
+                {Qualitative results and parameters influence}
+Not a real error.
+
+! Preview: Snippet 82 ended.(542724+152880x27410673).
+<-><->
+      
+l.40 ...litative results and parameters influence}
+                                                  
+Not a real error.
+
+[82
+
+]
+
+LaTeX Warning: Reference `fig:conv_hist_bit' on page 8 undefined on input line 
+43.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_0' on page 8 undefined on 
+input line 43.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_1' on page 8 undefined on 
+input line 43.
+
+! Preview: Snippet 83 started.
+<-><->
+      
+l.43 ...~\ref{fig:gre_216a_conv_hist_bit_1}, the $
+                                                  40^{th}$ bit is flipped an...
+
+Not a real error.
+
+! Preview: Snippet 83 ended.(556402+0x1192927).
+<-><->
+      
+l.43 ...g:gre_216a_conv_hist_bit_1}, the $40^{th}$
+                                                   bit is flipped and the co...
+
+Not a real error.
+
+[83]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_2' on page 8 undefined on 
+input line 43.
+
+! Preview: Snippet 84 started.
+<-><->
+      
+l.43 ...e \ref{fig:gre_216a_conv_hist_bit_2} the $
+                                                  20^{th}$ bit is flipped an...
+
+Not a real error.
+
+! Preview: Snippet 84 ended.(556402+0x1192927).
+<-><->
+      
+l.43 ...ig:gre_216a_conv_hist_bit_2} the $20^{th}$
+                                                   bit is flipped and the ex...
+
+Not a real error.
+
+[84]
+! Preview: Snippet 85 started.
+<-><->
+      
+l.50 \begin{figure}
+                   [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_bit_0.png, id=388, 404.51125pt x 282.0537
+6pt>
+File: figures/gre_216a/convergence_history_bit_0.png Graphic file (type png)
+ <use figures/gre_216a/convergence_history_bit_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_bit_0.png used on
+ input line 67.
+(pdftex.def)             Requested size: 200.75996pt x 139.985pt.
+
+<figures/gre_216a/convergence_history_bit_1.png, id=389, 404.51125pt x 282.0537
+6pt>
+File: figures/gre_216a/convergence_history_bit_1.png Graphic file (type png)
+ <use figures/gre_216a/convergence_history_bit_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_bit_1.png used on
+ input line 73.
+(pdftex.def)             Requested size: 200.75996pt x 139.985pt.
+
+<figures/gre_216a/convergence_history_bit_2.png, id=390, 404.51125pt x 282.0537
+6pt>
+File: figures/gre_216a/convergence_history_bit_2.png Graphic file (type png)
+ <use figures/gre_216a/convergence_history_bit_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_bit_2.png used on
+ input line 79.
+(pdftex.def)             Requested size: 200.75996pt x 139.985pt.
+
+<figures/pores_2/convergence_history_bit_0.png, id=391, 395.4775pt x 282.05376p
+t>
+File: figures/pores_2/convergence_history_bit_0.png Graphic file (type png)
+ <use figures/pores_2/convergence_history_bit_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_bit_0.png used on 
+input line 87.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_bit_1.png, id=392, 395.4775pt x 282.05376p
+t>
+File: figures/pores_2/convergence_history_bit_1.png Graphic file (type png)
+ <use figures/pores_2/convergence_history_bit_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_bit_1.png used on 
+input line 93.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_bit_2.png, id=393, 395.4775pt x 282.05376p
+t>
+File: figures/pores_2/convergence_history_bit_2.png Graphic file (type png)
+ <use figures/pores_2/convergence_history_bit_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_bit_2.png used on 
+input line 99.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_0' on page 8 undefined on 
+input line 105.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_1' on page 8 undefined on 
+input line 105.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_2' on page 8 undefined on 
+input line 105.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_0' on page 8 undefined on 
+input line 105.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_1' on page 8 undefined on 
+input line 105.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_bit_2' on page 8 undefined on 
+input line 105.
+
+! Preview: Snippet 85 ended.(36183368+0x27410673).
+<-><->
+      
+l.106 \end{figure}
+                  
+Not a real error.
+
+[85
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.106 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.106 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.106 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.106 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.106 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_bit_0.png> <./figures/gre_216a/converg
+ence_history_bit_1.png> <./figures/gre_216a/convergence_history_bit_2.png> <./f
+igures/pores_2/convergence_history_bit_0.png> <./figures/pores_2/convergence_hi
+story_bit_1.png> <./figures/pores_2/convergence_history_bit_2.png>]
+
+LaTeX Warning: Reference `fig:conv_hist_iteration' on page 8 undefined on input
+ line 110.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_0' on page 8 undefin
+ed on input line 110.
+
+! Preview: Snippet 86 started.
+<-><->
+      
+l.110 ...iteration_0}, the fault occurred on the $
+                                                  1^{st}$ iteration and the ...
+
+Not a real error.
+
+! Preview: Snippet 86 ended.(519994+0x805777).
+<-><->
+      
+l.110 ...on_0}, the fault occurred on the $1^{st}$
+                                                   iteration and the executi...
+
+Not a real error.
+
+[86]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_1' on page 8 undefin
+ed on input line 110.
+
+! Preview: Snippet 87 started.
+<-><->
+      
+l.110 ...t_iteration_1}, the fault occurs on the $
+                                                  61^{st}$ iteration and the...
+
+Not a real error.
+
+! Preview: Snippet 87 ended.(519994+0x1133458).
+<-><->
+      
+l.110 ...ion_1}, the fault occurs on the $61^{st}$
+                                                   iteration and the converg...
+
+Not a real error.
+
+[87]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_2' on page 8 undefin
+ed on input line 110.
+
+! Preview: Snippet 88 started.
+<-><->
+      
+l.110 ...st_iteration_2} the fault occurs on the $
+                                                  121^{st}$ iteration and th...
+
+Not a real error.
+
+! Preview: Snippet 88 ended.(519994+0x1461139).
+<-><->
+      
+l.110 ...ion_2} the fault occurs on the $121^{st}$
+                                                   iteration and the executi...
+
+Not a real error.
+
+[88]
+! Preview: Snippet 89 started.
+<-><->
+      
+l.117 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_iteration_0.png, id=416, 425.59pt x 282.0
+5376pt>
+File: figures/gre_216a/convergence_history_iteration_0.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_iteration_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_iteration_0.png u
+sed on input line 134.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_iteration_1.png, id=417, 425.59pt x 282.0
+5376pt>
+File: figures/gre_216a/convergence_history_iteration_1.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_iteration_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_iteration_1.png u
+sed on input line 140.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_iteration_2.png, id=418, 425.59pt x 282.0
+5376pt>
+File: figures/gre_216a/convergence_history_iteration_2.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_iteration_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_iteration_2.png u
+sed on input line 146.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_iteration_0.png, id=419, 425.59pt x 282.05
+376pt>
+File: figures/pores_2/convergence_history_iteration_0.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_iteration_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_iteration_0.png us
+ed on input line 154.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_iteration_1.png, id=420, 425.59pt x 282.05
+376pt>
+File: figures/pores_2/convergence_history_iteration_1.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_iteration_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_iteration_1.png us
+ed on input line 160.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_iteration_2.png, id=421, 425.59pt x 282.05
+376pt>
+File: figures/pores_2/convergence_history_iteration_2.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_iteration_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_iteration_2.png us
+ed on input line 166.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_0' on page 8 undefin
+ed on input line 172.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_1' on page 8 undefin
+ed on input line 172.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_2' on page 8 undefin
+ed on input line 172.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_0' on page 8 undefin
+ed on input line 172.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_1' on page 8 undefin
+ed on input line 172.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_iteration_2' on page 8 undefin
+ed on input line 172.
+
+! Preview: Snippet 89 ended.(34191509+0x27410673).
+<-><->
+      
+l.173 \end{figure}
+                  
+Not a real error.
+
+[89
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.173 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.173 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.173 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.173 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
+s been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.173 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_iteration_0.png> <./figures/gre_216a/c
+onvergence_history_iteration_1.png> <./figures/gre_216a/convergence_history_ite
+ration_2.png> <./figures/pores_2/convergence_history_iteration_0.png> <./figure
+s/pores_2/convergence_history_iteration_1.png> <./figures/pores_2/convergence_h
+istory_iteration_2.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:conv_hist_register' on page 8 undefined on input 
+line 178.
+
+! Preview: Snippet 90 started.
+<-><->
+      
+l.178 ...tioned-GMRES disrupted by a bit-flip on $
+                                                  reg_1$, $reg_2$ and $reg_3...
+
+Not a real error.
+
+! Preview: Snippet 90 ended.(282168+127431x1225618).
+<-><->
+      
+l.178 ...-GMRES disrupted by a bit-flip on $reg_1$
+                                                  , $reg_2$ and $reg_3$, and...
+
+Not a real error.
+
+[90]
+! Preview: Snippet 91 started.
+<-><->
+      
+l.178 ...RES disrupted by a bit-flip on $reg_1$, $
+                                                  reg_2$ and $reg_3$, and Fi...
+
+Not a real error.
+
+! Preview: Snippet 91 ended.(282168+127431x1225618).
+<-><->
+      
+l.178 ...srupted by a bit-flip on $reg_1$, $reg_2$
+                                                   and $reg_3$, and Figure \...
+
+Not a real error.
+
+[91]
+! Preview: Snippet 92 started.
+<-><->
+      
+l.178 ...d by a bit-flip on $reg_1$, $reg_2$ and $
+                                                  reg_3$, and Figure \ref{fi...
+
+Not a real error.
+
+! Preview: Snippet 92 ended.(282168+127431x1225618).
+<-><->
+      
+l.178 ... bit-flip on $reg_1$, $reg_2$ and $reg_3$
+                                                  , and Figure \ref{fig:conv...
+
+Not a real error.
+
+[92]
+
+LaTeX Warning: Reference `fig:conv_hist_location' on page 8 undefined on input 
+line 178.
+
+! Preview: Snippet 93 started.
+<-><->
+      
+l.182 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_register_0.png, id=443, 425.59pt x 282.05
+376pt>
+File: figures/gre_216a/convergence_history_register_0.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_register_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_register_0.png us
+ed on input line 199.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_register_1.png, id=444, 425.59pt x 282.05
+376pt>
+File: figures/gre_216a/convergence_history_register_1.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_register_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_register_1.png us
+ed on input line 205.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_register_2.png, id=445, 425.59pt x 282.05
+376pt>
+File: figures/gre_216a/convergence_history_register_2.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_register_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_register_2.png us
+ed on input line 211.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_register_0.png, id=446, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_register_0.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_register_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_register_0.png use
+d on input line 219.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_register_1.png, id=447, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_register_1.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_register_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_register_1.png use
+d on input line 225.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_register_2.png, id=448, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_register_2.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_register_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_register_2.png use
+d on input line 231.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+! Preview: Snippet 93 ended.(33405077+0x27410673).
+<-><->
+      
+l.238 \end{figure}
+                  
+Not a real error.
+
+[93
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.238 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.238 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.238 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.238 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.238 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_register_0.png> <./figures/gre_216a/co
+nvergence_history_register_1.png> <./figures/gre_216a/convergence_history_regis
+ter_2.png> <./figures/pores_2/convergence_history_register_0.png> <./figures/po
+res_2/convergence_history_register_1.png> <./figures/pores_2/convergence_histor
+y_register_2.png>]
+! Preview: Snippet 94 started.
+<-><->
+      
+l.246 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_location_0.png, id=462, 425.59pt x 282.05
+376pt>
+File: figures/gre_216a/convergence_history_location_0.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_location_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_location_0.png us
+ed on input line 263.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_location_1.png, id=463, 425.59pt x 282.05
+376pt>
+File: figures/gre_216a/convergence_history_location_1.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_location_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_location_1.png us
+ed on input line 269.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_location_2.png, id=464, 425.59pt x 282.05
+376pt>
+File: figures/gre_216a/convergence_history_location_2.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_location_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_location_2.png us
+ed on input line 275.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_location_0.png, id=465, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_location_0.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_location_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_location_0.png use
+d on input line 283.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_location_1.png, id=466, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_location_1.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_location_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_location_1.png use
+d on input line 289.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_location_2.png, id=467, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_location_2.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_location_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_location_2.png use
+d on input line 295.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+! Preview: Snippet 94 ended.(33405077+0x27410673).
+<-><->
+      
+l.302 \end{figure}
+                  
+Not a real error.
+
+[94
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.302 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.302 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.302 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.302 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.302 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_location_0.png> <./figures/gre_216a/co
+nvergence_history_location_1.png> <./figures/gre_216a/convergence_history_locat
+ion_2.png> <./figures/pores_2/convergence_history_location_0.png> <./figures/po
+res_2/convergence_history_location_1.png> <./figures/pores_2/convergence_histor
+y_location_2.png>]
+! Preview: Snippet 95 started.
+<-><->
+      
+l.305 \subsection
+                 {Quantitative results}
+Not a real error.
+
+! Preview: Snippet 95 ended.(542724+152880x27410673).
+<-><->
+      
+l.305 \subsection{Quantitative results}
+                                       
+Not a real error.
+
+[95
+
+]
+
+LaTeX Warning: Reference `fig:bit_iteration' on page 9 undefined on input line 
+307.
+
+! Preview: Snippet 96 started.
+<-><->
+      
+l.307 ... - one for each couple (iteration fault $
+                                                  \times$ bit flipped) while...
+
+Not a real error.
+
+! Preview: Snippet 96 ended.(382293+54613x509726).
+<-><->
+      
+l.307 ...for each couple (iteration fault $\times$
+                                                   bit flipped) while the ot...
+
+Not a real error.
+
+[96]
+! Preview: Snippet 97 started.
+<-><->
+      
+l.314 \begin{figure}
+                    [ht]
+Not a real error.
+
+<figures/gre_216a/bit_iteration_0.png, id=486, 388.45125pt x 266.9975pt>
+File: figures/gre_216a/bit_iteration_0.png Graphic file (type png)
+
+<use figures/gre_216a/bit_iteration_0.png>
+Package pdftex.def Info: figures/gre_216a/bit_iteration_0.png used on input lin
+e 328.
+(pdftex.def)             Requested size: 209.12683pt x 143.74464pt.
+
+<figures/pores_2/bit_iteration_0.png, id=487, 388.45125pt x 266.9975pt>
+File: figures/pores_2/bit_iteration_0.png Graphic file (type png)
+
+<use figures/pores_2/bit_iteration_0.png>
+Package pdftex.def Info: figures/pores_2/bit_iteration_0.png used on input line
+ 335.
+(pdftex.def)             Requested size: 209.12683pt x 143.74464pt.
+
+<figures/gre_216a/bit_iteration_1.png, id=488, 388.45125pt x 266.9975pt>
+File: figures/gre_216a/bit_iteration_1.png Graphic file (type png)
+
+<use figures/gre_216a/bit_iteration_1.png>
+Package pdftex.def Info: figures/gre_216a/bit_iteration_1.png used on input lin
+e 342.
+(pdftex.def)             Requested size: 209.12683pt x 143.74464pt.
+
+<figures/pores_2/bit_iteration_1.png, id=489, 388.45125pt x 266.9975pt>
+File: figures/pores_2/bit_iteration_1.png Graphic file (type png)
+
+<use figures/pores_2/bit_iteration_1.png>
+Package pdftex.def Info: figures/pores_2/bit_iteration_1.png used on input line
+ 349.
+(pdftex.def)             Requested size: 209.12683pt x 143.74464pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_bit_iteration_0' on page 9 undefined on 
+input line 353.
+
+
+LaTeX Warning: Reference `fig:gre_216a_bit_iteration_1' on page 9 undefined on 
+input line 353.
+
+
+LaTeX Warning: Reference `fig:pores_2_bit_iteration_0' on page 9 undefined on i
+nput line 353.
+
+
+LaTeX Warning: Reference `fig:pores_2_bit_iteration_1' on page 9 undefined on i
+nput line 353.
+
+
+LaTeX Warning: Reference `fig:gre_216a_bit_iteration_0' on page 9 undefined on 
+input line 353.
+
+
+LaTeX Warning: Reference `fig:gre_216a_bit_iteration_1' on page 9 undefined on 
+input line 353.
+
+
+LaTeX Warning: Reference `fig:pores_2_bit_iteration_0' on page 9 undefined on i
+nput line 353.
+
+
+LaTeX Warning: Reference `fig:pores_2_bit_iteration_1' on page 9 undefined on i
+nput line 353.
+
+! Preview: Snippet 97 ended.(27064952+0x27410673).
+<-><->
+      
+l.355 \end{figure}
+                  
+Not a real error.
+
+[97
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.355 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.355 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.355 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/bit_iteration_0.png> <./figures/pores_2/bit_iteration_0.pn
+g> <./figures/gre_216a/bit_iteration_1.png> <./figures/pores_2/bit_iteration_1.
+png>]
+
+LaTeX Warning: Reference `fig:matrices_bit_iteration' on page 9 undefined on in
+put line 361.
+
+! Preview: Snippet 98 started.
+<-><->
+      
+l.366 \begin{figure}
+                    [ht]
+Not a real error.
+
+<figures/bit_iteration_0.png, id=502, 388.45125pt x 266.9975pt>
+File: figures/bit_iteration_0.png Graphic file (type png)
+
+<use figures/bit_iteration_0.png>
+Package pdftex.def Info: figures/bit_iteration_0.png used on input line 372.
+(pdftex.def)             Requested size: 209.12683pt x 143.74464pt.
+
+<figures/bit_iteration_1.png, id=503, 388.45125pt x 266.9975pt>
+File: figures/bit_iteration_1.png Graphic file (type png)
+
+<use figures/bit_iteration_1.png>
+Package pdftex.def Info: figures/bit_iteration_1.png used on input line 379.
+(pdftex.def)             Requested size: 209.12683pt x 143.74464pt.
+
+! Preview: Snippet 98 ended.(15187617+0x27410673).
+<-><->
+      
+l.386 \end{figure}
+                  
+Not a real error.
+
+[98
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.386 \end{figure}
+                  
+
+
+
+
+ <./figures/bit_iteration_0.png> <./figures/bit_iteration_1.png>]) (./section5.
+tex
+! Preview: Snippet 99 started.
+<-><->
+      
+l.1 \section
+            {Fault impact analysis}
+Not a real error.
+
+! Preview: Snippet 99 ended.(651269+183455x27410673).
+<-><->
+      
+l.1 \section{Fault impact analysis}
+                                   
+Not a real error.
+
+[99
+
+]
+
+LaTeX Warning: Reference `sec:empirical' on page 11 undefined on input line 2.
+
+
+LaTeX Warning: Reference `sec:propagation' on page 11 undefined on input line 2
+.
+
+
+LaTeX Warning: Reference `sec:quantify' on page 11 undefined on input line 2.
+
+
+LaTeX Warning: Reference `sec:prediction' on page 11 undefined on input line 2.
+
+
+! Preview: Snippet 100 started.
+<-><->
+      
+l.5 \subsection
+               {Error propagation}\label{sec:propagation}
+Not a real error.
+
+! Preview: Snippet 100 ended.(542724+152880x27410673).
+<-><->
+      
+l.5 \subsection{Error propagation}
+                                  \label{sec:propagation}
+Not a real error.
+
+[100
+
+]
+! Preview: Snippet 101 started.
+<-><->
+      
+l.6 At the fault iteration $
+                            i=f$, some variables become corrupted as illustr...
+
+Not a real error.
+
+! Preview: Snippet 101 ended.(455111+127431x1490984).
+<-><->
+      
+l.6 At the fault iteration $i=f$
+                                , some variables become corrupted as illustr...
+
+Not a real error.
+
+[101]
+
+LaTeX Warning: Reference `fig:error_propagation' on page 11 undefined on input 
+line 6.
+
+! Preview: Snippet 102 started.
+<-><->
+      
+l.6 ...}. At first, only one value in the vector $
+                                                  w = A \cdot v_f$ is errone...
+
+Not a real error.
+
+! Preview: Snippet 102 ended.(447828+187504x2982866).
+<-><->
+      
+l.6 ...y one value in the vector $w = A \cdot v_f$
+                                                   is erroneous, but this er...
+
+Not a real error.
+
+[102]
+! Preview: Snippet 103 started.
+<-><->
+      
+l.6 ...t), generating a wrong new arnoldi vector $
+                                                  v_{f+1}$ as well as a wron...
+
+Not a real error.
+
+! Preview: Snippet 103 ended.(282168+187504x1320967).
+<-><->
+      
+l.6 ...rating a wrong new arnoldi vector $v_{f+1}$
+                                                   as well as a wrong last c...
+
+Not a real error.
+
+[103]
+! Preview: Snippet 104 started.
+<-><->
+      
+l.6 ...rong last column in the Hessenberg matrix $
+                                                  H_{f+1}$, resulting in a d...
+
+Not a real error.
+
+! Preview: Snippet 104 ended.(447828+187504x1548067).
+<-><->
+      
+l.6 ...t column in the Hessenberg matrix $H_{f+1}$
+                                                  , resulting in a different...
+
+Not a real error.
+
+[104]
+! Preview: Snippet 105 started.
+<-><->
+      
+l.6 ...n. Moreover, the erroneous Arnoldi basis ($
+                                                  V_{f+1}$) and Hessenberg m...
+
+Not a real error.
+
+! Preview: Snippet 105 ended.(447828+187504x1385592).
+<-><->
+      
+l.6 ...ver, the erroneous Arnoldi basis ($V_{f+1}$
+                                                  ) and Hessenberg matrix ($...
+
+Not a real error.
+
+[105]
+! Preview: Snippet 106 started.
+<-><->
+      
+l.6 ... basis ($V_{f+1}$) and Hessenberg matrix ($
+                                                  H_{f+1}$) are used in the ...
+
+Not a real error.
+
+! Preview: Snippet 106 ended.(447828+187504x1548067).
+<-><->
+      
+l.6 ...$V_{f+1}$) and Hessenberg matrix ($H_{f+1}$
+                                                  ) are used in the next ite...
+
+Not a real error.
+
+[106]
+! Preview: Snippet 107 started.
+<-><->
+      
+l.7 \begin{figure}
+                  [h]
+Not a real error.
+
+<figures/error_propagation.pdf, id=539, 339.2675pt x 601.24625pt>
+File: figures/error_propagation.pdf Graphic file (type pdf)
+
+<use figures/error_propagation.pdf>
+Package pdftex.def Info: figures/error_propagation.pdf used on input line 9.
+(pdftex.def)             Requested size: 169.63333pt x 300.62238pt.
+
+! Preview: Snippet 107 ended.(21143380+0x27410673).
+<-><->
+      
+l.11 \end{figure}
+                 
+Not a real error.
+
+[107
+
+
+ <./figures/error_propagation.pdf>]
+! Preview: Snippet 108 started.
+<-><->
+      
+l.13 \subsection
+                {Error quantification}\label{sec:quantify}
+Not a real error.
+
+! Preview: Snippet 108 ended.(542724+152880x27410673).
+<-><->
+      
+l.13 \subsection{Error quantification}
+                                      \label{sec:quantify}
+Not a real error.
+
+[108
+
+]
+! Preview: Snippet 109 started.
+<-><->
+      
+l.14 ...eration are nested; that is at iteration $
+                                                  i$
+Not a real error.
+
+! Preview: Snippet 109 ended.(432226+0x225780).
+<-><->
+      
+l.14 ...ation are nested; that is at iteration $i$
+                                                  
+Not a real error.
+
+[109]
+! Preview: Snippet 110 started.
+<-><->
+      
+l.15 the leading part of $
+                          H_{i+1}$ is $H_i$ as well as for the right-hand si...
+
+Not a real error.
+
+! Preview: Snippet 110 ended.(447828+152917x1426511).
+<-><->
+      
+l.15 the leading part of $H_{i+1}$
+                                   is $H_i$ as well as for the right-hand si...
+
+Not a real error.
+
+[110]
+! Preview: Snippet 111 started.
+<-><->
+      
+l.15 the leading part of $H_{i+1}$ is $
+                                       H_i$ as well as for the right-hand si...
+
+Not a real error.
+
+! Preview: Snippet 111 ended.(447828+98303x762956).
+<-><->
+      
+l.15 the leading part of $H_{i+1}$ is $H_i$
+                                            as well as for the right-hand si...
+
+Not a real error.
+
+[111]
+! Preview: Snippet 112 started.
+<-><->
+      
+l.15 ...ed residual and the true residual (i.e., $
+                                                  \|\widetilde{r}_{\ell} - \...
+
+Not a real error.
+
+! Preview: Snippet 112 ended.(491520+163840x2703059).
+<-><->
+      
+l.15 ...\ell} - \widetilde{r}_{\ell}\textprime \|$
+                                                   becomes large), which may...
+
+Not a real error.
+
+[112]
+! Preview: Snippet 113 started.
+<-><->
+      
+l.15 ...from reaching the target accuracy. Since $
+                                                   \|\widetilde{r}_{\ell}\| ...
+
+Not a real error.
+
+! Preview: Snippet 113 ended.(491520+163840x6461982).
+<-><->
+      
+l.15 ...\| - \| \widetilde{r}_{\ell}\textprime \|$
+                                                   and $\|\widetilde{r}_\ell...
+
+Not a real error.
+
+[113]
+! Preview: Snippet 114 started.
+<-><->
+      
+l.15 ...| \widetilde{r}_{\ell}\textprime \|$ and $
+                                                  \|\widetilde{r}_\ell\textp...
+
+Not a real error.
+
+! Preview: Snippet 114 ended.(491520+163840x2519346).
+<-><->
+      
+l.15 ...etilde{r}_\ell\textprime \| \rightarrow 0$
+                                                  , we obtain that $\|\widet...
+
+Not a real error.
+
+[114]
+! Preview: Snippet 115 started.
+<-><->
+      
+l.15 ...tprime \| \rightarrow 0$, we obtain that $
+                                                  \|\widetilde{r}_{\ell}\| \...
+
+Not a real error.
+
+! Preview: Snippet 115 ended.(491520+163840x4743627).
+<-><->
+      
+l.15 ..._{\ell} - \widetilde{r}_\ell\textprime \|$
+                                                  , so if the error remains ...
+
+Not a real error.
+
+[115]
+! Preview: Snippet 116 started.
+<-><->
+      
+l.15 ...remains greater than the target accuracy $
+                                                  \varepsilon$, the executio...
+
+Not a real error.
+
+! Preview: Snippet 116 ended.(282168+0x305606).
+<-><->
+      
+l.15 ...ter than the target accuracy $\varepsilon$
+                                                  , the execution will not c...
+
+Not a real error.
+
+[116]
+! Preview: Snippet 117 started.
+<-><->
+      
+l.15 ...onverge. The error measured at iteration $
+                                                  \ell$ is called the residu...
+
+Not a real error.
+
+! Preview: Snippet 117 ended.(455111+0x273068).
+<-><->
+      
+l.15 ...ge. The error measured at iteration $\ell$
+                                                   is called the residual ga...
+
+Not a real error.
+
+[117]
+! Preview: Snippet 118 started.
+<-><->
+      
+l.15 ... is called the residual gap at iteration $
+                                                  \ell$, denoted $\delta(\el...
+
+Not a real error.
+
+! Preview: Snippet 118 ended.(455111+0x273068).
+<-><->
+      
+l.15 ...alled the residual gap at iteration $\ell$
+                                                  , denoted $\delta(\ell)$.
+Not a real error.
+
+[118]
+! Preview: Snippet 119 started.
+<-><->
+      
+l.15 ...esidual gap at iteration $\ell$, denoted $
+                                                  \delta(\ell)$.
+Not a real error.
+
+! Preview: Snippet 119 ended.(491520+163840x1098868).
+<-><->
+      
+l.15 ...t iteration $\ell$, denoted $\delta(\ell)$
+                                                  .
+Not a real error.
+
+[119]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_delta' on page 11 undefined on
+ input line 16.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_delta' on page 11 undefined on 
+input line 16.
+
+! Preview: Snippet 120 started.
+<-><->
+      
+l.17 The red curve, the true residual $
+                                       \|\widetilde{r}_{\ell}\|$, and the li...
+
+Not a real error.
+
+! Preview: Snippet 120 ended.(491520+163840x1203167).
+<-><->
+      
+l.17 ...e true residual $\|\widetilde{r}_{\ell}\|$
+                                                  , and the light blue curve...
+
+Not a real error.
+
+[120]
+! Preview: Snippet 121 started.
+<-><->
+      
+l.17 ...d the light blue curve, the residual gap $
+                                                  \delta(\ell)$, get closer ...
+
+Not a real error.
+
+! Preview: Snippet 121 ended.(491520+163840x1098868).
+<-><->
+      
+l.17 ...lue curve, the residual gap $\delta(\ell)$
+                                                  , get closer and closer as...
+
+Not a real error.
+
+[121]
+! Preview: Snippet 122 started.
+<-><->
+      
+l.17 ...s the green curve, the computed residual $
+                                                  \|\widetilde{r}\textprime_...
+
+Not a real error.
+
+! Preview: Snippet 122 ended.(491520+163840x1372469).
+<-><->
+      
+l.17 ...idual $\|\widetilde{r}\textprime_{\ell}\|$
+                                                  , is reduced down to the m...
+
+Not a real error.
+
+[122]
+! Preview: Snippet 123 started.
+<-><->
+      
+l.24 \begin{figure}
+                   [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_delta.png, id=596, 404.51125pt x 282.0537
+6pt>
+File: figures/gre_216a/convergence_history_delta.png Graphic file (type png)
+ <use figures/gre_216a/convergence_history_delta.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_delta.png used on
+ input line 28.
+(pdftex.def)             Requested size: 207.03531pt x 144.36195pt.
+
+<figures/pores_2/convergence_history_delta.png, id=597, 395.4775pt x 282.05376p
+t>
+File: figures/pores_2/convergence_history_delta.png Graphic file (type png)
+ <use figures/pores_2/convergence_history_delta.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_delta.png used on 
+input line 34.
+(pdftex.def)             Requested size: 207.03531pt x 147.65866pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_delta' on page 11 undefined on
+ input line 37.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_delta' on page 11 undefined on 
+input line 37.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_delta' on page 11 undefined on
+ input line 37.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_delta' on page 11 undefined on 
+input line 37.
+
+! Preview: Snippet 123 ended.(13569794+235932x27410673).
+<-><->
+      
+l.38 \end{figure}
+                 
+Not a real error.
+
+[123
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.38 \end{figure}
+                 
+
+
+
+ <./figures/gre_216a/convergence_history_delta.png> <./figures/pores_2/converge
+nce_history_delta.png>]
+
+LaTeX Warning: Citation `sisz:03' on page 11 undefined on input line 44.
+
+! Preview: Snippet 124 started.
+<-><->
+      
+l.44 ...m deviation assuming that a perturbation $
+                                                  E_i$ is applied to the SpM...
+
+Not a real error.
+
+! Preview: Snippet 124 ended.(447828+98303x701971).
+<-><->
+      
+l.44 ...viation assuming that a perturbation $E_i$
+                                                   is applied to the SpMV pr...
+
+Not a real error.
+
+[124]
+! Preview: Snippet 125 started.
+<-><->
+      
+l.45 iteration $
+                i$.
+Not a real error.
+
+! Preview: Snippet 125 ended.(432226+0x225780).
+<-><->
+      
+l.45 iteration $i$
+                  .
+Not a real error.
+
+[125]
+! Preview: Snippet 126 started.
+<-><->
+      
+l.46 \begin{equation}
+                     \label{inexact_krylov}
+Not a real error.
+
+! Preview: Snippet 126 ended.(2042088+0x27410673).
+<-><->
+      
+l.48  \end{equation}
+                    
+Not a real error.
+
+[126
+
+]
+! Preview: Snippet 127 started.
+<-><->
+      
+l.50 ...nt fault is considered as a perturbation $
+                                                  E_f$ that only occurs once...
+
+Not a real error.
+
+! Preview: Snippet 127 ended.(447828+187504x823527).
+<-><->
+      
+l.50 ...ault is considered as a perturbation $E_f$
+                                                   that only occurs once at ...
+
+Not a real error.
+
+[127]
+! Preview: Snippet 128 started.
+<-><->
+      
+l.50 ...ation $E_f$ that only occurs once at the $
+                                                  f^{th}$ iteration, special...
+
+Not a real error.
+
+! Preview: Snippet 128 ended.(556402+127431x928963).
+<-><->
+      
+l.50 ...E_f$ that only occurs once at the $f^{th}$
+                                                   iteration, specializing t...
+
+Not a real error.
+
+[128]
+
+LaTeX Warning: Citation `sisz:03' on page 11 undefined on input line 50.
+
+! Preview: Snippet 129 started.
+<-><->
+      
+l.51 \begin{equation}
+                     \label{inexact_krylov_adapted}
+Not a real error.
+
+! Preview: Snippet 129 ended.(679024+0x27410673).
+<-><->
+      
+l.53  \end{equation}
+                    
+Not a real error.
+
+[129
+
+]
+! Preview: Snippet 130 started.
+<-><->
+      
+l.55 ...ation that links the residual gap to the $
+                                                  \widetilde{y}_{\ell, f}$ e...
+
+Not a real error.
+
+! Preview: Snippet 130 ended.(473316+187504x1036069).
+<-><->
+      
+l.55 ...idual gap to the $\widetilde{y}_{\ell, f}$
+                                                   evolution and the error i...
+
+Not a real error.
+
+[130]
+! Preview: Snippet 131 started.
+<-><->
+      
+l.55 ...on and the error introduced by the fault $
+                                                  \|E_f \cdot v_f\| = \|A \c...
+
+Not a real error.
+
+! Preview: Snippet 131 ended.(638976+187504x13095294).
+<-><->
+      
+l.55 ...}\| = \|{w}_{f+1} - \widetilde{w}_{f+1}\|$
+                                                   :
+Not a real error.
+
+[131]
+! Preview: Snippet 132 started.
+<-><->
+      
+l.56 \begin{equation}
+                     \label{eqn:delta}
+Not a real error.
+
+! Preview: Snippet 132 ended.(679024+0x27410673).
+<-><->
+      
+l.58 \end{equation}
+                   
+Not a real error.
+
+[132
+
+]
+! Preview: Snippet 133 started.
+<-><->
+      
+l.59 where  $
+             w_{f+1}$ is the $f+1^{th}$ Arnoldi vector before orthonormaliza...
+
+Not a real error.
+
+! Preview: Snippet 133 ended.(282168+187504x1472482).
+<-><->
+      
+l.59 where  $w_{f+1}$
+                      is the $f+1^{th}$ Arnoldi vector before orthonormaliza...
+
+Not a real error.
+
+[133]
+! Preview: Snippet 134 started.
+<-><->
+      
+l.59 where  $w_{f+1}$ is the $
+                              f+1^{th}$ Arnoldi vector before orthonormaliza...
+
+Not a real error.
+
+! Preview: Snippet 134 ended.(556402+127431x2057634).
+<-><->
+      
+l.59 where  $w_{f+1}$ is the $f+1^{th}$
+                                        Arnoldi vector before orthonormaliza...
+
+Not a real error.
+
+[134]
+! Preview: Snippet 135 started.
+<-><->
+      
+l.59 ...ldi vector before orthonormalization and $
+                                                  \widetilde{y}_{\ell, f}$ i...
+
+Not a real error.
+
+! Preview: Snippet 135 ended.(473316+187504x1036069).
+<-><->
+      
+l.59 ...ormalization and $\widetilde{y}_{\ell, f}$
+                                                   is the $f^{th}$ component...
+
+Not a real error.
+
+[135]
+! Preview: Snippet 136 started.
+<-><->
+      
+l.59 ...ion and $\widetilde{y}_{\ell, f}$ is the $
+                                                  f^{th}$ component of the $...
+
+Not a real error.
+
+! Preview: Snippet 136 ended.(556402+127431x928963).
+<-><->
+      
+l.59 ... $\widetilde{y}_{\ell, f}$ is the $f^{th}$
+                                                   component of the $\ell^{t...
+
+Not a real error.
+
+[136]
+! Preview: Snippet 137 started.
+<-><->
+      
+l.59 ...ll, f}$ is the $f^{th}$ component of the $
+                                                  \ell^{th}$ least square pr...
+
+Not a real error.
+
+! Preview: Snippet 137 ended.(556402+0x810633).
+<-><->
+      
+l.59 ... the $f^{th}$ component of the $\ell^{th}$
+                                                   least square problem solu...
+
+Not a real error.
+
+[137]
+! Preview: Snippet 138 started.
+<-><->
+      
+l.59 ...\ell^{th}$ least square problem solution $
+                                                  \widetilde{y}_\ell=\argmin...
+
+Not a real error.
+
+! Preview: Snippet 138 ended.(491520+249399x7636853).
+<-><->
+      
+l.59 ...}}}\|\beta e_1 - H_{\ell} \mathbf{y_{}}\|$
+                                                  .
+Not a real error.
+
+[138]
+! Preview: Snippet 139 started.
+<-><->
+      
+l.61 \subsection
+                {Prediction of the fault impact}\label{sec:prediction}
+Not a real error.
+
+! Preview: Snippet 139 ended.(542724+152880x27410673).
+<-><->
+      
+l.61 \subsection{Prediction of the fault impact}
+                                                \label{sec:prediction}
+Not a real error.
+
+[139
+
+]
+
+LaTeX Warning: Reference `sec:empirical' on page 11 undefined on input line 62.
+
+
+
+LaTeX Warning: Reference `theorem' on page 11 undefined on input line 65.
+
+! Preview: Snippet 140 started.
+<-><->
+      
+l.65 ... in the form of a threshold on the error $
+                                                  \|{w}_{f+1} - \widetilde{w...
+
+Not a real error.
+
+! Preview: Snippet 140 ended.(491520+187504x4401316).
+<-><->
+      
+l.65 ...rror $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$
+                                                   to ensure that a fault is...
+
+Not a real error.
+
+[140]
+
+LaTeX Warning: Reference `eqn:delta' on page 11 undefined on input line 66.
+
+
+LaTeX Warning: Citation `sisz:03' on page 11 undefined on input line 66.
+
+
+LaTeX Warning: Citation `DBLP:journals/siamsc/GiraudGL07' on page 11 undefined 
+on input line 67.
+
+! Preview: Snippet 141 started.
+<-><->
+      
+l.69 Let $
+          0 < c < 1$ and let a GMRES execution using $(1-c) \varepsilon$ as ...
+
+Not a real error.
+
+! Preview: Snippet 141 ended.(422343+25623x2686585).
+<-><->
+      
+l.69 Let $0 < c < 1$
+                     and let a GMRES execution using $(1-c) \varepsilon$ as ...
+
+Not a real error.
+
+[141]
+! Preview: Snippet 142 started.
+<-><->
+      
+l.69 ...< c < 1$ and let a GMRES execution using $
+                                                  (1-c) \varepsilon$ as the ...
+
+Not a real error.
+
+! Preview: Snippet 142 ended.(491520+163840x2227614).
+<-><->
+      
+l.69 ... GMRES execution using $(1-c) \varepsilon$
+                                                   as the target accuracy, t...
+
+Not a real error.
+
+[142]
+! Preview: Snippet 143 started.
+<-><->
+      
+l.69 ...$ as the target accuracy, terminating in $
+                                                  \ell$ iterations and disru...
+
+Not a real error.
+
+! Preview: Snippet 143 ended.(455111+0x273068).
+<-><->
+      
+l.69 ...the target accuracy, terminating in $\ell$
+                                                   iterations and disrupted ...
+
+Not a real error.
+
+[143]
+! Preview: Snippet 144 started.
+<-><->
+      
+l.69 ...ns and disrupted by a fault at iteration $
+                                                  f < \ell$. In exact arithm...
+
+Not a real error.
+
+! Preview: Snippet 144 ended.(455111+127431x1538272).
+<-><->
+      
+l.69 ...srupted by a fault at iteration $f < \ell$
+                                                  . In exact arithmetic, if ...
+
+Not a real error.
+
+[144]
+! Preview: Snippet 145 started.
+<-><->
+      
+l.69 ...tion $f < \ell$. In exact arithmetic, if $
+                                                  \|{w}_{f+1} - \widetilde{w...
+
+Not a real error.
+
+! Preview: Snippet 145 ended.(491520+187504x9820450).
+<-><->
+      
+l.69 ... \varepsilon) / |\widetilde{y}_{\ell, f}|$
+                                                   then the execution conver...
+
+Not a real error.
+
+[145]
+! Preview: Snippet 146 started.
+<-><->
+      
+l.69 ...ecution converges to the target accuracy $
+                                                  \varepsilon$.
+Not a real error.
+
+! Preview: Snippet 146 ended.(282168+0x305606).
+<-><->
+      
+l.69 ...erges to the target accuracy $\varepsilon$
+                                                  .
+Not a real error.
+
+[146]
+! Preview: Snippet 147 started.
+<-><->
+      
+l.72 The purpose of the $
+                         c$ parameter is to bound the true residual norm as ...
+
+Not a real error.
+
+! Preview: Snippet 147 ended.(282168+0x283611).
+<-><->
+      
+l.72 The purpose of the $c$
+                            parameter is to bound the true residual norm as ...
+
+Not a real error.
+
+[147]
+! Preview: Snippet 148 started.
+<-><->
+      
+l.73 Since the GMRES execution terminates in $
+                                              \ell$ iterations for the targe...
+
+Not a real error.
+
+! Preview: Snippet 148 ended.(455111+0x273068).
+<-><->
+      
+l.73 ...e the GMRES execution terminates in $\ell$
+                                                   iterations for the target...
+
+Not a real error.
+
+[148]
+! Preview: Snippet 149 started.
+<-><->
+      
+l.73 ...\ell$ iterations for the target accuracy $
+                                                  (1 - c) \varepsilon$ $$\|\...
+
+Not a real error.
+
+! Preview: Snippet 149 ended.(491520+163840x2227614).
+<-><->
+      
+l.73 ... the target accuracy $(1 - c) \varepsilon$
+                                                   $$\|\widetilde{r}\textpri...
+
+Not a real error.
+
+[149]
+! Preview: Snippet 150 started.
+<-><->
+      
+l.73 ...he target accuracy $(1 - c) \varepsilon$ $
+                                                  $\|\widetilde{r}\textprime...
+
+Not a real error.
+
+! Preview: Snippet 150 ended.(950272+0x27410673).
+<-><->
+      
+l.73 ...tprime_{\ell}\| \leq (1 - c) \varepsilon$$
+                                                  
+Not a real error.
+
+[150]
+
+LaTeX Warning: Reference `eqn:delta' on page 12 undefined on input line 74.
+
+
+LaTeX Warning: Citation `DBLP:journals/siamsc/GiraudGL07' on page 12 undefined 
+on input line 74.
+
+! Preview: Snippet 151 started.
+<-><->
+      
+l.74 ...als/siamsc/GiraudGL07} and the criterion $
+                                                  \|{w}_{f+1} - \widetilde{w...
+
+Not a real error.
+
+! Preview: Snippet 151 ended.(491520+359251x6468935).
+<-><->
+      
+l.74 ...t \varepsilon}{|\widetilde{y}_{\ell, f}|}$
+                                                   :
+Not a real error.
+
+[151]
+! Preview: Snippet 152 started.
+<-><->
+      
+l.76 \begin{equation}
+                     
+Not a real error.
+
+! Preview: Snippet 152 ended.(3735552+0x27410673).
+<-><->
+      
+l.85 \end{equation}
+                   
+Not a real error.
+
+[152]
+! Preview: Snippet 153 started.
+<-><->
+      
+l.86 ...n has converged with the target accuracy $
+                                                  \varepsilon$.
+Not a real error.
+
+! Preview: Snippet 153 ended.(282168+0x305606).
+<-><->
+      
+l.86 ...ged with the target accuracy $\varepsilon$
+                                                  .
+Not a real error.
+
+[153]
+! Preview: Snippet 154 started.
+<-><->
+      
+l.88 Let $
+          0 < c < 1$, and a faulty execution whose target accuracy is set to...
+
+Not a real error.
+
+! Preview: Snippet 154 ended.(422343+25623x2686585).
+<-><->
+      
+l.88 Let $0 < c < 1$
+                    , and a faulty execution whose target accuracy is set to...
+
+Not a real error.
+
+[154]
+! Preview: Snippet 155 started.
+<-><->
+      
+l.88 ...xecution whose target accuracy is set to $
+                                                  (1 - c) \cdot \varepsilon$...
+
+Not a real error.
+
+! Preview: Snippet 155 ended.(491520+163840x2700923).
+<-><->
+      
+l.88 ...racy is set to $(1 - c) \cdot \varepsilon$
+                                                  . Using Theorem~\ref{theor...
+
+Not a real error.
+
+[155]
+
+LaTeX Warning: Reference `theorem' on page 12 undefined on input line 88.
+
+! Preview: Snippet 156 started.
+<-><->
+      
+l.88 ...ault will not disrupt the convergence to $
+                                                  \varepsilon$ by computing ...
+
+Not a real error.
+
+! Preview: Snippet 156 ended.(282168+0x305606).
+<-><->
+      
+l.88 ...t disrupt the convergence to $\varepsilon$
+                                                   by computing the followin...
+
+Not a real error.
+
+[156]
+! Preview: Snippet 157 started.
+<-><->
+      
+l.89 \begin{equation}
+                     
+Not a real error.
+
+! Preview: Snippet 157 ended.(679024+0x27410673).
+<-><->
+      
+l.91 \end{equation}
+                   \label{scheme_oracle}
+Not a real error.
+
+[157]
+! Preview: Snippet 158 started.
+<-><->
+      
+l.92 ...ion must converge to the target accuracy $
+                                                  \varepsilon$ according to ...
+
+Not a real error.
+
+! Preview: Snippet 158 ended.(282168+0x305606).
+<-><->
+      
+l.92 ...verge to the target accuracy $\varepsilon$
+                                                   according to Theorem \ref...
+
+Not a real error.
+
+[158]
+
+LaTeX Warning: Reference `theorem' on page 12 undefined on input line 92.
+
+! Preview: Snippet 159 started.
+<-><->
+      
+l.171  \subsection
+                  {Numerical experiment}
+Not a real error.
+
+! Preview: Snippet 159 ended.(542724+152880x27410673).
+<-><->
+      
+l.171  \subsection{Numerical experiment}
+                                        
+Not a real error.
+
+[159
+
+]
+
+LaTeX Warning: Reference `fig:detection' on page 12 undefined on input line 172
+.
+
+! Preview: Snippet 160 started.
+<-><->
+      
+l.176 \begin{figure}
+                    [h]
+Not a real error.
+
+File: figures/gre_216a/convergence_history_location_0.png Graphic file (type pn
+g)
+<use figures/gre_216a/convergence_history_location_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_location_0.png us
+ed on input line 193.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+File: figures/gre_216a/convergence_history_location_1.png Graphic file (type pn
+g)
+
+<use figures/gre_216a/convergence_history_location_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_location_1.png us
+ed on input line 199.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+File: figures/gre_216a/convergence_history_location_2.png Graphic file (type pn
+g)
+
+<use figures/gre_216a/convergence_history_location_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_location_2.png us
+ed on input line 205.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+File: figures/pores_2/convergence_history_location_0.png Graphic file (type png
+)
+
+<use figures/pores_2/convergence_history_location_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_location_0.png use
+d on input line 213.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+File: figures/pores_2/convergence_history_location_1.png Graphic file (type png
+)
+
+<use figures/pores_2/convergence_history_location_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_location_1.png use
+d on input line 219.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+File: figures/pores_2/convergence_history_location_2.png Graphic file (type png
+)
+
+<use figures/pores_2/convergence_history_location_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_location_2.png use
+d on input line 225.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+! Preview: Snippet 160 ended.(33405077+0x27410673).
+<-><->
+      
+l.232 \end{figure}
+                  
+Not a real error.
+
+[160
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.232 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.232 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.232 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.232 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.232 \end{figure}
+                  
+
+
+
+
+]) (./section6.tex
+! Preview: Snippet 161 started.
+<-><->
+      
+l.1 \section
+            {Oracle-based scheme for the detection of faults}\label{sec:faul...
+
+Not a real error.
+
+! Preview: Snippet 161 ended.(651269+0x27410673).
+<-><->
+      
+l.1 ...e-based scheme for the detection of faults}
+                                                  \label{sec:faultDetection}
+Not a real error.
+
+[161
+
+]
+
+LaTeX Warning: Reference `sec:prediction' on page 13 undefined on input line 2.
+
+
+
+LaTeX Warning: Reference `sec:detection_oracle' on page 13 undefined on input l
+ine 2.
+
+
+LaTeX Warning: Reference `sec:evaluation_oracle' on page 13 undefined on input 
+line 2.
+
+! Preview: Snippet 162 started.
+<-><->
+      
+l.4 \subsection
+               {Description of the detection scheme} \label{sec:detection_or...
+
+Not a real error.
+
+! Preview: Snippet 162 ended.(542724+152880x27410673).
+<-><->
+      
+l.4 ...ection{Description of the detection scheme}
+                                                   \label{sec:detection_oracle}
+
+Not a real error.
+
+[162
+
+]
+! Preview: Snippet 163 started.
+<-><->
+      
+l.7 Let $
+         0 < c < 1 $. This detection scheme would be as follow:
+Not a real error.
+
+! Preview: Snippet 163 ended.(422343+25623x2686585).
+<-><->
+      
+l.7 Let $0 < c < 1 $
+                    . This detection scheme would be as follow:
+Not a real error.
+
+[163]
+! Preview: Snippet 164 started.
+<-><->
+      
+l.9 \item Set the target accuracy to $
+                                      (1-c) \cdot \varepsilon$.
+Not a real error.
+
+! Preview: Snippet 164 ended.(491520+163840x2700923).
+<-><->
+      
+l.9 ...arget accuracy to $(1-c) \cdot \varepsilon$
+                                                  .
+Not a real error.
+
+[164]
+! Preview: Snippet 165 started.
+<-><->
+      
+l.10 \item At the fault iteration $
+                                   f$, perform the following test:
+Not a real error.
+
+! Preview: Snippet 165 ended.(455111+127431x391398).
+<-><->
+      
+l.10 \item At the fault iteration $f$
+                                     , perform the following test:
+Not a real error.
+
+[165]
+! Preview: Snippet 166 started.
+<-><->
+      
+l.12 \begin{equation}
+                     
+Not a real error.
+
+! Preview: Snippet 166 ended.(679024+0x27410673).
+<-><->
+      
+l.14 \end{equation}
+                   \label{detection_scheme_oracle}
+Not a real error.
+
+[166]
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 13 undefined on i
+nput line 19.
+
+! Preview: Snippet 167 started.
+<-><->
+      
+l.21 \begin{table}
+                  [h]
+Not a real error.
+
+! Preview: Snippet 167 ended.(2877030+1042022x27410673).
+<-><->
+      
+l.33 \end{table}
+                
+Not a real error.
+
+[167
+
+
+]
+
+LaTeX Warning: Reference `fig:conv_hist_detection_correct' on page 13 undefined
+ on input line 35.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_theoretical_detection_0' on pa
+ge 13 undefined on input line 35.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_theoretical_detection_0' on pag
+e 13 undefined on input line 36.
+
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 13 undefined on i
+nput line 36.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_theoretical_detection_1' on pa
+ge 13 undefined on input line 36.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_theoretical_detection_1' on pag
+e 13 undefined on input line 37.
+
+! Preview: Snippet 168 started.
+<-><->
+      
+l.37 ... the error is greater than the threshold $
+                                                  \tau_{0.5}$ at the fault i...
+
+Not a real error.
+
+! Preview: Snippet 168 ended.(282168+98303x997379).
+<-><->
+      
+l.37 ...is greater than the threshold $\tau_{0.5}$
+                                                   at the fault iteration an...
+
+Not a real error.
+
+[168]
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 13 undefined on i
+nput line 37.
+
+! Preview: Snippet 169 started.
+<-><->
+      
+l.44 \begin{figure}
+                   [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_theoretical_detection_1_1.png, id=762, 39
+5.4775pt x 282.05376pt>
+File: figures/gre_216a/convergence_history_theoretical_detection_1_1.png Graphi
+c file (type png)
+
+<use figures/gre_216a/convergence_history_theoretical_detection_1_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_theoretical_detec
+tion_1_1.png used on input line 62.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/gre_216a/convergence_history_theoretical_detection_0_1.png, id=763, 39
+5.4775pt x 282.05376pt>
+File: figures/gre_216a/convergence_history_theoretical_detection_0_1.png Graphi
+c file (type png)
+
+<use figures/gre_216a/convergence_history_theoretical_detection_0_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_theoretical_detec
+tion_0_1.png used on input line 68.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_theoretical_detection_1_1.png, id=764, 395
+.4775pt x 282.05376pt>
+File: figures/pores_2/convergence_history_theoretical_detection_1_1.png Graphic
+ file (type png)
+
+<use figures/pores_2/convergence_history_theoretical_detection_1_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_theoretical_detect
+ion_1_1.png used on input line 77.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_theoretical_detection_0_1.png, id=765, 395
+.4775pt x 282.05376pt>
+File: figures/pores_2/convergence_history_theoretical_detection_0_1.png Graphic
+ file (type png)
+
+<use figures/pores_2/convergence_history_theoretical_detection_0_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_theoretical_detect
+ion_0_1.png used on input line 83.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_theoretical_detection_0' on pa
+ge 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_theoretical_detection_0' on pag
+e 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `colors' on page 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_theoretical_detection_1' on pa
+ge 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_theoretical_detection_1' on pag
+e 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 13 undefined on i
+nput line 89.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_theoretical_detection_0' on pa
+ge 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_theoretical_detection_0' on pag
+e 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `colors' on page 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_theoretical_detection_1' on pa
+ge 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_theoretical_detection_1' on pag
+e 13 undefined on input line 89.
+
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 13 undefined on i
+nput line 89.
+
+! Preview: Snippet 169 ended.(27979393+0x27410673).
+<-><->
+      
+l.90 \end{figure}
+                 
+Not a real error.
+
+[169
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.90 \end{figure}
+                 
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.90 \end{figure}
+                 
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.90 \end{figure}
+                 
+
+
+
+
+ <./figures/gre_216a/convergence_history_theoretical_detection_1_1.png> <./figu
+res/gre_216a/convergence_history_theoretical_detection_0_1.png> <./figures/pore
+s_2/convergence_history_theoretical_detection_1_1.png> <./figures/pores_2/conve
+rgence_history_theoretical_detection_0_1.png>]
+! Preview: Snippet 170 started.
+<-><->
+      
+l.94 \subsection
+                {Evaluation of the detection scheme}\label{sec:evaluation_or...
+
+Not a real error.
+
+! Preview: Snippet 170 ended.(542724+0x27410673).
+<-><->
+      
+l.94 ...ection{Evaluation of the detection scheme}
+                                                  \label{sec:evaluation_oracle}
+
+Not a real error.
+
+[170
+
+]
+! Preview: Snippet 171 started.
+<-><->
+      
+l.95 The remaining parameter to be chosen is $
+                                              c$. One intuitive way to under...
+
+Not a real error.
+
+! Preview: Snippet 171 ended.(282168+0x283611).
+<-><->
+      
+l.95 The remaining parameter to be chosen is $c$
+                                                . One intuitive way to under...
+
+Not a real error.
+
+[171]
+! Preview: Snippet 172 started.
+<-><->
+      
+l.95 ...nvergence to the target accuracy, so the $
+                                                  c$ parameter aims at balan...
+
+Not a real error.
+
+! Preview: Snippet 172 ended.(282168+0x283611).
+<-><->
+      
+l.95 ...ergence to the target accuracy, so the $c$
+                                                   parameter aims at balanci...
+
+Not a real error.
+
+[172]
+! Preview: Snippet 173 started.
+<-><->
+      
+l.95 ...detection scheme, he should increase the $
+                                                  c$ value to allow the resi...
+
+Not a real error.
+
+! Preview: Snippet 173 ended.(282168+0x283611).
+<-><->
+      
+l.95 ...tection scheme, he should increase the $c$
+                                                   value to allow the residu...
+
+Not a real error.
+
+[173]
+
+LaTeX Warning: Reference `fig:test_result_oracle' on page 13 undefined on input
+ line 98.
+
+
+LaTeX Warning: Reference `theorem' on page 13 undefined on input line 99.
+
+! Preview: Snippet 174 started.
+<-><->
+      
+l.99 ...must converge. Second, for low values of $
+                                                  c$, an important part (bet...
+
+Not a real error.
+
+! Preview: Snippet 174 ended.(282168+0x283611).
+<-><->
+      
+l.99 ...st converge. Second, for low values of $c$
+                                                  , an important part (betwe...
+
+Not a real error.
+
+[174]
+! Preview: Snippet 175 started.
+<-><->
+      
+l.99 ... and more capable of ignoring those when $
+                                                  c$ increases. The rest of ...
+
+Not a real error.
+
+! Preview: Snippet 175 ended.(282168+0x283611).
+<-><->
+      
+l.99 ...nd more capable of ignoring those when $c$
+                                                   increases. The rest of th...
+
+Not a real error.
+
+[175]
+! Preview: Snippet 176 started.
+<-><->
+      
+l.101 For more details, the $
+                             c=0.5$ cases are plotted in Figure~\ref{fig:tes...
+
+Not a real error.
+
+! Preview: Snippet 176 ended.(422343+0x1994824).
+<-><->
+      
+l.101 For more details, the $c=0.5$
+                                    cases are plotted in Figure~\ref{fig:tes...
+
+Not a real error.
+
+[176]
+
+LaTeX Warning: Reference `fig:test_result_c05' on page 13 undefined on input li
+ne 101.
+
+
+LaTeX Warning: Reference `theorem' on page 14 undefined on input line 103.
+
+! Preview: Snippet 177 started.
+<-><->
+      
+l.110 \begin{figure}
+                    [h]
+Not a real error.
+
+<figures/gre_216a/test_result_oracle_0.png, id=799, 397.485pt x 286.06876pt>
+File: figures/gre_216a/test_result_oracle_0.png Graphic file (type png)
+
+<use figures/gre_216a/test_result_oracle_0.png>
+Package pdftex.def Info: figures/gre_216a/test_result_oracle_0.png used on inpu
+t line 128.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+<figures/gre_216a/test_result_oracle_1.png, id=800, 397.485pt x 286.06876pt>
+File: figures/gre_216a/test_result_oracle_1.png Graphic file (type png)
+
+<use figures/gre_216a/test_result_oracle_1.png>
+Package pdftex.def Info: figures/gre_216a/test_result_oracle_1.png used on inpu
+t line 134.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+<figures/pores_2/test_result_oracle_0.png, id=801, 397.485pt x 286.06876pt>
+File: figures/pores_2/test_result_oracle_0.png Graphic file (type png)
+
+<use figures/pores_2/test_result_oracle_0.png>
+Package pdftex.def Info: figures/pores_2/test_result_oracle_0.png used on input
+ line 143.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+<figures/pores_2/test_result_oracle_1.png, id=802, 397.485pt x 286.06876pt>
+File: figures/pores_2/test_result_oracle_1.png Graphic file (type png)
+
+<use figures/pores_2/test_result_oracle_1.png>
+Package pdftex.def Info: figures/pores_2/test_result_oracle_1.png used on input
+ line 149.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+
+LaTeX Warning: Reference `fig:test_result_oracle_c05' on page 14 undefined on i
+nput line 154.
+
+
+LaTeX Warning: Reference `fig:test_result_oracle_c05' on page 14 undefined on i
+nput line 154.
+
+! Preview: Snippet 177 ended.(26899037+0x27410673).
+<-><->
+      
+l.155 \end{figure}
+                  
+Not a real error.
+
+[177
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.155 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.155 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.155 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/test_result_oracle_0.png> <./figures/gre_216a/test_result_
+oracle_1.png> <./figures/pores_2/test_result_oracle_0.png> <./figures/pores_2/t
+est_result_oracle_1.png>]
+! Preview: Snippet 178 started.
+<-><->
+      
+l.160 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/test_result_c05_oracle_0.png, id=812, 388.45125pt x 266.9975p
+t>
+File: figures/gre_216a/test_result_c05_oracle_0.png Graphic file (type png)
+ <use figures/gre_216a/test_result_c05_oracle_0.png>
+Package pdftex.def Info: figures/gre_216a/test_result_c05_oracle_0.png used on 
+input line 178.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/gre_216a/test_result_c05_oracle_1.png, id=813, 388.45125pt x 266.9975p
+t>
+File: figures/gre_216a/test_result_c05_oracle_1.png Graphic file (type png)
+ <use figures/gre_216a/test_result_c05_oracle_1.png>
+Package pdftex.def Info: figures/gre_216a/test_result_c05_oracle_1.png used on 
+input line 184.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/pores_2/test_result_c05_oracle_0.png, id=814, 388.45125pt x 266.9975pt
+>
+File: figures/pores_2/test_result_c05_oracle_0.png Graphic file (type png)
+ <use figures/pores_2/test_result_c05_oracle_0.png>
+Package pdftex.def Info: figures/pores_2/test_result_c05_oracle_0.png used on i
+nput line 193.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/pores_2/test_result_c05_oracle_1.png, id=815, 388.45125pt x 266.9975pt
+>
+File: figures/pores_2/test_result_c05_oracle_1.png Graphic file (type png)
+ <use figures/pores_2/test_result_c05_oracle_1.png>
+Package pdftex.def Info: figures/pores_2/test_result_c05_oracle_1.png used on i
+nput line 199.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 14 undefined on i
+nput line 204.
+
+
+LaTeX Warning: Reference `table:theoretical_outcomes' on page 14 undefined on i
+nput line 204.
+
+! Preview: Snippet 178 ended.(25175521+0x27410673).
+<-><->
+      
+l.206 \end{figure}
+                  
+Not a real error.
+
+[178
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.206 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.206 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.206 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/test_result_c05_oracle_0.png> <./figures/gre_216a/test_res
+ult_c05_oracle_1.png> <./figures/pores_2/test_result_c05_oracle_0.png> <./figur
+es/pores_2/test_result_c05_oracle_1.png>]) (./section7.tex
+! Preview: Snippet 179 started.
+<-><->
+      
+l.1 \section
+            {A practical fault detection scheme}
+Not a real error.
+
+! Preview: Snippet 179 ended.(651269+183455x27410673).
+<-><->
+      
+l.1 \section{A practical fault detection scheme}
+                                                
+Not a real error.
+
+[179
+
+]
+
+LaTeX Warning: Reference `sec:faultDetection' on page 15 undefined on input lin
+e 2.
+
+! Preview: Snippet 180 started.
+<-><->
+      
+l.2 ...ted for several reasons. First, the error $
+                                                  \|{w}_{f+1} - \widetilde{w...
+
+Not a real error.
+
+! Preview: Snippet 180 ended.(491520+187504x4401316).
+<-><->
+      
+l.2 ...error $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$
+                                                   cannot be measured direct...
+
+Not a real error.
+
+[180]
+! Preview: Snippet 181 started.
+<-><->
+      
+l.2 ...+1}\|$ cannot be measured directly, since $
+                                                  w_{f+1}$ is not available,...
+
+Not a real error.
+
+! Preview: Snippet 181 ended.(282168+187504x1472482).
+<-><->
+      
+l.2 ...annot be measured directly, since $w_{f+1}$
+                                                   is not available, only $\...
+
+Not a real error.
+
+[181]
+! Preview: Snippet 182 started.
+<-><->
+      
+l.2 ...y, since $w_{f+1}$ is not available, only $
+                                                  \widetilde{w}_{f+1}$ is. A...
+
+Not a real error.
+
+! Preview: Snippet 182 ended.(473316+187504x1472482).
+<-><->
+      
+l.2 ...s not available, only $\widetilde{w}_{f+1}$
+                                                   is. An approximation for ...
+
+Not a real error.
+
+[182]
+
+LaTeX Warning: Reference `sec:checksum' on page 15 undefined on input line 2.
+
+! Preview: Snippet 183 started.
+<-><->
+      
+l.2 ...\ref{sec:checksum}. Second, the threshold $
+                                                  \tau_c = c \cdot \varepsil...
+
+Not a real error.
+
+! Preview: Snippet 183 ended.(491520+187504x4217642).
+<-><->
+      
+l.2 ...ot \varepsilon / |\widetilde{y}_{\ell, f}|$
+                                                   requires the $\widetilde{...
+
+Not a real error.
+
+[183]
+! Preview: Snippet 184 started.
+<-><->
+      
+l.2 .../ |\widetilde{y}_{\ell, f}|$ requires the $
+                                                  \widetilde{y}_{\ell, f}$ v...
+
+Not a real error.
+
+! Preview: Snippet 184 ended.(473316+187504x1036069).
+<-><->
+      
+l.2 ...f}|$ requires the $\widetilde{y}_{\ell, f}$
+                                                   vector which is computed ...
+
+Not a real error.
+
+[184]
+! Preview: Snippet 185 started.
+<-><->
+      
+l.2 ...r which is computed at the last iteration $
+                                                  \ell$ of the execution, an...
+
+Not a real error.
+
+! Preview: Snippet 185 ended.(455111+0x273068).
+<-><->
+      
+l.2 ...ch is computed at the last iteration $\ell$
+                                                   of the execution, and is ...
+
+Not a real error.
+
+[185]
+
+LaTeX Warning: Reference `sec:threshold' on page 15 undefined on input line 2.
+
+! Preview: Snippet 186 started.
+<-><->
+      
+l.2 ...e scheme at each iteration, and replacing $
+                                                  f$ by the current iteratio...
+
+Not a real error.
+
+! Preview: Snippet 186 ended.(455111+127431x391398).
+<-><->
+      
+l.2 ...scheme at each iteration, and replacing $f$
+                                                   by the current iteration ...
+
+Not a real error.
+
+[186]
+! Preview: Snippet 187 started.
+<-><->
+      
+l.2 ...lacing $f$ by the current iteration index $
+                                                  i$ as described in~\ref{se...
+
+Not a real error.
+
+! Preview: Snippet 187 ended.(432226+0x225780).
+<-><->
+      
+l.2 ...cing $f$ by the current iteration index $i$
+                                                   as described in~\ref{sec:...
+
+Not a real error.
+
+[187]
+
+LaTeX Warning: Reference `sec:practical_scheme' on page 15 undefined on input l
+ine 2.
+
+
+LaTeX Warning: Reference `sec:implementable_evaluated' on page 15 undefined on 
+input line 2.
+
+! Preview: Snippet 188 started.
+<-><->
+      
+l.4 \subsection
+               {Estimation of the error using a check-sum approach}\label{se...
+
+Not a real error.
+
+! Preview: Snippet 188 ended.(542724+152880x27410673).
+<-><->
+      
+l.4 ...on of the error using a check-sum approach}
+                                                  \label{sec:checksum}
+Not a real error.
+
+[188
+
+]
+
+LaTeX Warning: Citation `checksum' on page 15 undefined on input line 5.
+
+! Preview: Snippet 189 started.
+<-><->
+      
+l.5 ..., here the Matrix A data, with the vector $
+                                                  \allOne^T = (1, 1,..., 1)$...
+
+Not a real error.
+
+! Preview: Snippet 189 ended.(552580+163840x4755164).
+<-><->
+      
+l.5 ...with the vector $\allOne^T = (1, 1,..., 1)$
+                                                  , to perform the same oper...
+
+Not a real error.
+
+[189]
+! Preview: Snippet 190 started.
+<-><->
+      
+l.9 \begin{equation}
+                    
+Not a real error.
+
+! Preview: Snippet 190 ended.(1574944+0x27410673).
+<-><->
+      
+l.25 \end{equation}
+                   
+Not a real error.
+
+[190]
+! Preview: Snippet 191 started.
+<-><->
+      
+l.27 In case of a fault in A ($
+                               reg_1$), the previous equation becomes:
+Not a real error.
+
+! Preview: Snippet 191 ended.(282168+127431x1225618).
+<-><->
+      
+l.27 In case of a fault in A ($reg_1$
+                                     ), the previous equation becomes:
+Not a real error.
+
+[191]
+! Preview: Snippet 192 started.
+<-><->
+      
+l.29 \begin{equation}
+                     
+Not a real error.
+
+! Preview: Snippet 192 ended.(1966099+0x27410673).
+<-><->
+      
+l.45 \end{equation}
+                   
+Not a real error.
+
+[192]
+! Preview: Snippet 193 started.
+<-><->
+      
+l.46 ...t on encoded data and the encoded result $
+                                                  |(\allOne^T \cdot A)^T v -...
+
+Not a real error.
+
+! Preview: Snippet 193 ended.(640798+163840x7173978).
+<-><->
+      
+l.46 ...^T v - \allOne^T (\widetilde{A} \cdot v)|$
+                                                   is called the check-sum,
+Not a real error.
+
+[193]
+! Preview: Snippet 194 started.
+<-><->
+      
+l.47 where $
+            \allOne^T \cdot A$ is a row vector computed once with  its $j^{t...
+
+Not a real error.
+
+! Preview: Snippet 194 ended.(552580+0x1864305).
+<-><->
+      
+l.47 where $\allOne^T \cdot A$
+                               is a row vector computed once with  its $j^{t...
+
+Not a real error.
+
+[194]
+! Preview: Snippet 195 started.
+<-><->
+      
+l.47 ... is a row vector computed once with  its $
+                                                  j^{th}$ entry is the sum o...
+
+Not a real error.
+
+! Preview: Snippet 195 ended.(556402+127431x844961).
+<-><->
+      
+l.47 ...ow vector computed once with  its $j^{th}$
+                                                   entry is the sum of all e...
+
+Not a real error.
+
+[195]
+! Preview: Snippet 196 started.
+<-><->
+      
+l.47 ...$ entry is the sum of all entries of the $
+                                                  j^{th}$ row of $A$.
+Not a real error.
+
+! Preview: Snippet 196 ended.(556402+127431x844961).
+<-><->
+      
+l.47 ... is the sum of all entries of the $j^{th}$
+                                                   row of $A$.
+Not a real error.
+
+[196]
+! Preview: Snippet 197 started.
+<-><->
+      
+l.47 ...um of all entries of the $j^{th}$ row of $
+                                                  A$.
+Not a real error.
+
+! Preview: Snippet 197 ended.(447828+0x491521).
+<-><->
+      
+l.47 ... of all entries of the $j^{th}$ row of $A$
+                                                  .
+Not a real error.
+
+[197]
+! Preview: Snippet 198 started.
+<-><->
+      
+l.49 \begin{equation}
+                      \label{eqn:checksum}
+Not a real error.
+
+! Preview: Snippet 198 ended.(804638+0x27410673).
+<-><->
+      
+l.51 \end{equation}
+                   
+Not a real error.
+
+[198
+
+]
+! Preview: Snippet 199 started.
+<-><->
+      
+l.52  If no fault occurred, $
+                             w = \widetilde{w}$ and the check-sum is equal t...
+
+Not a real error.
+
+! Preview: Snippet 199 ended.(473316+0x1847442).
+<-><->
+      
+l.52  If no fault occurred, $w = \widetilde{w}$
+                                                and the check-sum is equal t...
+
+Not a real error.
+
+[199]
+! Preview: Snippet 200 started.
+<-><->
+      
+l.52 ... (by replacing in the previous equations $
+                                                  v$ by $z = M^{-1} \cdot v$).
+Not a real error.
+
+! Preview: Snippet 200 ended.(282168+0x341181).
+<-><->
+      
+l.52 ...by replacing in the previous equations $v$
+                                                   by $z = M^{-1} \cdot v$).
+Not a real error.
+
+[200]
+! Preview: Snippet 201 started.
+<-><->
+      
+l.52 ...placing in the previous equations $v$ by $
+                                                  z = M^{-1} \cdot v$).
+Not a real error.
+
+! Preview: Snippet 201 ended.(533465+0x3432740).
+<-><->
+      
+l.52 ...ious equations $v$ by $z = M^{-1} \cdot v$
+                                                  ).
+Not a real error.
+
+[201]
+! Preview: Snippet 202 started.
+<-><->
+      
+l.55 Only an approximation of $
+                               \|w - \widetilde{w} \|$ can be obtained from ...
+
+Not a real error.
+
+! Preview: Snippet 202 ended.(491520+163840x2429988).
+<-><->
+      
+l.55 ... approximation of $\|w - \widetilde{w} \|$
+                                                   can be obtained from Equa...
+
+Not a real error.
+
+[202]
+
+LaTeX Warning: Reference `eqn:checksum' on page 15 undefined on input line 55.
+
+
+LaTeX Warning: Reference `fig:conv_hist_checksum' on page 15 undefined on input
+ line 56.
+
+! Preview: Snippet 203 started.
+<-><->
+      
+l.56 ...-flips and compares it to the true error $
+                                                  \|w_i - \widetilde{w}_i \|...
+
+Not a real error.
+
+! Preview: Snippet 203 ended.(491520+163840x2831094).
+<-><->
+      
+l.56 ...he true error $\|w_i - \widetilde{w}_i \|$
+                                                  . In Figure~\ref{fig:gre_2...
+
+Not a real error.
+
+[203]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_checksum_0' on page 15 undefin
+ed on input line 56.
+
+! Preview: Snippet 204 started.
+<-><->
+      
+l.56 ...m the rounding errors, as the register's $
+                                                  60^{th}$ bit is flipped, c...
+
+Not a real error.
+
+! Preview: Snippet 204 ended.(556402+0x1192927).
+<-><->
+      
+l.56 ...unding errors, as the register's $60^{th}$
+                                                   bit is flipped, causing a...
+
+Not a real error.
+
+[204]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_checksum_1' on page 15 undefin
+ed on input line 56.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_checksum_2' on page 15 undefin
+ed on input line 56.
+
+! Preview: Snippet 205 started.
+<-><->
+      
+l.56 ... the check-sum accuracy is approximately $
+                                                  10^{-15}$ whereas in the c...
+
+Not a real error.
+
+! Preview: Snippet 205 ended.(533465+0x1620201).
+<-><->
+      
+l.56 ...k-sum accuracy is approximately $10^{-15}$
+                                                   whereas in the case of a ...
+
+Not a real error.
+
+[205]
+! Preview: Snippet 206 started.
+<-><->
+      
+l.56 ... more rounding errors accumulates, up to $
+                                                  10^{-10}$. Hence faults ca...
+
+Not a real error.
+
+! Preview: Snippet 206 ended.(533465+0x1620201).
+<-><->
+      
+l.56 ...nding errors accumulates, up to $10^{-10}$
+                                                  . Hence faults causing sma...
+
+Not a real error.
+
+[206]
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_checksum_0' on page 15 undefine
+d on input line 56.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_checksum_1' on page 15 undefine
+d on input line 56.
+
+
+LaTeX Warning: Reference `eqn:checksum' on page 15 undefined on input line 58.
+
+! Preview: Snippet 207 started.
+<-><->
+      
+l.64 \begin{figure}
+                   [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_checksum_0.png, id=920, 395.4775pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_checksum_0.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_checksum_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_checksum_0.png us
+ed on input line 81.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/gre_216a/convergence_history_checksum_1.png, id=921, 395.4775pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_checksum_1.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_checksum_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_checksum_1.png us
+ed on input line 87.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/gre_216a/convergence_history_checksum_2.png, id=922, 395.4775pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_checksum_2.png Graphic file (type pn
+g)
+ <use figures/gre_216a/convergence_history_checksum_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_checksum_2.png us
+ed on input line 93.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_checksum_0.png, id=923, 395.4775pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_checksum_0.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_checksum_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_checksum_0.png use
+d on input line 101.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_checksum_1.png, id=924, 395.4775pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_checksum_1.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_checksum_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_checksum_1.png use
+d on input line 107.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+<figures/pores_2/convergence_history_checksum_2.png, id=925, 395.4775pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_checksum_2.png Graphic file (type png
+)
+ <use figures/pores_2/convergence_history_checksum_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_checksum_2.png use
+d on input line 113.
+(pdftex.def)             Requested size: 200.75996pt x 143.18272pt.
+
+! Preview: Snippet 207 ended.(35396936+0x27410673).
+<-><->
+      
+l.121 \end{figure}
+                  
+Not a real error.
+
+[207
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.121 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.121 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.121 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.121 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.121 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_checksum_0.png> <./figures/gre_216a/co
+nvergence_history_checksum_1.png> <./figures/gre_216a/convergence_history_check
+sum_2.png> <./figures/pores_2/convergence_history_checksum_0.png> <./figures/po
+res_2/convergence_history_checksum_1.png> <./figures/pores_2/convergence_histor
+y_checksum_2.png>]
+! Preview: Snippet 208 started.
+<-><->
+      
+l.128 \subsection
+                 {Approximation of the threshold and evaluation}\label{sec:t...
+
+Not a real error.
+
+! Preview: Snippet 208 ended.(542724+152880x27410673).
+<-><->
+      
+l.128 ...ximation of the threshold and evaluation}
+                                                  \label{sec:threshold}
+Not a real error.
+
+[208
+
+]
+! Preview: Snippet 209 started.
+<-><->
+      
+l.129 Based on the observation that $
+                                     \widetilde{y}_{j, i}$ usually remains n...
+
+Not a real error.
+
+! Preview: Snippet 209 ended.(473316+187504x910302).
+<-><->
+      
+l.129 ...e observation that $\widetilde{y}_{j, i}$
+                                                   usually remains nearly co...
+
+Not a real error.
+
+[209]
+! Preview: Snippet 210 started.
+<-><->
+      
+l.129 ... i}$ usually remains nearly constant as $
+                                                  j$ increases. We will used...
+
+Not a real error.
+
+! Preview: Snippet 210 ended.(432226+127431x307396).
+<-><->
+      
+l.129 ...}$ usually remains nearly constant as $j$
+                                                   increases. We will used $...
+
+Not a real error.
+
+[210]
+! Preview: Snippet 211 started.
+<-><->
+      
+l.129 ...constant as $j$ increases. We will used $
+                                                  \widetilde{y}_{i, i}$ at e...
+
+Not a real error.
+
+! Preview: Snippet 211 ended.(473316+187504x880567).
+<-><->
+      
+l.129 ...ases. We will used $\widetilde{y}_{i, i}$
+                                                   at each iteration $i$ to ...
+
+Not a real error.
+
+[211]
+! Preview: Snippet 212 started.
+<-><->
+      
+l.129 ...\widetilde{y}_{i, i}$ at each iteration $
+                                                  i$ to compute an approxima...
+
+Not a real error.
+
+! Preview: Snippet 212 ended.(432226+0x225780).
+<-><->
+      
+l.129 ...idetilde{y}_{i, i}$ at each iteration $i$
+                                                   to compute an approximate...
+
+Not a real error.
+
+[212]
+
+LaTeX Warning: Reference `fig:conv_hist_threshold_evaluation' on page 15 undefi
+ned on input line 129.
+
+! Preview: Snippet 213 started.
+<-><->
+      
+l.133 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_threshold_evaluation_0.png, id=954, 400.4
+9625pt x 282.05376pt>
+File: figures/gre_216a/convergence_history_threshold_evaluation_0.png Graphic f
+ile (type png)
+
+<use figures/gre_216a/convergence_history_threshold_evaluation_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_threshold_evaluat
+ion_0.png used on input line 151.
+(pdftex.def)             Requested size: 220.83717pt x 155.53029pt.
+
+<figures/gre_216a/convergence_history_threshold_evaluation_1.png, id=955, 404.5
+1125pt x 282.05376pt>
+File: figures/gre_216a/convergence_history_threshold_evaluation_1.png Graphic f
+ile (type png)
+
+<use figures/gre_216a/convergence_history_threshold_evaluation_1.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_threshold_evaluat
+ion_1.png used on input line 157.
+(pdftex.def)             Requested size: 220.83717pt x 153.98523pt.
+
+<figures/pores_2/convergence_history_threshold_evaluation_0.png, id=956, 397.48
+5pt x 282.05376pt>
+File: figures/pores_2/convergence_history_threshold_evaluation_0.png Graphic fi
+le (type png)
+
+<use figures/pores_2/convergence_history_threshold_evaluation_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_threshold_evaluati
+on_0.png used on input line 166.
+(pdftex.def)             Requested size: 220.83717pt x 156.70952pt.
+
+<figures/pores_2/convergence_history_threshold_evaluation_1.png, id=957, 401.5p
+t x 282.05376pt>
+File: figures/pores_2/convergence_history_threshold_evaluation_1.png Graphic fi
+le (type png)
+
+<use figures/pores_2/convergence_history_threshold_evaluation_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_threshold_evaluati
+on_1.png used on input line 172.
+(pdftex.def)             Requested size: 220.83717pt x 155.14294pt.
+
+! Preview: Snippet 213 ended.(28076846+0x27410673).
+<-><->
+      
+l.178 \end{figure}
+                  
+Not a real error.
+
+[213
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.178 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.178 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.178 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_threshold_evaluation_0.png> <./figures
+/gre_216a/convergence_history_threshold_evaluation_1.png> <./figures/pores_2/co
+nvergence_history_threshold_evaluation_0.png> <./figures/pores_2/convergence_hi
+story_threshold_evaluation_1.png>]
+! Preview: Snippet 214 started.
+<-><->
+      
+l.183 \subsection
+                 {Implementation of the practical scheme}\label{sec:practica...
+
+Not a real error.
+
+! Preview: Snippet 214 ended.(542724+152880x27410673).
+<-><->
+      
+l.183 ...n{Implementation of the practical scheme}
+                                                  \label{sec:practical_scheme}
+Not a real error.
+
+[214
+
+]
+! Preview: Snippet 215 started.
+<-><->
+      
+l.184 Let $
+           0 < c < 1$. To sum up, here is the practical implementable scheme.
+Not a real error.
+
+! Preview: Snippet 215 ended.(422343+25623x2686585).
+<-><->
+      
+l.184 Let $0 < c < 1$
+                     . To sum up, here is the practical implementable scheme.
+Not a real error.
+
+[215]
+! Preview: Snippet 216 started.
+<-><->
+      
+l.186 \item The target accuracy is set to $
+                                           (1-c)\cdot \varepsilon$.
+Not a real error.
+
+! Preview: Snippet 216 ended.(491520+163840x2700923).
+<-><->
+      
+l.186 ...curacy is set to $(1-c)\cdot \varepsilon$
+                                                  .
+Not a real error.
+
+[216]
+! Preview: Snippet 217 started.
+<-><->
+      
+l.187 ...tion, the matrix A data is encoded with $
+                                                  \allOne^T$
+Not a real error.
+
+! Preview: Snippet 217 ended.(552580+0x821200).
+<-><->
+      
+l.187 ...matrix A data is encoded with $\allOne^T$
+                                                  
+Not a real error.
+
+[217]
+! Preview: Snippet 218 started.
+<-><->
+      
+l.188 ...m At each iteration i, check-sum(i) and $
+                                                  \tau_c(i)\textprime = c \c...
+
+Not a real error.
+
+! Preview: Snippet 218 ended.(491520+187504x4584653).
+<-><->
+      
+l.188 ...\cdot \varepsilon / \widetilde{y}_{i, i}$
+                                                   are computed
+Not a real error.
+
+[218]
+! Preview: Snippet 219 started.
+<-><->
+      
+l.189 \item The following test is performed $
+                                             $ \text{check-sum(i)} < \tau_c(...
+
+Not a real error.
+
+! Preview: Snippet 219 ended.(973936+0x27410673).
+<-><->
+      
+l.189 ...cdot \varepsilon / \widetilde{y}_{i, i}$$
+                                                  
+Not a real error.
+
+[219]
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 194.
+
+! Preview: Snippet 220 started.
+<-><->
+      
+l.196 \begin{table}
+                   [h]
+Not a real error.
+
+! Preview: Snippet 220 ended.(3270246+1435238x27410673).
+<-><->
+      
+l.209 \end{table}
+                 
+Not a real error.
+
+[220
+
+
+]
+
+LaTeX Warning: Reference `fig:conv_hist_threshold' on page 16 undefined on inpu
+t line 211.
+
+! Preview: Snippet 221 started.
+<-><->
+      
+l.211 ..._threshold}, the approximated threshold $
+                                                  \tau_{0.5}$ and the check-...
+
+Not a real error.
+
+! Preview: Snippet 221 ended.(282168+98303x997379).
+<-><->
+      
+l.211 ..., the approximated threshold $\tau_{0.5}$
+                                                   and the check-sum are plo...
+
+Not a real error.
+
+[221]
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_0' on page 16 undefi
+ned on input line 211.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 211.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_2' on page 16 undefi
+ned on input line 211.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 211.
+
+
+LaTeX Warning: Reference `fig:conv_hist_threshold_false' on page 16 undefined o
+n input line 213.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_3' on page 16 undefi
+ned on input line 213.
+
+! Preview: Snippet 222 started.
+<-><->
+      
+l.213 ...hreshold_3}, check-sum(i) remains below $
+                                                  \tau_{0.5}(i)$ so the faul...
+
+Not a real error.
+
+! Preview: Snippet 222 ended.(491520+163840x1732885).
+<-><->
+      
+l.213 ...heck-sum(i) remains below $\tau_{0.5}(i)$
+                                                   so the fault is undetecte...
+
+Not a real error.
+
+[222]
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 213.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_4' on page 16 undefi
+ned on input line 213.
+
+! Preview: Snippet 223 started.
+<-><->
+      
+l.213 ...hist_threshold_4}, check-sum(i) exceeds $
+                                                  \tau_{0.5}(i)$ at the faul...
+
+Not a real error.
+
+! Preview: Snippet 223 ended.(491520+163840x1732885).
+<-><->
+      
+l.213 ..._4}, check-sum(i) exceeds $\tau_{0.5}(i)$
+                                                   at the fault iteration so...
+
+Not a real error.
+
+[223]
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 213.
+
+! Preview: Snippet 224 started.
+<-><->
+      
+l.217 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_threshold_0.png, id=1001, 425.59pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_threshold_0.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_threshold_0.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_threshold_0.png u
+sed on input line 235.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_threshold_2.png, id=1002, 425.59pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_threshold_2.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_threshold_2.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_threshold_2.png u
+sed on input line 241.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_threshold_0.png, id=1003, 425.59pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_threshold_0.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_threshold_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_threshold_0.png us
+ed on input line 250.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_threshold_2.png, id=1004, 425.59pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_threshold_2.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_threshold_2.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_threshold_2.png us
+ed on input line 256.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_0' on page 16 undefi
+ned on input line 262.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_0' on page 16 undefin
+ed on input line 262.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 262.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_2' on page 16 undefi
+ned on input line 262.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_2' on page 16 undefin
+ed on input line 262.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 262.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_0' on page 16 undefi
+ned on input line 262.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_0' on page 16 undefin
+ed on input line 262.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 262.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_2' on page 16 undefi
+ned on input line 262.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_2' on page 16 undefin
+ed on input line 262.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 262.
+
+! Preview: Snippet 224 ended.(27437919+0x27410673).
+<-><->
+      
+l.263 \end{figure}
+                  
+Not a real error.
+
+[224
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.263 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.263 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.263 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_threshold_0.png> <./figures/gre_216a/c
+onvergence_history_threshold_2.png> <./figures/pores_2/convergence_history_thre
+shold_0.png> <./figures/pores_2/convergence_history_threshold_2.png>]
+! Preview: Snippet 225 started.
+<-><->
+      
+l.272 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/gre_216a/convergence_history_threshold_3.png, id=1014, 425.59pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_threshold_3.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_threshold_3.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_threshold_3.png u
+sed on input line 290.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/gre_216a/convergence_history_threshold_4.png, id=1015, 425.59pt x 282.
+05376pt>
+File: figures/gre_216a/convergence_history_threshold_4.png Graphic file (type p
+ng)
+ <use figures/gre_216a/convergence_history_threshold_4.png>
+Package pdftex.def Info: figures/gre_216a/convergence_history_threshold_4.png u
+sed on input line 296.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_threshold_3.png, id=1016, 425.59pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_threshold_3.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_threshold_3.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_threshold_3.png us
+ed on input line 305.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+<figures/pores_2/convergence_history_threshold_4.png, id=1017, 425.59pt x 282.0
+5376pt>
+File: figures/pores_2/convergence_history_threshold_4.png Graphic file (type pn
+g)
+ <use figures/pores_2/convergence_history_threshold_4.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_threshold_4.png us
+ed on input line 311.
+(pdftex.def)             Requested size: 200.75996pt x 133.0516pt.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_3' on page 16 undefi
+ned on input line 317.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_3' on page 16 undefin
+ed on input line 317.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 317.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_4' on page 16 undefi
+ned on input line 317.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_4' on page 16 undefin
+ed on input line 317.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 317.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_3' on page 16 undefi
+ned on input line 317.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_3' on page 16 undefin
+ed on input line 317.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 317.
+
+
+LaTeX Warning: Reference `fig:gre_216a_conv_hist_threshold_4' on page 16 undefi
+ned on input line 317.
+
+
+LaTeX Warning: Reference `fig:pores_2_conv_hist_threshold_4' on page 16 undefin
+ed on input line 317.
+
+
+LaTeX Warning: Reference `colors' on page 16 undefined on input line 317.
+
+! Preview: Snippet 225 ended.(26651487+0x27410673).
+<-><->
+      
+l.318 \end{figure}
+                  
+Not a real error.
+
+[225
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.318 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.318 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.318 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/convergence_history_threshold_3.png> <./figures/gre_216a/c
+onvergence_history_threshold_4.png> <./figures/pores_2/convergence_history_thre
+shold_3.png> <./figures/pores_2/convergence_history_threshold_4.png>]
+! Preview: Snippet 226 started.
+<-><->
+      
+l.322 ...st, since the target accuracy is set to $
+                                                  (1-c)\cdot \varepsilon < \...
+
+Not a real error.
+
+! Preview: Snippet 226 ended.(491520+163840x3880335).
+<-><->
+      
+l.322 ...to $(1-c)\cdot \varepsilon < \varepsilon$
+                                                  , some additional iteratio...
+
+Not a real error.
+
+[226]
+! Preview: Snippet 227 started.
+<-><->
+      
+l.322 ...varepsilon$, some additional iterations $
+                                                  \widetilde{\ell}-\ell$ may...
+
+Not a real error.
+
+! Preview: Snippet 227 ended.(646259+54613x1347126).
+<-><->
+      
+l.322 ...tional iterations $\widetilde{\ell}-\ell$
+                                                   may be required for the e...
+
+Not a real error.
+
+[227]
+! Preview: Snippet 228 started.
+<-><->
+      
+l.322 ...ution to converge. Second, the quantity $
+                                                   \allOne^T \cdot A$ is com...
+
+Not a real error.
+
+! Preview: Snippet 228 ended.(552580+0x1864305).
+<-><->
+      
+l.322 ...Second, the quantity $ \allOne^T \cdot A$
+                                                   is computed once at the b...
+
+Not a real error.
+
+[228]
+! Preview: Snippet 229 started.
+<-><->
+      
+l.322 ...ted once at the beginning, and requires $
+                                                  \Theta(nnz)$ (number of no...
+
+Not a real error.
+
+! Preview: Snippet 229 ended.(491520+163840x2139790).
+<-><->
+      
+l.322 ...the beginning, and requires $\Theta(nnz)$
+                                                   (number of nonzero elemen...
+
+Not a real error.
+
+[229]
+! Preview: Snippet 230 started.
+<-><->
+      
+l.322 .... Then, at each iteration, the vectors  $
+                                                  (\allOne^T \cdot A) \cdot ...
+
+Not a real error.
+
+! Preview: Snippet 230 ended.(552580+163840x3255573).
+<-><->
+      
+l.322 ...he vectors  $(\allOne^T \cdot A) \cdot v$
+                                                   and $\allOne^T \cdot (A \...
+
+Not a real error.
+
+[230]
+! Preview: Snippet 231 started.
+<-><->
+      
+l.322 ...tors  $(\allOne^T \cdot A) \cdot v$ and $
+                                                  \allOne^T \cdot (A \cdot v...
+
+Not a real error.
+
+! Preview: Snippet 231 ended.(552580+163840x3255573).
+<-><->
+      
+l.322 ...cdot v$ and $\allOne^T \cdot (A \cdot v)$
+                                                   as well as their Euclidea...
+
+Not a real error.
+
+[231]
+! Preview: Snippet 232 started.
+<-><->
+      
+l.322 ...mputed, necessitating at each iteration $
+                                                  \Theta(n)$ operations. Fin...
+
+Not a real error.
+
+! Preview: Snippet 232 ended.(491520+163840x1412822).
+<-><->
+      
+l.322 ...cessitating at each iteration $\Theta(n)$
+                                                   operations. Finally, $\Th...
+
+Not a real error.
+
+[232]
+! Preview: Snippet 233 started.
+<-><->
+      
+l.322 ...ration $\Theta(n)$ operations. Finally, $
+                                                  \Theta(1)$ operations are ...
+
+Not a real error.
+
+! Preview: Snippet 233 ended.(491520+163840x1347133).
+<-><->
+      
+l.322 ...heta(n)$ operations. Finally, $\Theta(1)$
+                                                   operations are needed for...
+
+Not a real error.
+
+[233]
+! Preview: Snippet 234 started.
+<-><->
+      
+l.322 ...Theta(1)$ operations are needed for the $
+                                                  \text{check-sum} < \text{t...
+
+Not a real error.
+
+! Preview: Snippet 234 ended.(451360+25623x6470306).
+<-><->
+      
+l.322 ...the $\text{check-sum} < \text{threshold}$
+                                                   comparison. Therefore, th...
+
+Not a real error.
+
+[234]
+! Preview: Snippet 235 started.
+<-><->
+      
+l.322 ...omparison. Therefore, the test requires $
+                                                  \Theta(nnz) + \Theta(n \cd...
+
+Not a real error.
+
+! Preview: Snippet 235 ended.(646259+163840x5099979).
+<-><->
+      
+l.322 ...(nnz) + \Theta(n \cdot \widetilde{\ell})$
+                                                   additional operations, ne...
+
+Not a real error.
+
+[235]
+! Preview: Snippet 236 started.
+<-><->
+      
+l.322 ...ations, negligible when compared to the $
+                                                  \Theta(\ell \cdot nnz)$ op...
+
+Not a real error.
+
+! Preview: Snippet 236 ended.(491520+163840x2886167).
+<-><->
+      
+l.322 ... compared to the $\Theta(\ell \cdot nnz)$
+                                                   operations of the classic...
+
+Not a real error.
+
+[236]
+! Preview: Snippet 237 started.
+<-><->
+      
+l.322 ... of the classical algorithm, as long as $
+                                                  n \ll nnz$ and $\widetilde...
+
+Not a real error.
+
+! Preview: Snippet 237 ended.(353303+25623x2533149).
+<-><->
+      
+l.322 ...assical algorithm, as long as $n \ll nnz$
+                                                   and $\widetilde{\ell} \ap...
+
+Not a real error.
+
+[237]
+! Preview: Snippet 238 started.
+<-><->
+      
+l.322 ...l algorithm, as long as $n \ll nnz$ and $
+                                                  \widetilde{\ell} \approx \...
+
+Not a real error.
+
+! Preview: Snippet 238 ended.(646259+0x1419942).
+<-><->
+      
+l.322 ... nnz$ and $\widetilde{\ell} \approx \ell$
+                                                  . Moreover, those computat...
+
+Not a real error.
+
+[238]
+! Preview: Snippet 239 started.
+<-><->
+      
+l.325 \subsection
+                 {Evaluation of the practical detection scheme}\label{sec:im...
+
+Not a real error.
+
+! Preview: Snippet 239 ended.(542724+152880x27410673).
+<-><->
+      
+l.325 ...uation of the practical detection scheme}
+                                                  \label{sec:implementable_e...
+
+Not a real error.
+
+[239
+
+]
+
+LaTeX Warning: Reference `fig:test_result' on page 16 undefined on input line 3
+27.
+
+! Preview: Snippet 240 started.
+<-><->
+      
+l.327 ...n scheme outcomes for several values of $
+                                                  c$. Because of the previou...
+
+Not a real error.
+
+! Preview: Snippet 240 ended.(282168+0x283611).
+<-><->
+      
+l.327 ...scheme outcomes for several values of $c$
+                                                  . Because of the previousl...
+
+Not a real error.
+
+[240]
+
+LaTeX Warning: Reference `theorem' on page 16 undefined on input line 327.
+
+! Preview: Snippet 241 started.
+<-><->
+      
+l.327 ...conditioned-GMRES case in low accuracy ($
+                                                  \varepsilon = 10^{-6}$), t...
+
+Not a real error.
+
+! Preview: Snippet 241 ended.(533465+0x2538378).
+<-><->
+      
+l.327 ... in low accuracy ($\varepsilon = 10^{-6}$
+                                                  ), the detection scheme do...
+
+Not a real error.
+
+[241]
+! Preview: Snippet 242 started.
+<-><->
+      
+l.327 ...s relatively low. For more details, the $
+                                                  c=0.5$ cases are plotted i...
+
+Not a real error.
+
+! Preview: Snippet 242 ended.(422343+0x1994824).
+<-><->
+      
+l.327 ...tively low. For more details, the $c=0.5$
+                                                   cases are plotted in Figu...
+
+Not a real error.
+
+[242]
+
+LaTeX Warning: Reference `fig:test_result_c05' on page 16 undefined on input li
+ne 327.
+
+
+LaTeX Warning: Reference `fig:test_result_c05_matrices' on page 16 undefined on
+ input line 327.
+
+
+LaTeX Warning: Reference `fig:why' on page 16 undefined on input line 327.
+
+! Preview: Snippet 243 started.
+<-><->
+      
+l.327 ...problem comes from the approximation on $
+                                                  \widetilde{y}_{l, f} \righ...
+
+Not a real error.
+
+! Preview: Snippet 243 ended.(473316+187504x3099998).
+<-><->
+      
+l.327 ..._{l, f} \rightarrow \widetilde{y}_{f, f}$
+                                                  , so another approximation...
+
+Not a real error.
+
+[243]
+! Preview: Snippet 244 started.
+<-><->
+      
+l.332 \begin{figure}
+                    [h]
+Not a real error.
+
+<figures/gre_216a/test_result_0.png, id=1086, 397.485pt x 286.06876pt>
+File: figures/gre_216a/test_result_0.png Graphic file (type png)
+
+<use figures/gre_216a/test_result_0.png>
+Package pdftex.def Info: figures/gre_216a/test_result_0.png used on input line 
+350.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+<figures/gre_216a/test_result_1.png, id=1087, 397.485pt x 286.06876pt>
+File: figures/gre_216a/test_result_1.png Graphic file (type png)
+
+<use figures/gre_216a/test_result_1.png>
+Package pdftex.def Info: figures/gre_216a/test_result_1.png used on input line 
+356.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+<figures/pores_2/test_result_0.png, id=1088, 397.485pt x 286.06876pt>
+File: figures/pores_2/test_result_0.png Graphic file (type png)
+
+<use figures/pores_2/test_result_0.png>
+Package pdftex.def Info: figures/pores_2/test_result_0.png used on input line 3
+65.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+<figures/pores_2/test_result_1.png, id=1089, 397.485pt x 286.06876pt>
+File: figures/pores_2/test_result_1.png Graphic file (type png)
+
+<use figures/pores_2/test_result_1.png>
+Package pdftex.def Info: figures/pores_2/test_result_1.png used on input line 3
+71.
+(pdftex.def)             Requested size: 220.83717pt x 158.94026pt.
+
+
+LaTeX Warning: Reference `fig:test_result_c05' on page 16 undefined on input li
+ne 376.
+
+
+LaTeX Warning: Reference `fig:test_result_c05' on page 16 undefined on input li
+ne 376.
+
+! Preview: Snippet 244 ended.(28471901+0x27410673).
+<-><->
+      
+l.377 \end{figure}
+                  
+Not a real error.
+
+[244
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.377 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.377 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.377 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/test_result_0.png> <./figures/gre_216a/test_result_1.png> 
+<./figures/pores_2/test_result_0.png> <./figures/pores_2/test_result_1.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+! Preview: Snippet 245 started.
+<-><->
+      
+l.382 \begin{figure}
+                    [h]
+Not a real error.
+
+<figures/gre_216a/test_result_c05_0.png, id=1099, 388.45125pt x 266.9975pt>
+File: figures/gre_216a/test_result_c05_0.png Graphic file (type png)
+
+<use figures/gre_216a/test_result_c05_0.png>
+Package pdftex.def Info: figures/gre_216a/test_result_c05_0.png used on input l
+ine 400.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/gre_216a/test_result_c05_1.png, id=1100, 388.45125pt x 266.9975pt>
+File: figures/gre_216a/test_result_c05_1.png Graphic file (type png)
+
+<use figures/gre_216a/test_result_c05_1.png>
+Package pdftex.def Info: figures/gre_216a/test_result_c05_1.png used on input l
+ine 406.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/pores_2/test_result_c05_0.png, id=1101, 388.45125pt x 266.9975pt>
+File: figures/pores_2/test_result_c05_0.png Graphic file (type png)
+
+<use figures/pores_2/test_result_c05_0.png>
+Package pdftex.def Info: figures/pores_2/test_result_c05_0.png used on input li
+ne 415.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/pores_2/test_result_c05_1.png, id=1102, 388.45125pt x 266.9975pt>
+File: figures/pores_2/test_result_c05_1.png Graphic file (type png)
+
+<use figures/pores_2/test_result_c05_1.png>
+Package pdftex.def Info: figures/pores_2/test_result_c05_1.png used on input li
+ne 421.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+! Preview: Snippet 245 ended.(25175521+0x27410673).
+<-><->
+      
+l.428 \end{figure}
+                  
+Not a real error.
+
+[245
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.428 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.428 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.428 \end{figure}
+                  
+
+
+
+
+ <./figures/gre_216a/test_result_c05_0.png> <./figures/gre_216a/test_result_c05
+_1.png> <./figures/pores_2/test_result_c05_0.png> <./figures/pores_2/test_resul
+t_c05_1.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+! Preview: Snippet 246 started.
+<-><->
+      
+l.432 \begin{figure}
+                    [h]
+Not a real error.
+
+
+<figures/pores_2/convergence_history_problem_1.png, id=1112, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_problem_1.png Graphic file (type png)
+
+ <use figures/pores_2/convergence_history_problem_1.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_problem_1.png used
+ on input line 439.
+(pdftex.def)             Requested size: 220.83717pt x 146.35892pt.
+
+<figures/pores_2/convergence_history_problem_0.png, id=1113, 425.59pt x 282.053
+76pt>
+File: figures/pores_2/convergence_history_problem_0.png Graphic file (type png)
+
+ <use figures/pores_2/convergence_history_problem_0.png>
+Package pdftex.def Info: figures/pores_2/convergence_history_problem_0.png used
+ on input line 449.
+(pdftex.def)             Requested size: 220.83717pt x 146.35892pt.
+
+! Preview: Snippet 246 ended.(13720546+0x27410673).
+<-><->
+      
+l.455 \end{figure}
+                  \label{fig:why}
+Not a real error.
+
+[246
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.41}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.455 \end{figure}
+                  \label{fig:why}
+
+
+
+
+ <./figures/pores_2/convergence_history_problem_1.png> <./figures/pores_2/conve
+rgence_history_problem_0.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+! Preview: Snippet 247 started.
+<-><->
+      
+l.462 \begin{figure}
+                    [h]
+Not a real error.
+
+<figures/test_result_c05_0_full.png, id=1121, 388.45125pt x 266.9975pt>
+File: figures/test_result_c05_0_full.png Graphic file (type png)
+
+<use figures/test_result_c05_0_full.png>
+Package pdftex.def Info: figures/test_result_c05_0_full.png used on input line 
+480.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/test_result_c05_1_full.png, id=1122, 388.45125pt x 266.9975pt>
+File: figures/test_result_c05_1_full.png Graphic file (type png)
+
+<use figures/test_result_c05_1_full.png>
+Package pdftex.def Info: figures/test_result_c05_1_full.png used on input line 
+486.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/test_result_c05_0_precond.png, id=1123, 388.45125pt x 266.9975pt>
+File: figures/test_result_c05_0_precond.png Graphic file (type png)
+
+<use figures/test_result_c05_0_precond.png>
+Package pdftex.def Info: figures/test_result_c05_0_precond.png used on input li
+ne 495.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+<figures/test_result_c05_1_precond.png, id=1124, 388.45125pt x 266.9975pt>
+File: figures/test_result_c05_1_precond.png Graphic file (type png)
+
+<use figures/test_result_c05_1_precond.png>
+Package pdftex.def Info: figures/test_result_c05_1_precond.png used on input li
+ne 501.
+(pdftex.def)             Requested size: 220.83717pt x 151.79088pt.
+
+! Preview: Snippet 247 ended.(25062724+0x27410673).
+<-><->
+      
+l.508 \end{figure}
+                  
+Not a real error.
+
+[247
+
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.43}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.508 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.43}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.508 \end{figure}
+                  
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.43}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.508 \end{figure}
+                  
+
+
+
+
+ <./figures/test_result_c05_0_full.png> <./figures/test_result_c05_1_full.png> 
+<./figures/test_result_c05_0_precond.png> <./figures/test_result_c05_1_precond.
+png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./discussion.tex
+! Preview: Snippet 248 started.
+<-><->
+      
+l.1 \section
+            {Conclusion}
+Not a real error.
+
+! Preview: Snippet 248 ended.(651269+0x27410673).
+<-><->
+      
+l.1 \section{Conclusion}
+                        
+Not a real error.
+
+[248
+
+]
+
+LaTeX Warning: Citation `pipelined_gmres' on page 19 undefined on input line 3.
+
+
+)
+No file _region_.bbl.
+! Preview: Snippet 249 started.
+<-><->
+      
+l.161 \end{document}
+                    
+Not a real error.
+
+File: pagei.png Graphic file (type png)
+<use pagei.png>
+Package pdftex.def Info: pagei.png used on input line 161.
+(pdftex.def)             Requested size: 613.93216pt x 794.60669pt.
+
+! Preview: Snippet 249 ended.(52075344+0x40234658).
+<-><->
+      
+l.161 \end{document}
+                    
+Not a real error.
+
+[249]
+! Preview: Snippet 250 started.
+<-><->
+      
+l.161 \end{document}
+                    
+Not a real error.
+
+File: logo-inria.png Graphic file (type png)
+<use logo-inria.png>
+Package pdftex.def Info: logo-inria.png used on input line 161.
+(pdftex.def)             Requested size: 142.26378pt x 51.24359pt.
+
+! Preview: Snippet 250 ended.(3358300+0x9323399).
+<-><->
+      
+l.161 \end{document}
+                    
+Not a real error.
+
+[250]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 161.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 161.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 161.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 161.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 161.
+ ) 
+Here is how much of TeX's memory you used:
+ 1588 strings out of 468369
+ 36751 string characters out of 5668214
+ 567083 words of memory out of 5000000
+ 30754 multiletter control sequences out of 15000+600000
+ 35854 words of font info for 76 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 40i,19n,40p,2043b,636s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/alemoreau/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </ho
+me/alemoreau/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx1000.600pk> </home/alem
+oreau/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/alemoreau/.
+texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/alemoreau/.texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ecbx0700.600pk> </home/alemoreau/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/alemoreau/.texmf-var/fonts/pk/lj
+four/jknappen/ec/ecrm1000.600pk> </home/alemoreau/.texmf-var/fonts/pk/ljfour/jk
+nappen/ec/ecbx1200.600pk> </home/alemoreau/.texmf-var/fonts/pk/ljfour/jknappen/
+ec/ecbx1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on _region_.pdf (250 pages, 3936222 bytes).
+PDF statistics:
+ 1588 PDF objects out of 1728 (max. 8388607)
+ 829 compressed objects within 9 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 438 words of extra memory for PDF output out of 10000 (max. 10000000)
+

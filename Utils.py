@@ -95,7 +95,7 @@ def no_impact_fault_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="che
     if f >= len(data[key_threshold]) or f >= len(data[key_checksum]):
 	return False
     return (has_converged(data, epsilon = epsilon) and 
-            data[key_checksum][f] > c * data[key_threshold][f])
+            data[key_checksum][f] >= c * data[key_threshold][f])
         
 def no_impact_fault_no_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", key_threshold="threshold"):
     f = data["faults"][0]["timer"]
@@ -116,5 +116,5 @@ def fault_detection(data, c = 0.5, epsilon = 1.e-12, key_checksum="checksum", ke
     if f >= len(data[key_threshold]) or f >= len(data[key_checksum]):
 	return False
     return (not has_converged(data, epsilon = epsilon) and
-            data[key_checksum][f] > c * data[key_threshold][f])
+            data[key_checksum][f] >= c * data[key_threshold][f])
                

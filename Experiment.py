@@ -4,6 +4,8 @@ import types
 import sqlite3
 import io
 import csv
+import os
+import sys
 
 class Experiment:
 	"General experiment"
@@ -51,14 +53,15 @@ class Experiment:
 		samples are deep copied in case the algorithm modifies them
 		"""
                 import copy
-                input = copy.deepcopy(input)
-                output = self.algorithm.run(input, parameters)
-		data = self.algorithm.get_data()
+                _input = copy.deepcopy(input)
+		_parameters = copy.deepcopy(parameters)
+                _output = self.algorithm.run(_input, _parameters)
+		_data = copy.copy(self.algorithm.get_data())
 		if self.callback:
-		    self.callback(input, output, parameters, data)
+		    self.callback(_input, _output, _parameters, _data)
 		if self.save_data:
-		    self.results += [(input, output)]
-                    self.data += [copy.copy(self.algorithm.get_data())]
+		    self.results += [(_input, _output, _parameters)]
+                    self.data += [_data]
 		
 
 	def run(self, n=1, show_progress = False, seed=None, parallel=False):
@@ -145,12 +148,9 @@ class Experiment:
 		else:
 			return self.data
 		
-	def save_data_database(self, database_filename):
-	    """
-	    TODO
-	    """
+	def save_database(self, database_filename):
 	    self.database = database_filename
-	    if len(self.data) > 0:
+	    try:
 	    	conn = sqlite3.connect(database_filename, detect_types=sqlite3.PARSE_DECLTYPES)
 	    	c = conn.cursor()
 
@@ -160,19 +160,30 @@ class Experiment:
 		# Converts TEXT to np.array when selecting
 		sqlite3.register_converter("array", convert_array)
 
+		# Converts np.array to TEXT when inserting
+		sqlite3.register_adapter(list, adapt_list)
+
+		# Converts TEXT to np.array when selecting
+		sqlite3.register_converter("list", convert_list)
+
+
 		experiment = []
 	    	for key in self.data[0]:
+		    print key
 		    var = self.data[0][key]
+
 		    if isinstance(var, ( int, long ) ):
 			experiment += [(key, "integer")]
 		    elif isinstance(var, float): 
 			experiment += [(key, "real")]
 		    elif isinstance(var, np.ndarray):
 			experiment += [(key, "array")]
+		    elif isinstance(var, (list, tuple)):
+			experiment += [(key, "list")]
 		    else:
 			experiment += [(key, "text")]
 
-		sorted(experiment, key=lambda data: data[0])
+		experiment = sorted(experiment, key=lambda data: data[0])
 		
 		sql = "CREATE TABLE experiments ("
 		for (key, t) in experiment:
@@ -180,6 +191,7 @@ class Experiment:
 		sql = sql[:-2]
 		sql += ")"
             	# Create table
+		print sql
             	c.execute(sql)
 
             	# Insert a row of data
@@ -191,7 +203,75 @@ class Experiment:
             	# We can also close the connection if we are done with it.
             	# Just be sure any changes have been committed or they will be lost.
 
-            	conn.close()
+	    except:
+		print sys.exc_info()[0]
+        	conn.rollback()
+
+	    try:
+		cursor = conn.cursor()
+		first = True
+		keys = ""
+		values = ""
+		d = map(lambda data: tuple(map(lambda key: data[key], sorted(data))), self.data)
+		for key in sorted(self.data[0]):
+		    if first:
+			first = False
+		    else:
+			keys += ", "
+			values += ", "
+		    keys += key
+		    values += "?"
+
+	    	sql = "INSERT into experiments (" + keys + ") VALUES (" + values + ")"
+		print sql
+		cursor.executemany(sql, d)
+		conn.commit()
+
+    	    except:
+        	print sys.exc_info()[0]
+        	conn.rollback()
+
+	    conn.close()
+
+	def load_database(self, database_filename):
+	    self.database = database_filename
+	    try:
+	    	conn = sqlite3.connect(database_filename, detect_types=sqlite3.PARSE_DECLTYPES)
+        	conn.row_factory = sqlite3.Row
+	    	c = conn.cursor()
+
+		# Converts np.array to TEXT when inserting
+		sqlite3.register_adapter(np.ndarray, adapt_array)
+
+		# Converts TEXT to np.array when selecting
+		sqlite3.register_converter("array", convert_array)
+
+		# Converts np.array to TEXT when inserting
+		sqlite3.register_adapter(list, adapt_list)
+
+		# Converts TEXT to np.array when selecting
+		sqlite3.register_converter("list", convert_list)
+
+
+	    except:
+		print sys.exc_info()[0]
+        	conn.rollback()
+
+	    try:
+		cursor = conn.cursor()
+
+	    	sql = "SELECT * from experiments"
+		self.data = []
+		for row in cursor.execute(sql):
+		    self.data += [row]
+
+    	    except ValueError:
+        	print sys.exc_info()[0]
+        	conn.rollback()
+
+	    conn.close()
+
+
 
 	def save_data_file(self, filename):
     	    f=open(filename, "wb")
@@ -210,6 +290,9 @@ class Experiment:
     	    f.close()
     	    return(dict_rap)
 
+
+		
+    
 def adapt_array(arr):
     out = io.BytesIO()
     np.save(out, arr)
@@ -220,6 +303,19 @@ def convert_array(text):
     out = io.BytesIO(text)
     out.seek(0)
     return np.load(out)
+
+
+
+def adapt_list(arr):
+    out = io.BytesIO()
+    arr = np.asarray(arr)
+    return adapt_array(arr)
+
+def convert_list(text):
+    out = io.BytesIO(text)
+    out.seek(0)
+    return np.load(out)
+
 
 
  

@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Solving linear systems of equations in HPC}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Krylov methods}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{The GMRES algorithm}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Methodology}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{GMRES convergence}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Fault model}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Experiments setup}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Empirical study of executions disrupted by faults}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Representation of executions}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Qualitative results and parameters influence}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Quantitative results}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Fault impact analysis}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Error propagation}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Error quantification}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.3}{Prediction of the fault impact}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.4}{Numerical experiment}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Oracle-based scheme for the detection of faults}{}% 18
+\BOOKMARK [2][-]{subsection.6.1}{Description of the detection scheme}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.2}{Evaluation of the detection scheme}{section.6}% 20
+\BOOKMARK [1][-]{section.7}{A practical fault detection scheme}{}% 21
+\BOOKMARK [2][-]{subsection.7.1}{Estimation of the error using a check-sum approach}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.2}{Approximation of the threshold and evaluation}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.3}{Implementation of the practical scheme}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.4}{Evaluation of the practical detection scheme}{section.7}% 25
+\BOOKMARK [1][-]{section.8}{Conclusion}{}% 26

@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: naturemag.bst
+Database file #1: sample.bib
+Warning--empty author in CFDR
+Warning--empty journal in CFDR
+Warning--empty year in CFDR
+You've used 12 entries,
+            2348 wiz_defined-function locations,
+            1064 strings with 10810 characters,
+and the built_in function-call counts, 4434 in all, are:
+= -- 308
+> -- 89
+< -- 0
++ -- 45
+- -- 22
+* -- 551
+:= -- 474
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 11
+chr.to.int$ -- 0
+cite$ -- 15
+duplicate$ -- 381
+empty$ -- 453
+format.name$ -- 30
+if$ -- 905
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 94
+newline$ -- 66
+num.names$ -- 11
+pop$ -- 89
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 67
+stack$ -- 0
+substring$ -- 231
+swap$ -- 363
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 22
+width$ -- 14
+write$ -- 131
+(There were 3 warnings)

@@ -1,0 +1,166 @@
+\message{ !name(main.tex)}%%
+%% This is file `squelette-rr.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% RR.dtx  (with options: `sample')
+%% ********************************************************************
+%% Copyright (C) 1997-1999 2004 2006-2011 INRIA/APICS/MARELLE by Jose' Grimm
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%% An archive of the software can be found at
+%%    ftp://ftp-sop.inria.fr/marelle/RR-INRIA
+
+\documentclass[twoside]{article}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[latin1]{inputenc} % ou \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % ou \usepackage[OT1]{fontenc}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+
+\usepackage{RR}
+%\usepackage{hyperref}
+\usepackage{flexisym}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+%\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[biblabel,nomove]{cite}
+\bibliographystyle{naturemag}
+%%\usepackage[frenchb]{babel} % optionnel
+\usepackage[labelfont={bf,sf},%
+            labelsep=period,%
+            justification=raggedright]{caption}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xcolor}
+ 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+
+\RRNo{1}
+%% \RTNo{0703}
+%%
+%% date de publication du rapport
+\RRdate{July 2016}
+%%
+%% Cas d'une version deux
+%% \RRversion{2}
+%% date de publication de la version 2
+%% \RRdater{November 2008}
+%%
+\RRauthor{% les auteurs
+ % Premier auteur, avec une note
+Alexandre Moreau%\thanks{Footnote for first author}%
+  % note partag\'ee (optionnelle)
+  \thanks[sfn]{Shared foot note}%
+ % \and entre chaque auteur s'il y en a plusieurs
+  \and
+Luc Giraud%\thanks{Footnote for second author}%
+ % r\'ef\'erence \`a la note partag\'ee
+\thanksref{sfn}
+ % liste longue pour tests de mise en page
+\and Emmanuel Agullo%\thanks{etc} \and Andr\'e Lichnerowicz
+%\and Marcel-Paul Sch\"utzenberger \and Jacques-Louis Lions
+}
+%% Ceci apparait sur chaque page paire.
+\authorhead{Alexandre Moreau}% \& Louarn \& others}
+%% titre francais long
+\RRtitle{Rapport de 3 mois}
+%% English title
+\RRetitle{Adaptive fault detection criterion for the generalized
+minimal residual method}
+%%
+\titlehead{Rapport}
+%%
+%\RRnote{This is a note}
+%\RRnote{This is a second note}
+%%
+%% \RRresume{Ce document montre comment utiliser le style RR.sty.
+%% Pour en savoir plus, consulter le fichier RR.dvi ou RR.pdf.
+%% D\'efinissez toujours les commandes avant utilisation.
+%% }
+\RRabstract{
+As the computational performance of current HPC systems increases, the
+mean time between failures (MTBF) decreases, down to a time comparable to or lower than the application execution time. Methods aiming at improving resiliency of
+such systems and ensuring correct executions include algorithm-based
+fault tolerance (ABFT). This paper focuses on the effects of transient
+faults (bit-flips on temporary registers) occurring in GMRES executions,
+and proposes a cheap numerical test to be added to the GMRES algorithm in
+order to detect whether or not the convergence to the target accuracy has
+been altered by a fault. }
+%%
+%% \RRmotcle{calcul formel, base de formules,  %mots-cl\'es sans rapport
+%% protocole, diff\'erentiation automatique, % les uns avec les autres
+%% g\'en\'eration de code,  mod\'elisation, lien symbolique/num\'erique,
+%% matrice structur\'ee, r\'esolution de syst\`emes polynomiaux}
+%% \RRkeyword{}
+%%
+%% \RRprojet{Apics}  % cas d'un seul projet
+\RRprojets{HiePACS}
+%%
+%% \URLorraine % pour ceux qui sont \`a l'est
+%% \URRennes  % pour ceux qui sont \`a l'ouest
+%% \URRhoneAlpes % pour ceux qui sont dans les montagnes
+%% \URRocq % pour ceux qui sont au centre de la France
+%% \URFuturs % pour ceux qui sont dans le virtuel
+%% \URSophia % pour ceux qui sont au Sud.
+%%
+ \RCBordeaux % centre de recherche Bordeaux - Sud Ouest
+%% \RCLille % centre de recherche Lille Nord Europe
+%% \RCParis % Paris Rocquencourt
+%% \RCSaclay % Saclay \^Ile de France
+%% \RCGrenoble % Grenoble - Rh\^one-Alpes
+%% \RCNancy % Nancy - Grand Est
+%% \RCRennes % Rennes - Bretagne Atlantique
+%% \RCSophia % Sophia Antipolis M\'editerran\'ee
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+%%
+\begin{document}
+
+\message{ !name(main.tex) !offset(-3) }
+
+%%
+\makeRR   % cas d'un rapport de recherche
+%% \makeRT % cas d'un rapport technique.
+%% a partir d'ici, chacun fait comme il le souhaite
+
+\newcommand{\allOne}{\bf{1}}
+
+
+\include{introduction}
+\include{section2}
+\include{section3}
+\include{section4}
+\include{section5}
+\include{section6}
+\include{section7}
+\include{discussion}
+
+
+\newpage
+
+
+
+\newpage
+
+
+\newpage
+\bibliography{sample}
+
+\end{document}
+\endinput
+%%
+%% End of file `squelette-rr.tex'.
+
+\message{ !name(main.tex) !offset(-166) }
