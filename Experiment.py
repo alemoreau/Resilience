@@ -53,7 +53,8 @@ class Experiment:
 		samples are deep copied in case the algorithm modifies them
 		"""
                 import copy
-                _input = copy.deepcopy(input)
+                #_input = copy.deepcopy(input)
+		_input = input
 		_parameters = copy.deepcopy(parameters)
                 _output = self.algorithm.run(_input, _parameters)
 		_data = copy.copy(self.algorithm.get_data())
@@ -206,8 +207,8 @@ class Experiment:
 	    except:
 		print sys.exc_info()[0]
         	conn.rollback()
-
-	    try:
+	    if True:
+	    #try:
 		cursor = conn.cursor()
 		first = True
 		keys = ""
@@ -226,8 +227,8 @@ class Experiment:
 		print sql
 		cursor.executemany(sql, d)
 		conn.commit()
-
-    	    except:
+	    else:
+    	    #except:
         	print sys.exc_info()[0]
         	conn.rollback()
 
