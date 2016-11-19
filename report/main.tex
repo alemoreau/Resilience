@@ -96,7 +96,19 @@ justification=raggedright]{caption}
   faults (bit-flips on temporary registers) occurring in GMRES executions,
   and proposes a cheap numerical test to be added to the GMRES algorithm in
   order to detect whether or not the convergence to the target accuracy has
-  been altered by a fault. }
+  been altered by a fault. 
+
+  We have studied the impact of transient soft errors in the
+  application of the matrix vector product or in the preconditioner of
+  preconditioned GMRES. We have analyzed those faults and we are able
+  to successfully correlate those faults to the framework of inexact
+  GMRES theory. We have derived a heuristic to detect faults. This
+  heursitic is extremely robust to detect faults for GMRES and
+  left-preconditioned GMRES and pretty robust in the case of
+  right-preconitioned GMRES. An analysis on the set up of the
+  heurisitcs furthermore identified the critical parameter ($y_{l,k}$)
+  that we had to approximate in our heurisitc and that may lead to
+  miss a few faults.  }
 %% 
 %% \RRmotcle{calcul formel, base de formules,  %mots-cl\'es sans rapport
 %% protocole, diff\'erentiation automatique, % les uns avec les autres
@@ -132,6 +144,8 @@ justification=raggedright]{caption}
 \makeRR   % cas d'un rapport de recherche
 %% \makeRT % cas d'un rapport technique.
 %% a partir d'ici, chacun fait comme il le souhaite
+
+\tableofcontents
 
 \newcommand{\allOne}{\bf{1}}
 \newcounter{grecounter}
