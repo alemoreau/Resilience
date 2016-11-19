@@ -1248,7 +1248,14 @@ The second way used to represent an execution is simply by its outcome. For inst
 
 
   \section{Oracle-based scheme for the detection of faults}\label{sec:faultDetection}
-  In ~\ref{sec:prediction}, we described a way to systematically predict when a fault is not critical (i.e. does not prevent the execution from converging) by looking at its symptoms on the execution variables. In this section, we will use this result to propose and evaluate a fault detection scheme. In~\ref{sec:detection_oracle}, the method is described and each outcome is illustrated, and is evaluated extensively in~\ref{sec:evaluation_oracle}
+  In Section~\ref{sec:prediction}, we described a way to
+  systematically predict when a fault is not critical (i.e. does not
+  prevent the execution from converging) by assessing its symptoms on
+  the execution variables. In this section, we now use this result to
+  propose and evaluate a fault detection scheme. In
+  Section~\ref{sec:detection_oracle}, the method is described and each
+  outcome is illustrated, and is evaluated extensively in
+  Section~\ref{sec:evaluation_oracle}.
 
   \subsection{Description of the detection scheme} \label{sec:detection_oracle}
   From the ability to systematically predict if a fault is non-critical, a fault detection scheme can easily be derived by ignoring faults that we are sure will not disrupt the convergence, and by triggering the detection otherwise. 
