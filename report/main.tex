@@ -89,14 +89,23 @@ justification=raggedright]{caption}
 %% D\'efinissez toujours les commandes avant utilisation.
 %% }
 \RRabstract{
-  As the computational performance of current HPC systems increases, the
-  mean time between failures (MTBF) decreases, down to a time comparable to or lower than the application execution time. Methods aiming at improving resiliency of
-  such systems and ensuring correct executions include algorithm-based
-  fault tolerance (ABFT). This paper focuses on the effects of transient
-  faults (bit-flips on temporary registers) occurring in GMRES executions,
-  and proposes a cheap numerical test to be added to the GMRES algorithm in
-  order to detect whether or not the convergence to the target accuracy has
-  been altered by a fault. }
+  We have studied the impact of transient soft errors in the application of the matrix
+vector product or in the preconditioner of preconditioned GMRES. We have analyzed 
+those faults and we are able to successfully correlate those faults to the framework
+of inexact GMRES theory. We have derived a heuristic to detect faults. This
+heursitic is extremely robust to detect faults for GMRES and left-preconditioned
+GMRES and pretty robust in the case of right-preconitioned GMRES. An analysis
+on the set up of the heurisitcs furthermore identified the critical parameter (y_l_k)
+that we had to approximate in our heuristic and that may lead to miss a few faults.
+  % As the computational performance of current HPC systems increases, the
+  % mean time between failures (MTBF) decreases, down to a time comparable to or lower than the application execution time. Methods aiming at improving resiliency of
+  % such systems and ensuring correct executions include algorithm-based
+  % fault tolerance (ABFT). This paper focuses on the effects of transient
+  % faults (bit-flips on temporary registers) occurring in GMRES executions,
+  % and proposes a cheap numerical test to be added to the GMRES algorithm in
+  % order to detect whether or not the convergence to the target accuracy has
+  % been altered by a fault.
+}
 %% 
 %% \RRmotcle{calcul formel, base de formules,  %mots-cl\'es sans rapport
 %% protocole, diff\'erentiation automatique, % les uns avec les autres
@@ -132,6 +141,8 @@ justification=raggedright]{caption}
 \makeRR   % cas d'un rapport de recherche
 %% \makeRT % cas d'un rapport technique.
 %% a partir d'ici, chacun fait comme il le souhaite
+
+\tableofcontents
 
 \newcommand{\allOne}{\bf{1}}
 \newcounter{grecounter}
@@ -271,7 +282,7 @@ The upper-Hessenberg matrix $H$ can be efficiently transformed into an upper-tri
 Moreover, the GMRES algorithm is often used with a preconditioner, which is a matrix $M$ designed to increase the execution convergence rate by transforming the initial $A x = b$ problem into a simpler one. For instance, in the case of right preconditioning, the initial $A x = b = A M^{-1} M x = b$ problem is split into two simpler ones to solve, $A M^{-1} y = b$ and $M x = y$. Many good preconditioners have been studied and in the following, we will consider a popular one, the Incomplete LU decomposition (ILU) of matrix A. 
 % TODO expliquer
 
-In the following, all execution are performed without restart, using full-GMRES. We refer to the full-GMRES algorithm without preconditioner as GMRES, and to the full-GMRES algorithm with preconditioner as preconditioned-GMRES.
+In the following, all execution are performed without restart, using full-GMRES. We refer to the full-GMRES algorithm without preconditioner as GMRES, and to the full-GMRES algorithm with preconditioner as preconditioned-GMRES. When not precised, the preconditioned-GMRES variant used is right-preconditioned-GMRES, and usually means that no difference can be observed between the left and right variants.
 
 
 \begin{algorithm}
@@ -293,6 +304,7 @@ In the following, all execution are performed without restart, using full-GMRES.
   {
     \tcp{Arnoldi iteration}
     $z_i \leftarrow \text{solve}(M, v_i)$ \tcp*[f]{Solve the $M z_i = v_i$ problem}
+    
     $w \leftarrow A \cdot v_i$ \tcp*[f]{Compute the next Arnoldi vector}
     
     \For(\tcp*[f]{Orthonormalize w against}){$k\leftarrow 0$ \KwTo $i$} 
@@ -326,6 +338,65 @@ In the following, all execution are performed without restart, using full-GMRES.
   \textbf{return} $x = x_i$\;
   \caption{The (right) preconditioned full-GMRES algorithm with ILU preconditioner.}\label{alg:precond-gmres}
 \end{algorithm}
+
+
+\begin{algorithm}
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  \SetKwInOut{Parameter}{Parameter}
+  \SetKwInOut{Break}{Break}
+  
+  \underline{GMRES} $(A, b, x_0, \varepsilon)$\;
+  \Input{$A$ ($n \times n$ matrix), $b$ (size n vector), $x_0$ (size n vector)}
+  \Parameter{$\varepsilon$ (target accuracy) }
+  \Output{$x$ so that $\frac{\|M^{-1}(A x - b)\|}{\|M^{-1}b\|} < \varepsilon$, M = spilu(A)}
+  $M \leftarrow \text{ILU}(A)$\;
+  $r_0 \leftarrow \text{solve(}M, Ax_0 - b\text{)}$\;
+  $ \beta \leftarrow \|  r_0 \|$\;
+  $v_0 \leftarrow \frac{r_0}{\beta}$\;
+  $e_1 \leftarrow [1, 0,..., 0]$\;
+
+  \For{$i\leftarrow 0$ \KwTo $n-1$}
+  {
+    \tcp{Arnoldi iteration}
+    %$z_i \leftarrow \text{solve}(M, v_i)$ \tcp*[f]{Solve the $M z_i = v_i$ problem}
+    $w \leftarrow A \cdot v_i$ \tcp*[f]{Compute the next Arnoldi vector}
+    
+    $w \leftarrow \text{solve(}M, w\text{)}$ \tcp*[f]{Apply left preconditioner}
+    
+    \For(\tcp*[f]{Orthonormalize w against}){$k\leftarrow 0$ \KwTo $i$} 
+    {
+      $h_{k,i} \leftarrow w^H v_k $ \tcp*[f]{all previous Arnoldi vectors}
+      
+      $w \leftarrow w - h_{k, i} v_k$ \tcp*[f]{(Modified Gram-Schmidt method)}
+    }
+    $h_{i+1, i} \leftarrow \|w\|$\;
+    $v_{i+1} \leftarrow w / h_{i+1, i}$ \; 
+    
+    % Apply Givens rotations on $H$\;
+    % Apply Givens rotation on the right hand side rhs\;
+    $y_i \leftarrow \argmin(\| \beta e_1 - H_i y_i)\|$;
+    \tcp*[f]{Solve the inner least-square problem}
+    
+    $r\textprime_{i} \leftarrow \beta e_1 - H_i y_i$;
+    \tcp*[f]{Compute the estimated residual}
+    
+    
+    \If{$\|r\textprime_{i} \| < \varepsilon$} 
+    {
+      $x_i \leftarrow x_0 +  \text{solve}(M, V_i y_i)$;
+      \tcp*[f]{Update the solution}
+      
+      \textbf{break}
+    }{}
+  }  
+  
+  
+  \textbf{return} $x = x_i$\;
+  \caption{The (left) preconditioned full-GMRES algorithm with ILU preconditioner.}\label{alg:precond-gmres}
+\end{algorithm}
+
+
 
 \section{Methodology}
 In the following, several definitions and assumptions are given to define the models and enable the experiment reproducibility.
@@ -403,7 +474,7 @@ A faulty execution is then characterized by the following parameters :
 The following numerical experiments are split into two parts. The first one provides qualitative and illustrative results, and consists in executions performed on two matrices with carefully chosen fault parameters while the second one provides quantitative results, using several matrices and covering a large part of the fault parameter space. 
 
 
-For the first part, the matrices used are HB/gre_216a \ref{fig:gre_216a}, chosen for its small size ($n=216$) and handy convergence history, which will be used to illustrate the GMRES algorithm results, and HB/pores_2 \ref{fig:pores_2}, which is bigger ($n=1224$) and will be used with the preconditioned-GMRES algorithm. The results will be put in parallel to illustrate the common behavior of those algorithms when they are submitted to soft errors. For the second part, the matrices used are gathered in Table \ref{table:nonlin}.
+For the first part, the matrices used are HB/gre_216a (Figure~\ref{fig:gre_216a}), chosen for its small size ($n=216$) and handy convergence history, which will be used to illustrate the GMRES algorithm results, and HB/pores_2 (Figure~\ref{fig:pores_2}), which is bigger ($n=1224$) and will be used with the preconditioned-GMRES algorithmes. The results will be put in parallel to illustrate the common behavior of those algorithms when they are submitted to soft errors. When left-preconditioned-GMRES and right-preconditioned-GMRES present the same behavior, only the result of right-preconditioned-GMRES are displayed.  For the second part, the matrices used are gathered in Table \ref{table:nlin}.
 
 All matrices can be found in the University of Florida Sparse Matrix Collection \cite{Davis:2011:UFS:2049662.2049663}.
 \begin{figure}[H]
@@ -431,7 +502,7 @@ All matrices can be found in the University of Florida Sparse Matrix Collection 
   \quad
   \begin{subfigure}[t]{0.45\linewidth}
     \centering
-    \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+    \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
 
     \caption{}
   \end{subfigure}
@@ -466,6 +537,44 @@ All matrices can be found in the University of Florida Sparse Matrix Collection 
 \end{table}
 
 
+
+\subsection{Representation of executions}
+Since an execution can be represented in many different ways, we propose in the following two visualizations enabling the key information to be displayed. The main purpose of the GMRES algorithm is to reduce the residual norm to the target accuracy, hence we use its convergence history, referring to the residual norm evolution through the iterations. Figure~\ref{fig:gre_216a_conv_hist} plots the convergence history of a GMRES execution on gre_216a, disrupted by a transient fault, as well as the same non-faulty execution for reference. We first observe that the true residual in the non-faulty execution (dashed blue curve) converges in $150$ iterations since it reaches the target accuracy ($\varepsilon = 10^{-10}$) at iteration 150. Then, the computed residual in the faulty execution also converges but much later (around iteration 195). On the contrary, the true residual in the faulty execution never reaches the target accuracy, as it remains greater than $10^{-7}$, so according to the definition, the faulty execution fails to converge. The fault (occurring at iteration 70) is responsible for this failure, and it can also be seen that after the fault occurrence, the residual norm decreases more slowly in the faulty execution, which imply more iterations than the reference and potentially a delayed solution (correct or incorrect).
+
+The second way used to represent an execution is simply by its outcome. For instance, Table~\ref{table:outcomes} represents a set of outcomes used later in this report.
+
+
+
+
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
+
+    \caption{Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.}\label{fig:gre_216a_conv_hist}
+  \end{figure}
+
+
+
+  \begin{table}[h]
+    \centering
+    \caption{Color used for each test outcome.}
+    \label{table:outcomes}
+    \begin{tabular}{|c|}
+      \hline
+      Outcome  \tabularnewline
+      \hline
+      \color[RGB]{50, 150, 50}{\textbf{Convergence without delay}} \\
+      \color{blue}{\textbf{Convergence with delay}} \\
+      \color{red}{\textbf{No convergence}} \\
+
+      \hline
+    \end{tabular}
+  \end{table}
+
+
+  
 % \subsection{Fault, failure and error}
 % The following taxonomy is used~\cite{fault_taxonomy} :
 % \begin{itemize}
@@ -499,48 +608,14 @@ All matrices can be found in the University of Florida Sparse Matrix Collection 
 %   \end{algorithmic}
 % \end{algorithm}
 
-\section{Empirical study of executions disrupted by faults}\label{sec:empirical}
-To visualize the impact of soft-errors on the convergence, different faults are injected into GMRES executions. First qualitative results on a few cases are given to illustrate in detail each fault parameter, and then, more quantitative experiments  using several matrices are performed to evaluate more extensively the fault effects. 
-
-\subsection{Representation of executions}
-Since an execution can be represented in many different ways, we propose in the following two visualizations enabling the key information to be displayed. The main purpose of the GMRES algorithm is to reduce the residual norm to the target accuracy, hence we use its convergence history, referring to the residual norm evolution through the iterations. Figure~\ref{fig:gre_216a_conv_hist} plots the convergence history of a GMRES execution on gre_216a, disrupted by a transient fault, as well as the same non-faulty execution for reference. We first observe that the true residual in the non-faulty execution (dashed blue curve) converges in $150$ iterations since it reaches the target accuracy ($\varepsilon = 10^{-12}$) at iteration 150. Then, the computed residual in the faulty execution also converges but much later (around iteration 195). On the contrary, the true residual in the faulty execution never reaches the target accuracy, as it remains greater than $10^{-7}$, so according to the definition, the faulty execution fails to converge. The fault (occurring at iteration 70) is responsible for this failure, and it can also be seen that after the fault occurrence, the residual norm decreases more slowly in the faulty execution, which imply more iterations than the reference and potentially a delayed solution (correct or incorrect).
-
-The second way used to represent an execution is simply by its outcome. For instance, Table~\ref{table:outcomes} represent a set of outcomes used later in this section.
+\section{Fault impact analysis}\label{sec:analysis}
+In this section, the impact of faults on the convergence of GMRES executions is studied. The impact is first observed both qualitatively and quantitatively on a few cases and according to the previously described experimental setup, and is then analysed from a more theoretical point of view.
+\subsection{Empirical study of executions disrupted by faults and fault parameters influence on the convergence}\label{sec:empirical}
+To visualize the impact of soft-errors on the convergence, different faults are injected into GMRES executions. First qualitative results on a few cases are given to illustrate in detail each fault parameter, and then, quantitative experiments using several matrices are performed to evaluate more extensively the fault effects on GMRES executions. 
 
 
-
-
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
-
-    \caption{Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.}\label{fig:gre_216a_conv_hist}
-  \end{figure}
-
-
-
-  \begin{table}[h]
-    \centering
-    \caption{Color used for each test outcome.}
-    \label{table:outcomes}
-    \begin{tabular}{|c|}
-      \hline
-      Outcome  \tabularnewline
-      \hline
-      \color[RGB]{50, 150, 50}{\textbf{Convergence without delay}} \\
-      \color{blue}{\textbf{Convergence with delay}} \\
-      \color{red}{\textbf{No convergence}} \\
-
-      \hline
-    \end{tabular}
-  \end{table}
-
-
-
-  \subsection{Qualitative results and parameters influence}
-  To visualize the influence of each fault parameter, the convergence history of 3 disrupted GMRES executions over the same matrices (HB/gre_216a for GMRES and HB/pores_2 for preconditioned-GMRES) are plotted for each 4 parameters (bit flipped, iteration, register and location). 
+  \subsubsection{Qualitative results and fault parameters influence}
+  To visualize the influence of each fault parameter, the convergence history of 3 disrupted GMRES executions over the same matrices (HB/gre_216a for GMRES and HB/pores_2 for preconditioned-GMRES) are plotted for each one of the 4 fault parameters (bit flipped, iteration, register and location) while the others are fixed. Since both variants of preconditioned-GMRES give similar results, only the right-preconditioned-GMRES ones are displayed.
 
   In Figure \ref{fig:conv_hist_bit} all parameters but the bit flipped are fixed. It can be observed that bit-flips on the most significant bits have a stronger impact on the convergence than bit-flips on the least significant bits: in Figure~\ref{fig:gre_216a_conv_hist_bit_0}, the bit flipped is one of the register's least significant bit (bit 60) and the fault does not prevent the convergence. In Figure~\ref{fig:gre_216a_conv_hist_bit_1}, the $40^{th}$ bit is flipped and the convergence is delayed by a dozen iterations. In Figure \ref{fig:gre_216a_conv_hist_bit_2} the $20^{th}$ bit is flipped and the execution never converges to the target accuracy.
   Intuitively, bit flips on the most significant bits introduce bigger errors and are more likely to disrupt the convergence than bit flips on the least significant bits.
@@ -586,19 +661,19 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{bit 60}\label{fig:pores_2_conv_hist_bit_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{bit 40}\label{fig:pores_2_conv_hist_bit_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{bit 20}\label{fig:pores_2_conv_hist_bit_2}
       \end{subfigure}
 
@@ -653,19 +728,19 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{iteration 0}\label{fig:pores_2_conv_hist_iteration_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{iteration 11}\label{fig:pores_2_conv_hist_iteration_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{iteration 22}\label{fig:pores_2_conv_hist_iteration_2}
       \end{subfigure}
 
@@ -718,19 +793,19 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{$reg_1$}\label{fig:pores_2_conv_hist_register_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{$reg_2$}\label{fig:pores_2_conv_hist_register_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{$reg_3$}\label{fig:pores_2_conv_hist_register_2}
       \end{subfigure}
 
@@ -782,19 +857,19 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{}\label{fig:pores_2_conv_hist_location_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{}\label{fig:pores_2_conv_hist_location_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{}\label{fig:pores_2_conv_hist_location_2}
       \end{subfigure}
 
@@ -803,10 +878,10 @@ The second way used to represent an execution is simply by its outcome. For inst
     \caption{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in random locations) seem to have the same impact.}\label{fig:conv_hist_location}
   \end{figure}
 
+  In summary, only the bit and the iteration where the bitflip occurs seems to have a significant impact on the convergence. For this reason, the fault parameter space to cover is reduced to those two parameters, simplifying the quantitative results presented in the next section.
+  \subsubsection{Quantitative results}
 
-  \subsection{Quantitative results}
-
-  To illustrate the previous observation, Figure~\ref{fig:bit_iteration} presents the convergence of several faulty-executions - one for each couple (iteration fault $\times$ bit flipped) while the other parameters are chosen randomly - for GMRES on HB/gre_216a and preconditioned-GMRES on HB/pores_2. Some faults have no effect on the convergence (in green), some may only delay it (blue), and others may prevent the execution from converging to the target accuracy (red). As observed in the previous results, faults involving the most significant bits of the registers or happening soon in the execution are more likely to cause a failure than faults involving the least significant bits or happening late in the execution.
+  To illustrate the previous observations, Figure~\ref{fig:bit_iteration} presents the convergence of several faulty-executions - one for each couple (iteration fault $\times$ bit flipped) while the other parameters are chosen randomly - for GMRES on HB/gre_216a and right-preconditioned-GMRES on HB/pores_2. Some faults have no effect on the convergence (in green), some may only delay it (blue), and others may prevent the execution from converging to the target accuracy (red). As observed in the previous results, faults involving the most significant bits of the registers or happening soon in the execution are more likely to cause a failure than faults involving the least significant bits or happening late in the execution.
 
 
 
@@ -828,28 +903,28 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{subfigure}[b]{0.5\linewidth}
       \centering
       \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-      \caption{$\varepsilon = 10^{-6}$}
+      \caption{$\varepsilon = 10^{-5}$}
       \label{fig:gre_216a_bit_iteration_0}	
     \end{subfigure}%% 
     \hspace{4ex}
     \begin{subfigure}[b]{0.5\linewidth}
       \centering
-      \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-      \caption{$\varepsilon = 10^{-6}$}
+      \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+      \caption{$\varepsilon = 10^{-5}$}
       \label{fig:pores_2_bit_iteration_0}	
     \end{subfigure} 
 
     \begin{subfigure}[b]{0.5\linewidth}
       \centering
       \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-      \caption{$\varepsilon = 10^{-12}$}
+      \caption{$\varepsilon = 10^{-10}$}
       \label{fig:gre_216a_bit_iteration_1}	
     \end{subfigure}%%
     \hspace{4ex}
     \begin{subfigure}[b]{0.5\linewidth}
       \centering
-      \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-      \caption{$\varepsilon = 10^{-12}$}
+      \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+      \caption{$\varepsilon = 10^{-10}$}
       \label{fig:pores_2_bit_iteration_1}	
     \end{subfigure} 
     \caption{Diagram of executions disrupted by a fault. Each dot represents an execution of GMRES on HB/gre_216a (figures \ref{fig:gre_216a_bit_iteration_0} and \ref{fig:gre_216a_bit_iteration_1}) or preconditioned-GMRES on HB/pores_2 (figures \ref{fig:pores_2_bit_iteration_0} and \ref{fig:pores_2_bit_iteration_1}), its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).}
@@ -872,14 +947,14 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{subfigure}[b]{0.5\linewidth}
       \centering
       \includegraphics[width=\linewidth]{figures/bit_iteration_0.png} %TODO
-      \caption{$\varepsilon = 10^{-6}$}
+      \caption{$\varepsilon = 10^{-5}$}
       \label{fig:bit_iteration_0}	
     \end{subfigure}%% 
     \hspace{4ex}
     \begin{subfigure}[b]{0.5\linewidth}
       \centering
       \includegraphics[width=\linewidth]{figures/bit_iteration_1.png} %TODO
-      \caption{$\varepsilon = 10^{-12}$}
+      \caption{$\varepsilon = 10^{-10}$}
       \label{fig:bit_iteration_1}	
     \end{subfigure} 
 
@@ -894,26 +969,28 @@ The second way used to represent an execution is simply by its outcome. For inst
 
 
 
-  \newpage
+%  \newpage
 
   % From \cite{DBLP:journals/siamsc/GiraudGL07} : 
   % \begin{equation}\label{eqn:delta}
   %   \text{delta = } \|\widetilde{r_l} - \widetilde{r_l}\textprime \| = ||y_{l, k}(z_{k+1} - z_{k+1})\| 
   % \end{equation}
 
-  \section{Fault impact analysis}
-  In Section~\ref{sec:empirical}, we showed that a transient fault may have a significant impact on the convergence of an execution. In this section, an analysis is proposed to evaluate this impact. We first describe the error propagation through the different steps of the algorithm in ~\ref{sec:propagation}, to observe which variables are altered, and then we analytically quantify the error in~\ref{sec:quantify}, in order to intent to predict the convergence behavior in~\ref{sec:prediction}.
+
+  \subsection{Analytical study of the fault impact on the convergence}\label{sec:analytical}
+  
+  In the previous experiments, we showed that a transient fault may have a significant impact on the convergence of an execution. In the following, an analysis is proposed to evaluate this impact using the theory of inexact GMRES, in order to intent to predict the convergence behavior in~\ref{sec:prediction}.
 
 
-  \subsection{Error propagation}\label{sec:propagation}
-  At the fault iteration $i=f$, some variables become corrupted as illustrated in Figure \ref{fig:error_propagation}. At first, only one value in the vector $w = A \cdot v_f$ is erroneous, but this error gets spread out in the orthonormalization process (modified Gram-Schmidt), generating a wrong new arnoldi vector $v_{f+1}$ as well as a wrong last column in the Hessenberg matrix $H_{f+1}$, resulting in a different Krylov space and potentially leading to an incorrect solution. Moreover, the erroneous Arnoldi basis ($V_{f+1}$) and Hessenberg matrix ($H_{f+1}$) are used in the next iterations, which may increasing the deviation from the correct execution even further. 
-  \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.4]{figures/error_propagation.pdf}
-    \caption{Error (red) propagation at the fault iteration.}\label{fig:error_propagation}
-  \end{figure}
+  % \subsubsection{Error propagation}\label{sec:propagation}
+  % At the fault iteration $i=f$, some variables become corrupted as illustrated in Figure \ref{fig:error_propagation}. At first, only one value in the vector $w = A \cdot v_f$ is erroneous, but this error gets spread out in the orthonormalization process (modified Gram-Schmidt), generating a wrong new arnoldi vector $v_{f+1}$ as well as a wrong last column in the Hessenberg matrix $H_{f+1}$, resulting in a different Krylov space and potentially leading to an incorrect solution. Moreover, the erroneous Arnoldi basis ($V_{f+1}$) and Hessenberg matrix ($H_{f+1}$) are used in the next iterations, which may increase the deviation from the correct execution even further. 
+  % \begin{figure}[H]
+  %   \centering
+  %   \includegraphics[scale=0.4]{figures/error_propagation.pdf}
+  %   \caption{Error (red) propagation at the fault iteration.}\label{fig:error_propagation}
+  % \end{figure}
 
-  \subsection{Error quantification}\label{sec:quantify}
+  \subsubsection{Error quantification}\label{sec:quantify}
   Because the sequence of least-square problems solved along the iteration are nested; that is at iteration $i$ 
   the leading part of $H_{i+1}$ is $H_i$ as well as for the right-hand sides; we know that independently of the possible occurrence of a fault during the execution, GMRES always reduces the computed residual norm down to the machine accuracy, as long as it is given enough iterations to do so. However, a fault may introduce a large residual deviation between the computed residual and the true residual (i.e., $\|\widetilde{r}_{\ell} - \widetilde{r}_{\ell}\textprime \|$ becomes large), which may prevent the latter one from reaching the target accuracy. Since $ \|\widetilde{r}_{\ell}\| \geq \|\widetilde{r}_{\ell} - \widetilde{r}_{\ell}\textprime \| - \| \widetilde{r}_{\ell}\textprime \|$ and $\|\widetilde{r}_\ell\textprime \| \rightarrow 0$, we obtain that $\|\widetilde{r}_{\ell}\| \rightarrow \|\widetilde{r}_{\ell} - \widetilde{r}_\ell\textprime \|$, so if the error remains greater than the target accuracy $\varepsilon$, the execution will not converge. The error measured at iteration $\ell$ is called the residual gap at iteration $\ell$, denoted $\delta(\ell)$.
   We illustrate in figures \ref{fig:gre_216a_conv_hist_delta} and \ref{fig:pores_2_conv_hist_delta} the effect of a soft-error on the norm of the residuals and the residual gap.
@@ -934,7 +1011,7 @@ The second way used to represent an execution is simply by its outcome. For inst
     \quad
     \begin{subfigure}[t]{0.45\linewidth}
       \centering
-      \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+      \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
       \caption{preconditioned-GMRES on pores_2, }\label{fig:pores_2_conv_hist_delta}
     \end{subfigure}
     \caption{Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions:GMRES on gre_216a in \ref{fig:gre_216a_conv_hist_delta} and precondition-GMRES  on pores_2 in \ref{fig:pores_2_conv_hist_delta}.}
@@ -972,13 +1049,13 @@ The second way used to represent an execution is simply by its outcome. For inst
     \quad
     \begin{subfigure}[t]{0.45\linewidth}
       \centering
-      \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+      \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
       \caption{preconditioned-GMRES on pores_2, }\label{fig:pores_2_conv_hist_delta}
     \end{subfigure}
     \caption{Two convergence histories disrupted by a fault. The light blue and purple lines represent the measured residual gap ($\|\widetilde{r}_{i} - \widetilde{r}_{i}\textprime \|$) and the computed residual gap ($|\widetilde{y}_{{i}, f}|\cdot \|{w}_{f+1} - \widetilde{w}_{f+1}\|$) evolutions in the faulty executions:GMRES on gre_216a in \ref{fig:gre_216a_conv_hist_delta} and precondition-GMRES  on pores_2 in \ref{fig:pores_2_conv_hist_delta}.}
   \end{figure}
 
-  \subsection{Prediction of the fault impact}\label{sec:prediction}
+  \subsubsection{Prediction of the fault impact}\label{sec:prediction}
   From Section~\ref{sec:empirical}, we observed that faults may either have a critical impact when preventing the execution from converging, little impact when delaying the convergence, or no impact at all. Ideally, by using the symptoms brought by a fault we should be able to predict its impact.
   Theorem~\ref{theorem} below proposes a possible suited criterion in the form of a threshold on the error $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$ to ensure that a fault is not critical.
   It is based on Equation~\eqref{eqn:delta}, itself relying on the remark that a faulty matrix-vector product caused by a bit-flip can be interpreted as an inexact matrix-vector product in inexact~\cite{sisz:03} or
@@ -1003,7 +1080,7 @@ The second way used to represent an execution is simply by its outcome. For inst
     The GMRES execution has converged with the target accuracy $\varepsilon$.
   \end{proof}
 
-  \subsection{Numerical experiment}
+  \subsubsection{Numerical experiment}
   To verify if Theorem~\ref{theorem} is applicable, even in floating point arithmetic instead of exact arithmetic, the following numerical experiments are performed.
     Let $0 < c < 1$, and let the target accuracy be reduced downto $(1 - c) \cdot \varepsilon$. Using Theorem~\ref{theorem}, we can predict if the fault will not disrupt the convergence to $\varepsilon$ by computing for all the executions the following expression at the fault iteration f:
   \begin{equation}
@@ -1044,13 +1121,13 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{Convergence prediction}\label{fig:pores_2_conv_hist_prediction}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{No prediction}\label{fig:pores_2_conv_hist_no_prediction}
       \end{subfigure}
 
@@ -1100,19 +1177,19 @@ The second way used to represent an execution is simply by its outcome. For inst
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{Converged}\label{fig:pores_2_conv_hist_location_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{Delayed}\label{fig:pores_2_conv_hist_location_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{Not converged}\label{fig:pores_2_conv_hist_location_2}
       \end{subfigure}
       
@@ -1152,13 +1229,13 @@ The second way used to represent an execution is simply by its outcome. For inst
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/gre_216a/test_result_oracle_0.png}
-  %       \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_test_result_oracle_0}	
+  %       \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_test_result_oracle_0}	
   %     \end{subfigure}
   %     \quad
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/gre_216a/test_result_oracle_1.png}
-  %       \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_oracle_1}	
+  %       \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_test_result_oracle_1}	
   %     \end{subfigure}
   %   \end{minipage}
   %   \quad
@@ -1167,13 +1244,13 @@ The second way used to represent an execution is simply by its outcome. For inst
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/pores_2/test_result_oracle_0.png}
-  %       \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_test_result_oracle_0}	
+  %       \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_test_result_oracle_0}	
   %     \end{subfigure}
   %     \quad
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/pores_2/test_result_oracle_1.png}
-  %       \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_oracle_1}	
+  %       \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_test_result_oracle_1}	
   %     \end{subfigure}
 
   %   \end{minipage}
@@ -1202,13 +1279,13 @@ The second way used to represent an execution is simply by its outcome. For inst
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/gre_216a/test_result_c05_oracle_0.png}
-  %       \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_test_result_c05_oracle_0}	
+  %       \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_test_result_c05_oracle_0}	
   %     \end{subfigure}
   %     \quad
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/gre_216a/test_result_c05_oracle_1.png}
-  %       \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_c05_oracle_1}	
+  %       \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_test_result_c05_oracle_1}	
   %     \end{subfigure}
   %   \end{minipage}
   %   \quad
@@ -1217,13 +1294,13 @@ The second way used to represent an execution is simply by its outcome. For inst
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/pores_2/test_result_c05_oracle_0.png}
-  %       \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_test_result_c05_oracle_0}	
+  %       \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_test_result_c05_oracle_0}	
   %     \end{subfigure}
   %     \quad
   %     \begin{subfigure}[t]{\linewidth}
   %       \centering
   %       \includegraphics[width=1.1\linewidth]{figures/pores_2/test_result_c05_oracle_1.png}
-  %       \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_c05_oracle_1}	
+  %       \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_test_result_c05_oracle_1}	
   %     \end{subfigure}
 
   %   \end{minipage}
@@ -1233,10 +1310,18 @@ The second way used to represent an execution is simply by its outcome. For inst
 
 
 
-  \section{Oracle-based scheme for the detection of faults}\label{sec:faultDetection}
-  In ~\ref{sec:prediction}, we described a way to systematically predict when a fault is not critical (i.e. does not prevent the execution from converging) by looking at its symptoms on the execution variables. In this section, we will use this result to propose and evaluate a fault detection scheme. In~\ref{sec:detection_oracle}, the method is described and each outcome is illustrated, and is evaluated extensively in~\ref{sec:evaluation_oracle}
+  \section{Detection of faults in GMRES}\label{sec:faultDetection}
+  In Section~\ref{sec:prediction}, we described a way to
+  systematically predict when a fault is not critical (i.e. does not
+  prevent the execution from converging) by assessing its symptoms on
+  the execution variables. In this section, we now use this result to
+  propose and evaluate a fault detection scheme. In
+  Section~\ref{sec:detection_oracle}, the method is first described, then each
+  outcome is illustrated, and finally is evaluated extensively. In Section~\ref{sec:detection_implementable}, approximations are proposed for enabling the fault detection scheme implementation, then this new practical detection scheme is evaluated, as well as each approximation applied separately.
 
-  \subsection{Description of the detection scheme} \label{sec:detection_oracle}
+
+  \subsection{An oracle-based detection scheme} \label{sec:detection_oracle}
+  \subsubsection{Description of the detection scheme}
   From the ability to systematically predict if a fault is non-critical, a fault detection scheme can easily be derived by ignoring faults that we are sure will not disrupt the convergence, and by triggering the detection otherwise. 
 
   Let $0 < c < 1 $. This detection scheme would be as follow:
@@ -1271,62 +1356,7 @@ The second way used to represent an execution is simply by its outcome. For inst
   \ref{fig:pores_2_conv_hist_theoretical_detection_0}, no fault is detected as the error is smaller than the threshold, and the executions converges, producing a \emph{No impact fault ignored} from Table~\ref{table:theoretical_outcomes}. In figures \ref{fig:gre_216a_conv_hist_theoretical_detection_1} and 
   \ref{fig:pores_2_conv_hist_theoretical_detection_1}, a critical fault is detected as the error is greater than the threshold $\tau_{0.5}$ at the fault iteration and the executions does not converge, producing a \emph{Critical fault detected} from Table~\ref{table:theoretical_outcomes}. In both cases, the fault is properly detected.
 
-
-
-
-
-
-  % \begin{figure}[H]
-  %   \centering
-  
-  %   \begin{minipage}[b]{0.45\linewidth}
-  %     \centering
-  %     \textbf{GMRES} executions on \textbf{gre_216a} 
-  %   \end{minipage}
-  %   \quad
-  %   \begin{minipage}{0.45\linewidth}
-  %     \centering
-  %     \textbf{preconditioned-GMRES} on \textbf{pores_2}
-  %   \end{minipage}\\
-
-
-  %   \begin{minipage}[b]{0.48\linewidth}
-  
-  %     \begin{subfigure}[t]{\linewidth}
-  %       \centering
-  %       \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-  %       \caption{No impact fault ignored}\label{fig:gre_216a_conv_hist_theoretical_detection_0}
-  %     \end{subfigure}
-  %     \quad
-  %     \begin{subfigure}[t]{\linewidth}
-  %       \centering
-  %       \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-  %       \caption{Critical fault detected}\label{fig:gre_216a_conv_hist_theoretical_detection_1}
-  %     \end{subfigure}
-  %   \end{minipage}
-  %   \quad
-  %   \begin{minipage}[b]{0.48\linewidth}
-  
-  %     \begin{subfigure}[t]{\linewidth}
-  %       \centering
-  %       \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-  %       \caption{No impact fault ignored}\label{fig:pores_2_conv_hist_theoretical_detection_0}
-  %     \end{subfigure}
-  %     \quad
-  %     \begin{subfigure}[t]{\linewidth}
-  %       \centering
-  %       \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-  %       \caption{Critical fault detected}\label{fig:pores_2_conv_hist_theoretical_detection_1}
-  %     \end{subfigure}
-
-  
-  %   \end{minipage}
-  %   \caption{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The error and the threshold are plotted. In figures~\ref{fig:gre_216a_conv_hist_theoretical_detection_0} and~\ref{fig:pores_2_conv_hist_theoretical_detection_0}, the error at each iteration remains below the threshold, so no fault is detected and the execution converges, producing a \emph{No impact fault ignored} from Table \ref{colors}. In figures~\ref{fig:gre_216a_conv_hist_theoretical_detection_1} and~\ref{fig:pores_2_conv_hist_theoretical_detection_1}, the error becomes higher than the threshold at the fault iteration, so the fault is detected and the execution does not converge, producing a \emph{Critical fault detected} from Table \ref{table:theoretical_outcomes}. }\label{fig:conv_hist_detection_correct}
-  % \end{figure}
-
-
-
-  \subsection{Evaluation of the detection scheme}\label{sec:evaluation_oracle}
+  \subsubsection{Evaluation of the detection scheme}\label{sec:evaluation_oracle}
   The remaining parameter to be chosen is $c$. One intuitive way to understand this parameter's role is as follow: in order to control the accuracy of the true residual norm, we split it into two quantities easier to control. On the one hand, the computed residual norm can be adjusted by setting the target accuracy of the execution to the desired value, at the expense of additional computation, and on the other hand the residual gap can be measured and allowed to grow before triggering a detection. However those two values cannot be adjusted independently to ensure the true residual norm convergence to the target accuracy, so the $c$ parameter aims at balancing the importance of one or the other value (computed residual or residual gap). So if one wishes to decrease the sensitivity of the detection scheme, he should increase the $c$ value to allow the residual gap to grow larger before triggering a detection, at the expense of more iterations to reduce the computed residual norm. On the contrary if one does not want to use too much additional iterations to reduce the computed residual norm, he gets a more sensitive detection scheme that is efficient for detecting critical faults, but may also detect faults that do not have any impact on the convergence.
   In the following, numerical experiments are performed to evaluate the detection scheme quality. Figure~\ref{fig:test_result_oracle} displays the fault detection scheme results (in percentage of executions) for several values of c.
   First, no critical faults are ignored, which is a direct consequence of Theorem \ref{theorem}: if a fault is ignored (the error is smaller than the threshold), then the execution must converge. Second, for low values of $c$, an important part (between 20\% and 35\%) of executions disrupted by a negligible fault detect it anyway (dark gray) as the detection scheme is more sensitive, but it becomes more and more capable of ignoring those when $c$ increases. The rest of the faulty executions (green and light gray) are correctly handled.
@@ -1353,13 +1383,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_test_result_oracle_0}	
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_test_result_oracle_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_oracle_1}	
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_test_result_oracle_1}	
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1367,14 +1397,14 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_test_result_oracle_0}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_test_result_oracle_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_oracle_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_test_result_oracle_1}	
       \end{subfigure}
       
     \end{minipage}
@@ -1403,13 +1433,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_test_result_c05_oracle_0}	
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_test_result_c05_oracle_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_c05_oracle_1}	
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_test_result_c05_oracle_1}	
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1417,14 +1447,14 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_test_result_c05_oracle_0}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_test_result_c05_oracle_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_c05_oracle_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_test_result_c05_oracle_1}	
       \end{subfigure}
 
     \end{minipage}
@@ -1435,126 +1465,177 @@ The second way used to represent an execution is simply by its outcome. For inst
 
 
 
-  \section{A practical fault detection scheme}
-  The oracle-based detection scheme described in Section~\ref{sec:faultDetection} gives good results, however, it cannot be implemented for several reasons. First, the error $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$ cannot be measured directly, since $w_{f+1}$ is not available, only $\widetilde{w}_{f+1}$ is. An approximation for the error is proposed and evaluated in~\ref{sec:checksum}. Second, the threshold $\tau_c = c \cdot \varepsilon / |\widetilde{y}_{\ell, f}|$ requires the $\widetilde{y}_{\ell, f}$ vector which is computed at the last iteration $\ell$ of the execution, and is then not yet available at the fault iteration, so an approximation is also proposed and evaluated in~\ref{sec:threshold}. Moreover, the iteration when the fault occurred is not known either, but this issue can easily be taken care of by applying the scheme at each iteration, and replacing $f$ by the current iteration index $i$ as described in~\ref{sec:practical_scheme}. Finally, the new implementable scheme is evaluated in~\ref{sec:implementable_evaluated}.
+  \subsection{A practical fault detection scheme}\label{sec:detection_implementable}
+ The oracle-based detection scheme described in Section~\ref{sec:detection_oracle} gives good results, however, it cannot be implemented for several reasons. First, the error $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$ cannot be measured directly, since $w_{f+1}$ is not available, only $\widetilde{w}_{f+1}$ is. An approximation for the error is proposed and evaluated in~\ref{sec:checksum}. Second, the threshold $\tau_c = c \cdot \varepsilon / |\widetilde{y}_{\ell, f}|$ requires the $\widetilde{y}_{\ell, f}$ vector which is computed at the last iteration $\ell$ of the execution, and is then not yet available at the fault iteration, so an approximation is also proposed and evaluated in~\ref{sec:threshold}. Moreover, the iteration when the fault occurred is not known either, but this issue can easily be taken care of by applying the scheme at each iteration, and replacing $f$ by the current iteration index $i$ as described in~\ref{sec:practical_scheme}. Finally, the new implementable scheme is evaluated in~\ref{sec:implementable_evaluated}.
 
-  \subsection{Estimation of the error using a check-sum approach}\label{sec:checksum}
-  Traditional approaches for detecting transient faults in SpMV product include check-sums \cite{checksum}. The main idea of such techniques is to encode some data, here the Matrix A data, with the vector $\allOne^T = (1, 1,..., 1)$, to perform the same operations on the encoded data, which are usually much cheaper than the operations on the real data, and to check the result consistency (result on encoded data = encoded result on real data). Assuming exact arithmetic and no error happened during the operations on encoded data, a wrong result often implies a faulty execution. 
+  \subsubsection{Estimation of the error using a check-sum approach}\label{sec:checksum}
+  Traditional approaches for detecting transient faults in SpMV product include check-sums \cite{checksum}. The main idea of such techniques is to encode some data, here the Matrix A data, with the vector $\allOne^T = (1, 1,..., 1)$, to perform the same operations on the encoded data, which are usually much cheaper than the operations on the real data, and to check the result consistency (result on encoded data is equal to the encoded result on real data). Assuming exact arithmetic and no error happened during the operations on encoded data, a wrong result often implies a faulty execution. 
   In exact arithmetic, the following equations hold :
 
 
   \begin{equation}
     % 
     \begin{pmatrix}
-      A  \\
+     \bf{ A } \\
       \allOne^T \cdot A 
     \end{pmatrix} \cdot
     v
     =  \begin{pmatrix}
-      A \cdot v \\
+     \bf{ A \cdot v }\\
       (\allOne^T \cdot A) \cdot v
     \end{pmatrix} 
     =  \begin{pmatrix}
-      A \cdot v \\
+     \bf{ A \cdot v }\\
       \allOne^T \cdot (A \cdot v)
     \end{pmatrix} 
     % 
   \end{equation}
 
-  In case of a fault in A ($reg_1$), the previous equation becomes:
+  In case of a transient fault in the product $\bf{A \cdot v}$, the previous equation becomes:
 
   \begin{equation}
     % 
     \begin{pmatrix}
-      \widetilde{A}  \\
+      \widetilde{\bf{A}}  \\
       \allOne^T \cdot A 
     \end{pmatrix} \cdot
     v
     =  \begin{pmatrix}
-      \widetilde{A} \cdot v \\
+      \bf{\widetilde{A \cdot v}} \\
       (\allOne^T \cdot A) \cdot v
     \end{pmatrix} 
     \neq  \begin{pmatrix}
-      \widetilde{A} \cdot v \\
-      \allOne^T \cdot (\widetilde{A} \cdot v)
+      \bf{\widetilde{A \cdot v}}\\
+      \allOne^T \cdot (\widetilde{A \cdot v})
     \end{pmatrix} 
     % 
   \end{equation}
-  The difference between the result on encoded data and the encoded result $|(\allOne^T \cdot A)^T v - \allOne^T (\widetilde{A} \cdot v)|$ is called the check-sum,
-  where $\allOne^T \cdot A$ is a row vector computed once with  its $j^{th}$ entry is the sum of all entries of the $j^{th}$ row of $A$.
+  The difference between the result on encoded data and the encoded result $|(\allOne^T \cdot A)^T v - \allOne^T (\widetilde{A \cdot v})|$ is called the check-sum,
+  where $\allOne^T \cdot A$ is a row vector computed once with  its $j^{th}$ entry is the sum of all entries of the $j^{th}$ row of $\bf{A}$.
   Then, in exact arithmetic we have: 
   \begin{equation} \label{eqn:checksum}
-    \text{check-sum = } |(\allOne^T \cdot A)^T  v - \allOne^T (\widetilde{A} \cdot v)| = |\allOne^T (w-\widetilde{w})| = \|w - \widetilde{w}\|
+    \text{check-sum = } |(\allOne^T \cdot A)\cdot v - \allOne^T (\widetilde{A \cdot v})| = |\allOne^T (w-\widetilde{w})| = \|w - \widetilde{w}\|
   \end{equation}
-  If no fault occurred, $w = \widetilde{w}$ and the check-sum is equal to 0, whereas if a fault occurred, the check-sum is equal to the error introduced by the fault. The same method holds if the fault occurred in another register, and for preconditioned-GMRES (by replacing in the previous equations $v$ by $z = M^{-1} \cdot v$). 
+  The last equality holds since $\bf{w}$ differs from $\bf{\widetilde{w}}$ by only one row (transient fault). If no fault occurred, $\bf{w} = \widetilde{w}$ and the check-sum is equal to 0, whereas if a fault occurred, the check-sum is equal to the error introduced by the fault.
+  
+  For right-preconditioned-GMRES, in case of a transient fault in the matrix vector product  $\bf{A} \cdot (M^{-1}\cdot v)$ the same method holds when $(\bf{A\cdot M^{-1}})$ is encoded instead of $A$ :
+    \begin{equation} \label{eqn:checksum1}
+    \text{check-sum = } |(\allOne^T \cdot A \cdot M^{-1})\cdot v - \allOne^T (\widetilde{A \cdot (}M^{-1} \cdot v))| = |\allOne^T (w-\widetilde{w})| = \|w - \widetilde{w}\|
+  \end{equation}
 
-  However, because all calculations are performed using floating point arithmetic; the previous equations do not hold anymore due to rounding errors (and the loss of associativity).
+  However for left-preconditioned-GMRES, in case of a transient fault in the matrix vector product $\bf{A} \cdot v$, when $(M^{-1} \cdot A)$ is encoded :
+      \begin{equation} \label{eqn:checksum2}
+        \text{check-sum = } |(\allOne^T \cdot M^{-1} \cdot A)\cdot v - \allOne^T (M^{-1} \cdot (\widetilde{A\cdot v})| = |\allOne^T (w-\widetilde{w})| \neq \|w - \widetilde{w}\|
+      \end{equation}
+      The last equation does not hold anymore since $\bf{\widetilde{w}}$ no longer differs from $\bf{w}$ by only one row. Nevertheless, the check-sum can still be used as an approximation of the error, even thought it may overestimate the error:
+      \begin{equation} \label{eqn:checksum3}
+        \|\bf{w} - \widetilde{w}\| \leq \text{checksum} \leq \sqrt{n} \|w - \widetilde{w} \| 
+      \end{equation}   
+  %The same method holds if the fault occurred in another register, and for preconditioned-GMRES (by %replacing in the previous equations $v$ by $z = M^{-1} \cdot v$). 
+
+  Because all calculations are performed using floating point arithmetic, the previous equations do not hold anymore due to rounding errors (and the loss of associativity).
   Only an approximation of $\|w - \widetilde{w} \|$ can be obtained from Equation~\eqref{eqn:checksum}.
-  Figure~\ref{fig:conv_hist_checksum} plots the check-sum computed at each iteration i for different bit-flips and compares it to the true error $\|w_i - \widetilde{w}_i \|$. In Figure~\ref{fig:gre_216a_conv_hist_checksum_0}, the effect of the fault on the check-sum is not distinguishable from the rounding errors, as the register's $60^{th}$ bit is flipped, causing an extremely small error. In Figure~\ref{fig:gre_216a_conv_hist_checksum_1} and Figure~\ref{fig:gre_216a_conv_hist_checksum_2}, in which bit 50 and bit 40 are flipped respectively, a peak can be seen at the fault iteration and visually differentiated from the check-sum fluctuations. We observe that for a relatively small matrix like gre_216a, the check-sum accuracy is approximately $10^{-15}$ whereas in the case of a larger matrix such as pores_2, more rounding errors accumulates, up to $10^{-10}$. Hence faults causing small errors (such as in figures~\ref{fig:pores_2_conv_hist_checksum_0} and ~\ref{fig:pores_2_conv_hist_checksum_1} where the bit 50 and the bit 40 are flipped respectively) can hardly be distinguished from the check-sum fluctuations, and the true error is not approximated very accurately.
-
-  To conclude, the check-sum described in Equation \eqref{eqn:checksum} seems to be a good approximation of the error, but may loose in accuracy as the matrix size increases, making small faults harder to detect.
-  % TODO
-  % is a critical fault or   One way to automatically distinguish between the occurrence of a fault and rounding errors is to use the threshold established in the previous section. By Previous observations show that some iterations are more sensible than others (for example the first iterations), so the threshold should ideally be computed at each iteration and reflects the iteration sensibility.
-
+  Figures~\ref{fig:conv_hist_checksum_0} and~\ref{fig:conv_hist_checksum_1} plot the check-sum computed at each iteration i for different injected bit-flips and compares it to the true error $\|w_i - \widetilde{w}_i \|$. In figures~\ref{fig:gre_216a_conv_hist_checksum_0} and~\ref{fig:gre_216a_conv_hist_checksum_1}, the error is important and well approximated by the check-sum as the magnitude of the peak in the check-sum (pink line) is roughly the same as the error (yellow square). In~\ref{fig:gre_216a_conv_hist_checksum_2}, the peak is barely noticeable because of rounding errors in the check-sum computation, but for those extremely small errors, accuracy on the error estimation might be less critical for the fault detection. The same behaviour can be observed in left and right-preconditioned-GMRES, with the additional remark that since the matrice is larger, rounding errors are even more important and smaller fault are harder to approximate and distinguish from rounding errors. Moreover, as illustrated in Equation~\eqref{eqn:checksum3} for left-preconditioned-GMRES, the error is slightly overestimated by the check-sum as the peak is slightly taller than the error.
+  To conclude, the check-sum described in Equation~\eqref{eqn:checksum} seems to be a good approximation of the error, but may loose in accuracy as the matrix size increases, making small faults harder to detect.
 
 
   \begin{figure}[H]
-    \centering
+
     
-    \begin{minipage}[b]{0.45\linewidth}
+
       \centering
       \textbf{GMRES} executions on \textbf{gre_216a} 
-    \end{minipage}
+
     \quad
-    \begin{minipage}{0.45\linewidth}
-      \centering
-      \textbf{preconditioned-GMRES} on \textbf{pores_2}
-    \end{minipage}\\
 
 
-    \begin{minipage}[b]{0.48\linewidth}
+
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \includegraphics[width=0.5\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
         \caption{}\label{fig:gre_216a_conv_hist_checksum_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \includegraphics[width=0.5\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
         \caption{}\label{fig:gre_216a_conv_hist_checksum_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \includegraphics[width=0.5\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
         \caption{}\label{fig:gre_216a_conv_hist_checksum_2}
+      \end{subfigure}
+
+
+    \caption{Convergence histories of 3 GMRES executions on HB/gre_216a, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. The check-sum seems to be a good approximation of the error as the peak in the check-sum at the fault iteration has roughly the same magnitude as the error.}  
+    \label{fig:conv_hist_checksum_0}
+  \end{figure}
+
+
+\newcounter{porescounterleft}}
+
+  \setcounter{porescounterleft}{\value{porescounter}}
+  
+    \begin{figure}[H]
+    \centering
+    
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \textbf{left-precond-GMRES} on \textbf{pores_2} 
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.45\linewidth}
+      \centering
+      \textbf{right-precond-GMRES} on \textbf{pores_2}
+    \end{minipage}\\
+
+
+    \begin{minipage}[b]{0.48\linewidth}
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+\includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+        \caption{}\label{fig:pores_2_left_conv_hist_checksum_0}		
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+        \caption{}\label{fig:pores_2_left_conv_hist_checksum_1}
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+
+        \caption{}\label{fig:pores_2_left_conv_hist_checksum_2}
       \end{subfigure}
     \end{minipage}
     \quad
     \begin{minipage}[b]{0.48\linewidth}
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{}\label{fig:pores_2_conv_hist_checksum_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{}\label{fig:pores_2_conv_hist_checksum_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{}\label{fig:pores_2_conv_hist_checksum_2}
       \end{subfigure}
 
       
     \end{minipage}
-    \caption{Convergence histories of 3 GMRES executions on HB/gre_216a and 3 preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a blue square.} %TODO 
-    \label{fig:conv_hist_checksum}
+    \caption{Convergence histories of 3 left-preconditioned-GMRES executions and 3 right-preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. In left preconditioned-GMRES, the error is slightly overestimated by the check-sum. In both cases, low errors are not accurately estimated because of significant rounding errors in the check-sum computation caused by the large matrix size. }  
+    \label{fig:conv_hist_checksum_1}
   \end{figure}
 
 
@@ -1562,8 +1643,8 @@ The second way used to represent an execution is simply by its outcome. For inst
 
 
 
-  \subsection{Approximation of the threshold and evaluation}\label{sec:threshold}
-  Based on the observation that $\widetilde{y}_{j, i}$ usually remains nearly constant as $j$ increases. We will used $\widetilde{y}_{i, i}$ at each iteration $i$ to compute an approximated threshold. This observation does not seem to benefit from much theoretical attention but is supported by the intuition that the solution's directions are mainly determined by the first iteration, whereas the latter iterations are responsible for their refinement. Figure~\ref{fig:conv_hist_threshold_evaluation} compares the true check-sum to the approximated one. In each cases, the two curves do not overlap perfectly, nevertheless the general trend of the true threshold seems to be followed by its implementable approximation.
+  \subsubsection{Approximation of the threshold and evaluation}\label{sec:threshold}
+  Based on the observation that $\widetilde{y}_{j, i}$ usually remains nearly constant as $j$ increases, we propose to approximate $\widetilde{y}_{l, i}$ with $\widetilde{y}_{i, i}$ at each iteration $i$ to compute an approximated threshold. This observation does not seem to benefit from much theoretical attention but is supported by the intuition that the solution's directions are mainly determined by the first iteration, whereas the latter iterations are responsible for their refinement. Figure~\ref{fig:conv_hist_threshold_evaluation} compares the true threshold (orange line) to the approximated one (red line). In each cases, the two curves do not overlap perfectly, nevertheless the general trend of the true threshold seems to be followed by its implementable approximation.
 
 
 
@@ -1586,13 +1667,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_conv_hist_threshold_evaluation_0}	
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_conv_hist_threshold_evaluation_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_conv_hist_threshold_evaluation_1}	
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_conv_hist_threshold_evaluation_1}	
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1600,24 +1681,78 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_conv_hist_threshold_evaluation_0}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_conv_hist_threshold_evaluation_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_conv_hist_threshold_evaluation_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_conv_hist_threshold_evaluation_1}	
       \end{subfigure}
 
     \end{minipage}
-    \caption{Convergence histories of a GMRES execution on HB/gre_216a and a preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-6}$ and $\varepsilon = 10^{-12}$). The true threshold ($c \cdot \varepsilon / |\widetilde{y}_{\ell, i}|$) and the approximation ($c \cdot \varepsilon / |\widetilde{y}_{i, i}|$) are compared. Even though the curves do not perfectly overlap, the general evolution of the true threshold seems to be preserved in the approximated one.}\label{fig:conv_hist_threshold_evaluation}
+    \caption{Convergence histories of a GMRES execution on HB/gre_216a and a right-preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-5}$ and $\varepsilon = 10^{-10}$). No fault are injected in the executions. The true threshold ($c \cdot \varepsilon / |\widetilde{y}_{\ell, i}|$) and the approximation ($c \cdot \varepsilon / |\widetilde{y}_{i, i}|$) are compared. Even though the curves do not perfectly overlap, the general evolution of the true threshold seems to be preserved in the approximated one.}\label{fig:conv_hist_threshold_evaluation}
   \end{figure}
 
+However when faults are injected, the estimation quality may be altered by large faults (bit-flips on the most significant bits). Figure~\ref{fig:conv_hist_threshold_evaluation_1} shows two left-preconditioned-gmres (resp. right-preconditioned-gmres) executions, disrupted by a large fault on bit 18 (resp bit 7), and a slightly smaller fault on bit 19 (resp bit 8). The first observation is that the threshold is altered differently depending on the algorithm. On one hand for left-preconditioned-GMRES, the perturbation appears only at the end of the execution, and modifies significantly the true threshold value (orange line) and not its estimation (red line), when compared to the non-faulty execution (Figure \ref{fig:conv_hist_threshold_evaluation}). On the other hand for right-preconditioned-GMRES, the impact on the estimation appears immediately and exclusively at the fault iteration. Moreover in both cases, a slightly smaller fault is enough to completely efface any of the previously described behaviour.
+
+\setcounter{porescounterleft}{\value{porescounter}}
+
+  \begin{figure}[H]
+    \centering
+    
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \textbf{left-precond-GMRES} on \textbf{pores_2} 
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.45\linewidth}
+      \centering
+      \textbf{right-precond-GMRES} on \textbf{pores_2}
+    \end{minipage}\\
+
+
+    \begin{minipage}[b]{0.48\linewidth}
+      
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+        \caption{bit 18}}\label{fig:pores_2_left_conv_hist_threshold_evaluation_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+        
+        \caption{bit 19}\label{fig:gre_216a_conv_hist_threshold_evaluation_1}	
+      \end{subfigure}
+    \end{minipage}
+    \quad
+    \begin{minipage}[b]{0.48\linewidth}
+      
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{bit 7}\label{fig:pores_2_conv_hist_threshold_evaluation_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{bit 8}\label{fig:pores_2_conv_hist_threshold_evaluation_1}	
+      \end{subfigure}
+
+    \end{minipage}
+    \caption{Convergence histories of left and right-preconditioned-GMRES executions on HB/pored_2 disrupted by faults at the same iteration. The largest faults have a significant impact on the quality of the threshold approximation, as illustrated in \textbf{a)} and \textbf{c)}. The faults impact differently each variant of preconditioned-GMRES, as in left-preconditioned-GMRES, the symptoms appears later on, while in right-preconditioned-GMRES, the approximation quality is immediately altered.  In \textbf{b)} and \textbf{d)}, the fault is slightly smaller, but enough to make the perturbation on the threshold approximation completely disappear. For the largest fault (most significant bits and last iterations), it seems that the computed threshold may not be a good approximation of the true threshold, in particular in right-preconditioned-GMRES.}\label{fig:conv_hist_threshold_evaluation_1}
+  \end{figure}
+
+  
 
 
 
-  \subsection{Implementation of the practical scheme}\label{sec:practical_scheme}
+
+  \subsubsection{Implementation of the practical scheme}\label{sec:practical_scheme}
   Let $0 < c < 1$. To sum up, here is the practical implementable scheme. 
   \begin{enumerate}
   \item The target accuracy is set to $(1-c)\cdot \varepsilon$. 
@@ -1676,13 +1811,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{No impact fault ignored}\label{fig:pores_2_conv_hist_threshold_0}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{Critical fault detected}\label{fig:pores_2_conv_hist_threshold_2}
       \end{subfigure}
 
@@ -1731,13 +1866,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{Critical fault ignored}\label{fig:pores_2_conv_hist_threshold_3}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
         \caption{No impact fault detected}\label{fig:pores_2_conv_hist_threshold_4}
       \end{subfigure}
 
@@ -1748,74 +1883,50 @@ The second way used to represent an execution is simply by its outcome. For inst
   This scheme requires some additional operations to be performed, mainly caused by the check-sum computation. First, since the target accuracy is set to $(1-c)\cdot \varepsilon < \varepsilon$, some additional iterations $\widetilde{\ell}-\ell$ may be required for the execution to converge. Second, the quantity $ \allOne^T \cdot A$ is computed once at the beginning, and requires $\Theta(nnz)$ (number of nonzero elements in A) operations. Then, at each iteration, the vectors  $(\allOne^T \cdot A) \cdot v$ and $\allOne^T \cdot (A \cdot v)$ as well as their Euclidean distance are computed, necessitating at each iteration $\Theta(n)$ operations. Finally, $\Theta(1)$ operations are needed for the $\text{check-sum} < \text{threshold}$ comparison. Therefore, the test requires $\Theta(nnz) + \Theta(n \cdot \widetilde{\ell})$ additional operations, negligible when compared to the $\Theta(\ell \cdot nnz)$ operations of the classical algorithm, as long as $n \ll nnz$ and $\widetilde{\ell} \approx \ell$. Moreover, those computations can be performed in parallel in a separate computation unit since their outputs are not used in the classical execution.
 
 
-  \subsection{Evaluation of the practical detection scheme}\label{sec:implementable_evaluated}
+  \subsubsection{Evaluation of the practical detection scheme}\label{sec:implementable_evaluated}
   % TODO
-  Figure~\ref{fig:test_result} plots the proportion (\% of executions) of detection scheme outcomes for several values of $c$. Because of the previously described approximations, Theorem~\ref{theorem} does not hold anymore and some \emph{Critical fault ignored} are produced. Except for the preconditioned-GMRES case in low accuracy ($\varepsilon = 10^{-6}$), the detection scheme does perform well as the proportion of critical fault missed is relatively low. For more details, the $c=0.5$ cases are plotted in Figure~\ref{fig:test_result_c05} and in Figure~\ref{fig:test_result_c05_matrices} for the results on the matrix set. However, the case preconditioned-GMRES in low accuracy is worrying. To understand why the test performed poorly in this situation, Figure~\ref{fig:why} plots the approximated threshold and check-sum in the case of an important fault inducing a large error. We can see that in both plots, the fault increases significantly the threshold, disrupting the convergence (which never seems to happen in GMRES executions without preconditioner). This problem comes from the approximation on $\widetilde{y}_{l, f} \rightarrow \widetilde{y}_{f, f}$, so another approximation should probably be established to ensure better results in various inputs.
+  Figure~\ref{fig:test_result} plots the proportion (\% of executions) of detection scheme outcomes for several values of $c$. Because of the previously described approximations, Theorem~\ref{theorem} does not hold anymore and some \emph{Critical fault ignored} are produced. Except for the preconditioned-GMRES case in low accuracy ($\varepsilon = 10^{-5}$), the detection scheme does perform well as the proportion of critical fault missed is relatively low. For more details, the $c=0.5$ cases are plotted in Figure~\ref{fig:test_result_c05} and in Figure~\ref{fig:test_result_c05_matrices} for the results on the matrix set. However, the case preconditioned-GMRES in low accuracy is worrying. To understand why the test performed poorly in this situation, Figure~\ref{fig:why} plots the approximated threshold and check-sum in the case of an important fault inducing a large error. We can see that in both plots, the fault increases significantly the threshold, disrupting the convergence (which never seems to happen in GMRES executions without preconditioner). This problem comes from the approximation on $\widetilde{y}_{l, f} \rightarrow \widetilde{y}_{f, f}$, so another approximation should probably be established to ensure better results in various inputs.
   % TODO: expliquer les figures
 
 
 
   \begin{figure}[H]
-    \centering
-    
-    \begin{minipage}[b]{0.45\linewidth}
+  
       \centering
       \textbf{GMRES} executions on \textbf{gre_216a} 
-    \end{minipage}
+  
     \quad
-    \begin{minipage}{0.45\linewidth}
-      \centering
-      \textbf{preconditioned-GMRES} on \textbf{pores_2}
-    \end{minipage}\\
-
-
-    \begin{minipage}[b]{0.48\linewidth}
+  
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_test_result_0}	
+        \includegraphics[width=0.6\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_test_result_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_1}	
+        \includegraphics[width=0.6\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_test_result_1}	
       \end{subfigure}
-    \end{minipage}
     \quad
-    \begin{minipage}[b]{0.48\linewidth}
-      
-      \begin{subfigure}[t]{\linewidth}
-        \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_test_result_0}	
-      \end{subfigure}
-      \quad
-      \begin{subfigure}[t]{\linewidth}
-        \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_1}	
-      \end{subfigure}
-
-    \end{minipage}
+  
     \caption{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref{fig:test_result_c05}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.}\label{fig:test_result}
   \end{figure}
 
-
-
-
+  \setcounter{porescounterleft}{\value{porescounter}}
+  
   \begin{figure}[H]
     \centering
     
     \begin{minipage}[b]{0.45\linewidth}
       \centering
-      \textbf{GMRES} executions on \textbf{gre_216a} 
+      \textbf{left-precond-GMRES} on \textbf{pores_2} 
     \end{minipage}
     \quad
     \begin{minipage}{0.45\linewidth}
       \centering
-      \textbf{preconditioned-GMRES} on \textbf{pores_2}
+      \textbf{right-precond-GMRES} on \textbf{pores_2}
     \end{minipage}\\
 
 
@@ -1823,14 +1934,14 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:gre_216a_test_result_c05_0}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_left_test_result_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_c05_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\thegrecounter.pdf}\stepcounter{grecounterleft})
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_left_test_result_1}	
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1838,52 +1949,98 @@ The second way used to represent an execution is simply by its outcome. For inst
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:pores_2_test_result_c05_0}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_test_result_0}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_c05_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_test_result_1}	
       \end{subfigure}
 
     \end{minipage}
-    \caption{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.}
-    \label{fig:test_result_c05}
+    \caption{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref{fig:test_result_c05_precond}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.}\label{fig:test_result_precond}
   \end{figure}
 
 
+  \begin{figure}[H]
+  
+      \centering
+      \textbf{GMRES} executions on \textbf{gre_216a} 
+  
+    \quad
+  
+      
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_test_result_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_test_result_1}	
+      \end{subfigure}
+    \quad
+  
+        \caption{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.}
+        \label{fig:test_result_c05}
 
+  \end{figure}
+
+  \setcounter{porescounterleft}{\value{porescounter}}
+  
   \begin{figure}[H]
     \centering
+    
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \textbf{left-precond-GMRES} on \textbf{pores_2} 
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.45\linewidth}
+      \centering
+      \textbf{right-precond-GMRES} on \textbf{pores_2}
+    \end{minipage}\\
+
 
     \begin{minipage}[b]{0.48\linewidth}
       
       \begin{subfigure}[t]{\linewidth}
         \centering
-
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/convergence_history_problem_0.png}\stepcounter{porescounter}        %\includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:gre_216a_test_result_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\theporescounterleft.pdf}\stepcounter{porescounterleft})
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_left_test_result_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/left/figure\thegrecounter.pdf}\stepcounter{grecounterleft})
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_left_test_result_1}	
       \end{subfigure}
     \end{minipage}
     \quad
     \begin{minipage}[b]{0.48\linewidth}
       
-      
       \begin{subfigure}[t]{\linewidth}
         \centering
-\includegraphics[width=1.15\linewidth]{figures/pores_2/convergence_history_problem_1.png}\stepcounter{porescounter}                %\includegraphics[width=1.15\linewidth]{figures/pores_2/figure\theporescounter.pdf}\stepcounter{porescounter}
-        
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:pores_2_test_result_1}	
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_test_result_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_test_result_1}	
       \end{subfigure}
 
     \end{minipage}
-    \caption{Two convergence histories of preconditioned-GMRES on pores_2, disrupted by a large fault (bit 15). The error is so important that it modifies significantly the threshold, disrupting the detection scheme.}\label{fig:test_result}
-  \end{figure}\label{fig:why}
+        \caption{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.}
+        \label{fig:test_result_c05_precond}
+          \end{figure}
 
+  
 
 
 
@@ -1908,13 +2065,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.1\linewidth]{figures/test_result_c05_0_full.png}
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:test_result_c05_0_full}	
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:test_result_c05_0_full}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.1\linewidth]{figures/test_result_c05_1_full.png}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:test_result_c05_1_full}	
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:test_result_c05_1_full}	
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1923,13 +2080,13 @@ The second way used to represent an execution is simply by its outcome. For inst
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.1\linewidth]{figures/test_result_c05_0_precond.png}
-        \caption{$\varepsilon = 10^{-6}$}\label{fig:test_result_c05_0_precond}	
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:test_result_c05_0_precond}	
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.1\linewidth]{figures/test_result_c05_1_precond.png}
-        \caption{$\varepsilon = 10^{-12}$}\label{fig:test_result_c05_1_precond}	
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:test_result_c05_1_precond}	
       \end{subfigure}
 
     \end{minipage}

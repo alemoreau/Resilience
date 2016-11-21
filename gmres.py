@@ -165,7 +165,9 @@ def gmres(A, b, x0=None, tol=1e-5, restart=None, maxiter=None, xtype=None, M=Non
 
             if not first_pass and old_ijob == 3:
                 if callback is not None:
-                    callback(iter_num, resid, work, work2, ijob)
+                    if callback(iter_num, resid, work, work2, ijob):
+			return postprocess(x)
+			
                 resid_ready = True
             first_pass = False
 

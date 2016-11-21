@@ -39,277 +39,290 @@
 \newlabel{alg:precond-gmres}{{2}{6}{The GMRES algorithm}{algocf.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{6}{section.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}GMRES convergence}{6}{subsection.3.1}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces The (left) preconditioned full-GMRES algorithm with ILU preconditioner.\relax }}{7}{algocf.3}}
+\newlabel{alg:precond-gmres}{{3}{7}{The GMRES algorithm}{algocf.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Fault model}{8}{subsection.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Experiments setup}{8}{subsection.3.3}}
 \citation{Davis:2011:UFS:2049662.2049663}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Fault model}{7}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Experiments setup}{7}{subsection.3.3}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Faulty product $w \leftarrow \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  A \cdot v$}\mathaccent "0365{A \cdot v}$\relax }}{8}{algocf.3}}
-\newlabel{alg:faulty_product}{{3}{8}{Fault model}{algocf.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Matrix HB/gre_216a and its GMRES convergence history.\relax }}{8}{figure.caption.4}}
-\newlabel{fig:gre_216a}{{1}{8}{Matrix HB/gre_216a and its GMRES convergence history.\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Matrix HB/pores_2 and its preconditioned-GMRES convergence history.\relax }}{9}{figure.caption.5}}
-\newlabel{fig:pores_2}{{2}{9}{Matrix HB/pores_2 and its preconditioned-GMRES convergence history.\relax }{figure.caption.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Matrices used\relax }}{9}{table.caption.6}}
-\newlabel{table:nonlin}{{1}{9}{Matrices used\relax }{table.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Empirical study of executions disrupted by faults}{9}{section.4}}
-\newlabel{sec:empirical}{{4}{9}{Empirical study of executions disrupted by faults}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Representation of executions}{9}{subsection.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.\relax }}{10}{figure.caption.7}}
-\newlabel{fig:gre_216a_conv_hist}{{3}{10}{Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.\relax }{figure.caption.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Color used for each test outcome.\relax }}{11}{table.caption.8}}
-\newlabel{table:outcomes}{{2}{11}{Color used for each test outcome.\relax }{table.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Qualitative results and parameters influence}{11}{subsection.4.2}}
-\newlabel{fig:gre_216a_conv_hist_bit_0}{{4a}{12}{bit 60\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_bit_0}{{a}{12}{bit 60\relax }{figure.caption.9}{}}
-\newlabel{fig:gre_216a_conv_hist_bit_1}{{4b}{12}{bit 40\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_bit_1}{{b}{12}{bit 40\relax }{figure.caption.9}{}}
-\newlabel{fig:gre_216a_conv_hist_bit_2}{{4c}{12}{bit 20\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_bit_2}{{c}{12}{bit 20\relax }{figure.caption.9}{}}
-\newlabel{fig:pores_2_conv_hist_bit_0}{{4d}{12}{bit 60\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:pores_2_conv_hist_bit_0}{{d}{12}{bit 60\relax }{figure.caption.9}{}}
-\newlabel{fig:pores_2_conv_hist_bit_1}{{4e}{12}{bit 40\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:pores_2_conv_hist_bit_1}{{e}{12}{bit 40\relax }{figure.caption.9}{}}
-\newlabel{fig:pores_2_conv_hist_bit_2}{{4f}{12}{bit 20\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:pores_2_conv_hist_bit_2}{{f}{12}{bit 20\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref  {fig:gre_216a_conv_hist_bit_0}, the fault (\textbf  {bit 20}) disrupts the convergence, in \ref  {fig:gre_216a_conv_hist_bit_1}, the fault (\textbf  {bit 40}) delays it, and in \ref  {fig:gre_216a_conv_hist_bit_2}, the fault (\textbf  {bit 60}) has no effect on the convergence.\relax }}{12}{figure.caption.9}}
-\newlabel{fig:conv_hist_bit}{{4}{12}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref {fig:gre_216a_conv_hist_bit_0}, the fault (\textbf {bit 20}) disrupts the convergence, in \ref {fig:gre_216a_conv_hist_bit_1}, the fault (\textbf {bit 40}) delays it, and in \ref {fig:gre_216a_conv_hist_bit_2}, the fault (\textbf {bit 60}) has no effect on the convergence.\relax }{figure.caption.9}{}}
-\newlabel{fig:gre_216a_conv_hist_iteration_0}{{5a}{14}{iteration 0\relax }{figure.caption.10}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_iteration_0}{{a}{14}{iteration 0\relax }{figure.caption.10}{}}
-\newlabel{fig:gre_216a_conv_hist_iteration_1}{{5b}{14}{iteration 60\relax }{figure.caption.10}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_iteration_1}{{b}{14}{iteration 60\relax }{figure.caption.10}{}}
-\newlabel{fig:gre_216a_conv_hist_iteration_2}{{5c}{14}{iteration 120\relax }{figure.caption.10}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_iteration_2}{{c}{14}{iteration 120\relax }{figure.caption.10}{}}
-\newlabel{fig:pores_2_conv_hist_iteration_0}{{5d}{14}{iteration 0\relax }{figure.caption.10}{}}
-\newlabel{sub@fig:pores_2_conv_hist_iteration_0}{{d}{14}{iteration 0\relax }{figure.caption.10}{}}
-\newlabel{fig:pores_2_conv_hist_iteration_1}{{5e}{14}{iteration 11\relax }{figure.caption.10}{}}
-\newlabel{sub@fig:pores_2_conv_hist_iteration_1}{{e}{14}{iteration 11\relax }{figure.caption.10}{}}
-\newlabel{fig:pores_2_conv_hist_iteration_2}{{5f}{14}{iteration 22\relax }{figure.caption.10}{}}
-\newlabel{sub@fig:pores_2_conv_hist_iteration_2}{{f}{14}{iteration 22\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref  {fig:gre_216a_conv_hist_iteration_0}, the fault (\textbf  {iteration 0}) disrupts the convergence, in \ref  {fig:gre_216a_conv_hist_iteration_1}, the fault (\textbf  {iteration 60}) delays it, and in \ref  {fig:gre_216a_conv_hist_iteration_2}, the fault (\textbf  {iteration 120}) has no effect on the convergence.\relax }}{14}{figure.caption.10}}
-\newlabel{fig:conv_hist_iteration}{{5}{14}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref {fig:gre_216a_conv_hist_iteration_0}, the fault (\textbf {iteration 0}) disrupts the convergence, in \ref {fig:gre_216a_conv_hist_iteration_1}, the fault (\textbf {iteration 60}) delays it, and in \ref {fig:gre_216a_conv_hist_iteration_2}, the fault (\textbf {iteration 120}) has no effect on the convergence.\relax }{figure.caption.10}{}}
-\newlabel{fig:gre_216a_conv_hist_register_0}{{6a}{16}{$reg_1$\relax }{figure.caption.11}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_register_0}{{a}{16}{$reg_1$\relax }{figure.caption.11}{}}
-\newlabel{fig:gre_216a_conv_hist_register_1}{{6b}{16}{$reg_2$\relax }{figure.caption.11}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_register_1}{{b}{16}{$reg_2$\relax }{figure.caption.11}{}}
-\newlabel{fig:gre_216a_conv_hist_register_2}{{6c}{16}{$reg_3$\relax }{figure.caption.11}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_register_2}{{c}{16}{$reg_3$\relax }{figure.caption.11}{}}
-\newlabel{fig:pores_2_conv_hist_register_0}{{6d}{16}{$reg_1$\relax }{figure.caption.11}{}}
-\newlabel{sub@fig:pores_2_conv_hist_register_0}{{d}{16}{$reg_1$\relax }{figure.caption.11}{}}
-\newlabel{fig:pores_2_conv_hist_register_1}{{6e}{16}{$reg_2$\relax }{figure.caption.11}{}}
-\newlabel{sub@fig:pores_2_conv_hist_register_1}{{e}{16}{$reg_2$\relax }{figure.caption.11}{}}
-\newlabel{fig:pores_2_conv_hist_register_2}{{6f}{16}{$reg_3$\relax }{figure.caption.11}{}}
-\newlabel{sub@fig:pores_2_conv_hist_register_2}{{f}{16}{$reg_3$\relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in $reg_1$, $reg_2$ and $reg_3$) seem to have the same impact.\relax }}{16}{figure.caption.11}}
-\newlabel{fig:conv_hist_register}{{6}{16}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in $reg_1$, $reg_2$ and $reg_3$) seem to have the same impact.\relax }{figure.caption.11}{}}
-\newlabel{fig:gre_216a_conv_hist_location_0}{{7a}{17}{\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_location_0}{{a}{17}{\relax }{figure.caption.12}{}}
-\newlabel{fig:gre_216a_conv_hist_location_1}{{7b}{17}{\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_location_1}{{b}{17}{\relax }{figure.caption.12}{}}
-\newlabel{fig:gre_216a_conv_hist_location_2}{{7c}{17}{\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_location_2}{{c}{17}{\relax }{figure.caption.12}{}}
-\newlabel{fig:pores_2_conv_hist_location_0}{{7d}{17}{\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:pores_2_conv_hist_location_0}{{d}{17}{\relax }{figure.caption.12}{}}
-\newlabel{fig:pores_2_conv_hist_location_1}{{7e}{17}{\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:pores_2_conv_hist_location_1}{{e}{17}{\relax }{figure.caption.12}{}}
-\newlabel{fig:pores_2_conv_hist_location_2}{{7f}{17}{\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:pores_2_conv_hist_location_2}{{f}{17}{\relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in random locations) seem to have the same impact.\relax }}{17}{figure.caption.12}}
-\newlabel{fig:conv_hist_location}{{7}{17}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in random locations) seem to have the same impact.\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Quantitative results}{18}{subsection.4.3}}
-\newlabel{fig:gre_216a_bit_iteration_0}{{8a}{18}{$\varepsilon = 10^{-6}$\relax }{figure.caption.13}{}}
-\newlabel{sub@fig:gre_216a_bit_iteration_0}{{a}{18}{$\varepsilon = 10^{-6}$\relax }{figure.caption.13}{}}
-\newlabel{fig:pores_2_bit_iteration_0}{{8b}{18}{$\varepsilon = 10^{-6}$\relax }{figure.caption.13}{}}
-\newlabel{sub@fig:pores_2_bit_iteration_0}{{b}{18}{$\varepsilon = 10^{-6}$\relax }{figure.caption.13}{}}
-\newlabel{fig:gre_216a_bit_iteration_1}{{8c}{18}{$\varepsilon = 10^{-12}$\relax }{figure.caption.13}{}}
-\newlabel{sub@fig:gre_216a_bit_iteration_1}{{c}{18}{$\varepsilon = 10^{-12}$\relax }{figure.caption.13}{}}
-\newlabel{fig:pores_2_bit_iteration_1}{{8d}{18}{$\varepsilon = 10^{-12}$\relax }{figure.caption.13}{}}
-\newlabel{sub@fig:pores_2_bit_iteration_1}{{d}{18}{$\varepsilon = 10^{-12}$\relax }{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Diagram of executions disrupted by a fault. Each dot represents an execution of GMRES on HB/gre_216a (figures \ref  {fig:gre_216a_bit_iteration_0} and \ref  {fig:gre_216a_bit_iteration_1}) or preconditioned-GMRES on HB/pores_2 (figures \ref  {fig:pores_2_bit_iteration_0} and \ref  {fig:pores_2_bit_iteration_1}), its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }}{18}{figure.caption.13}}
-\newlabel{fig:bit_iteration}{{8}{18}{Diagram of executions disrupted by a fault. Each dot represents an execution of GMRES on HB/gre_216a (figures \ref {fig:gre_216a_bit_iteration_0} and \ref {fig:gre_216a_bit_iteration_1}) or preconditioned-GMRES on HB/pores_2 (figures \ref {fig:pores_2_bit_iteration_0} and \ref {fig:pores_2_bit_iteration_1}), its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }{figure.caption.13}{}}
-\newlabel{fig:bit_iteration_0}{{9a}{19}{$\varepsilon = 10^{-6}$\relax }{figure.caption.14}{}}
-\newlabel{sub@fig:bit_iteration_0}{{a}{19}{$\varepsilon = 10^{-6}$\relax }{figure.caption.14}{}}
-\newlabel{fig:bit_iteration_1}{{9b}{19}{$\varepsilon = 10^{-12}$\relax }{figure.caption.14}{}}
-\newlabel{sub@fig:bit_iteration_1}{{b}{19}{$\varepsilon = 10^{-12}$\relax }{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Diagrams of GMRES executions disrupted by a fault. Each dot represents an execution on any matrix of the dataset, its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }}{19}{figure.caption.14}}
-\newlabel{fig:matrices_bit_iteration}{{9}{19}{Diagrams of GMRES executions disrupted by a fault. Each dot represents an execution on any matrix of the dataset, its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Fault impact analysis}{20}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Error propagation}{20}{subsection.5.1}}
-\newlabel{sec:propagation}{{5.1}{20}{Error propagation}{subsection.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Error (red) propagation at the fault iteration.\relax }}{20}{figure.caption.15}}
-\newlabel{fig:error_propagation}{{10}{20}{Error (red) propagation at the fault iteration.\relax }{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Error quantification}{20}{subsection.5.2}}
-\newlabel{sec:quantify}{{5.2}{20}{Error quantification}{subsection.5.2}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Faulty product $w \leftarrow \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  A \cdot v$}\mathaccent "0365{A \cdot v}$\relax }}{9}{algocf.4}}
+\newlabel{alg:faulty_product}{{4}{9}{Fault model}{algocf.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Matrix HB/gre_216a and its GMRES convergence history.\relax }}{9}{figure.caption.6}}
+\newlabel{fig:gre_216a}{{1}{9}{Matrix HB/gre_216a and its GMRES convergence history.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Matrix HB/pores_2 and its preconditioned-GMRES convergence history.\relax }}{10}{figure.caption.7}}
+\newlabel{fig:pores_2}{{2}{10}{Matrix HB/pores_2 and its preconditioned-GMRES convergence history.\relax }{figure.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Matrices used\relax }}{10}{table.caption.8}}
+\newlabel{table:nonlin}{{1}{10}{Matrices used\relax }{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Representation of executions}{10}{subsection.3.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.\relax }}{11}{figure.caption.9}}
+\newlabel{fig:gre_216a_conv_hist}{{3}{11}{Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.\relax }{figure.caption.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Color used for each test outcome.\relax }}{11}{table.caption.10}}
+\newlabel{table:outcomes}{{2}{11}{Color used for each test outcome.\relax }{table.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Fault impact analysis}{12}{section.4}}
+\newlabel{sec:analysis}{{4}{12}{Fault impact analysis}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Empirical study of executions disrupted by faults and fault parameters influence on the convergence}{12}{subsection.4.1}}
+\newlabel{sec:empirical}{{4.1}{12}{Empirical study of executions disrupted by faults and fault parameters influence on the convergence}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Qualitative results and fault parameters influence}{12}{subsubsection.4.1.1}}
+\newlabel{fig:gre_216a_conv_hist_bit_0}{{4a}{13}{bit 60\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_bit_0}{{a}{13}{bit 60\relax }{figure.caption.11}{}}
+\newlabel{fig:gre_216a_conv_hist_bit_1}{{4b}{13}{bit 40\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_bit_1}{{b}{13}{bit 40\relax }{figure.caption.11}{}}
+\newlabel{fig:gre_216a_conv_hist_bit_2}{{4c}{13}{bit 20\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_bit_2}{{c}{13}{bit 20\relax }{figure.caption.11}{}}
+\newlabel{fig:pores_2_conv_hist_bit_0}{{4d}{13}{bit 60\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:pores_2_conv_hist_bit_0}{{d}{13}{bit 60\relax }{figure.caption.11}{}}
+\newlabel{fig:pores_2_conv_hist_bit_1}{{4e}{13}{bit 40\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:pores_2_conv_hist_bit_1}{{e}{13}{bit 40\relax }{figure.caption.11}{}}
+\newlabel{fig:pores_2_conv_hist_bit_2}{{4f}{13}{bit 20\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:pores_2_conv_hist_bit_2}{{f}{13}{bit 20\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref  {fig:gre_216a_conv_hist_bit_0}, the fault (\textbf  {bit 20}) disrupts the convergence, in \ref  {fig:gre_216a_conv_hist_bit_1}, the fault (\textbf  {bit 40}) delays it, and in \ref  {fig:gre_216a_conv_hist_bit_2}, the fault (\textbf  {bit 60}) has no effect on the convergence.\relax }}{13}{figure.caption.11}}
+\newlabel{fig:conv_hist_bit}{{4}{13}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref {fig:gre_216a_conv_hist_bit_0}, the fault (\textbf {bit 20}) disrupts the convergence, in \ref {fig:gre_216a_conv_hist_bit_1}, the fault (\textbf {bit 40}) delays it, and in \ref {fig:gre_216a_conv_hist_bit_2}, the fault (\textbf {bit 60}) has no effect on the convergence.\relax }{figure.caption.11}{}}
+\newlabel{fig:gre_216a_conv_hist_iteration_0}{{5a}{15}{iteration 0\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_iteration_0}{{a}{15}{iteration 0\relax }{figure.caption.12}{}}
+\newlabel{fig:gre_216a_conv_hist_iteration_1}{{5b}{15}{iteration 60\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_iteration_1}{{b}{15}{iteration 60\relax }{figure.caption.12}{}}
+\newlabel{fig:gre_216a_conv_hist_iteration_2}{{5c}{15}{iteration 120\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_iteration_2}{{c}{15}{iteration 120\relax }{figure.caption.12}{}}
+\newlabel{fig:pores_2_conv_hist_iteration_0}{{5d}{15}{iteration 0\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:pores_2_conv_hist_iteration_0}{{d}{15}{iteration 0\relax }{figure.caption.12}{}}
+\newlabel{fig:pores_2_conv_hist_iteration_1}{{5e}{15}{iteration 11\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:pores_2_conv_hist_iteration_1}{{e}{15}{iteration 11\relax }{figure.caption.12}{}}
+\newlabel{fig:pores_2_conv_hist_iteration_2}{{5f}{15}{iteration 22\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:pores_2_conv_hist_iteration_2}{{f}{15}{iteration 22\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref  {fig:gre_216a_conv_hist_iteration_0}, the fault (\textbf  {iteration 0}) disrupts the convergence, in \ref  {fig:gre_216a_conv_hist_iteration_1}, the fault (\textbf  {iteration 60}) delays it, and in \ref  {fig:gre_216a_conv_hist_iteration_2}, the fault (\textbf  {iteration 120}) has no effect on the convergence.\relax }}{15}{figure.caption.12}}
+\newlabel{fig:conv_hist_iteration}{{5}{15}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref {fig:gre_216a_conv_hist_iteration_0}, the fault (\textbf {iteration 0}) disrupts the convergence, in \ref {fig:gre_216a_conv_hist_iteration_1}, the fault (\textbf {iteration 60}) delays it, and in \ref {fig:gre_216a_conv_hist_iteration_2}, the fault (\textbf {iteration 120}) has no effect on the convergence.\relax }{figure.caption.12}{}}
+\newlabel{fig:gre_216a_conv_hist_register_0}{{6a}{17}{$reg_1$\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_register_0}{{a}{17}{$reg_1$\relax }{figure.caption.13}{}}
+\newlabel{fig:gre_216a_conv_hist_register_1}{{6b}{17}{$reg_2$\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_register_1}{{b}{17}{$reg_2$\relax }{figure.caption.13}{}}
+\newlabel{fig:gre_216a_conv_hist_register_2}{{6c}{17}{$reg_3$\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_register_2}{{c}{17}{$reg_3$\relax }{figure.caption.13}{}}
+\newlabel{fig:pores_2_conv_hist_register_0}{{6d}{17}{$reg_1$\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:pores_2_conv_hist_register_0}{{d}{17}{$reg_1$\relax }{figure.caption.13}{}}
+\newlabel{fig:pores_2_conv_hist_register_1}{{6e}{17}{$reg_2$\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:pores_2_conv_hist_register_1}{{e}{17}{$reg_2$\relax }{figure.caption.13}{}}
+\newlabel{fig:pores_2_conv_hist_register_2}{{6f}{17}{$reg_3$\relax }{figure.caption.13}{}}
+\newlabel{sub@fig:pores_2_conv_hist_register_2}{{f}{17}{$reg_3$\relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in $reg_1$, $reg_2$ and $reg_3$) seem to have the same impact.\relax }}{17}{figure.caption.13}}
+\newlabel{fig:conv_hist_register}{{6}{17}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in $reg_1$, $reg_2$ and $reg_3$) seem to have the same impact.\relax }{figure.caption.13}{}}
+\newlabel{fig:gre_216a_conv_hist_location_0}{{7a}{18}{\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_location_0}{{a}{18}{\relax }{figure.caption.14}{}}
+\newlabel{fig:gre_216a_conv_hist_location_1}{{7b}{18}{\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_location_1}{{b}{18}{\relax }{figure.caption.14}{}}
+\newlabel{fig:gre_216a_conv_hist_location_2}{{7c}{18}{\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_location_2}{{c}{18}{\relax }{figure.caption.14}{}}
+\newlabel{fig:pores_2_conv_hist_location_0}{{7d}{18}{\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:pores_2_conv_hist_location_0}{{d}{18}{\relax }{figure.caption.14}{}}
+\newlabel{fig:pores_2_conv_hist_location_1}{{7e}{18}{\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:pores_2_conv_hist_location_1}{{e}{18}{\relax }{figure.caption.14}{}}
+\newlabel{fig:pores_2_conv_hist_location_2}{{7f}{18}{\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:pores_2_conv_hist_location_2}{{f}{18}{\relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in random locations) seem to have the same impact.\relax }}{18}{figure.caption.14}}
+\newlabel{fig:conv_hist_location}{{7}{18}{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In all the executions, the faults (occurring in random locations) seem to have the same impact.\relax }{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Quantitative results}{19}{subsubsection.4.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Analytical study of the fault impact on the convergence}{19}{subsection.4.2}}
+\newlabel{sec:analytical}{{4.2}{19}{Analytical study of the fault impact on the convergence}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Error quantification}{19}{subsubsection.4.2.1}}
+\newlabel{sec:quantify}{{4.2.1}{19}{Error quantification}{subsubsection.4.2.1}{}}
 \citation{sisz:03}
 \citation{sisz:03}
-\newlabel{fig:gre_216a_conv_hist_delta}{{11a}{21}{GMRES on gre_216a\relax }{figure.caption.16}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_delta}{{a}{21}{GMRES on gre_216a\relax }{figure.caption.16}{}}
-\newlabel{fig:pores_2_conv_hist_delta}{{11b}{21}{preconditioned-GMRES on pores_2, \relax }{figure.caption.16}{}}
-\newlabel{sub@fig:pores_2_conv_hist_delta}{{b}{21}{preconditioned-GMRES on pores_2, \relax }{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions:GMRES on gre_216a in \ref  {fig:gre_216a_conv_hist_delta} and precondition-GMRES on pores_2 in \ref  {fig:pores_2_conv_hist_delta}.\relax }}{21}{figure.caption.16}}
-\newlabel{inexact_krylov}{{2}{21}{Error quantification}{equation.5.2}{}}
-\newlabel{inexact_krylov_adapted}{{3}{21}{Error quantification}{equation.5.3}{}}
-\newlabel{eqn:delta}{{4}{21}{Error quantification}{equation.5.4}{}}
+\newlabel{fig:gre_216a_conv_hist_delta}{{10a}{20}{GMRES on gre_216a\relax }{figure.caption.17}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_delta}{{a}{20}{GMRES on gre_216a\relax }{figure.caption.17}{}}
+\newlabel{fig:pores_2_conv_hist_delta}{{10b}{20}{preconditioned-GMRES on pores_2, \relax }{figure.caption.17}{}}
+\newlabel{sub@fig:pores_2_conv_hist_delta}{{b}{20}{preconditioned-GMRES on pores_2, \relax }{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions:GMRES on gre_216a in \ref  {fig:gre_216a_conv_hist_delta} and precondition-GMRES on pores_2 in \ref  {fig:pores_2_conv_hist_delta}.\relax }}{20}{figure.caption.17}}
+\newlabel{inexact_krylov}{{2}{20}{Error quantification}{equation.4.2}{}}
+\newlabel{inexact_krylov_adapted}{{3}{20}{Error quantification}{equation.4.3}{}}
+\newlabel{eqn:delta}{{4}{20}{Error quantification}{equation.4.4}{}}
 \citation{sisz:03}
 \citation{DBLP:journals/siamsc/GiraudGL07}
 \citation{DBLP:journals/siamsc/GiraudGL07}
-\newlabel{fig:gre_216a_conv_hist_delta}{{12a}{22}{GMRES on gre_216a\relax }{figure.caption.17}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_delta}{{a}{22}{GMRES on gre_216a\relax }{figure.caption.17}{}}
-\newlabel{fig:pores_2_conv_hist_delta}{{12b}{22}{preconditioned-GMRES on pores_2, \relax }{figure.caption.17}{}}
-\newlabel{sub@fig:pores_2_conv_hist_delta}{{b}{22}{preconditioned-GMRES on pores_2, \relax }{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Two convergence histories disrupted by a fault. The light blue and purple lines represent the measured residual gap ($\Vert \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  r$}\mathaccent "0365{r}_{i} - \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  r$}\mathaccent "0365{r}_{i}\textprime  \Vert $) and the computed residual gap ($|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  y$}\mathaccent "0365{y}_{{i}, f}|\cdot \Vert {w}_{f+1} - \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  w$}\mathaccent "0365{w}_{f+1}\Vert $) evolutions in the faulty executions:GMRES on gre_216a in \ref  {fig:gre_216a_conv_hist_delta} and precondition-GMRES on pores_2 in \ref  {fig:pores_2_conv_hist_delta}.\relax }}{22}{figure.caption.17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Prediction of the fault impact}{22}{subsection.5.3}}
-\newlabel{sec:prediction}{{5.3}{22}{Prediction of the fault impact}{subsection.5.3}{}}
-\newlabel{theorem}{{1}{22}{}{theorem.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Numerical experiment}{23}{subsection.5.4}}
-\newlabel{scheme_oracle}{{5.4}{23}{Numerical experiment}{equation.5.6}{}}
-\newlabel{fig:gre_216a_conv_hist_prediction}{{13a}{24}{Convergence prediction\relax }{figure.caption.18}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_prediction}{{a}{24}{Convergence prediction\relax }{figure.caption.18}{}}
-\newlabel{fig:gre_216a_conv_hist_no_prediction}{{13b}{24}{No prediction\relax }{figure.caption.18}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_no_prediction}{{b}{24}{No prediction\relax }{figure.caption.18}{}}
-\newlabel{fig:pores_2_conv_hist_prediction}{{13c}{24}{Convergence prediction\relax }{figure.caption.18}{}}
-\newlabel{sub@fig:pores_2_conv_hist_prediction}{{c}{24}{Convergence prediction\relax }{figure.caption.18}{}}
-\newlabel{fig:pores_2_conv_hist_no_prediction}{{13d}{24}{No prediction\relax }{figure.caption.18}{}}
-\newlabel{sub@fig:pores_2_conv_hist_no_prediction}{{d}{24}{No prediction\relax }{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Prediction of the convergence in 4 executions disrupted by a fault on gre_216a and pores_2. At the fault iteration $f$, the error is compared to the threshold. In the upper plots, the error is lower than the threshold, hence the execution is predicted to converge. On the contrary in the bottom plots, the error is greater than the threshold so no convergence prediction can be made (although in both case the executions happen to converge anyway). For the prediction, the value $c=0.5$ was used.\relax }}{24}{figure.caption.18}}
-\newlabel{fig:compared}{{13}{24}{Prediction of the convergence in 4 executions disrupted by a fault on gre_216a and pores_2. At the fault iteration $f$, the error is compared to the threshold. In the upper plots, the error is lower than the threshold, hence the execution is predicted to converge. On the contrary in the bottom plots, the error is greater than the threshold so no convergence prediction can be made (although in both case the executions happen to converge anyway). For the prediction, the value $c=0.5$ was used.\relax }{figure.caption.18}{}}
-\newlabel{fig:gre_216a_conv_hist_location_0}{{14a}{25}{Converged\relax }{figure.caption.19}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_location_0}{{a}{25}{Converged\relax }{figure.caption.19}{}}
-\newlabel{fig:gre_216a_conv_hist_location_1}{{14b}{25}{Delayed\relax }{figure.caption.19}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_location_1}{{b}{25}{Delayed\relax }{figure.caption.19}{}}
-\newlabel{fig:gre_216a_conv_hist_location_2}{{14c}{25}{Not converged\relax }{figure.caption.19}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_location_2}{{c}{25}{Not converged\relax }{figure.caption.19}{}}
-\newlabel{fig:pores_2_conv_hist_location_0}{{14d}{25}{Converged\relax }{figure.caption.19}{}}
-\newlabel{sub@fig:pores_2_conv_hist_location_0}{{d}{25}{Converged\relax }{figure.caption.19}{}}
-\newlabel{fig:pores_2_conv_hist_location_1}{{14e}{25}{Delayed\relax }{figure.caption.19}{}}
-\newlabel{sub@fig:pores_2_conv_hist_location_1}{{e}{25}{Delayed\relax }{figure.caption.19}{}}
-\newlabel{fig:pores_2_conv_hist_location_2}{{14f}{25}{Not converged\relax }{figure.caption.19}{}}
-\newlabel{sub@fig:pores_2_conv_hist_location_2}{{f}{25}{Not converged\relax }{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Prediction of the convergence in several executions disrupted by a fault. Each dot corresponds to an execution, its abscissa is the bit flipped, its ordinate is the fault injection time in the execution, and its color represents whether the execution was predicted to converge (green) or no prediction was made (red). The executions are split into 3 plots for each matrix used, one for each convergence outcome (convergence, delayed convergence and no convergence). For the prediction, the value $c=0.5$ was used.\relax }}{25}{figure.caption.19}}
-\newlabel{fig:prediction}{{14}{25}{Prediction of the convergence in several executions disrupted by a fault. Each dot corresponds to an execution, its abscissa is the bit flipped, its ordinate is the fault injection time in the execution, and its color represents whether the execution was predicted to converge (green) or no prediction was made (red). The executions are split into 3 plots for each matrix used, one for each convergence outcome (convergence, delayed convergence and no convergence). For the prediction, the value $c=0.5$ was used.\relax }{figure.caption.19}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Oracle-based scheme for the detection of faults}{26}{section.6}}
-\newlabel{sec:faultDetection}{{6}{26}{Oracle-based scheme for the detection of faults}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Description of the detection scheme}{26}{subsection.6.1}}
-\newlabel{sec:detection_oracle}{{6.1}{26}{Description of the detection scheme}{subsection.6.1}{}}
-\newlabel{detection_scheme_oracle}{{2}{26}{Description of the detection scheme}{equation.6.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Colors and name used for each test outcome.\relax }}{26}{table.caption.20}}
-\newlabel{table:theoretical_outcomes}{{3}{26}{Colors and name used for each test outcome.\relax }{table.caption.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Evaluation of the detection scheme}{26}{subsection.6.2}}
-\newlabel{sec:evaluation_oracle}{{6.2}{26}{Evaluation of the detection scheme}{subsection.6.2}{}}
-\newlabel{fig:gre_216a_test_result_oracle_0}{{15a}{28}{$\varepsilon = 10^{-6}$\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:gre_216a_test_result_oracle_0}{{a}{28}{$\varepsilon = 10^{-6}$\relax }{figure.caption.21}{}}
-\newlabel{fig:gre_216a_test_result_oracle_1}{{15b}{28}{$\varepsilon = 10^{-12}$\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:gre_216a_test_result_oracle_1}{{b}{28}{$\varepsilon = 10^{-12}$\relax }{figure.caption.21}{}}
-\newlabel{fig:pores_2_test_result_oracle_0}{{15c}{28}{$\varepsilon = 10^{-6}$\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:pores_2_test_result_oracle_0}{{c}{28}{$\varepsilon = 10^{-6}$\relax }{figure.caption.21}{}}
-\newlabel{fig:pores_2_test_result_oracle_1}{{15d}{28}{$\varepsilon = 10^{-12}$\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:pores_2_test_result_oracle_1}{{d}{28}{$\varepsilon = 10^{-12}$\relax }{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure\nobreakspace  {}\ref  {fig:test_result_oracle_c05}.\relax }}{28}{figure.caption.21}}
-\newlabel{fig:test_result_oracle}{{15}{28}{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref {fig:test_result_oracle_c05}.\relax }{figure.caption.21}{}}
+\newlabel{fig:gre_216a_conv_hist_delta}{{11a}{21}{GMRES on gre_216a\relax }{figure.caption.18}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_delta}{{a}{21}{GMRES on gre_216a\relax }{figure.caption.18}{}}
+\newlabel{fig:pores_2_conv_hist_delta}{{11b}{21}{preconditioned-GMRES on pores_2, \relax }{figure.caption.18}{}}
+\newlabel{sub@fig:pores_2_conv_hist_delta}{{b}{21}{preconditioned-GMRES on pores_2, \relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Two convergence histories disrupted by a fault. The light blue and purple lines represent the measured residual gap ($\Vert \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  r$}\mathaccent "0365{r}_{i} - \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  r$}\mathaccent "0365{r}_{i}\textprime  \Vert $) and the computed residual gap ($|\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  y$}\mathaccent "0365{y}_{{i}, f}|\cdot \Vert {w}_{f+1} - \setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  w$}\mathaccent "0365{w}_{f+1}\Vert $) evolutions in the faulty executions:GMRES on gre_216a in \ref  {fig:gre_216a_conv_hist_delta} and precondition-GMRES on pores_2 in \ref  {fig:pores_2_conv_hist_delta}.\relax }}{21}{figure.caption.18}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Prediction of the fault impact}{21}{subsubsection.4.2.2}}
+\newlabel{sec:prediction}{{4.2.2}{21}{Prediction of the fault impact}{subsubsection.4.2.2}{}}
+\newlabel{theorem}{{1}{21}{}{theorem.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Numerical experiment}{22}{subsubsection.4.2.3}}
+\newlabel{scheme_oracle}{{4.2.3}{22}{Numerical experiment}{equation.4.6}{}}
+\newlabel{fig:gre_216a_conv_hist_prediction}{{12a}{23}{Convergence prediction\relax }{figure.caption.19}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_prediction}{{a}{23}{Convergence prediction\relax }{figure.caption.19}{}}
+\newlabel{fig:gre_216a_conv_hist_no_prediction}{{12b}{23}{No prediction\relax }{figure.caption.19}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_no_prediction}{{b}{23}{No prediction\relax }{figure.caption.19}{}}
+\newlabel{fig:pores_2_conv_hist_prediction}{{12c}{23}{Convergence prediction\relax }{figure.caption.19}{}}
+\newlabel{sub@fig:pores_2_conv_hist_prediction}{{c}{23}{Convergence prediction\relax }{figure.caption.19}{}}
+\newlabel{fig:pores_2_conv_hist_no_prediction}{{12d}{23}{No prediction\relax }{figure.caption.19}{}}
+\newlabel{sub@fig:pores_2_conv_hist_no_prediction}{{d}{23}{No prediction\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Prediction of the convergence in 4 executions disrupted by a fault on gre_216a and pores_2. At the fault iteration $f$, the error is compared to the threshold. In the upper plots, the error is lower than the threshold, hence the execution is predicted to converge. On the contrary in the bottom plots, the error is greater than the threshold so no convergence prediction can be made (although in both case the executions happen to converge anyway). For the prediction, the value $c=0.5$ was used.\relax }}{23}{figure.caption.19}}
+\newlabel{fig:compared}{{12}{23}{Prediction of the convergence in 4 executions disrupted by a fault on gre_216a and pores_2. At the fault iteration $f$, the error is compared to the threshold. In the upper plots, the error is lower than the threshold, hence the execution is predicted to converge. On the contrary in the bottom plots, the error is greater than the threshold so no convergence prediction can be made (although in both case the executions happen to converge anyway). For the prediction, the value $c=0.5$ was used.\relax }{figure.caption.19}{}}
+\newlabel{fig:gre_216a_conv_hist_location_0}{{13a}{24}{Converged\relax }{figure.caption.20}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_location_0}{{a}{24}{Converged\relax }{figure.caption.20}{}}
+\newlabel{fig:gre_216a_conv_hist_location_1}{{13b}{24}{Delayed\relax }{figure.caption.20}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_location_1}{{b}{24}{Delayed\relax }{figure.caption.20}{}}
+\newlabel{fig:gre_216a_conv_hist_location_2}{{13c}{24}{Not converged\relax }{figure.caption.20}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_location_2}{{c}{24}{Not converged\relax }{figure.caption.20}{}}
+\newlabel{fig:pores_2_conv_hist_location_0}{{13d}{24}{Converged\relax }{figure.caption.20}{}}
+\newlabel{sub@fig:pores_2_conv_hist_location_0}{{d}{24}{Converged\relax }{figure.caption.20}{}}
+\newlabel{fig:pores_2_conv_hist_location_1}{{13e}{24}{Delayed\relax }{figure.caption.20}{}}
+\newlabel{sub@fig:pores_2_conv_hist_location_1}{{e}{24}{Delayed\relax }{figure.caption.20}{}}
+\newlabel{fig:pores_2_conv_hist_location_2}{{13f}{24}{Not converged\relax }{figure.caption.20}{}}
+\newlabel{sub@fig:pores_2_conv_hist_location_2}{{f}{24}{Not converged\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Prediction of the convergence in several executions disrupted by a fault. Each dot corresponds to an execution, its abscissa is the bit flipped, its ordinate is the fault injection time in the execution, and its color represents whether the execution was predicted to converge (green) or no prediction was made (red). The executions are split into 3 plots for each matrix used, one for each convergence outcome (convergence, delayed convergence and no convergence). For the prediction, the value $c=0.5$ was used.\relax }}{24}{figure.caption.20}}
+\newlabel{fig:prediction}{{13}{24}{Prediction of the convergence in several executions disrupted by a fault. Each dot corresponds to an execution, its abscissa is the bit flipped, its ordinate is the fault injection time in the execution, and its color represents whether the execution was predicted to converge (green) or no prediction was made (red). The executions are split into 3 plots for each matrix used, one for each convergence outcome (convergence, delayed convergence and no convergence). For the prediction, the value $c=0.5$ was used.\relax }{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Detection of faults in GMRES}{25}{section.5}}
+\newlabel{sec:faultDetection}{{5}{25}{Detection of faults in GMRES}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}An oracle-based detection scheme}{25}{subsection.5.1}}
+\newlabel{sec:detection_oracle}{{5.1}{25}{An oracle-based detection scheme}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Description of the detection scheme}{25}{subsubsection.5.1.1}}
+\newlabel{detection_scheme_oracle}{{2}{25}{Description of the detection scheme}{equation.5.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Colors and name used for each test outcome.\relax }}{25}{table.caption.21}}
+\newlabel{table:theoretical_outcomes}{{3}{25}{Colors and name used for each test outcome.\relax }{table.caption.21}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Evaluation of the detection scheme}{25}{subsubsection.5.1.2}}
+\newlabel{sec:evaluation_oracle}{{5.1.2}{25}{Evaluation of the detection scheme}{subsubsection.5.1.2}{}}
+\newlabel{fig:gre_216a_test_result_oracle_0}{{14a}{27}{$\varepsilon = 10^{-5}$\relax }{figure.caption.22}{}}
+\newlabel{sub@fig:gre_216a_test_result_oracle_0}{{a}{27}{$\varepsilon = 10^{-5}$\relax }{figure.caption.22}{}}
+\newlabel{fig:gre_216a_test_result_oracle_1}{{14b}{27}{$\varepsilon = 10^{-10}$\relax }{figure.caption.22}{}}
+\newlabel{sub@fig:gre_216a_test_result_oracle_1}{{b}{27}{$\varepsilon = 10^{-10}$\relax }{figure.caption.22}{}}
+\newlabel{fig:pores_2_test_result_oracle_0}{{14c}{27}{$\varepsilon = 10^{-5}$\relax }{figure.caption.22}{}}
+\newlabel{sub@fig:pores_2_test_result_oracle_0}{{c}{27}{$\varepsilon = 10^{-5}$\relax }{figure.caption.22}{}}
+\newlabel{fig:pores_2_test_result_oracle_1}{{14d}{27}{$\varepsilon = 10^{-10}$\relax }{figure.caption.22}{}}
+\newlabel{sub@fig:pores_2_test_result_oracle_1}{{d}{27}{$\varepsilon = 10^{-10}$\relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure\nobreakspace  {}\ref  {fig:test_result_oracle_c05}.\relax }}{27}{figure.caption.22}}
+\newlabel{fig:test_result_oracle}{{14}{27}{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref {fig:test_result_oracle_c05}.\relax }{figure.caption.22}{}}
 \citation{checksum}
-\newlabel{fig:gre_216a_test_result_c05_oracle_0}{{16a}{29}{$\varepsilon = 10^{-6}$\relax }{figure.caption.22}{}}
-\newlabel{sub@fig:gre_216a_test_result_c05_oracle_0}{{a}{29}{$\varepsilon = 10^{-6}$\relax }{figure.caption.22}{}}
-\newlabel{fig:gre_216a_test_result_c05_oracle_1}{{16b}{29}{$\varepsilon = 10^{-12}$\relax }{figure.caption.22}{}}
-\newlabel{sub@fig:gre_216a_test_result_c05_oracle_1}{{b}{29}{$\varepsilon = 10^{-12}$\relax }{figure.caption.22}{}}
-\newlabel{fig:pores_2_test_result_c05_oracle_0}{{16c}{29}{$\varepsilon = 10^{-6}$\relax }{figure.caption.22}{}}
-\newlabel{sub@fig:pores_2_test_result_c05_oracle_0}{{c}{29}{$\varepsilon = 10^{-6}$\relax }{figure.caption.22}{}}
-\newlabel{fig:pores_2_test_result_c05_oracle_1}{{16d}{29}{$\varepsilon = 10^{-12}$\relax }{figure.caption.22}{}}
-\newlabel{sub@fig:pores_2_test_result_c05_oracle_1}{{d}{29}{$\varepsilon = 10^{-12}$\relax }{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome from Table \ref  {table:theoretical_outcomes}.\relax }}{29}{figure.caption.22}}
-\newlabel{fig:test_result_oracle_c05}{{16}{29}{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome from Table \ref {table:theoretical_outcomes}.\relax }{figure.caption.22}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}A practical fault detection scheme}{29}{section.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Estimation of the error using a check-sum approach}{30}{subsection.7.1}}
-\newlabel{sec:checksum}{{7.1}{30}{Estimation of the error using a check-sum approach}{subsection.7.1}{}}
-\newlabel{eqn:checksum}{{10}{30}{Estimation of the error using a check-sum approach}{equation.7.10}{}}
-\newlabel{fig:gre_216a_conv_hist_checksum_0}{{17a}{31}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_checksum_0}{{a}{31}{\relax }{figure.caption.23}{}}
-\newlabel{fig:gre_216a_conv_hist_checksum_1}{{17b}{31}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_checksum_1}{{b}{31}{\relax }{figure.caption.23}{}}
-\newlabel{fig:gre_216a_conv_hist_checksum_2}{{17c}{31}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_checksum_2}{{c}{31}{\relax }{figure.caption.23}{}}
-\newlabel{fig:pores_2_conv_hist_checksum_0}{{17d}{31}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:pores_2_conv_hist_checksum_0}{{d}{31}{\relax }{figure.caption.23}{}}
-\newlabel{fig:pores_2_conv_hist_checksum_1}{{17e}{31}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:pores_2_conv_hist_checksum_1}{{e}{31}{\relax }{figure.caption.23}{}}
-\newlabel{fig:pores_2_conv_hist_checksum_2}{{17f}{31}{\relax }{figure.caption.23}{}}
-\newlabel{sub@fig:pores_2_conv_hist_checksum_2}{{f}{31}{\relax }{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Convergence histories of 3 GMRES executions on HB/gre_216a and 3 preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a blue square.\relax }}{31}{figure.caption.23}}
-\newlabel{fig:conv_hist_checksum}{{17}{31}{Convergence histories of 3 GMRES executions on HB/gre_216a and 3 preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a blue square.\relax }{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Approximation of the threshold and evaluation}{32}{subsection.7.2}}
-\newlabel{sec:threshold}{{7.2}{32}{Approximation of the threshold and evaluation}{subsection.7.2}{}}
-\newlabel{fig:gre_216a_conv_hist_threshold_evaluation_0}{{18a}{32}{$\varepsilon = 10^{-6}$\relax }{figure.caption.24}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_threshold_evaluation_0}{{a}{32}{$\varepsilon = 10^{-6}$\relax }{figure.caption.24}{}}
-\newlabel{fig:gre_216a_conv_hist_threshold_evaluation_1}{{18b}{32}{$\varepsilon = 10^{-12}$\relax }{figure.caption.24}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_threshold_evaluation_1}{{b}{32}{$\varepsilon = 10^{-12}$\relax }{figure.caption.24}{}}
-\newlabel{fig:pores_2_conv_hist_threshold_evaluation_0}{{18c}{32}{$\varepsilon = 10^{-6}$\relax }{figure.caption.24}{}}
-\newlabel{sub@fig:pores_2_conv_hist_threshold_evaluation_0}{{c}{32}{$\varepsilon = 10^{-6}$\relax }{figure.caption.24}{}}
-\newlabel{fig:pores_2_conv_hist_threshold_evaluation_1}{{18d}{32}{$\varepsilon = 10^{-12}$\relax }{figure.caption.24}{}}
-\newlabel{sub@fig:pores_2_conv_hist_threshold_evaluation_1}{{d}{32}{$\varepsilon = 10^{-12}$\relax }{figure.caption.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Convergence histories of a GMRES execution on HB/gre_216a and a preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-6}$ and $\varepsilon = 10^{-12}$). The true threshold ($c \cdot \varepsilon / |\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  y$}\mathaccent "0365{y}_{\ell , i}|$) and the approximation ($c \cdot \varepsilon / |\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  y$}\mathaccent "0365{y}_{i, i}|$) are compared. Even though the curves do not perfectly overlap, the general evolution of the true threshold seems to be preserved in the approximated one.\relax }}{32}{figure.caption.24}}
-\newlabel{fig:conv_hist_threshold_evaluation}{{18}{32}{Convergence histories of a GMRES execution on HB/gre_216a and a preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-6}$ and $\varepsilon = 10^{-12}$). The true threshold ($c \cdot \varepsilon / |\widetilde {y}_{\ell , i}|$) and the approximation ($c \cdot \varepsilon / |\widetilde {y}_{i, i}|$) are compared. Even though the curves do not perfectly overlap, the general evolution of the true threshold seems to be preserved in the approximated one.\relax }{figure.caption.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Implementation of the practical scheme}{32}{subsection.7.3}}
-\newlabel{sec:practical_scheme}{{7.3}{32}{Implementation of the practical scheme}{subsection.7.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces New set of outcomes and their colors.\relax }}{33}{table.caption.25}}
-\newlabel{colors}{{4}{33}{New set of outcomes and their colors.\relax }{table.caption.25}{}}
-\newlabel{fig:gre_216a_conv_hist_threshold_0}{{19a}{34}{No impact fault ignored\relax }{figure.caption.26}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_threshold_0}{{a}{34}{No impact fault ignored\relax }{figure.caption.26}{}}
-\newlabel{fig:gre_216a_conv_hist_threshold_2}{{19b}{34}{Critical fault detected\relax }{figure.caption.26}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_threshold_2}{{b}{34}{Critical fault detected\relax }{figure.caption.26}{}}
-\newlabel{fig:pores_2_conv_hist_threshold_0}{{19c}{34}{No impact fault ignored\relax }{figure.caption.26}{}}
-\newlabel{sub@fig:pores_2_conv_hist_threshold_0}{{c}{34}{No impact fault ignored\relax }{figure.caption.26}{}}
-\newlabel{fig:pores_2_conv_hist_threshold_2}{{19d}{34}{Critical fault detected\relax }{figure.caption.26}{}}
-\newlabel{sub@fig:pores_2_conv_hist_threshold_2}{{d}{34}{Critical fault detected\relax }{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The check-sum and the threshold at each iteration are plotted. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_0} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_0}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions converge, producing a \emph  {No impact fault ignored} from Table \ref  {colors} in both cases. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_2} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_2}, the check-sum becomes higher than the threshold at the fault iteration, so the faults are detected and the executions do not converge, producing a \emph  {Critical fault detected} from Table \ref  {colors} in both cases. \relax }}{34}{figure.caption.26}}
-\newlabel{fig:conv_hist_threshold}{{19}{34}{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The check-sum and the threshold at each iteration are plotted. In figures~\ref {fig:gre_216a_conv_hist_threshold_0} and ~\ref {fig:pores_2_conv_hist_threshold_0}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions converge, producing a \emph {No impact fault ignored} from Table \ref {colors} in both cases. In figures~\ref {fig:gre_216a_conv_hist_threshold_2} and ~\ref {fig:pores_2_conv_hist_threshold_2}, the check-sum becomes higher than the threshold at the fault iteration, so the faults are detected and the executions do not converge, producing a \emph {Critical fault detected} from Table \ref {colors} in both cases. \relax }{figure.caption.26}{}}
-\newlabel{fig:gre_216a_conv_hist_threshold_3}{{20a}{35}{Critical fault ignored\relax }{figure.caption.27}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_threshold_3}{{a}{35}{Critical fault ignored\relax }{figure.caption.27}{}}
-\newlabel{fig:gre_216a_conv_hist_threshold_4}{{20b}{35}{No impact fault detected\relax }{figure.caption.27}{}}
-\newlabel{sub@fig:gre_216a_conv_hist_threshold_4}{{b}{35}{No impact fault detected\relax }{figure.caption.27}{}}
-\newlabel{fig:pores_2_conv_hist_threshold_3}{{20c}{35}{Critical fault ignored\relax }{figure.caption.27}{}}
-\newlabel{sub@fig:pores_2_conv_hist_threshold_3}{{c}{35}{Critical fault ignored\relax }{figure.caption.27}{}}
-\newlabel{fig:pores_2_conv_hist_threshold_4}{{20d}{35}{No impact fault detected\relax }{figure.caption.27}{}}
-\newlabel{sub@fig:pores_2_conv_hist_threshold_4}{{d}{35}{No impact fault detected\relax }{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are not properly detected. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_3} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_3}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions do not converge, producing a \emph  {Critical fault ignored} from Table \ref  {colors} in both cases. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_4} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_4}, the check-sum becomes slightly higher than the threshold at the fault iteration, so the faults are detected but the executions converge anyway, producing a \emph  {No impact fault detected} from Table \ref  {colors} in both cases. \relax }}{35}{figure.caption.27}}
-\newlabel{fig:conv_hist_threshold_false}{{20}{35}{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are not properly detected. In figures~\ref {fig:gre_216a_conv_hist_threshold_3} and ~\ref {fig:pores_2_conv_hist_threshold_3}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions do not converge, producing a \emph {Critical fault ignored} from Table \ref {colors} in both cases. In figures~\ref {fig:gre_216a_conv_hist_threshold_4} and ~\ref {fig:pores_2_conv_hist_threshold_4}, the check-sum becomes slightly higher than the threshold at the fault iteration, so the faults are detected but the executions converge anyway, producing a \emph {No impact fault detected} from Table \ref {colors} in both cases. \relax }{figure.caption.27}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Evaluation of the practical detection scheme}{36}{subsection.7.4}}
-\newlabel{sec:implementable_evaluated}{{7.4}{36}{Evaluation of the practical detection scheme}{subsection.7.4}{}}
-\newlabel{fig:gre_216a_test_result_0}{{21a}{37}{$\varepsilon = 10^{-6}$\relax }{figure.caption.28}{}}
-\newlabel{sub@fig:gre_216a_test_result_0}{{a}{37}{$\varepsilon = 10^{-6}$\relax }{figure.caption.28}{}}
-\newlabel{fig:gre_216a_test_result_1}{{21b}{37}{$\varepsilon = 10^{-12}$\relax }{figure.caption.28}{}}
-\newlabel{sub@fig:gre_216a_test_result_1}{{b}{37}{$\varepsilon = 10^{-12}$\relax }{figure.caption.28}{}}
-\newlabel{fig:pores_2_test_result_0}{{21c}{37}{$\varepsilon = 10^{-6}$\relax }{figure.caption.28}{}}
-\newlabel{sub@fig:pores_2_test_result_0}{{c}{37}{$\varepsilon = 10^{-6}$\relax }{figure.caption.28}{}}
-\newlabel{fig:pores_2_test_result_1}{{21d}{37}{$\varepsilon = 10^{-12}$\relax }{figure.caption.28}{}}
-\newlabel{sub@fig:pores_2_test_result_1}{{d}{37}{$\varepsilon = 10^{-12}$\relax }{figure.caption.28}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure\nobreakspace  {}\ref  {fig:test_result_c05}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.\relax }}{37}{figure.caption.28}}
-\newlabel{fig:test_result}{{21}{37}{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref {fig:test_result_c05}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.\relax }{figure.caption.28}{}}
-\newlabel{fig:gre_216a_test_result_c05_0}{{22a}{38}{$\varepsilon = 10^{-6}$\relax }{figure.caption.29}{}}
-\newlabel{sub@fig:gre_216a_test_result_c05_0}{{a}{38}{$\varepsilon = 10^{-6}$\relax }{figure.caption.29}{}}
-\newlabel{fig:gre_216a_test_result_c05_1}{{22b}{38}{$\varepsilon = 10^{-12}$\relax }{figure.caption.29}{}}
-\newlabel{sub@fig:gre_216a_test_result_c05_1}{{b}{38}{$\varepsilon = 10^{-12}$\relax }{figure.caption.29}{}}
-\newlabel{fig:pores_2_test_result_c05_0}{{22c}{38}{$\varepsilon = 10^{-6}$\relax }{figure.caption.29}{}}
-\newlabel{sub@fig:pores_2_test_result_c05_0}{{c}{38}{$\varepsilon = 10^{-6}$\relax }{figure.caption.29}{}}
-\newlabel{fig:pores_2_test_result_c05_1}{{22d}{38}{$\varepsilon = 10^{-12}$\relax }{figure.caption.29}{}}
-\newlabel{sub@fig:pores_2_test_result_c05_1}{{d}{38}{$\varepsilon = 10^{-12}$\relax }{figure.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }}{38}{figure.caption.29}}
-\newlabel{fig:test_result_c05}{{22}{38}{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }{figure.caption.29}{}}
-\newlabel{fig:gre_216a_test_result_1}{{23a}{39}{$\varepsilon = 10^{-12}$\relax }{figure.caption.30}{}}
-\newlabel{sub@fig:gre_216a_test_result_1}{{a}{39}{$\varepsilon = 10^{-12}$\relax }{figure.caption.30}{}}
-\newlabel{fig:pores_2_test_result_1}{{23b}{39}{$\varepsilon = 10^{-12}$\relax }{figure.caption.30}{}}
-\newlabel{sub@fig:pores_2_test_result_1}{{b}{39}{$\varepsilon = 10^{-12}$\relax }{figure.caption.30}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Two convergence histories of preconditioned-GMRES on pores_2, disrupted by a large fault (bit 15). The error is so important that it modifies significantly the threshold, disrupting the detection scheme.\relax }}{39}{figure.caption.30}}
-\newlabel{fig:test_result}{{23}{39}{Two convergence histories of preconditioned-GMRES on pores_2, disrupted by a large fault (bit 15). The error is so important that it modifies significantly the threshold, disrupting the detection scheme.\relax }{figure.caption.30}{}}
-\newlabel{fig:why}{{7.4}{39}{Evaluation of the practical detection scheme}{figure.caption.30}{}}
+\newlabel{fig:gre_216a_test_result_c05_oracle_0}{{15a}{28}{$\varepsilon = 10^{-5}$\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:gre_216a_test_result_c05_oracle_0}{{a}{28}{$\varepsilon = 10^{-5}$\relax }{figure.caption.23}{}}
+\newlabel{fig:gre_216a_test_result_c05_oracle_1}{{15b}{28}{$\varepsilon = 10^{-10}$\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:gre_216a_test_result_c05_oracle_1}{{b}{28}{$\varepsilon = 10^{-10}$\relax }{figure.caption.23}{}}
+\newlabel{fig:pores_2_test_result_c05_oracle_0}{{15c}{28}{$\varepsilon = 10^{-5}$\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:pores_2_test_result_c05_oracle_0}{{c}{28}{$\varepsilon = 10^{-5}$\relax }{figure.caption.23}{}}
+\newlabel{fig:pores_2_test_result_c05_oracle_1}{{15d}{28}{$\varepsilon = 10^{-10}$\relax }{figure.caption.23}{}}
+\newlabel{sub@fig:pores_2_test_result_c05_oracle_1}{{d}{28}{$\varepsilon = 10^{-10}$\relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome from Table \ref  {table:theoretical_outcomes}.\relax }}{28}{figure.caption.23}}
+\newlabel{fig:test_result_oracle_c05}{{15}{28}{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome from Table \ref {table:theoretical_outcomes}.\relax }{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}A practical fault detection scheme}{28}{subsection.5.2}}
+\newlabel{sec:detection_implementable}{{5.2}{28}{A practical fault detection scheme}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Estimation of the error using a check-sum approach}{28}{subsubsection.5.2.1}}
+\newlabel{sec:checksum}{{5.2.1}{28}{Estimation of the error using a check-sum approach}{subsubsection.5.2.1}{}}
+\newlabel{eqn:checksum}{{10}{29}{Estimation of the error using a check-sum approach}{equation.5.10}{}}
+\newlabel{eqn:checksum1}{{11}{29}{Estimation of the error using a check-sum approach}{equation.5.11}{}}
+\newlabel{eqn:checksum2}{{12}{29}{Estimation of the error using a check-sum approach}{equation.5.12}{}}
+\newlabel{eqn:checksum3}{{13}{29}{Estimation of the error using a check-sum approach}{equation.5.13}{}}
+\newlabel{fig:gre_216a_conv_hist_checksum_0}{{16a}{31}{\relax }{figure.caption.24}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_checksum_0}{{a}{31}{\relax }{figure.caption.24}{}}
+\newlabel{fig:gre_216a_conv_hist_checksum_1}{{16b}{31}{\relax }{figure.caption.24}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_checksum_1}{{b}{31}{\relax }{figure.caption.24}{}}
+\newlabel{fig:gre_216a_conv_hist_checksum_2}{{16c}{31}{\relax }{figure.caption.24}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_checksum_2}{{c}{31}{\relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Convergence histories of 3 GMRES executions on HB/gre_216a, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. The check-sum seems to be a good approximation of the error as the peak in the check-sum at the fault iteration has roughly the same magnitude as the error.\relax }}{31}{figure.caption.24}}
+\newlabel{fig:conv_hist_checksum_0}{{16}{31}{Convergence histories of 3 GMRES executions on HB/gre_216a, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. The check-sum seems to be a good approximation of the error as the peak in the check-sum at the fault iteration has roughly the same magnitude as the error.\relax }{figure.caption.24}{}}
+\newlabel{fig:pores_2_left_conv_hist_checksum_0}{{17a}{32}{\relax }{figure.caption.25}{}}
+\newlabel{sub@fig:pores_2_left_conv_hist_checksum_0}{{a}{32}{\relax }{figure.caption.25}{}}
+\newlabel{fig:pores_2_left_conv_hist_checksum_1}{{17b}{32}{\relax }{figure.caption.25}{}}
+\newlabel{sub@fig:pores_2_left_conv_hist_checksum_1}{{b}{32}{\relax }{figure.caption.25}{}}
+\newlabel{fig:pores_2_left_conv_hist_checksum_2}{{17c}{32}{\relax }{figure.caption.25}{}}
+\newlabel{sub@fig:pores_2_left_conv_hist_checksum_2}{{c}{32}{\relax }{figure.caption.25}{}}
+\newlabel{fig:pores_2_conv_hist_checksum_0}{{17d}{32}{\relax }{figure.caption.25}{}}
+\newlabel{sub@fig:pores_2_conv_hist_checksum_0}{{d}{32}{\relax }{figure.caption.25}{}}
+\newlabel{fig:pores_2_conv_hist_checksum_1}{{17e}{32}{\relax }{figure.caption.25}{}}
+\newlabel{sub@fig:pores_2_conv_hist_checksum_1}{{e}{32}{\relax }{figure.caption.25}{}}
+\newlabel{fig:pores_2_conv_hist_checksum_2}{{17f}{32}{\relax }{figure.caption.25}{}}
+\newlabel{sub@fig:pores_2_conv_hist_checksum_2}{{f}{32}{\relax }{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Convergence histories of 3 left-preconditioned-GMRES executions and 3 right-preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. In left preconditioned-GMRES, the error is slightly overestimated by the check-sum. In both cases, low errors are not accurately estimated because of significant rounding errors in the check-sum computation caused by the large matrix size. \relax }}{32}{figure.caption.25}}
+\newlabel{fig:conv_hist_checksum_1}{{17}{32}{Convergence histories of 3 left-preconditioned-GMRES executions and 3 right-preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. In left preconditioned-GMRES, the error is slightly overestimated by the check-sum. In both cases, low errors are not accurately estimated because of significant rounding errors in the check-sum computation caused by the large matrix size. \relax }{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Approximation of the threshold and evaluation}{33}{subsubsection.5.2.2}}
+\newlabel{sec:threshold}{{5.2.2}{33}{Approximation of the threshold and evaluation}{subsubsection.5.2.2}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_evaluation_0}{{18a}{33}{$\varepsilon = 10^{-5}$\relax }{figure.caption.26}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_evaluation_0}{{a}{33}{$\varepsilon = 10^{-5}$\relax }{figure.caption.26}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_evaluation_1}{{18b}{33}{$\varepsilon = 10^{-10}$\relax }{figure.caption.26}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_evaluation_1}{{b}{33}{$\varepsilon = 10^{-10}$\relax }{figure.caption.26}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_evaluation_0}{{18c}{33}{$\varepsilon = 10^{-5}$\relax }{figure.caption.26}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_evaluation_0}{{c}{33}{$\varepsilon = 10^{-5}$\relax }{figure.caption.26}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_evaluation_1}{{18d}{33}{$\varepsilon = 10^{-10}$\relax }{figure.caption.26}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_evaluation_1}{{d}{33}{$\varepsilon = 10^{-10}$\relax }{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Convergence histories of a GMRES execution on HB/gre_216a and a right-preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-5}$ and $\varepsilon = 10^{-10}$). No fault are injected in the executions. The true threshold ($c \cdot \varepsilon / |\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  y$}\mathaccent "0365{y}_{\ell , i}|$) and the approximation ($c \cdot \varepsilon / |\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle  y$}\mathaccent "0365{y}_{i, i}|$) are compared. Even though the curves do not perfectly overlap, the general evolution of the true threshold seems to be preserved in the approximated one.\relax }}{33}{figure.caption.26}}
+\newlabel{fig:conv_hist_threshold_evaluation}{{18}{33}{Convergence histories of a GMRES execution on HB/gre_216a and a right-preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-5}$ and $\varepsilon = 10^{-10}$). No fault are injected in the executions. The true threshold ($c \cdot \varepsilon / |\widetilde {y}_{\ell , i}|$) and the approximation ($c \cdot \varepsilon / |\widetilde {y}_{i, i}|$) are compared. Even though the curves do not perfectly overlap, the general evolution of the true threshold seems to be preserved in the approximated one.\relax }{figure.caption.26}{}}
+\newlabel{fig:pores_2_left_conv_hist_threshold_evaluation_0}{{19a}{34}{bit 18\relax }{figure.caption.27}{}}
+\newlabel{sub@fig:pores_2_left_conv_hist_threshold_evaluation_0}{{a}{34}{bit 18\relax }{figure.caption.27}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_evaluation_1}{{19b}{34}{bit 19\relax }{figure.caption.27}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_evaluation_1}{{b}{34}{bit 19\relax }{figure.caption.27}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_evaluation_0}{{19c}{34}{bit 7\relax }{figure.caption.27}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_evaluation_0}{{c}{34}{bit 7\relax }{figure.caption.27}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_evaluation_1}{{19d}{34}{bit 8\relax }{figure.caption.27}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_evaluation_1}{{d}{34}{bit 8\relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Convergence histories of left and right-preconditioned-GMRES executions on HB/pored_2 disrupted by faults at the same iteration. The largest faults have a significant impact on the quality of the threshold approximation, as illustrated in \textbf  {a)} and \textbf  {c)}. The faults impact differently each variant of preconditioned-GMRES, as in left-preconditioned-GMRES, the symptoms appears later on, while in right-preconditioned-GMRES, the approximation quality is immediately altered. In \textbf  {b)} and \textbf  {d)}, the fault is slightly smaller, but enough to make the perturbation on the threshold approximation completely disappear. For the largest fault (most significant bits and last iterations), it seems that the computed threshold may not be a good approximation of the true threshold, in particular in right-preconditioned-GMRES.\relax }}{34}{figure.caption.27}}
+\newlabel{fig:conv_hist_threshold_evaluation_1}{{19}{34}{Convergence histories of left and right-preconditioned-GMRES executions on HB/pored_2 disrupted by faults at the same iteration. The largest faults have a significant impact on the quality of the threshold approximation, as illustrated in \textbf {a)} and \textbf {c)}. The faults impact differently each variant of preconditioned-GMRES, as in left-preconditioned-GMRES, the symptoms appears later on, while in right-preconditioned-GMRES, the approximation quality is immediately altered. In \textbf {b)} and \textbf {d)}, the fault is slightly smaller, but enough to make the perturbation on the threshold approximation completely disappear. For the largest fault (most significant bits and last iterations), it seems that the computed threshold may not be a good approximation of the true threshold, in particular in right-preconditioned-GMRES.\relax }{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Implementation of the practical scheme}{35}{subsubsection.5.2.3}}
+\newlabel{sec:practical_scheme}{{5.2.3}{35}{Implementation of the practical scheme}{subsubsection.5.2.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces New set of outcomes and their colors.\relax }}{35}{table.caption.28}}
+\newlabel{colors}{{4}{35}{New set of outcomes and their colors.\relax }{table.caption.28}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_0}{{20a}{36}{No impact fault ignored\relax }{figure.caption.29}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_0}{{a}{36}{No impact fault ignored\relax }{figure.caption.29}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_2}{{20b}{36}{Critical fault detected\relax }{figure.caption.29}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_2}{{b}{36}{Critical fault detected\relax }{figure.caption.29}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_0}{{20c}{36}{No impact fault ignored\relax }{figure.caption.29}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_0}{{c}{36}{No impact fault ignored\relax }{figure.caption.29}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_2}{{20d}{36}{Critical fault detected\relax }{figure.caption.29}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_2}{{d}{36}{Critical fault detected\relax }{figure.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The check-sum and the threshold at each iteration are plotted. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_0} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_0}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions converge, producing a \emph  {No impact fault ignored} from Table \ref  {colors} in both cases. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_2} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_2}, the check-sum becomes higher than the threshold at the fault iteration, so the faults are detected and the executions do not converge, producing a \emph  {Critical fault detected} from Table \ref  {colors} in both cases. \relax }}{36}{figure.caption.29}}
+\newlabel{fig:conv_hist_threshold}{{20}{36}{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The check-sum and the threshold at each iteration are plotted. In figures~\ref {fig:gre_216a_conv_hist_threshold_0} and ~\ref {fig:pores_2_conv_hist_threshold_0}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions converge, producing a \emph {No impact fault ignored} from Table \ref {colors} in both cases. In figures~\ref {fig:gre_216a_conv_hist_threshold_2} and ~\ref {fig:pores_2_conv_hist_threshold_2}, the check-sum becomes higher than the threshold at the fault iteration, so the faults are detected and the executions do not converge, producing a \emph {Critical fault detected} from Table \ref {colors} in both cases. \relax }{figure.caption.29}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_3}{{21a}{37}{Critical fault ignored\relax }{figure.caption.30}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_3}{{a}{37}{Critical fault ignored\relax }{figure.caption.30}{}}
+\newlabel{fig:gre_216a_conv_hist_threshold_4}{{21b}{37}{No impact fault detected\relax }{figure.caption.30}{}}
+\newlabel{sub@fig:gre_216a_conv_hist_threshold_4}{{b}{37}{No impact fault detected\relax }{figure.caption.30}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_3}{{21c}{37}{Critical fault ignored\relax }{figure.caption.30}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_3}{{c}{37}{Critical fault ignored\relax }{figure.caption.30}{}}
+\newlabel{fig:pores_2_conv_hist_threshold_4}{{21d}{37}{No impact fault detected\relax }{figure.caption.30}{}}
+\newlabel{sub@fig:pores_2_conv_hist_threshold_4}{{d}{37}{No impact fault detected\relax }{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are not properly detected. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_3} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_3}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions do not converge, producing a \emph  {Critical fault ignored} from Table \ref  {colors} in both cases. In figures\nobreakspace  {}\ref  {fig:gre_216a_conv_hist_threshold_4} and \nobreakspace  {}\ref  {fig:pores_2_conv_hist_threshold_4}, the check-sum becomes slightly higher than the threshold at the fault iteration, so the faults are detected but the executions converge anyway, producing a \emph  {No impact fault detected} from Table \ref  {colors} in both cases. \relax }}{37}{figure.caption.30}}
+\newlabel{fig:conv_hist_threshold_false}{{21}{37}{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are not properly detected. In figures~\ref {fig:gre_216a_conv_hist_threshold_3} and ~\ref {fig:pores_2_conv_hist_threshold_3}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions do not converge, producing a \emph {Critical fault ignored} from Table \ref {colors} in both cases. In figures~\ref {fig:gre_216a_conv_hist_threshold_4} and ~\ref {fig:pores_2_conv_hist_threshold_4}, the check-sum becomes slightly higher than the threshold at the fault iteration, so the faults are detected but the executions converge anyway, producing a \emph {No impact fault detected} from Table \ref {colors} in both cases. \relax }{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.4}Evaluation of the practical detection scheme}{38}{subsubsection.5.2.4}}
+\newlabel{sec:implementable_evaluated}{{5.2.4}{38}{Evaluation of the practical detection scheme}{subsubsection.5.2.4}{}}
+\newlabel{fig:gre_216a_test_result_0}{{22a}{39}{$\varepsilon = 10^{-5}$\relax }{figure.caption.31}{}}
+\newlabel{sub@fig:gre_216a_test_result_0}{{a}{39}{$\varepsilon = 10^{-5}$\relax }{figure.caption.31}{}}
+\newlabel{fig:gre_216a_test_result_1}{{22b}{39}{$\varepsilon = 10^{-10}$\relax }{figure.caption.31}{}}
+\newlabel{sub@fig:gre_216a_test_result_1}{{b}{39}{$\varepsilon = 10^{-10}$\relax }{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure\nobreakspace  {}\ref  {fig:test_result_c05}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.\relax }}{39}{figure.caption.31}}
+\newlabel{fig:test_result}{{22}{39}{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref {fig:test_result_c05}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.\relax }{figure.caption.31}{}}
+\newlabel{fig:pores_2_left_test_result_0}{{23a}{40}{$\varepsilon = 10^{-5}$\relax }{figure.caption.32}{}}
+\newlabel{sub@fig:pores_2_left_test_result_0}{{a}{40}{$\varepsilon = 10^{-5}$\relax }{figure.caption.32}{}}
+\newlabel{fig:pores_2_left_test_result_1}{{23b}{40}{$\varepsilon = 10^{-10}$\relax }{figure.caption.32}{}}
+\newlabel{sub@fig:pores_2_left_test_result_1}{{b}{40}{$\varepsilon = 10^{-10}$\relax }{figure.caption.32}{}}
+\newlabel{fig:pores_2_test_result_0}{{23c}{40}{$\varepsilon = 10^{-5}$\relax }{figure.caption.32}{}}
+\newlabel{sub@fig:pores_2_test_result_0}{{c}{40}{$\varepsilon = 10^{-5}$\relax }{figure.caption.32}{}}
+\newlabel{fig:pores_2_test_result_1}{{23d}{40}{$\varepsilon = 10^{-10}$\relax }{figure.caption.32}{}}
+\newlabel{sub@fig:pores_2_test_result_1}{{d}{40}{$\varepsilon = 10^{-10}$\relax }{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure\nobreakspace  {}\ref  {fig:test_result_c05_precond}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.\relax }}{40}{figure.caption.32}}
+\newlabel{fig:test_result_precond}{{23}{40}{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref {fig:test_result_c05_precond}. The dashed orange line corresponds to the proportion of execution where an incorrect detection happens.\relax }{figure.caption.32}{}}
+\newlabel{fig:gre_216a_test_result_0}{{24a}{41}{$\varepsilon = 10^{-5}$\relax }{figure.caption.33}{}}
+\newlabel{sub@fig:gre_216a_test_result_0}{{a}{41}{$\varepsilon = 10^{-5}$\relax }{figure.caption.33}{}}
+\newlabel{fig:gre_216a_test_result_1}{{24b}{41}{$\varepsilon = 10^{-10}$\relax }{figure.caption.33}{}}
+\newlabel{sub@fig:gre_216a_test_result_1}{{b}{41}{$\varepsilon = 10^{-10}$\relax }{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }}{41}{figure.caption.33}}
+\newlabel{fig:test_result_c05}{{24}{41}{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }{figure.caption.33}{}}
+\newlabel{fig:pores_2_left_test_result_0}{{25a}{42}{$\varepsilon = 10^{-5}$\relax }{figure.caption.34}{}}
+\newlabel{sub@fig:pores_2_left_test_result_0}{{a}{42}{$\varepsilon = 10^{-5}$\relax }{figure.caption.34}{}}
+\newlabel{fig:pores_2_left_test_result_1}{{25b}{42}{$\varepsilon = 10^{-10}$\relax }{figure.caption.34}{}}
+\newlabel{sub@fig:pores_2_left_test_result_1}{{b}{42}{$\varepsilon = 10^{-10}$\relax }{figure.caption.34}{}}
+\newlabel{fig:pores_2_test_result_0}{{25c}{42}{$\varepsilon = 10^{-5}$\relax }{figure.caption.34}{}}
+\newlabel{sub@fig:pores_2_test_result_0}{{c}{42}{$\varepsilon = 10^{-5}$\relax }{figure.caption.34}{}}
+\newlabel{fig:pores_2_test_result_1}{{25d}{42}{$\varepsilon = 10^{-10}$\relax }{figure.caption.34}{}}
+\newlabel{sub@fig:pores_2_test_result_1}{{d}{42}{$\varepsilon = 10^{-10}$\relax }{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }}{42}{figure.caption.34}}
+\newlabel{fig:test_result_c05_precond}{{25}{42}{Diagram detailing the test results for $c = 0.5$. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }{figure.caption.34}{}}
 \citation{pipelined_gmres}
-\newlabel{fig:test_result_c05_0_full}{{24a}{40}{$\varepsilon = 10^{-6}$\relax }{figure.caption.31}{}}
-\newlabel{sub@fig:test_result_c05_0_full}{{a}{40}{$\varepsilon = 10^{-6}$\relax }{figure.caption.31}{}}
-\newlabel{fig:test_result_c05_1_full}{{24b}{40}{$\varepsilon = 10^{-12}$\relax }{figure.caption.31}{}}
-\newlabel{sub@fig:test_result_c05_1_full}{{b}{40}{$\varepsilon = 10^{-12}$\relax }{figure.caption.31}{}}
-\newlabel{fig:test_result_c05_0_precond}{{24c}{40}{$\varepsilon = 10^{-6}$\relax }{figure.caption.31}{}}
-\newlabel{sub@fig:test_result_c05_0_precond}{{c}{40}{$\varepsilon = 10^{-6}$\relax }{figure.caption.31}{}}
-\newlabel{fig:test_result_c05_1_precond}{{24d}{40}{$\varepsilon = 10^{-12}$\relax }{figure.caption.31}{}}
-\newlabel{sub@fig:test_result_c05_1_precond}{{d}{40}{$\varepsilon = 10^{-12}$\relax }{figure.caption.31}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Diagram detailing the test results for $c = 0.5$ and several matrices. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }}{40}{figure.caption.31}}
-\newlabel{fig:test_result_c05_matrices}{{24}{40}{Diagram detailing the test results for $c = 0.5$ and several matrices. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{40}{section.8}}
+\newlabel{fig:test_result_c05_0_full}{{26a}{43}{$\varepsilon = 10^{-5}$\relax }{figure.caption.35}{}}
+\newlabel{sub@fig:test_result_c05_0_full}{{a}{43}{$\varepsilon = 10^{-5}$\relax }{figure.caption.35}{}}
+\newlabel{fig:test_result_c05_1_full}{{26b}{43}{$\varepsilon = 10^{-10}$\relax }{figure.caption.35}{}}
+\newlabel{sub@fig:test_result_c05_1_full}{{b}{43}{$\varepsilon = 10^{-10}$\relax }{figure.caption.35}{}}
+\newlabel{fig:test_result_c05_0_precond}{{26c}{43}{$\varepsilon = 10^{-5}$\relax }{figure.caption.35}{}}
+\newlabel{sub@fig:test_result_c05_0_precond}{{c}{43}{$\varepsilon = 10^{-5}$\relax }{figure.caption.35}{}}
+\newlabel{fig:test_result_c05_1_precond}{{26d}{43}{$\varepsilon = 10^{-10}$\relax }{figure.caption.35}{}}
+\newlabel{sub@fig:test_result_c05_1_precond}{{d}{43}{$\varepsilon = 10^{-10}$\relax }{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Diagram detailing the test results for $c = 0.5$ and several matrices. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }}{43}{figure.caption.35}}
+\newlabel{fig:test_result_c05_matrices}{{26}{43}{Diagram detailing the test results for $c = 0.5$ and several matrices. Each dot corresponds to a faulty execution, and its color represents the test outcome.\relax }{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{43}{section.6}}
 \bibdata{sample}
 \bibcite{CFDR}{1}
 \bibcite{checksum}{2}
@@ -323,4 +336,20 @@
 \bibcite{sisz:03}{10}
 \bibcite{DBLP:journals/siamsc/GiraudGL07}{11}
 \bibcite{pipelined_gmres}{12}
-\newlabel{RRlastpageofreport}{{8}{42}{Conclusion}{section*.33}{}}
+\newlabel{fig:gre_216a_bit_iteration_0}{{8a}{46}{$\varepsilon = 10^{-5}$\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:gre_216a_bit_iteration_0}{{a}{46}{$\varepsilon = 10^{-5}$\relax }{figure.caption.15}{}}
+\newlabel{fig:pores_2_bit_iteration_0}{{8b}{46}{$\varepsilon = 10^{-5}$\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:pores_2_bit_iteration_0}{{b}{46}{$\varepsilon = 10^{-5}$\relax }{figure.caption.15}{}}
+\newlabel{fig:gre_216a_bit_iteration_1}{{8c}{46}{$\varepsilon = 10^{-10}$\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:gre_216a_bit_iteration_1}{{c}{46}{$\varepsilon = 10^{-10}$\relax }{figure.caption.15}{}}
+\newlabel{fig:pores_2_bit_iteration_1}{{8d}{46}{$\varepsilon = 10^{-10}$\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:pores_2_bit_iteration_1}{{d}{46}{$\varepsilon = 10^{-10}$\relax }{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Diagram of executions disrupted by a fault. Each dot represents an execution of GMRES on HB/gre_216a (figures \ref  {fig:gre_216a_bit_iteration_0} and \ref  {fig:gre_216a_bit_iteration_1}) or preconditioned-GMRES on HB/pores_2 (figures \ref  {fig:pores_2_bit_iteration_0} and \ref  {fig:pores_2_bit_iteration_1}), its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }}{46}{figure.caption.15}}
+\newlabel{fig:bit_iteration}{{8}{46}{Diagram of executions disrupted by a fault. Each dot represents an execution of GMRES on HB/gre_216a (figures \ref {fig:gre_216a_bit_iteration_0} and \ref {fig:gre_216a_bit_iteration_1}) or preconditioned-GMRES on HB/pores_2 (figures \ref {fig:pores_2_bit_iteration_0} and \ref {fig:pores_2_bit_iteration_1}), its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }{figure.caption.15}{}}
+\newlabel{fig:bit_iteration_0}{{9a}{47}{$\varepsilon = 10^{-5}$\relax }{figure.caption.16}{}}
+\newlabel{sub@fig:bit_iteration_0}{{a}{47}{$\varepsilon = 10^{-5}$\relax }{figure.caption.16}{}}
+\newlabel{fig:bit_iteration_1}{{9b}{47}{$\varepsilon = 10^{-10}$\relax }{figure.caption.16}{}}
+\newlabel{sub@fig:bit_iteration_1}{{b}{47}{$\varepsilon = 10^{-10}$\relax }{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Diagrams of GMRES executions disrupted by a fault. Each dot represents an execution on any matrix of the dataset, its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }}{47}{figure.caption.16}}
+\newlabel{fig:matrices_bit_iteration}{{9}{47}{Diagrams of GMRES executions disrupted by a fault. Each dot represents an execution on any matrix of the dataset, its abscissa is the bit where the fault occurred, its ordinate is the moment in the execution when the fault has been injected and its color represents whether the execution has converged or not (green: no delay, red: no convergence, blue: delayed convergence).\relax }{figure.caption.16}{}}
+\newlabel{RRlastpageofreport}{{6}{47}{Conclusion}{section*.37}{}}
