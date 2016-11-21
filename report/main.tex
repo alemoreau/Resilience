@@ -95,7 +95,7 @@ those faults and we are able to successfully correlate those faults to the frame
 of inexact GMRES theory. We have derived a heuristic to detect faults. This
 heursitic is extremely robust to detect faults for GMRES and left-preconditioned
 GMRES and pretty robust in the case of right-preconitioned GMRES. An analysis
-on the set up of the heurisitcs furthermore identified the critical parameter (y_l_k)
+on the set up of the heurisitcs furthermore identified the critical parameter ($y_{l,k}$)
 that we had to approximate in our heuristic and that may lead to miss a few faults.
   % As the computational performance of current HPC systems increases, the
   % mean time between failures (MTBF) decreases, down to a time comparable to or lower than the application execution time. Methods aiming at improving resiliency of
@@ -106,6 +106,7 @@ that we had to approximate in our heuristic and that may lead to miss a few faul
   % order to detect whether or not the convergence to the target accuracy has
   % been altered by a fault.
 }
+
 %% 
 %% \RRmotcle{calcul formel, base de formules,  %mots-cl\'es sans rapport
 %% protocole, diff\'erentiation automatique, % les uns avec les autres
@@ -888,7 +889,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
 
 
 
-  \begin{figure}[ht] 
+  \begin{figure}[H] 
     \hspace{3ex}
     \begin{minipage}[b]{0.5\linewidth}
       \centering
@@ -940,7 +941,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
 
 
 
-  \begin{figure}[ht] 
+  \begin{figure}[H] 
     \hspace{3ex}
 
 
@@ -1311,12 +1312,13 @@ To visualize the impact of soft-errors on the convergence, different faults are 
 
 
   \section{Detection of faults in GMRES}\label{sec:faultDetection}
+
   In Section~\ref{sec:prediction}, we described a way to
   systematically predict when a fault is not critical (i.e. does not
   prevent the execution from converging) by assessing its symptoms on
   the execution variables. In this section, we now use this result to
   propose and evaluate a fault detection scheme. In
-  Section~\ref{sec:detection_oracle}, the method is first described, then each
+  Section~\ref{sec:detection_oracle}, the method is described, then each
   outcome is illustrated, and finally is evaluated extensively. In Section~\ref{sec:detection_implementable}, approximations are proposed for enabling the fault detection scheme implementation, then this new practical detection scheme is evaluated, as well as each approximation applied separately.
 
 
@@ -1338,7 +1340,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
 
   Table \ref{table:theoretical_outcomes} gathers the 4 possible outcomes produced by this detection scheme. If the execution converges, the fault is said to have no impact, whereas a fault preventing the execution from converging is said to be critical. 
 
-  \begin{table}[h]
+  \begin{table}[H]
     \centering
     \caption{Colors and name used for each test outcome.}
     \label{table:theoretical_outcomes}
