@@ -553,7 +553,7 @@ The second way used to represent an execution is simply by its outcome. For inst
   \centering
   \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
 
-    \caption{Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed blue line corresponds to the true residual norm in the reference non-faulty execution, the red line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the green line is the computed residual norm in the faulty execution.}\label{fig:gre_216a_conv_hist}
+    \caption{Convergence history of a GMRES execution on gre_216a disrupted by a transient fault (red circle). The Y axis corresponds to the residual norm, and the X axis is the iteration where it was measured. The dashed green line corresponds to the true residual norm in the reference non-faulty execution, the full green line is the true residual norm in the faulty execution (the fault parameters are displayed at the bottom left hand corner) and the blue line is the computed residual norm in the faulty execution.}\label{fig:gre_216a_conv_hist}
   \end{figure}
 
 
@@ -643,19 +643,19 @@ To visualize the impact of soft-errors on the convergence, different faults are 
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
-        \caption{bit 60}\label{fig:gre_216a_conv_hist_bit_0}		
+        \caption{bit 0}\label{fig:gre_216a_conv_hist_bit_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
-        \caption{bit 40}\label{fig:gre_216a_conv_hist_bit_1}
+        \caption{bit 25}\label{fig:gre_216a_conv_hist_bit_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
-        \caption{bit 20}\label{fig:gre_216a_conv_hist_bit_2}
+        \caption{bit 50}\label{fig:gre_216a_conv_hist_bit_2}
       \end{subfigure}
     \end{minipage}
     \quad
@@ -663,24 +663,24 @@ To visualize the impact of soft-errors on the convergence, different faults are 
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{bit 60}\label{fig:pores_2_conv_hist_bit_0}		
+        \caption{bit 0}\label{fig:pores_2_conv_hist_bit_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{bit 40}\label{fig:pores_2_conv_hist_bit_1}
+        \caption{bit 25}\label{fig:pores_2_conv_hist_bit_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{bit 20}\label{fig:pores_2_conv_hist_bit_2}
+        \caption{bit 50}\label{fig:pores_2_conv_hist_bit_2}
       \end{subfigure}
 
       
     \end{minipage}
-    \caption{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref{fig:gre_216a_conv_hist_bit_0}, the fault (\textbf{bit 20}) disrupts the convergence, in \ref{fig:gre_216a_conv_hist_bit_1}, the fault (\textbf{bit 40}) delays it, and in \ref{fig:gre_216a_conv_hist_bit_2}, the fault (\textbf{bit 60}) has no effect on the convergence.}\label{fig:conv_hist_bit}
+    \caption{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref{fig:gre_216a_conv_hist_bit_0}, the fault (\textbf{bit 0}) disrupts the convergence, in \ref{fig:gre_216a_conv_hist_bit_1}, the fault (\textbf{bit 25}) delays it, and in \ref{fig:gre_216a_conv_hist_bit_2}, the fault (\textbf{bit 50}) has no effect on the convergence. In both cases, bit-flips on the most significant bits have a larger impact than bit-flips on the least significant bits. }\label{fig:conv_hist_bit}
   \end{figure}
 
 
@@ -710,7 +710,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter}
-        \caption{iteration 0}\label{fig:gre_216a_conv_hist_iteration_0}		
+        \caption{iteration 10}\label{fig:gre_216a_conv_hist_iteration_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
@@ -722,7 +722,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{iteration 120}\label{fig:gre_216a_conv_hist_iteration_2}
+        \caption{iteration 110}\label{fig:gre_216a_conv_hist_iteration_2}
       \end{subfigure}
     \end{minipage}
     \quad
@@ -730,24 +730,24 @@ To visualize the impact of soft-errors on the convergence, different faults are 
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{iteration 0}\label{fig:pores_2_conv_hist_iteration_0}		
+        \caption{iteration 5}\label{fig:pores_2_conv_hist_iteration_0}		
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{iteration 11}\label{fig:pores_2_conv_hist_iteration_1}
+        \caption{iteration 10}\label{fig:pores_2_conv_hist_iteration_1}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{iteration 22}\label{fig:pores_2_conv_hist_iteration_2}
+        \caption{iteration 15}\label{fig:pores_2_conv_hist_iteration_2}
       \end{subfigure}
 
       
     \end{minipage}
-    \caption{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref{fig:gre_216a_conv_hist_iteration_0}, the fault (\textbf{iteration 0}) disrupts the convergence, in \ref{fig:gre_216a_conv_hist_iteration_1}, the fault (\textbf{iteration 60}) delays it, and in \ref{fig:gre_216a_conv_hist_iteration_2}, the fault (\textbf{iteration 120}) has no effect on the convergence.}\label{fig:conv_hist_iteration}
+    \caption{Convergence history of 3 GMRES executions on gre_216a and 3 preconditioned-GMRES executions on pores_2, disrupted by a transient fault. In the execution \ref{fig:gre_216a_conv_hist_iteration_0}, the fault (\textbf{iteration 10}) disrupts the convergence, in \ref{fig:gre_216a_conv_hist_iteration_1}, the fault (\textbf{iteration 60}) delays it, and in \ref{fig:gre_216a_conv_hist_iteration_2}, the fault (\textbf{iteration 110}) has no effect on the convergence. In both cases, the fault impact decreases as the iteration when it is injected increases.}\label{fig:conv_hist_iteration}
   \end{figure}
 
 
@@ -994,9 +994,9 @@ To visualize the impact of soft-errors on the convergence, different faults are 
   \subsubsection{Error quantification}\label{sec:quantify}
   Because the sequence of least-square problems solved along the iteration are nested; that is at iteration $i$ 
   the leading part of $H_{i+1}$ is $H_i$ as well as for the right-hand sides; we know that independently of the possible occurrence of a fault during the execution, GMRES always reduces the computed residual norm down to the machine accuracy, as long as it is given enough iterations to do so. However, a fault may introduce a large residual deviation between the computed residual and the true residual (i.e., $\|\widetilde{r}_{\ell} - \widetilde{r}_{\ell}\textprime \|$ becomes large), which may prevent the latter one from reaching the target accuracy. Since $ \|\widetilde{r}_{\ell}\| \geq \|\widetilde{r}_{\ell} - \widetilde{r}_{\ell}\textprime \| - \| \widetilde{r}_{\ell}\textprime \|$ and $\|\widetilde{r}_\ell\textprime \| \rightarrow 0$, we obtain that $\|\widetilde{r}_{\ell}\| \rightarrow \|\widetilde{r}_{\ell} - \widetilde{r}_\ell\textprime \|$, so if the error remains greater than the target accuracy $\varepsilon$, the execution will not converge. The error measured at iteration $\ell$ is called the residual gap at iteration $\ell$, denoted $\delta(\ell)$.
-  We illustrate in figures \ref{fig:gre_216a_conv_hist_delta} and \ref{fig:pores_2_conv_hist_delta} the effect of a soft-error on the norm of the residuals and the residual gap.
-  The red curve, the true residual $\|\widetilde{r}_{\ell}\|$, and the light blue curve, the residual gap $\delta(\ell)$, get closer and closer as the green curve, the computed residual $\|\widetilde{r}\textprime_{\ell}\|$, is reduced down to the machine accuracy.
-  The dashed blue line shows the non-faulty execution residuals, to illustrate the delay induced by the error in the convergence.
+  We illustrate in Figure \ref{fig:conv_hist_true_delta} the effect of a soft-error on the norm of the residuals and the measured residual gap $\|\widetilde{r}_{i} - \widetilde{r}_{i}\textprime \|$.
+  Before the fault, the residual gap is close to the machine accuracy. After the fault and until the end of the execution, the residual gap fluctuates and gets closer to the true residual norm (green line) as the computed residual norm (blue line) converges to the machine accuracy.
+  The dashed green line shows the non-faulty execution residuals, to illustrate the delay induced by the error in the convergence.
   The residual gap provides a good quantification of the fault impact, however it does not explain nor quantifies how much the convergence is delayed (when the convergence occurs).
 
 
@@ -1007,16 +1007,16 @@ To visualize the impact of soft-errors on the convergence, different faults are 
     \begin{subfigure}[t]{0.45\linewidth}
       \centering
       \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-      \caption{GMRES on gre_216a}\label{fig:gre_216a_conv_hist_delta}		
+      \caption{GMRES on gre_216a}\label{fig:gre_216a_conv_hist_true_delta}		
     \end{subfigure}
     \quad
     \begin{subfigure}[t]{0.45\linewidth}
       \centering
       \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-      \caption{preconditioned-GMRES on pores_2, }\label{fig:pores_2_conv_hist_delta}
+      \caption{preconditioned-GMRES on pores_2, }\label{fig:pores_2_conv_hist_true_delta}
     \end{subfigure}
-    \caption{Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions:GMRES on gre_216a in \ref{fig:gre_216a_conv_hist_delta} and precondition-GMRES  on pores_2 in \ref{fig:pores_2_conv_hist_delta}.}
-  \end{figure}
+    \caption{Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions:GMRES on gre_216a in \ref{fig:gre_216a_conv_hist_true_delta} and precondition-GMRES  on pores_2 in \ref{fig:pores_2_conv_hist_true_delta}.}
+  \end{figure}\label{conv_hist_true_delta}
 
 
 
@@ -1410,7 +1410,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
       \end{subfigure}
       
     \end{minipage}
-    \caption{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref{fig:test_result_oracle_c05}.}\label{fig:test_result_oracle}
+    \caption{Diagrams representing the test outcome proportion for several values of c. To compute them, faulty executions covering a large part of the fault parameter space were performed for several values of $c$. The case $c = 0.5$ represented by the dashed red line is detailed in Figure~\ref{fig:test_result_oracle_c05}.}\label{fig:test_result_oracle}
   \end{figure}
 
 
@@ -1636,7 +1636,7 @@ To visualize the impact of soft-errors on the convergence, different faults are 
 
       
     \end{minipage}
-    \caption{Convergence histories of 3 left-preconditioned-GMRES executions and 3 right-preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. In left preconditioned-GMRES, the error is slightly overestimated by the check-sum. In both cases, low errors are not accurately estimated because of significant rounding errors in the check-sum computation caused by the large matrix size. }  
+    \caption{Convergence histories of 3 left-preconditioned-GMRES executions and 3 right-preconditioned-GMRES executions on HB/pored_2, disrupted by a transient fault. The check-sum at each iteration is plotted, as well as the true error denoted by a yellow square. In left preconditioned-GMRES, the error is slightly overestimated by the check-sum. In both cases, low errors are not accurately estimated because of significant rounding errors in the check-sum computation caused by the large matrix size. Larger errors, however, are quite well approximated. }  
     \label{fig:conv_hist_checksum_1}
   \end{figure}
 

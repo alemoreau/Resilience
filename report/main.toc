@@ -11,17 +11,17 @@
 \contentsline {subsection}{\numberline {4.1}Empirical study of executions disrupted by faults and fault parameters influence on the convergence}{12}{subsection.4.1}
 \contentsline {subsubsection}{\numberline {4.1.1}Qualitative results and fault parameters influence}{12}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Quantitative results}{19}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Analytical study of the fault impact on the convergence}{19}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Error quantification}{19}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Prediction of the fault impact}{21}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Numerical experiment}{22}{subsubsection.4.2.3}
-\contentsline {section}{\numberline {5}Detection of faults in GMRES}{25}{section.5}
-\contentsline {subsection}{\numberline {5.1}An oracle-based detection scheme}{25}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}Description of the detection scheme}{25}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}Evaluation of the detection scheme}{25}{subsubsection.5.1.2}
-\contentsline {subsection}{\numberline {5.2}A practical fault detection scheme}{28}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Estimation of the error using a check-sum approach}{28}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Approximation of the threshold and evaluation}{33}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Implementation of the practical scheme}{35}{subsubsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Evaluation of the practical detection scheme}{38}{subsubsection.5.2.4}
-\contentsline {section}{\numberline {6}Conclusion}{43}{section.6}
+\contentsline {subsection}{\numberline {4.2}Analytical study of the fault impact on the convergence}{21}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Error quantification}{21}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Prediction of the fault impact}{23}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Numerical experiment}{24}{subsubsection.4.2.3}
+\contentsline {section}{\numberline {5}Detection of faults in GMRES}{27}{section.5}
+\contentsline {subsection}{\numberline {5.1}An oracle-based detection scheme}{27}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Description of the detection scheme}{27}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Evaluation of the detection scheme}{27}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}A practical fault detection scheme}{30}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Estimation of the error using a check-sum approach}{30}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Approximation of the threshold and evaluation}{35}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Implementation of the practical scheme}{37}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Evaluation of the practical detection scheme}{40}{subsubsection.5.2.4}
+\contentsline {section}{\numberline {6}Conclusion}{45}{section.6}
