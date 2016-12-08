@@ -414,7 +414,7 @@ but not necessary in finite precision calculation where some orthonormality migh
 
 
 \subsection{Fault model}
-The evaluation focuses on transient faults that numerically affects the GMRES executions. Other errors introduced by transient faults such as memory access error or instruction modifications are supposed to be separately taken care of by low overhead techniques not described here. Hence, faults are modeled by a perturbation happening in a register which contains numerical data. Several types of perturbation can occur, but the fault model we define only uses bit-flips for simplicity. Moreover, it is assumed that no more than one fault may occur during the whole GMRES execution, as the occurrence of a fault is assumed to be a rare enough event compared to the execution time, and we will leave the two or more faults situation to the discussion section. Since the most expensive operation is the sparse-matrix vector product  (line 6 in Algorithm~\ref{alg:gmres}), it is assumed that the fault may only occur at this moment for at least two reasons : on the one hand, most of the execution time will be spent performing this operation, which directly increases the probability of a fault happening there, and on the other hand, remaining operations can be duplicated without any significant impact on the execution time, enabling easy fault detection and error correction for those parts of the algorithm. Algorithm \ref{alg:faulty_product} is equivalent to the faulty product used in the following experiments. To simplify, it does not use any particular data structure and is based on the standard dense matrix-vector product. Hence it consists in two nested loops and we define the location $(i, k)$ where the fault occurred as the indexes of those loops at the moment of the fault. The operation repeated in the inner loop involves three registers, $reg_1$ stores $A_{i, k}$, $reg_2$ stores $v_k$ and $reg_3$ stores $A_{i, k} \cdot v_k$. In the numerical experiments, double precision is used so those registers contains 64 bits that could be affected by one bit-flip.
+The evaluation focuses on transient faults that numerically affects the GMRES executions. Other errors introduced by transient faults such as memory access error or instruction modifications are supposed to be separately taken care of by low overhead techniques not described here. Hence, faults are modeled by a perturbation happening in a register which contains numerical data. Several types of perturbation can occur, but the fault model we define only uses bit-flips for simplicity. Moreover, it is assumed that no more than one fault may occur during the whole GMRES execution, as the occurrence of a fault is assumed to be a rare enough event compared to the execution time, and we will leave the two or more faults situation to the discussion section. Since the most expensive operation is the sparse-matrix vector product  (line 6 in Algorithm~\ref{alg:gmres}), it is assumed that the fault may only occur at this moment for at least two reasons: on the one hand, most of the execution time will be spent performing this operation, which directly increases the probability of a fault happening there, and on the other hand, remaining operations can be duplicated without any significant impact on the execution time, enabling easy fault detection and error correction for those parts of the algorithm. Algorithm \ref{alg:faulty_product} is equivalent to the faulty product used in the following experiments. To simplify, it does not use any particular data structure and is based on the standard dense matrix-vector product. Hence it consists in two nested loops and we define the location $(i, k)$ where the fault occurred as the indexes of those loops at the moment of the fault. The operation repeated in the inner loop involves three registers, $reg_1$ stores $A_{i, k}$, $reg_2$ stores $v_k$ and $reg_3$ stores $A_{i, k} \cdot v_k$. In the numerical experiments, double precision is used so those registers contains 64 bits that could be affected by one bit-flip.
 A faulty execution is then characterized by the following parameters :
 \begin{itemize}
 \item The \textbf{iteration} when the fault occurred
@@ -974,7 +974,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
 
 %  \newpage
 
-  % From \cite{DBLP:journals/siamsc/GiraudGL07} : 
+  % From \cite{DBLP:journals/siamsc/GiraudGL07}: 
   % \begin{equation}\label{eqn:delta}
   %   \text{delta = } \|\widetilde{r_l} - \widetilde{r_l}\textprime \| = ||y_{l, k}(z_{k+1} - z_{k+1})\| 
   % \end{equation}
@@ -996,7 +996,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
   \subsubsection{Error quantification}\label{sec:quantify}
   Because the sequence of least-square problems solved along the iteration are nested; that is at iteration $i$ 
   the leading part of $H_{i+1}$ is $H_i$ as well as for the right-hand sides; we know that independently of the possible occurrence of a fault during the execution, GMRES always reduces the computed residual norm down to the machine accuracy, as long as it is given enough iterations to do so. However, a fault may introduce a large residual deviation between the computed residual and the true residual (i.e., $\|\widetilde{r}_{\ell} - \widetilde{r}_{\ell}\textprime \|$ becomes large), which may prevent the latter one from reaching the target accuracy. Since $ \|\widetilde{r}_{\ell}\| \geq \|\widetilde{r}_{\ell} - \widetilde{r}_{\ell}\textprime \| - \| \widetilde{r}_{\ell}\textprime \|$ and $\|\widetilde{r}_\ell\textprime \| \rightarrow 0$, we obtain that $\|\widetilde{r}_{\ell}\| \rightarrow \|\widetilde{r}_{\ell} - \widetilde{r}_\ell\textprime \|$, so if the error remains greater than the target accuracy $\varepsilon$, the execution will not converge. The error measured at iteration $\ell$ is called the residual gap at iteration $\ell$, denoted $\delta(\ell)$.
-  We illustrate in Figure \ref{fig:conv_hist_true_delta} the effect of a soft-error on the norm of the residuals and the measured residual gap $\|\widetilde{r}_{i} - \widetilde{r}_{i}\textprime \|$.
+  We illustrate in Figure~\ref{fig:conv_hist_true_delta} the effect of a soft-error on the norm of the residuals and the measured residual gap $\|\widetilde{r}_{i} - \widetilde{r}_{i}\textprime \|$.
   Before the fault, the residual gap is close to the machine accuracy. After the fault and until the end of the execution, the residual gap fluctuates and gets closer to the true residual norm (green line) as the computed residual norm (blue line) converges to the machine accuracy.
   The dashed green line shows the non-faulty execution residuals, to illustrate the delay induced by the error in the convergence.
   The residual gap provides a good quantification of the fault impact, however it does not explain nor quantifies by how much the convergence is delayed (when convergence occurs).
@@ -1017,8 +1017,8 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
       \caption{preconditioned-GMRES on pores_2, }\label{fig:pores_2_conv_hist_true_delta}
     \end{subfigure}
-    \caption{Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions : GMRES on gre_216a in \ref{fig:gre_216a_conv_hist_true_delta} and precondition-GMRES  on pores_2 in \ref{fig:pores_2_conv_hist_true_delta}.}
-  \end{figure}\label{conv_hist_true_delta}
+    \caption{Two convergence histories disrupted by a fault. The light blue line represents the residual gap evolution in the faulty executions: GMRES on gre_216a in \ref{fig:gre_216a_conv_hist_true_delta} and precondition-GMRES  on pores_2 in \ref{fig:pores_2_conv_hist_true_delta}.}
+  \end{figure}\label{fig:conv_hist_true_delta}
 
 
 
@@ -1055,7 +1055,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
       \caption{preconditioned-GMRES on pores_2, }\label{fig:pores_2_conv_hist_delta}
     \end{subfigure}
-    \caption{Two convergence histories disrupted by a fault. The light blue and purple lines represent the measured residual gap ($\|\widetilde{r}_{i} - \widetilde{r}_{i}\textprime \|$) and the computed residual gap ($|\widetilde{y}_{{i}, f}|\cdot \|{w}_{f+1} - \widetilde{w}_{f+1}\|$) evolutions in the faulty executions : GMRES on gre_216a (\ref{fig:gre_216a_conv_hist_delta}) and preconditioned-GMRES  on pores_2  (\ref{fig:pores_2_conv_hist_delta}).}
+    \caption{Two convergence histories disrupted by a fault. The light blue and purple lines represent the measured residual gap ($\|\widetilde{r}_{i} - \widetilde{r}_{i}\textprime \|$) and the computed residual gap ($|\widetilde{y}_{{i}, f}|\cdot \|{w}_{f+1} - \widetilde{w}_{f+1}\|$) evolutions in the faulty executions: GMRES on gre_216a (\ref{fig:gre_216a_conv_hist_delta}) and preconditioned-GMRES  on pores_2  (\ref{fig:pores_2_conv_hist_delta}).}
   \end{figure}
 
   \subsubsection{Prediction of the fault impact}\label{sec:prediction}
@@ -1068,7 +1068,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
   \end{theorem}
   \begin{proof}
     The purpose of the $c$ parameter is to bound the true residual norm as a convex combination of the residual deviation norm and the computed residual norm.
-    Since the GMRES execution terminates in $\ell$ iterations for the reduced target accuracy $(1 - c) \varepsilon$, we have : $$\|\widetilde{r}\textprime_{\ell}\| \leq (1 - c) \varepsilon \text{.}$$
+    Since the GMRES execution terminates in $\ell$ iterations for the reduced target accuracy $(1 - c) \varepsilon$, we have: $$\|\widetilde{r}\textprime_{\ell}\| \leq (1 - c) \varepsilon \text{.}$$
     Then, using Equation \eqref{eqn:delta} derived from \cite{DBLP:journals/siamsc/GiraudGL07} and the criterion $\|{w}_{f+1} - \widetilde{w}_{f+1}\| < \frac{c \cdot \varepsilon}{|\widetilde{y}_{\ell, f}|}$, we have :
     \begin{equation}
       % 
@@ -1357,10 +1357,61 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
 
 
 
-  Figure \ref{fig:conv_hist_detection_correct} plots two convergence histories for each algorithm. In figures \ref{fig:gre_216a_conv_hist_theoretical_detection_0} and 
-  \ref{fig:pores_2_conv_hist_theoretical_detection_0}, no fault is detected as the error is smaller than the threshold, and the executions converge, producing a \emph{No impact fault ignored} from Table~\ref{table:theoretical_outcomes}. In figures \ref{fig:gre_216a_conv_hist_theoretical_detection_1} and 
-  \ref{fig:pores_2_conv_hist_theoretical_detection_1}, a critical fault is detected as the error is greater than the threshold $\tau_{0.5}$ at the fault iteration and the executions does not converge, producing a \emph{Critical fault detected} from Table~\ref{table:theoretical_outcomes}. In both cases, the fault is properly detected.
+  Figure \ref{fig:compared} can be reinterpreted in terms of detection. In figures \ref{fig:gre_216a_conv_hist_prediction} and 
+  \ref{fig:pores_2_conv_hist_prediction}, no fault is detected as the error is smaller than the threshold, and the executions converge, producing a \emph{No impact fault ignored} from Table~\ref{table:theoretical_outcomes}. In figures \ref{fig:gre_216a_conv_hist_no_prediction} and 
+  \ref{fig:pores_2_conv_hist_no_prediction}, a critical fault is detected as the error is greater than the threshold $\tau_{0.5}$ at the fault iteration and the executions does not converge, producing a \emph{Critical fault detected} from Table~\ref{table:theoretical_outcomes}. In both cases, the fault is properly detected.
 
+  
+
+  \begin{figure}[!ht]
+    \centering
+    
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \textbf{GMRES} executions on \textbf{gre_216a} 
+    \end{minipage}
+    \quad
+    \begin{minipage}{0.45\linewidth}
+      \centering
+      \textbf{preconditioned-GMRES} on \textbf{pores_2}
+    \end{minipage}\\
+
+
+    \begin{minipage}[b]{0.48\linewidth}
+      
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_conv_hist_theoretical_detection_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_conv_hist_theoretical_detection_1}	
+      \end{subfigure}
+    \end{minipage}
+    \quad
+    \begin{minipage}[b]{0.48\linewidth}
+      
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_conv_hist_theoretical_detection_0}	
+      \end{subfigure}
+      \quad
+      \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
+        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_conv_hist_theoretical_detection_1}	
+      \end{subfigure}
+
+    \end{minipage}
+    \caption{Convergence histories of a GMRES execution on HB/gre_216a and a right-preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-5}$ and $\varepsilon = 10^{-10}$). }\label{fig:conv_hist_detection_theoretical}
+  \end{figure}
+
+
+  
   \subsubsection{Evaluation of the detection scheme}\label{sec:evaluation_oracle}
   The remaining parameter to be chosen is $c$. One intuitive way to understand this parameter's role is as follow: in order to control the accuracy of the true residual norm, we split it into two quantities easier to control. On the one hand, the computed residual norm can be adjusted by setting the target accuracy of the execution to the desired value, at the expense of additional computation, and on the other hand the residual gap can be measured and allowed to grow before triggering a detection. However those two values cannot be adjusted independently to ensure the true residual norm convergence to the target accuracy, so the $c$ parameter aims at balancing the importance of one or the other value (computed residual or residual gap). So if one wishes to decrease the sensitivity of the detection scheme, he should increase the $c$ value to allow the residual gap to grow larger before triggering a detection, at the expense of more iterations to reduce the computed residual norm. On the contrary if one does not want to use too much additional iterations to reduce the computed residual norm, he gets a more sensitive detection scheme that is efficient for detecting critical faults, but may also detect faults that do not have any impact on the convergence.
   In the following, numerical experiments are performed to evaluate the detection scheme quality. Figure~\ref{fig:test_result_oracle} displays the fault detection scheme results (in percentage of executions) for several values of c.
@@ -1471,7 +1522,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
 
 
   \subsection{A practical fault detection scheme}\label{sec:detection_implementable}
- The oracle-based detection scheme described in Section~\ref{sec:detection_oracle} manages to correctly detect faults in most cases, however, it cannot be implemented for several reasons. First, the error $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$ cannot be measured directly, since $w_{f+1}$ is not available, only $\widetilde{w}_{f+1}$ is. An approximation for the error is proposed and evaluated in~\ref{sec:checksum}. Second, the threshold $\tau_c = c \cdot \varepsilon / |\widetilde{y}_{\ell, f}|$ requires the $\widetilde{y}_{\ell, f}$ vector which is computed at the last iteration $\ell$ of the execution, and is then not yet available at the fault iteration, so an approximation is also proposed and evaluated in~\ref{sec:threshold}. Moreover, the iteration when the fault occurred is not known either, but this issue can easily be taken care of by applying the scheme at each iteration, and replacing $f$ by the current iteration index $i$ as described in~\ref{sec:practical_scheme}. Finally, the new implementable scheme is evaluated in~\ref{sec:implementable_evaluated}.
+ The oracle-based detection scheme described in Section~\ref{sec:detection_oracle} manages to correctly detect faults in most cases, however, it cannot be implemented for several reasons. First, the error $\|{w}_{f+1} - \widetilde{w}_{f+1}\|$ cannot be measured directly, since $w_{f+1}$ is not available, only $\widetilde{w}_{f+1}$ is. An approximation for the error is proposed and evaluated in Section~\ref{sec:checksum}. Second, the threshold $\tau_c = c \cdot \varepsilon / |\widetilde{y}_{\ell, f}|$ requires the $\widetilde{y}_{\ell, f}$ vector which is computed at the last iteration $\ell$ of the execution, and is then not yet available at the fault iteration, so an approximation is also proposed and evaluated in Section~\ref{sec:threshold}. Moreover, the iteration when the fault occurred is not known either, but this issue can easily be taken care of by applying the scheme at each iteration, and replacing $f$ by the current iteration index $i$ as described in Section~\ref{sec:practical_scheme}. Finally, the new implementable scheme is evaluated in Section~\ref{sec:implementable_evaluated}.
 
   \subsubsection{Estimation of the error using a check-sum approach}\label{sec:checksum}
   Traditional approaches for detecting transient faults in SpMV product include check-sums \cite{checksum}. The main idea of such techniques is to encode some data, here the Matrix A data, with the vector $\allOne^T = (1, 1,..., 1)$, to perform the same operations on the encoded data, which are usually much cheaper than the operations on the real data, and to check the result consistency (result on encoded data is equal to the encoded result on real data). Assuming exact arithmetic and no error happened during the operations on encoded data, a wrong result often implies a faulty execution. 
@@ -1608,7 +1659,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
   \item The following test is performed $$ \text{check-sum(i)} < \tau_c(i)\textprime = c \cdot \varepsilon / \widetilde{y}_{i, i} \text{.}$$
   \item If the test is true, then no fault is detected, otherwise the detection is triggered.
   \end{enumerate}
-  Since the detection is performed at each iteration, the outcome naming needs to be updated (Table \ref{colors}). a detection is said to be correct when it happened at the exact iteration when the fault occurred, whereas a detection triggered at any iteration different from the faulty one is said to be incorrect.
+  Since the detection is performed at each iteration, the outcome naming needs to be updated (Table \ref{colors}). A detection is said to be correct when it happened at the exact iteration when the fault occurred, whereas a detection triggered at any iteration different from the faulty one is said to be incorrect.
   \begin{table}[h]
     \centering
     \caption{New set of outcomes and their colors.}
@@ -1623,8 +1674,8 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \hline
     \end{tabular}
   \end{table}
-  In Figure \ref{fig:conv_hist_threshold}, the approximated threshold $\tau_{0.5}$ and the check-sum are plotted at each iteration for 2 GMRES executions disrupted by a fault. In Figure \ref{fig:gre_216a_conv_hist_threshold_0}, the check-sum at the fault iteration is smaller than the threshold, so the fault is not detected, and the execution does converge, which produce a \emph{No impact fault ignored} from Table~\ref{colors}. In Figure~\ref{fig:gre_216a_conv_hist_threshold_2}, the check-sum is greater than the threshold at the fault iteration and the execution does not converge, which produce a \emph{Critical fault detected} from Table~\ref{colors}. 
-  However in Figure \ref{fig:conv_hist_threshold_false}, two convergence histories of executions disrupted by an incorrectly detected fault are plotted for GMRES and preconditioned-GMRES. In Figure \ref{fig:gre_216a_conv_hist_threshold_3}, check-sum(i) remains below $\tau_{0.5}(i)$ so the fault is undetected, even though the execution does not converge, which correspond to a \emph{Critical fault not detected} from Table \ref{colors}. In Figure \ref{fig:gre_216a_conv_hist_threshold_4}, check-sum(i) exceeds $\tau_{0.5}(i)$ at the fault iteration so a fault is detected, but the execution still converges which correspond to a \emph{No impact fault detected} from Table \ref{colors}. 
+  In Figure \ref{fig:conv_hist_detection_correct}, the approximated threshold $\tau_{0.5}$ and the check-sum are plotted at each iteration for 2 GMRES executions disrupted by a fault. In Figure \ref{fig:gre_216a_conv_hist_detection_correct_0}, the check-sum at the fault iteration is smaller than the threshold, so the fault is not detected, and the execution does converge, which produce a \emph{No impact fault ignored} from Table~\ref{colors}. In Figure~\ref{fig:gre_216a_conv_hist_detection_correct_2}, the check-sum is greater than the threshold at the fault iteration and the execution does not converge, which produce a \emph{Critical fault detected} from Table~\ref{colors}. 
+  However in Figure \ref{fig:conv_hist_detection_incorrect}, two convergence histories of executions disrupted by an incorrectly detected fault are plotted for GMRES and preconditioned-GMRES. In Figure \ref{fig:gre_216a_conv_hist_detection_incorrect_3}, check-sum(i) remains below $\tau_{0.5}(i)$ so the fault is undetected, even though the execution does not converge, which correspond to a \emph{Critical fault not detected} from Table \ref{colors}. In Figure \ref{fig:gre_216a_conv_hist_detection_incorrect_4}, check-sum(i) exceeds $\tau_{0.5}(i)$ at the fault iteration so a fault is detected, but the execution still converges which correspond to a \emph{No impact fault detected} from Table \ref{colors}. 
   \begin{figure}[!ht]
     \centering
     
@@ -1644,13 +1695,13 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{No impact fault ignored}\label{fig:gre_216a_conv_hist_threshold_0}
+        \caption{No impact fault ignored}\label{fig:gre_216a_conv_hist_detection_correct_0}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{Critical fault detected}\label{fig:gre_216a_conv_hist_threshold_2}
+        \caption{Critical fault detected}\label{fig:gre_216a_conv_hist_detection_correct_2}
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1659,18 +1710,18 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{No impact fault ignored}\label{fig:pores_2_conv_hist_threshold_0}
+        \caption{No impact fault ignored}\label{fig:pores_2_conv_hist_detection_correct_0}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{Critical fault detected}\label{fig:pores_2_conv_hist_threshold_2}
+        \caption{Critical fault detected}\label{fig:pores_2_conv_hist_detection_correct_2}
       \end{subfigure}
 
       
     \end{minipage}
-    \caption{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The check-sum and the threshold at each iteration are plotted. In figures~\ref{fig:gre_216a_conv_hist_threshold_0} and ~\ref{fig:pores_2_conv_hist_threshold_0}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions converge, producing a \emph{No impact fault ignored} from Table \ref{colors} in both cases. In figures~\ref{fig:gre_216a_conv_hist_threshold_2} and ~\ref{fig:pores_2_conv_hist_threshold_2}, the check-sum becomes higher than the threshold at the fault iteration, so the faults are detected and the executions do not converge, producing a \emph{Critical fault detected} from Table \ref{colors} in both cases. }\label{fig:conv_hist_threshold}
+    \caption{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are properly detected. The check-sum and the threshold at each iteration are plotted. In figures~\ref{fig:gre_216a_conv_hist_detection_correct_0} and ~\ref{fig:pores_2_conv_hist_detection_correct_0}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions converge, producing a \emph{No impact fault ignored} from Table \ref{colors} in both cases. In figures~\ref{fig:gre_216a_conv_hist_detection_correct_2} and ~\ref{fig:pores_2_conv_hist_detection_correct_2}, the check-sum becomes higher than the threshold at the fault iteration, so the faults are detected and the executions do not converge, producing a \emph{Critical fault detected} from Table \ref{colors} in both cases. }\label{fig:conv_hist_detection_correct}
   \end{figure}
 
 
@@ -1699,13 +1750,13 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{Critical fault ignored}\label{fig:gre_216a_conv_hist_threshold_3}
+        \caption{Critical fault ignored}\label{fig:gre_216a_conv_hist_detection_incorrect_3}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{No impact fault detected}\label{fig:gre_216a_conv_hist_threshold_4}
+        \caption{No impact fault detected}\label{fig:gre_216a_conv_hist_detection_incorrect_4}
       \end{subfigure}
     \end{minipage}
     \quad
@@ -1714,25 +1765,26 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{Critical fault ignored}\label{fig:pores_2_conv_hist_threshold_3}
+        \caption{Critical fault ignored}\label{fig:pores_2_conv_hist_detection_incorrect_3}
       \end{subfigure}
       \quad
       \begin{subfigure}[t]{\linewidth}
         \centering
         \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{No impact fault detected}\label{fig:pores_2_conv_hist_threshold_4}
+        \caption{No impact fault detected}\label{fig:pores_2_conv_hist_detection_incorrect_4}
       \end{subfigure}
 
       
     \end{minipage}
-    \caption{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are not properly detected. In figures~\ref{fig:gre_216a_conv_hist_threshold_3} and ~\ref{fig:pores_2_conv_hist_threshold_3}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions do not converge, producing a \emph{Critical fault ignored} from Table \ref{colors} in both cases. In figures~\ref{fig:gre_216a_conv_hist_threshold_4} and ~\ref{fig:pores_2_conv_hist_threshold_4}, the check-sum becomes slightly higher than the threshold at the fault iteration, so the faults are detected but the executions converge anyway, producing a \emph{No impact fault detected} from Table \ref{colors} in both cases. }\label{fig:conv_hist_threshold_false}
+    \caption{Convergence histories of 2 GMRES executions on HB/gre_216a and 2 preconditioned-GMRES executions on HB/pored_2, disrupted by transient faults that are not properly detected. In figures~\ref{fig:gre_216a_conv_hist_detection_incorrect_3} and ~\ref{fig:pores_2_conv_hist_detection_incorrect_3}, the check-sum at each iteration remains below the threshold, so no fault is detected and the executions do not converge, producing a \emph{Critical fault ignored} from Table \ref{colors} in both cases. In figures~\ref{fig:gre_216a_conv_hist_detection_incorrect_4} and ~\ref{fig:pores_2_conv_hist_detection_incorrect_4}, the check-sum becomes slightly higher than the threshold at the fault iteration, so the faults are detected but the executions converge anyway, producing a \emph{No impact fault detected} from Table \ref{colors} in both cases. }\label{fig:conv_hist_detection_incorrect}
   \end{figure}
   This scheme requires some additional operations to be performed, mainly caused by the check-sum computation. First, since the target accuracy is set to the reduced target accuracy $(1-c)\cdot \varepsilon < \varepsilon$, some additional iterations $\widetilde{\ell}-\ell$ may be required for the execution to converge. Second, the quantity $ \allOne^T \cdot A$ is computed once at the beginning, and requires $\Theta(nnz)$ (number of nonzero elements in A) operations. Then, at each iteration, the vectors  $(\allOne^T \cdot A) \cdot v$ and $\allOne^T \cdot (A \cdot v)$ as well as their Euclidean distance are computed, necessitating at each iteration $\Theta(n)$ operations. Finally, $\Theta(1)$ operations are needed for the $\text{check-sum} < \text{threshold}$ comparison. Therefore, the test requires $\Theta(nnz) + \Theta(n \cdot \widetilde{\ell})$ additional operations, negligible when compared to the $\Theta(\ell \cdot nnz)$ operations of the classical algorithm, as long as $n \ll nnz$ and $\widetilde{\ell} \approx \ell$. Moreover, those computations can be performed in parallel in a separate computation unit since their outputs are not used in the classical execution.
 
 
   \subsubsection{Evaluation of the practical detection scheme}\label{sec:implementable_evaluated}
   % TODO
-  Figure~\ref{fig:test_result} plots the proportion (\% of executions) of detection scheme outcomes for several values of $c$. Because of the previously described approximations, Theorem~\ref{theorem} does not hold anymore and some \emph{Critical fault ignored} are produced. Except for the preconditioned-GMRES case in low accuracy ($\varepsilon = 10^{-5}$), the detection scheme does perform well as the proportion of critical fault missed is relatively low. For more details, the $c=0.5$ cases are plotted in Figure~\ref{fig:test_result_c05} and in Figure~\ref{fig:test_result_c05_matrices} for the results on the matrix set. However, the case preconditioned-GMRES in low accuracy is worrying. To understand why the test performed poorly in this situation, Figure~\ref{fig:why} plots the approximated threshold and check-sum in the case of an important fault inducing a large error. We can see that in both plots, the fault increases significantly the threshold, disrupting the convergence (which never seems to happen in GMRES executions without preconditioner). This problem comes from the approximation on $\widetilde{y}_{l, f} \rightarrow \widetilde{y}_{f, f}$, so another approximation should probably be established to ensure better results in various inputs.
+  Figure~\ref{fig:test_result} plots the proportion (\% of executions) of detection scheme outcomes for several values of $c$. Because of the previously described approximations, Theorem~\ref{theorem} does not hold anymore and some \emph{Critical fault ignored} are produced. Except for the preconditioned-GMRES case in low accuracy ($\varepsilon = 10^{-5}$), the detection scheme does perform well as the proportion of critical fault missed is relatively low. For more details, the $c=0.5$ cases are plotted in Figure~\ref{fig:test_result_c05} and in Figure~\ref{fig:test_result_c05_matrices} for the results on the matrix set.
+  %However, the case preconditioned-GMRES in low accuracy is worrying. To understand why the test performed poorly in this situation, Figure~\ref{fig:why} plots the approximated threshold and check-sum in the case of an important fault inducing a large error. We can see that in both plots, the fault increases significantly the threshold, disrupting the convergence (which never seems to happen in GMRES executions without preconditioner). This problem comes from the approximation on $\widetilde{y}_{l, f} \rightarrow \widetilde{y}_{f, f}$, so another approximation should probably be established to ensure better results in various inputs.
   % TODO: expliquer les figures
 
 
@@ -2335,8 +2387,8 @@ To compare the true error to the computed check-sum value, figures~\ref{fig:conv
     \label{fig:conv_hist_checksum_1}
   \end{figure}
 
-  \section{Illustration of the threshold approximation quality}
-  However when faults are injected, the estimation quality may be altered by large faults (bit-flips on the most significant bits). Figure~\ref{fig:conv_hist_threshold_evaluation_1} shows two left-preconditioned-gmres (resp. right-preconditioned-gmres) executions, disrupted by a large fault on bit 18 (resp bit 7), and a slightly smaller fault on bit 19 (resp bit 8). The first observation is that the threshold is altered differently depending on the algorithm. On the one hand for left-preconditioned-GMRES, the perturbation appears only at the end of the execution, and modifies significantly the true threshold value (orange line) and not its estimation (red line), when compared to the non-faulty execution (Figure \ref{fig:conv_hist_threshold_evaluation}). On the other hand for right-preconditioned-GMRES, the impact on the estimation appears immediately and exclusively at the fault iteration. Moreover in both cases, a slightly smaller fault is enough to completely efface any of the previously described behaviour.
+  \section{Illustration of the threshold approximation quality}\label{apd:threshold}
+  However when faults are injected, the estimation quality may be altered by large faults (bit-flips on the most significant bits). Figure~\ref{fig:conv_hist_threshold_evaluation_1} shows two left-preconditioned-gmres (resp. right-preconditioned-gmres) executions, disrupted by a large fault on bit 18 (resp. bit 7), and a slightly smaller fault on bit 19 (resp. bit 8). The first observation is that the threshold is altered differently depending on the algorithm. On the one hand for left-preconditioned-GMRES, the perturbation appears only at the end of the execution, and modifies significantly the true threshold value (orange line) and not its estimation (red line), when compared to the non-faulty execution (Figure \ref{fig:conv_hist_threshold_evaluation}). On the other hand for right-preconditioned-GMRES, the impact on the estimation appears immediately and exclusively at the fault iteration. Moreover in both cases, a slightly smaller fault is enough to completely efface any of the previously described behaviour.
 
 
   \begin{figure}[!ht]
