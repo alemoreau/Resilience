@@ -1361,55 +1361,7 @@ Figure~\ref{fig:bit_iteration} presents the convergence outcome of several fault
   \ref{fig:pores_2_conv_hist_prediction}, no fault is detected as the error is smaller than the threshold, and the executions converge, producing a \emph{No impact fault ignored} from Table~\ref{table:theoretical_outcomes}. In figures \ref{fig:gre_216a_conv_hist_no_prediction} and 
   \ref{fig:pores_2_conv_hist_no_prediction}, a critical fault is detected as the error is greater than the threshold $\tau_{0.5}$ at the fault iteration and the executions does not converge, producing a \emph{Critical fault detected} from Table~\ref{table:theoretical_outcomes}. In both cases, the fault is properly detected.
 
-  
-
-  \begin{figure}[!ht]
-    \centering
-    
-    \begin{minipage}[b]{0.45\linewidth}
-      \centering
-      \textbf{GMRES} executions on \textbf{gre_216a} 
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.45\linewidth}
-      \centering
-      \textbf{preconditioned-GMRES} on \textbf{pores_2}
-    \end{minipage}\\
-
-
-    \begin{minipage}[b]{0.48\linewidth}
-      
-      \begin{subfigure}[t]{\linewidth}
-        \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-5}$}\label{fig:gre_216a_conv_hist_theoretical_detection_0}	
-      \end{subfigure}
-      \quad
-      \begin{subfigure}[t]{\linewidth}
-        \centering
-        \includegraphics[width=1.15\linewidth]{figures/gre_216a/figure\thegrecounter.pdf}\stepcounter{grecounter})
-        \caption{$\varepsilon = 10^{-10}$}\label{fig:gre_216a_conv_hist_theoretical_detection_1}	
-      \end{subfigure}
-    \end{minipage}
-    \quad
-    \begin{minipage}[b]{0.48\linewidth}
-      
-      \begin{subfigure}[t]{\linewidth}
-        \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-5}$}\label{fig:pores_2_conv_hist_theoretical_detection_0}	
-      \end{subfigure}
-      \quad
-      \begin{subfigure}[t]{\linewidth}
-        \centering
-        \includegraphics[width=1.15\linewidth]{figures/pores_2/right/figure\theporescounter.pdf}\stepcounter{porescounter}
-        \caption{$\varepsilon = 10^{-10}$}\label{fig:pores_2_conv_hist_theoretical_detection_1}	
-      \end{subfigure}
-
-    \end{minipage}
-    \caption{Convergence histories of a GMRES execution on HB/gre_216a and a right-preconditioned-GMRES executions on HB/pored_2 for two target accuracies ($\varepsilon = 10^{-5}$ and $\varepsilon = 10^{-10}$). }\label{fig:conv_hist_detection_theoretical}
-  \end{figure}
-
+ 
 
   
   \subsubsection{Evaluation of the detection scheme}\label{sec:evaluation_oracle}
