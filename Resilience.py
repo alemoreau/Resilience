@@ -399,7 +399,7 @@ def run(algorithm_parameters, A,  step = 20):
     indices = [{"i": np.asscalar(non_zero[0][index]), 
                "j": 0, 
                "k": np.asscalar(non_zero[1][index])}]
-    register = algorithm_parameterss.get("register", 4)
+    register = algorithm_parameters.get("register", 4)
     experiment_parameters = experiment_parameters_generator(bits = np.arange(63, -1, -step_bit),
                                                             iterations = np.arange(0, min_iteration, step_ite),
                                                             registers = [register],
