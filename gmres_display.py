@@ -210,7 +210,7 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
 # Define display functions
 def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Computed residual gap",
 delta_linestyle = '-', true_delta = False, true_delta_label="True residual gap",
-true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', computed_threshold = False, computed_threshold_label = "Computed threshold", computed_threshold_linestyle = '-', c = 1, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 1), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
+                        true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', corrected_checksum = False, corrected_checksum_label = "Corrected Check-sum", corrected_checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', computed_threshold = False, computed_threshold_label = "Computed threshold", computed_threshold_linestyle = '-', c = 1, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 1), log = True, bbox_to_anchor=(1, 1), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
     
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', computed_residual = False, true_residual_label = "True residual (no fault)", xlim=xlim,ylim=ylim, title=title)
@@ -269,6 +269,15 @@ true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", chec
 	plot_2D(X[:-1], Y, log=log, title=title, 
 		linestyle = checksum_linestyle, 
 		label = checksum_label, 
+		xlabel= xlabel, 
+		ylabel = ylabel, 
+		bbox_to_anchor= bbox_to_anchor,
+		color = "pink")
+    if corrected_checksum:
+	Y = data['corrected_checksum']
+	plot_2D(X[:-1], Y, log=log, title=title, 
+		linestyle = corrected_checksum_linestyle, 
+		label = corrected_checksum_label, 
 		xlabel= xlabel, 
 		ylabel = ylabel, 
 		bbox_to_anchor= bbox_to_anchor,

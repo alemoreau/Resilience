@@ -47,7 +47,7 @@ def implementation(self, input, algorithm_parameters, experiment_parameters):
     restart = parameters.get("restart", None)
     m = restart if restart else maxiter
     precond = parameters.get("precond", None)
-    checksum_mode = parameters.get("checksum_mode", True)
+    Checksum = parameters.get("checksum", None)
     left = parameters.get("left", not parameters.get("right", False)) #TODO
     save_data = parameters.get("save_data", {})
     A1T = A.sum(axis=0)
@@ -85,14 +85,20 @@ def implementation(self, input, algorithm_parameters, experiment_parameters):
         M_x = lambda x: P.solve(x)
         M = spla.LinearOperator((n, n), matvec=M_x, dtype=A.dtype)
         if left:
-            MA1T = M_x(A.A).sum(axis=0)
             normb = np.linalg.norm(M_x(b))
-        else:
-            if (checksum_mode):
-                AM1T = (A.dot(M_x(np.eye(n)))).sum(axis=0)
+
+        if (not Checksum):
+            if left:
+                MA1T = M_x(A.A).sum(axis=0)
+            else:
+                if (checksum_mode):
+                    AM1T = (A.dot(M_x(np.eye(n)))).sum(axis=0)
             
     else:
         M = None
+
+    if (Checksum):
+        checksum = Checksum(A, M, left)
 
     def callback(iter_num, resid, work, work2, ijob):
         if ijob != -1:
@@ -112,20 +118,22 @@ def implementation(self, input, algorithm_parameters, experiment_parameters):
             self.data["faults"] = faulty.faults
             
         if "checksum" in save_data:
-            if precond:
-                if left:
-                    self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(MA1T, v))]
-                else:
-                    # old way : 
-                    # self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(A1T, AV))]
-                    # new way :
-                    if checksum_mode:
-                        self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(AM1T, v))]
-                    else:
-                        self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(A1T, AV))]
+            self.data["checksum"] += [checksum(AV, v, W)]
+            # if precond:
+            #     if left:
+            #         self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(MA1T, v))]
+
+            #     else:
+            #         # old way : 
+            #         # self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(A1T, AV))]
+            #         # new way :
+            #         if checksum_mode:
+            #             self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(AM1T, v))]
+            #         else:
+            #             self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(A1T, AV))]
             
-            else:
-                self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(A1T, v))]
+            # else:
+            #     self.data["checksum"] += [np.linalg.norm(np.sum(W) - np.dot(A1T, v))]
 
 
         if iter_num == 0 and ijob == 2:
@@ -309,39 +317,32 @@ def update_data(Experiment, epsilon = 1.e-10, c = 0.5):
     
     Experiment.data = map(lambda d: dict(zip(d.keys(), d)) if isinstance(d, sqlite3.Row) else d, Experiment.get_data())
     normb = np.linalg.norm(Experiment.inputs[0]["b"])
+    A = Experiment.inputs[0]["A"]
+    A1T = A.sum(axis=0)
+    A1T2 = []
+    for i in xrange(A.shape[1]):
+        A1T2 += [norm(A[:,i])]
+        
     for data in Experiment.get_data():
         data["checksum"] = map(lambda d: abs(d), data["checksum"])
+        k = data["faults"][0]["loc"]["k"]
+        data["corrected_checksum"] = abs(A1T2[k] / A1T[0, k]) * data["checksum"]
         data["true_checksum"] = [0. if i != data["faults"][0]["timer"] else abs(data["Ekvk"]) for i in xrange(len(data["checksum"]))]
         data["threshold"] = map(lambda d: c * epsilon * normb / abs(d), data["y"][(when_has_converged(data, epsilon) - 1) if when_has_converged(data, epsilon) else (data["l"] - 1)])
         data["computed_threshold"] = [abs(c * epsilon * normb / d[-1]) for d in data["y"]]
         data["delta"] = map(lambda d: abs((data["Ekvk"]) * d) / normb, map(lambda d: 0 if len(d) <= data["faults"][0]["timer"] else d[data["faults"][0]["timer"]], data["y"]))
 
-def run(algorithm_parameters, A = None, matrix_url=None, matrix_path="./matrix.mat",  step = 30):
-
-    print "Loading the matrix... "
-    if A != None:
+def run(algorithm_parameters, A,  step = 20):
+    try:
         n = A.shape[0]
         x = np.ones(n)
         b = A.dot(x)
+        normb = np.linalg.norm(b)
         x0= np.zeros(n)
         input = {"A":A, "x0":x0, "b":b}
-    else:
-        if matrix_url:
-            input = load_mat(download(matrix_url), sparse = True)
-        else:
-            input = load_mat(matrix_path, sparse = True)
-    A = input["A"]
-    b = input["b"]
-    normb = np.linalg.norm(b)
-    x0 = input["x0"]
-    inputs = [input]
-    n = A.shape[0]
-    #problem = input["problem"]
-    try:
-        plt.matshow(A)
+        inputs = [input]
     except:
-        plt.matshow(A.toarray())
-    plt.show()
+        print "Problème avec la matrice A !"
         
     print "Running the reference experiment (no fault) ..."
     
@@ -398,9 +399,10 @@ def run(algorithm_parameters, A = None, matrix_url=None, matrix_path="./matrix.m
     indices = [{"i": np.asscalar(non_zero[0][index]), 
                "j": 0, 
                "k": np.asscalar(non_zero[1][index])}]
-
+    register = algorithm_parameterss.get("register", 4)
     experiment_parameters = experiment_parameters_generator(bits = np.arange(63, -1, -step_bit),
                                                             iterations = np.arange(0, min_iteration, step_ite),
+                                                            registers = [register],
                                                             tol = epsilon / 100,
                                                             restart = 2 * min_iteration,
                                                             maxiter = 2 * min_iteration,
