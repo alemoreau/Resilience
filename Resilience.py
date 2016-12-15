@@ -316,20 +316,27 @@ def update_data(Experiment, epsilon = 1.e-10, c = 0.5):
         data["computed_threshold"] = [abs(c * epsilon * normb / d[-1]) for d in data["y"]]
         data["delta"] = map(lambda d: abs((data["Ekvk"]) * d) / normb, map(lambda d: 0 if len(d) <= data["faults"][0]["timer"] else d[data["faults"][0]["timer"]], data["y"]))
 
-def run(algorithm_parameters, matrix_url=None, matrix_path="./matrix.mat",  step = 30):
+def run(algorithm_parameters, A = None, matrix_url=None, matrix_path="./matrix.mat",  step = 30):
 
     print "Loading the matrix... "
-    if matrix_url:
-        input = load_mat(download(matrix_url), sparse = True)
+    if A != None:
+        n = A.shape[0]
+        x = np.ones(n)
+        b = A.dot(x)
+        x0= np.zeros(n)
+        input = {"A":A, "x0":x0, "b":b}
     else:
-        input = load_mat(matrix_path, sparse = True)
+        if matrix_url:
+            input = load_mat(download(matrix_url), sparse = True)
+        else:
+            input = load_mat(matrix_path, sparse = True)
     A = input["A"]
     b = input["b"]
     normb = np.linalg.norm(b)
     x0 = input["x0"]
     inputs = [input]
     n = A.shape[0]
-    problem = input["problem"]
+    #problem = input["problem"]
     try:
         plt.matshow(A)
     except:
