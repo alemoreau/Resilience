@@ -332,7 +332,7 @@ def update_data(Experiment, epsilon = 1.e-10, c = 0.5):
         data["computed_threshold"] = [abs(c * epsilon * normb / d[-1]) for d in data["y"]]
         data["delta"] = map(lambda d: abs((data["Ekvk"]) * d) / normb, map(lambda d: 0 if len(d) <= data["faults"][0]["timer"] else d[data["faults"][0]["timer"]], data["y"]))
 
-def run(algorithm_parameters, A,  step = 20):
+def run(algorithm_parameters, A,  npoints = 20):
     try:
         n = A.shape[0]
         x = np.ones(n)
@@ -391,8 +391,8 @@ def run(algorithm_parameters, A,  step = 20):
 
     print "Running the full experiment..."
     
-    step_ite = int(math.ceil(float(min_iteration) / step))
-    step_bit = int(math.ceil(float(64) / step))
+    step_ite = int(math.ceil(float(min_iteration) / npoints))
+    step_bit = int(math.ceil(float(64) / npoints))
     
     non_zero = A.nonzero()
     index = int(np.random.rand()*len(non_zero[0]))
@@ -760,59 +760,58 @@ def detection_results(I, key_checksum = "checksum", key_threshold = "computed_th
 
 # # In[31]:
 
-
-# X = [1.1**(-50+i) for i in xrange(51)]
-# test_orange = []
-# test_red = []
-# test_green = []
-# test_gray1 = []
-# test_gray2 = []
-
-# epsilon = 1.e-5
-# update_data(I, epsilon, c = 1)
-# data = filter(lambda d: len(d["faults"]) > 0, I.get_data())
-# print I.get_data()
-# for x in X:
-#     #test_red += [(100. * len(filter_data(data, {'converged':False, 'criterion':True}, c=x)))/len(data)]
-#     #test_green += [(100. * len(filter_data(data, {'converged':False, 'criterion':False}, c=x)))/len(data)]
-#     #test_gray1 += [(100. * len(filter_data(data, {'converged':True, 'criterion':True}, c=x)))/len(data)]
-#     #test_gray2 += [(100. * len(filter_data(data, {'converged':True, 'criterion':False}, c=x)))/len(data)]
+def detection_results_c(I, key_checksum, key_threshold, epsilon):
+    X = [1.1**(-50+i) for i in xrange(51)]
+    test_orange = []
+    test_red = []
+    test_green = []
+    test_gray1 = []
+    test_gray2 = []
     
+    update_data(I, epsilon, c = 1)
+    data = filter(lambda d: len(d["faults"]) > 0, I.get_data())
 
+    for x in X:
+        #test_red += [(100. * len(filter_data(data, {'converged':False, 'criterion':True}, c=x)))/len(data)]
+        #test_green += [(100. * len(filter_data(data, {'converged':False, 'criterion':False}, c=x)))/len(data)]
+        #test_gray1 += [(100. * len(filter_data(data, {'converged':True, 'criterion':True}, c=x)))/len(data)]
+        #test_gray2 += [(100. * len(filter_data(data, {'converged':True, 'criterion':False}, c=x)))/len(data)]
+        
+        
     
-#     test_orange += [(100. * len(filter(lambda d: false_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
-#     test_red += [(100. * len(filter(lambda d: fault_no_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
-#     test_green += [(100. * len(filter(lambda d: fault_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
-#     test_gray1 += [(100. * len(filter(lambda d: no_impact_fault_no_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
-#     test_gray2 += [(100. * len(filter(lambda d: no_impact_fault_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
-
-
-# Y = np.row_stack((test_gray1, test_gray2, test_green, test_red))   
-# Y = np.cumsum(Y, axis=0)  
-
-# fig = plt.figure()
-# ax = fig.add_subplot(111)
-
-# #ax.plot(X, test_orange, c="orange", linestyle="--")
-# ax.fill_between(X, 0, Y[0,:], facecolor="lightgray", alpha=.7, label="No impact fault not detected")
-# ax.fill_between(X, Y[0,:], Y[1,:], facecolor="darkgray", alpha=.7, label="No impact fault detected")
-# ax.fill_between(X, Y[1,:], Y[2,:], facecolor="green", alpha=.7, label="Critical fault detected")
-# ax.fill_between(X, Y[2,:], Y[3,:], facecolor="red",alpha=.7, label="Critical fault not detected")
-# ax.set_xscale('log')
-# ax.set_ylim([0, 100])
-# ax.set_xlim([0.01, 1])
-# ax.set_xlabel("c")
-# ax.set_ylabel("%")
-# ax.set_title("Test result repartition")
-
-# p1 = plt.Rectangle((0, 0), 1, 1, fc="green", alpha=.7)
-# p2 = plt.Rectangle((0, 0), 1, 1, fc="lightgray", alpha=.7)
-# p3 = plt.Rectangle((0, 0), 1, 1, fc="darkgray", alpha=.7)
-# p4 = plt.Rectangle((0, 0), 1, 1, fc="red", alpha=.7)
-# plt.legend([p1, p2, p3, p4], ["Critical fault detected", "No impact fault ignored", "No impact fault detected", "Critical fault ignored"], loc=4)
-# plt.plot([0.5, 0.5], [0, 100], c = "red", linestyle = "--")
-# plt.text(0.45, -7, "0.5")
-# plt.show()
+        test_orange += [(100. * len(filter(lambda d: false_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
+        test_red += [(100. * len(filter(lambda d: fault_no_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
+        test_green += [(100. * len(filter(lambda d: fault_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
+        test_gray1 += [(100. * len(filter(lambda d: no_impact_fault_no_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
+        test_gray2 += [(100. * len(filter(lambda d: no_impact_fault_detection(d, epsilon = epsilon, c=x, key_checksum=key_checksum, key_threshold=key_threshold), data)))/len(data)]
+        
+        
+    Y = np.row_stack((test_gray1, test_gray2, test_green, test_red))   
+    Y = np.cumsum(Y, axis=0)  
+        
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    
+    #ax.plot(X, test_orange, c="orange", linestyle="--")
+    ax.fill_between(X, 0, Y[0,:], facecolor="lightgray", alpha=.7, label="No impact fault not detected")
+    ax.fill_between(X, Y[0,:], Y[1,:], facecolor="darkgray", alpha=.7, label="No impact fault detected")
+    ax.fill_between(X, Y[1,:], Y[2,:], facecolor="green", alpha=.7, label="Critical fault detected")
+    ax.fill_between(X, Y[2,:], Y[3,:], facecolor="red",alpha=.7, label="Critical fault not detected")
+    ax.set_xscale('log')
+    ax.set_ylim([0, 100])
+    ax.set_xlim([0.01, 1])
+    ax.set_xlabel("c")
+    ax.set_ylabel("%")
+    ax.set_title("Test result repartition")
+    
+    p1 = plt.Rectangle((0, 0), 1, 1, fc="green", alpha=.7)
+    p2 = plt.Rectangle((0, 0), 1, 1, fc="lightgray", alpha=.7)
+    p3 = plt.Rectangle((0, 0), 1, 1, fc="darkgray", alpha=.7)
+    p4 = plt.Rectangle((0, 0), 1, 1, fc="red", alpha=.7)
+    plt.legend([p1, p2, p3, p4], ["Critical fault detected", "No impact fault ignored", "No impact fault detected", "Critical fault ignored"], loc=4)
+    plt.plot([0.5, 0.5], [0, 100], c = "red", linestyle = "--")
+    plt.text(0.45, -7, "0.5")
+    plt.show()
 
 # #gmres_display.save_fig_pdf(fig, "./report/figures/pores_2/right/csc/figure" + str(idx) + ".pdf")
 # idx += 1
