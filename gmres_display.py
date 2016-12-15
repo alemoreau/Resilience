@@ -210,7 +210,7 @@ def classification_criterion(data, c = 0.25, oracle={"Ekvk":False, "ylk":False},
 # Define display functions
 def convergence_history(data, data_no_fault = None, computed_residual = True, computed_residual_label="Computed residual", true_residual = True, true_residual_label = "True residual", delta = False, delta_label="Computed residual gap",
 delta_linestyle = '-', true_delta = False, true_delta_label="True residual gap",
-true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', computed_threshold = False, computed_threshold_label = "Computed threshold", computed_threshold_linestyle = '-', c = 0.25, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 0), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
+true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", checksum_linestyle = '-', Ekvk = False, Ekvk_label = "Ekvk", Ekvk_linestyle = '-', threshold = False, threshold_label = "Threshold", threshold_linestyle = '-', computed_threshold = False, computed_threshold_label = "Computed threshold", computed_threshold_linestyle = '-', c = 1, fault = False, fault_color = "red", arrow = False, xlim = None, ylim = None, xytext=(0, 1), log = True, bbox_to_anchor=(0.5, 0.88), title = 'Convergence History', xlabel="iteration", ylabel = "residual norm", linestyle='-'):
     
     if data_no_fault:
 	convergence_history(data_no_fault, linestyle = '--', computed_residual = False, true_residual_label = "True residual (no fault)", xlim=xlim,ylim=ylim, title=title)
@@ -251,18 +251,18 @@ true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", chec
 	color = fault_color
         plt.plot([x], [y], 'ro', c=color)
 
-        
-        annotation = " iteration : %d \n location : (%d, %d) \n bit : %d \n register : %s" % (data['faults'][0]['timer'], 
- 		                                                                                 data['faults'][0]['loc']['i'], 
-		                                                                                 data['faults'][0]['loc']['k'],
-                                                                                                 data['faults'][0]['bit'],
-                                                                                                 data['faults'][0]['register'])
-        
+
+        annotation = "  iteration : %d \n  location : (%d, %d) \n  bit : %d \n  register : %s" % (data['faults'][0]['timer'], 
+ 	 	                                                                              data['faults'][0]['loc']['i'], 
+	 	                                                                              data['faults'][0]['loc']['k'],
+                                                                                               data['faults'][0]['bit'],
+                                                                                               data['faults'][0]['register'])
+
         if arrow:
-        	plt.annotate(annotation, xy=(x, y), xytext=xytext,
-                     	arrowprops=dict(facecolor="black", shrink=0.05),)
+            plt.annotate(annotation, xy=(x, y), xytext=xytext,
+                      	 arrowprops=dict(facecolor="black", shrink=0.05),)
 	else:
-		plt.annotate(annotation, xy=(x, y), xytext=xytext)
+	    plt.annotate(annotation, xy=(x, y), xytext=xytext)
 
     if checksum:
 	Y = data['checksum']
@@ -278,7 +278,6 @@ true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", chec
 	x = (data['faults'][0]['timer'])
         y = data['Ekvk']
         plt.plot([x], [y], 's', c="yellow", label = Ekvk_label)
-	plt.legend(numpoints=1)
 
 
     if threshold:
@@ -305,7 +304,7 @@ true_delta_linestyle = '-', checksum = False, checksum_label = "Check-sum", chec
 	plt.xlim(xlim)
     if ylim:
 	plt.ylim(ylim)
-
+    plt.legend(numpoints=1, bbox_to_anchor= bbox_to_anchor)
 
 def convergence_bit_iteration(data, parameters):
 

@@ -1,6 +1,5 @@
 import Utils as U
 import numpy as np
-
 from Parameters import *
 
 class Fault():
@@ -24,6 +23,7 @@ class Fault():
             # Non-faulty product
             product = M.dot(N)
             fault = self.parameters.get("fault", None)
+            
             if fault:
                 loc = fault["loc"]
                 i, j, k = loc["i"], loc["j"], loc["k"]
@@ -77,10 +77,9 @@ class Fault():
             fault["timer"] = self.timer              
 	    fault["loc"] = {"i":i, "j":j, "k": k}
 	    fault["value_before"] = product[i, j] if len(product.shape) == 2 else product[i]
-	    xm_before = M[i, k]
+	    xm_before = M[i, k] if register < 4 else M[:, k].toarray()
 	    xn_before = N[k, j] if len(N.shape) == 2 else N[k]
 	    xp_before = xm_before * xn_before
-
 	    if (register == 1):    
                 xm_after = U.bitflip(xm_before, bit_flipped, type=M.dtype.type)
                 xn_after = xn_before
@@ -88,7 +87,7 @@ class Fault():
                 fault["register_after"] = xm_after
                 xp_after = xm_after * xn_after
                                     
-            if (register == 2):
+            if (register == 2 or register == 4):
                 xm_after = xm_before
                 xn_after = U.bitflip(xn_before, bit_flipped, type=M.dtype.type)
                 fault["register_before"] = xn_before
@@ -101,13 +100,19 @@ class Fault():
                 xp_after = U.bitflip(xp_before, bit_flipped, type=M.dtype.type)
                 fault["register_before"] = xp_before
                 fault["register_after"] = xp_after
-                                          
+                
             self.faults += [fault]
-            difference = xp_after - xp_before
-            if len(product.shape) == 2:
+            if register < 4:
+                difference = np.zeros(product.shape)
+                difference[i] = xp_after-xp_before
+            else:
+                difference = xp_after - xp_before
+            fault["difference"] = difference
+            if len(product.shape) == 2: #TODO register4
                 product[i, j] += difference
             if len(product.shape) == 1:
-                product[i] += difference
+                product += difference.reshape(product.shape)
+
                                         
             fault["value_after"] = product[i, j] if len(product.shape) == 2 else product[i]
                                         

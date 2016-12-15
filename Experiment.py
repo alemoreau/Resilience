@@ -89,7 +89,6 @@ class Experiment:
 							progress = new_progress
 							self.apply_procedure(_p, _input)
 					else:
-		
 						for k, _input in enumerate(self.inputs):
 							new_progress = int((100 * (i * len(self.inputs) + k)) / len(self.inputs * n))
 							if (show_progress and (new_progress > progress)):
@@ -225,6 +224,7 @@ class Experiment:
 
 	    	sql = "INSERT into experiments (" + keys + ") VALUES (" + values + ")"
 		print sql
+
 		cursor.executemany(sql, d)
 		conn.commit()
 	    else:
