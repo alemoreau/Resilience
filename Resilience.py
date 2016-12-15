@@ -317,16 +317,16 @@ def update_data(Experiment, epsilon = 1.e-10, c = 0.5):
     
     Experiment.data = map(lambda d: dict(zip(d.keys(), d)) if isinstance(d, sqlite3.Row) else d, Experiment.get_data())
     normb = np.linalg.norm(Experiment.inputs[0]["b"])
-    A = Experiment.inputs[0]["A"]
-    A1T = A.sum(axis=0)
-    A1T2 = []
-    for i in xrange(A.shape[1]):
-        A1T2 += [norm(A[:,i])]
+    #A = Experiment.inputs[0]["A"]
+    #A1T = A.sum(axis=0)
+    #A1T2 = []
+    #for i in xrange(A.shape[1]):
+    #    A1T2 += [norm(A[:,i])]
         
     for data in Experiment.get_data():
         data["checksum"] = map(lambda d: abs(d), data["checksum"])
         k = data["faults"][0]["loc"]["k"]
-        data["corrected_checksum"] = abs(A1T2[k] / A1T[0, k]) * data["checksum"]
+        data["corrected_checksum"] = data["checksum"] #abs(A1T2[k] / A1T[0, k]) * data["checksum"]
         data["true_checksum"] = [0. if i != data["faults"][0]["timer"] else abs(data["Ekvk"]) for i in xrange(len(data["checksum"]))]
         data["threshold"] = map(lambda d: c * epsilon * normb / abs(d), data["y"][(when_has_converged(data, epsilon) - 1) if when_has_converged(data, epsilon) else (data["l"] - 1)])
         data["computed_threshold"] = [abs(c * epsilon * normb / d[-1]) for d in data["y"]]
