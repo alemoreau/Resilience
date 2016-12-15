@@ -322,7 +322,7 @@ def run(algorithm_parameters, matrix_url=None, matrix_path="./matrix.mat",  step
     if matrix_url:
         input = load_mat(download(matrix_url), sparse = True)
     else:
-        input = load_mat(download(matrix_path), sparse = True)
+        input = load_mat(matrix_path, sparse = True)
     A = input["A"]
     b = input["b"]
     normb = np.linalg.norm(b)
