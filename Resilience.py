@@ -316,7 +316,11 @@ def download(url):
 def update_data(Experiment, epsilon = 1.e-10, c = 0.5):
     
     Experiment.data = map(lambda d: dict(zip(d.keys(), d)) if isinstance(d, sqlite3.Row) else d, Experiment.get_data())
-    normb = np.linalg.norm(Experiment.inputs[0]["b"])
+    if Experiment.algorithm.parameters.get("left", False) and Experiment.algorithm.parameters.get("precond", None):
+        normb = np.linalg.norm(Experiment.algorithm.parameters["precond"](Experiment.inputs[0]["A"]).solve(Experiment.inputs[0]["b"]))
+    else:
+        normb = np.linalg.norm(Experiment.inputs[0]["b"])
+    
     #A = Experiment.inputs[0]["A"]
     #A1T = A.sum(axis=0)
     #A1T2 = []
@@ -614,7 +618,11 @@ def convergence_results(I):
 def prediction_result(I, c = 0.5, epsilon = 1.e-10):
     
     update_data(I, c = c, epsilon = epsilon)
-    normb = np.linalg.norm(I.inputs[0]["b"])
+    if I.algorithm.parameters.get("left", False) and I.algorithm.parameters.get("precond", None):
+        normb = np.linalg.norm(I.algorithm.parameters["precond"](I.inputs[0]["A"]).solve(I.inputs[0]["b"]))
+    else:
+        normb = np.linalg.norm(I.inputs[0]["b"])
+
     
     def color_prediction_outcome(data, epsilon):
         l = when_has_converged(data, epsilon)
@@ -668,7 +676,7 @@ def prediction_result(I, c = 0.5, epsilon = 1.e-10):
     noprediction = gmres_display.scatter_bit_injection(filter(lambda d: color_prediction_outcome(d, epsilon) == "red" and not has_converged(d, epsilon) , I.get_data()), 
                                                        min_iteration = I.min_iteration, 
                                                        color="red")
-    plt.legend([prediction, noprediction], ["Predicted to convrege", "No prediction"])
+    plt.legend([prediction, noprediction], ["Predicted to converge", "No prediction"])
     #gmres_display.save_fig_pdf(fig, "./report/figures/pores_2/right/csc/figure" + str(idx) + ".pdf")
     
     # idx += 1
